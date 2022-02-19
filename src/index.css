@@ -1,10 +1,12 @@
+
 *{
   padding: 0;
   margin: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 body{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 #background-login{
@@ -20,6 +22,8 @@ body{
   background: #F6F8F9;
   border-top: 17px solid rgba(255, 82, 99, 1);
   border-bottom: 17px solid rgba(0, 191, 156, 1);
+  justify-content: center;
+  align-items: center;
 }
 
 #logo-login{
@@ -36,4 +40,31 @@ body{
   line-height: 49px;
   letter-spacing: 0em;
   color: rgba(255, 192, 0, 1);
+}
+
+.box-input{
+  display: inline-grid;
+}
+
+.input-ct{
+  width: 548px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 0.3px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+input {
+  padding-left: 10px;
+}
+
+.btn-log{
+  height: 48px;
+  width: 184px;
+  color: #FFFFFF;
+  background: #00BF9C;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: none;
 }
