@@ -1,13 +1,39 @@
-body {
+*{
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#background-login{
+  background-image: url("../src/images/background.png") ;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 17px solid rgba(0, 191, 156, 1);
+}
+
+#login-box{
+  background: #F6F8F9;
+  border-top: 17px solid rgba(255, 82, 99, 1);
+  border-bottom: 17px solid rgba(0, 191, 156, 1);
+}
+
+#logo-login{
+  background-image: url("../src/images/logo.png");
+  height: 208px;
+  width: 341px;
+  border-radius: 0px;
+}
+
+#login-text{
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 49px;
+  letter-spacing: 0em;
+  color: rgba(255, 192, 0, 1);
 }
