@@ -106,3 +106,31 @@ input {
     padding: 0;
   }
 }
+
+/*barra de navegacion*/
+.navbar{
+  background-color: #00BF9C;
+  color: white;
+  height: 56px;
+}
+
+.p-style{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: white !important;
+}
+
+.fw-100{
+  font-weight: 100;
+}
+
+.t-a{
+  text-align: end;
+}
+
+.pl{
+  padding-left: 15px;
+}

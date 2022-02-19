@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap'
 import React, { useState } from 'react'
 
 function LoginForm({Login, error}) {
-  const [details, setDetails] = useState({ email: "" , password: "" });
+  const [details, setDetails] = useState({ name: "" , password: "" });
   const submittrigger = e => {
     e.preventDefault();
 
@@ -23,8 +23,8 @@ function LoginForm({Login, error}) {
                 <h1 className='pb-4 hunolog'>INICIAR SESION</h1>
                 <div className=''>
                     <div className='col-md-12 box-input pb-4'>
-                      <label for="email">Correo: </label>
-                      <input className='input-ct' type="email" name="email" id='email' onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
+                      <label for="name">Correo: </label>
+                      <input className='input-ct' type="text" name="name" id='name' onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
                     </div>
                     <div className='col-md-12 box-input pb-5'>
                       <label for="password">Contraseña: </label>
