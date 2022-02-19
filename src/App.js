@@ -17,18 +17,32 @@ function App() {
 
   const Login = details =>{
     console.log(details);
+
+    if (details.email == userAd.email && details.password == userAd.password){
+      console.log("Iniciaste sesion")
+
+      setUser({
+        email: details.email
+      })
+
+    }else{
+      console.log("No anda locoo")
+    }
+     
+    
   }
  
   const Logout = () =>{
-    console.log("Logout");
+    
+    setUser({name:"", email:""});
   }
 
   return (
     <div className="App">
       {(user.email !="")?(
         <div className="container-fluid">
-          <h1>hola</h1>
-          <button>Cerrar sesion</button>
+          <h1>Bienvenido, <span>{user.email}</span> </h1>
+          <button onClick={Logout}>Cerrar sesion</button>
         </div>
       ):(<LoginForm Login={Login} error={error}/>
       )}
