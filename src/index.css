@@ -134,3 +134,21 @@ input {
 .pl{
   padding-left: 15px;
 }
+
+/*sidebar*/
+.sidebar{
+  width: 276px !important;
+  border-radius: 0px;
+  background-color: red;
+  height: 100vh;
+}
+
+.items ion-icon{
+  margin: auto;
+  padding-left: 10px;
+  font-size: 25px;
+}
+
+.bt-cerrar{
+
+}
