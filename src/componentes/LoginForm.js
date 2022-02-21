@@ -2,12 +2,14 @@
 import { Form } from 'react-bootstrap'
 import React, { useState } from 'react'
 
-function LoginForm({Login, error}) {
+function LoginForm({login}) {
   const [details, setDetails] = useState({ name: "" , password: "" });
   const submittrigger = e => {
     e.preventDefault();
-
-    Login(details);
+    if(details.name === "Adan" && details.password === "admin123"){
+      login(true)
+    }
+    
   }
   return (
       <div className='container-fluid'>
