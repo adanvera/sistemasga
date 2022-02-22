@@ -10,14 +10,14 @@ export const Dashboard = () => {
   }
 	return (
 		<>
-			<Container fluid={true}>
-				<div className="sidebar">
+			<Container fluid={true} className="d-flex p-0 m-0">
+				<div className="sidebar p-1 pl-5" >
 					<Navbar.Brand href="#home">
 						<img src={myLogo} alt="" />
 						<button className="bt-cerrar" onClick={logout}>Cerrar sesion</button>
 					</Navbar.Brand>
 				</div>
-				<div className="navbar justify-content-between w-100  col-md-8 p-0" variant="dark">
+				<div className="navbar justify-content-between w-100 p-0" variant="dark">
 					<Nav className="items">
 						<ion-icon name="reorder-three-outline"></ion-icon>
 						<Nav.Link href="#home">Inicio</Nav.Link>
