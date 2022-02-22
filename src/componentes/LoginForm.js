@@ -43,7 +43,7 @@ function LoginForm({login}) {
                 <div className=''>
                     <div className='col-md-12 box-input pb-4'>
                       <label for="name">Correo: </label>
-                      <input className='input-ct' type="text" name="name" id='name' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name}/>
+                      <input className='input-ct' type="email" name="name" id='name' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name}/>
                     </div>
                     <div className='col-md-12 box-input pb-2'>
                       <label for="password">Contraseña: </label>

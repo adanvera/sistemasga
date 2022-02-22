@@ -151,6 +151,7 @@ input {
   padding-left: 3px;
   font-size: 12px;
   color: #00BF9C;
+  cursor: pointer;
 }
 
 .bt-cerrar.ion-icon{
