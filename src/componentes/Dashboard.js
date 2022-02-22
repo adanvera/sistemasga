@@ -4,7 +4,6 @@ import myLogo from '../images/iconwhite.png'
 import myphoto from '../images/perfil.png'
 
 export const Dashboard = () => {
-  const [user,setUser]=useState("Adan")
   const logout = ()=>{
     window.location.reload()
   }
@@ -32,7 +31,7 @@ export const Dashboard = () => {
 						<Nav.Link href="#pricing" className="d-flex">
 							<div className="t-a">
 								<p className="p-style fw-100">Bienvenido</p>
-								<span>{user.name}</span>
+								<span>Adan</span>
 							</div>
 							<div className="pl">
 								<img src={myphoto} alt="" />
