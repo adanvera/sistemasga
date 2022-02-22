@@ -164,6 +164,35 @@ input {
   font-size: 25px;
 }
 
-.bt-cerrar{
+/*register form*/
+.register-bg{
+  background-image: url("../src/images/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
 
+.register-box{
+  width: 861px;
+  height: 624px;
+  background: #FFFFFF;
+  border-radius: 20px;
+}
+
+
+.register-bg.w-100.container-fluid{
+  display: flex;
+  align-items: center;
+}
+
+.btn-crear{
+  bottom: 265px;
+  background: #4E73F8;
+  border: 1px solid #4E73F8;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 270px;
+  color: #FFFFFF;
 }
