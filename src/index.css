@@ -138,8 +138,10 @@ input {
 .sidebar{
   width: 276px !important;
   border-radius: 0px;
-  background-color: red;
+  background-color: #FFFFFF;
   height: 100vh;
+  box-shadow: 2px 0px 1px 6px rgb(0 0 0 / 2%);
+  border-right: 1px solid rgba(0, 0, 0, 00.3px);
 }
 
 .items ion-icon{

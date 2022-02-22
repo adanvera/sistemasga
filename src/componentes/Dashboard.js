@@ -11,11 +11,15 @@ export const Dashboard = () => {
 	return (
 		<>
 			<Container fluid={true} className="d-flex p-0 m-0">
-				<div className="sidebar p-1 pl-5" >
-					<Navbar.Brand href="#home">
-						<img src={myLogo} alt="" />
-						<button className="bt-cerrar" onClick={logout}>Cerrar sesion</button>
-					</Navbar.Brand>
+				<div className="sidebar p-1 pl-5 d-flex flex-column" >
+					<div className='mb-auto'>
+						<Navbar.Brand href="#home">
+							<img src={myLogo} alt="" />
+						</Navbar.Brand>
+					</div>
+					<div>	
+						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power"></ion-icon></span>
+					</div>
 				</div>
 				<div className="navbar justify-content-between w-100 p-0" variant="dark">
 					<Nav className="items">
