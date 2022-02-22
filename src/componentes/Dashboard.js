@@ -18,7 +18,7 @@ export const Dashboard = () => {
 						</Navbar.Brand>
 					</div>
 					<div>	
-						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power"></ion-icon></span>
+						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
 					</div>
 				</div>
 				<div className="navbar justify-content-between w-100 p-0" variant="dark">
