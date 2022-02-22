@@ -1,8 +1,9 @@
 
-import { Form } from 'react-bootstrap'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { DataContext } from '../backend/context/DataContext';
 const URL = 'http://localhost:4000/api/auth'
 function LoginForm({login}) {
+  const {setUser} = useContext(DataContext)
   const [details, setDetails] = useState({ correo: "" , password: "" });
   const submittrigger = async (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ function LoginForm({login}) {
       if(!res.ok){
         return alert(json.msg)
       }
+      setUser(json)
       return login(true)
       
     } catch (error) {
@@ -42,11 +44,11 @@ function LoginForm({login}) {
                 <h1 className='pb-2 hunolog'>INICIAR SESION</h1>
                 <div className=''>
                     <div className='col-md-12 box-input pb-4'>
-                      <label for="name">Correo: </label>
+                      <label htmlFor="name">Correo: </label>
                       <input className='input-ct' type="email" name="name" id='name' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name}/>
                     </div>
                     <div className='col-md-12 box-input pb-2'>
-                      <label for="password">Contraseña: </label>
+                      <label htmlFor="password">Contraseña: </label>
                       <input className='input-ct' type="password" name="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
                     </div>
                     <p className='p-0 m-0'>No tienes una cuenta?, <span className='sp-link'> crear cuenta</span> </p>

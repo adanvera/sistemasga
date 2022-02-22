@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {Navbar,Nav,NavItem,NavDropdown,MenuItem,Container,} from 'react-bootstrap'
+import { DataContext } from '../backend/context/DataContext'
 import myLogo from '../images/iconwhite.png'
 import myphoto from '../images/perfil.png'
 
 export const Dashboard = () => {
+	const {user} = useContext(DataContext)
+	const {nombre} = user.usuarioEncontrado;
   const logout = ()=>{
     window.location.reload()
   }
@@ -31,7 +34,7 @@ export const Dashboard = () => {
 						<Nav.Link href="#pricing" className="d-flex">
 							<div className="t-a">
 								<p className="p-style fw-100">Bienvenido</p>
-								<span>Adan</span>
+								<span>{nombre}</span>
 							</div>
 							<div className="pl">
 								<img src={myphoto} alt="" />
