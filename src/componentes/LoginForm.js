@@ -1,14 +1,31 @@
 
 import { Form } from 'react-bootstrap'
 import React, { useState } from 'react'
-
+const URL = 'http://localhost:4000/api/auth'
 function LoginForm({login}) {
-  const [details, setDetails] = useState({ name: "" , password: "" });
-  const submittrigger = e => {
+  const [details, setDetails] = useState({ correo: "" , password: "" });
+  const submittrigger = async (e) => {
     e.preventDefault();
-    if(details.name === "Adan" && details.password === "admin123"){
-      login(true)
-    }
+    let option = { 
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(details)  
+            };
+    try {
+      const res = await fetch(URL,option),
+          json = await res.json()
+      if(!res.ok){
+        return alert(json.msg)
+      }
+      return login(true)
+      
+    } catch (error) {
+      return 'Ocurrio un error '+error
+    }          
+
+
     
   }
   return (
@@ -26,7 +43,7 @@ function LoginForm({login}) {
                 <div className=''>
                     <div className='col-md-12 box-input pb-4'>
                       <label for="name">Correo: </label>
-                      <input className='input-ct' type="text" name="name" id='name' onChange={e => setDetails({...details, name: e.target.value})} value={details.name}/>
+                      <input className='input-ct' type="text" name="name" id='name' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name}/>
                     </div>
                     <div className='col-md-12 box-input pb-5'>
                       <label for="password">Contraseña: </label>

@@ -1,14 +1,9 @@
-
 import LoginForm from './componentes/LoginForm';
 import React, { useState } from 'react';
 import { Dashboard } from './componentes/Dashboard';
 
-
-
 function App() {
   const [isAuth,setIsAuth]= useState(false)
- 
-
 
   return (
     <div className="App">
