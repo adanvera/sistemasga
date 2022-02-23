@@ -74,6 +74,7 @@ input {
 .sp-link{
   color: rgba(0, 191, 156, 1);
   font-weight: 700;
+  cursor: pointer;
 }
 
 .hunolog{
