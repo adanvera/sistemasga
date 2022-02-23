@@ -5,7 +5,7 @@ const authPost = async(req,res)=>{
     const usuarioEncontrado =await Usuario.findOne({correo,password})
     if(!usuarioEncontrado){
       return res.status(400).json({
-        msg:'Datos invalidos'
+        msg:'Correo o contraseña invalida'
       })
     }
     res.status(200).json({
