@@ -172,6 +172,9 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .register-box{
@@ -181,6 +184,7 @@ input {
   border-radius: 20px;
   display: flex;
   align-items: center;
+  
 }
 
 
@@ -198,4 +202,16 @@ input {
   height: 48px;
   width: 270px;
   color: #FFFFFF;
+}
+
+.row.justify-content-center h1{
+  text-align: center;
+}
+
+.title-reg h6{
+  padding-left: 60px;
+}
+
+.bt-centrar{
+  text-align: center;
 }

@@ -6,13 +6,12 @@ import { Button } from 'bootstrap';
 
 function RegisterForm() {
   return (
-    <Container fluid={true}  className='register-bg w-100'>
+    <Container fluid={true}  className='register-bg w-100 '>
        <Container className='register-box'>
            <section className='container-fluid register-content'>
-                <h1>REGISTRAR CUENTA</h1>
+                <div className='row justify-content-center pb-5'><h1>REGISTRAR CUENTA</h1></div>
                 <div>
-                    <h6>Nombre completo</h6>
-                    <div className='row'>
+                    <div className='row justify-content-center'>
                         <div className='col-md-5'>
                             <>
                                 <FloatingLabel controlId="floatingInputName" label="Nombre" className="mb-3">
@@ -28,8 +27,7 @@ function RegisterForm() {
                             </>
                         </div>
                     </div>
-                    <h6>Dato de contacto</h6>
-                    <div className='row'>
+                    <div className='row justify-content-center'>
                         <div className='col-md-10'>
                             <>
                                 <FloatingLabel controlId="floatingInputMail" label="Correo electrónico" className="mb-3">
@@ -38,7 +36,7 @@ function RegisterForm() {
                             </>
                         </div>
                     </div>
-                    <div className='row'>
+                    <div className='row justify-content-center'>
                         <div className='col-md-5'>
                             <FloatingLabel controlId="floatingPassword" label="Contraseña">
                                 <Form.Control type="password" placeholder="Ingrese contraseña" />
@@ -50,8 +48,8 @@ function RegisterForm() {
                             </FloatingLabel>
                         </div>
                     </div>
-                    <div className='row mt-5'>
-                        <div className='col-md-4'>
+                    <div className='row mt-5 justify-content-center'>
+                        <div className='col-md-12 bt-centrar'>
                             <button type="submit" className='btn-crear'>CREAR CUENTA</button> 
                         </div>
                     </div>
