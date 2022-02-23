@@ -1,6 +1,8 @@
 
 import React, { useContext, useState } from 'react'
 import { DataContext } from '../backend/context/DataContext';
+import { FloatingLabel,Form } from 'react-bootstrap';
+
 const URL = 'http://localhost:4000/api/auth'
 function LoginForm({login}) {
   const {setUser} = useContext(DataContext)
@@ -43,13 +45,15 @@ function LoginForm({login}) {
                 </div>
                 <h1 className='pb-2 hunolog'>INICIAR SESION</h1>
                 <div className=''>
-                    <div className='col-md-12 box-input pb-4'>
-                      <label htmlFor="name">Correo: </label>
-                      <input className='input-ct' type="email" name="name" id='name' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name}/>
+                    <div className='box-input pb-4 col'>
+                      <FloatingLabel controlId="floatingInputMail" label="Correo electrónico" className="mb-3">
+                        <Form.Control className='' type="email" placeholder="Ingrese correo" name="email" id='email' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name} />
+                      </FloatingLabel>
                     </div>
                     <div className='col-md-12 box-input pb-2'>
-                      <label htmlFor="password">Contraseña: </label>
-                      <input className='input-ct' type="password" name="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
+                      <FloatingLabel controlId="floatingPassword" label="Contraseña">
+                        <Form.Control type="password" placeholder="Ingrese contraseña" name="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
+                      </FloatingLabel>
                     </div>
                     <p className='p-0 m-0'>No tienes una cuenta?, <span className='sp-link'> crear cuenta</span> </p>
                     <p  className='p-0 m-0'>Olvidaste tu contraseña?, <span className='sp-link'>resetear contraseña</span> </p>

@@ -1,6 +1,6 @@
-import { Form,Container } from 'react-bootstrap'
+import {Container } from 'react-bootstrap'
 import React from 'react';
-import { FloatingLabel } from 'react-bootstrap';
+import { FloatingLabel,Form } from 'react-bootstrap';
 import { Button } from 'bootstrap';
 
 
@@ -8,8 +8,8 @@ function RegisterForm() {
   return (
     <Container fluid={true}  className='register-bg w-100'>
        <Container className='register-box'>
-           <h1>REGISTRAR CUENTA</h1>
-           <section>
+           <section className='container-fluid register-content'>
+                <h1>REGISTRAR CUENTA</h1>
                 <div>
                     <h6>Nombre completo</h6>
                     <div className='row'>
