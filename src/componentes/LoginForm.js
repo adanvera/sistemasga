@@ -1,17 +1,16 @@
 
-import React, {  useState } from 'react'
+import React, {  useContext, useState } from 'react'
 import RegisterForm from './RegisterForm';
 import Login from './Login'
+import { DataContext } from '../context/DataContext';
 
-function LoginForm({login}) {
-
-  const[isRegister, setIsRegister]= useState (false)
-
+function LoginForm() {
+  const {authRegisterForm} = useContext(DataContext)
   return (
     <>
-      {isRegister?(
+      {authRegisterForm?(
         <RegisterForm/>
-      ):(<Login isLogin = {setIsRegister} login=  {login}/>
+      ):(<Login/>
       )}
     </>
   )

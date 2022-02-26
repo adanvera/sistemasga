@@ -1,17 +1,17 @@
 import LoginForm from './componentes/LoginForm';
-import React, { useState } from 'react';
+import React, { useContext} from 'react';
 import { Dashboard } from './componentes/Dashboard';
-import { DataContext, DataProvider } from './context/DataContext';
+import { DataContext } from './context/DataContext';
 
 function App() {
-  const [isAuth,setIsAuth]= useState(false)
+  const {authDashboard} = useContext(DataContext)
 
   return (
     
       <div className="App">
-        {isAuth?(
+        {authDashboard?(
           <Dashboard  className="m-0 p-0"/>
-        ):(<LoginForm login = {setIsAuth}/>
+        ):(<LoginForm />
         )}
       </div>
     

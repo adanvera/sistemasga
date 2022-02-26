@@ -1,13 +1,14 @@
 import React from 'react';
-import { FloatingLabel,Form } from 'react-bootstrap';
-import { DataContext } from '../context/DataContext';
-import { useContext, useState } from 'react'
 import swal from 'sweetalert';
+import { FloatingLabel,Form } from 'react-bootstrap';
+import { useContext, useState } from 'react'
+import { DataContext } from '../context/DataContext';
+import {URL_AUTH_USUARIO}from '../helpers/endPoints.js'
 
-const URL = 'http://localhost:4000/api/auth'
 
-const Login = ({isLogin,login}) => {
 
+const Login = () => {
+  const {setAuthDashboard,setAuthRegisterForm} = useContext(DataContext)
   const {setUser} = useContext(DataContext)
   const [details, setDetails] = useState({ correo: "" , password: "" });
   
@@ -21,7 +22,7 @@ const Login = ({isLogin,login}) => {
                   body: JSON.stringify(details)  
                 };
         try {
-          const res = await fetch(URL,option),
+          const res = await fetch(URL_AUTH_USUARIO,option),
               json = await res.json()
           if(!res.ok){
             return swal({
@@ -30,7 +31,7 @@ const Login = ({isLogin,login}) => {
             });
           }
           setUser(json)
-          return login(true)
+          setAuthDashboard(true)//mostramos el dashboard
           
         } catch (error) {
           return 'Ocurrio un error '+error
@@ -38,7 +39,7 @@ const Login = ({isLogin,login}) => {
     }
   
   const userRegister= ()=>{
-    isLogin(true)
+    setAuthRegisterForm(true)//mostramos el form del registrar
   }
   
   return (
