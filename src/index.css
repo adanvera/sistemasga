@@ -215,3 +215,7 @@ input {
 .bt-centrar{
   text-align: center;
 }
+
+.items.nav a, p.p-style,span.username {
+  color: #FFFFFF;
+}
