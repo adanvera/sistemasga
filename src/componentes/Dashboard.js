@@ -34,7 +34,7 @@ export const Dashboard = () => {
 						<Nav.Link href="#pricing" className="d-flex">
 							<div className="t-a">
 								<p className="p-style fw-100">Bienvenido</p>
-								<span>{nombre}</span>
+								<span className='username'>{nombre}</span>
 							</div>
 							<div className="pl">
 								<img src={myphoto} alt="" />
