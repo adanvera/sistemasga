@@ -1,7 +1,7 @@
 import LoginForm from './componentes/LoginForm';
 import React, { useState } from 'react';
 import { Dashboard } from './componentes/Dashboard';
-import { DataContext, DataProvider } from './backend/context/DataContext';
+import { DataContext, DataProvider } from './context/DataContext';
 
 function App() {
   const [isAuth,setIsAuth]= useState(false)

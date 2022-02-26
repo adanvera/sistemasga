@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import {Navbar,Nav,NavItem,NavDropdown,MenuItem,Container,} from 'react-bootstrap'
-import { DataContext } from '../backend/context/DataContext'
+import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
 import myphoto from '../images/perfil.png'
 

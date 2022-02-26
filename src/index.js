@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { DataProvider } from './backend/context/DataContext';
+import { DataProvider } from './context/DataContext';
 ReactDOM.render(
     <DataProvider>
       <App />

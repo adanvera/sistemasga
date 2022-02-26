@@ -1,24 +1,18 @@
 import React from 'react';
 import { FloatingLabel,Form } from 'react-bootstrap';
-import { DataContext } from '../backend/context/DataContext';
+import { DataContext } from '../context/DataContext';
 import { useContext, useState } from 'react'
 import swal from 'sweetalert';
 
 const URL = 'http://localhost:4000/api/auth'
 
-const Login = ({isLogin}) => {
+const Login = ({isLogin,login}) => {
 
   const {setUser} = useContext(DataContext)
   const [details, setDetails] = useState({ correo: "" , password: "" });
   
   const submittrigger = async (e) => {
         e.preventDefault();
-        if(details.correo === "" | details.password === "" ){
-          return swal({
-            icon: "error",
-            text: "todos los campos son obligatorios",
-          });
-        }
         let option = { 
                   method: 'POST',
                   headers:{
@@ -36,7 +30,7 @@ const Login = ({isLogin}) => {
             });
           }
           setUser(json)
-          return Login(true)
+          return login(true)
           
         } catch (error) {
           return 'Ocurrio un error '+error
@@ -62,13 +56,13 @@ const Login = ({isLogin}) => {
                 <h1 className='pb-2 hunolog'>INICIAR SESION</h1>
                 <div className=''>
                     <div className='col-md-12 box-input pb-4 col'>
-                      <FloatingLabel controlId="floatingInputMail" label="Correo electrónico" className="mb-3">
-                        <Form.Control required="true" className='' type="email" placeholder="Ingrese correo" name="email" id='email' onChange={e => setDetails({...details, correo: e.target.value})} value={details.name} />
+                      <FloatingLabel id="floatingInputMail" label="Correo electrónico" className="mb-3">
+                        <Form.Control  className='' type="email" placeholder="Ingrese correo" name="email" id='email' onChange={e => setDetails({...details, correo: e.target.value})}  />
                       </FloatingLabel>
                     </div>
                     <div className='col-md-12 box-input pb-2'>
-                      <FloatingLabel controlId="floatingPassword" label="Contraseña">
-                        <Form.Control required="true" type="password" placeholder="Ingrese contraseña" name="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
+                      <FloatingLabel id="floatingPassword" label="Contraseña">
+                        <Form.Control  type="password" placeholder="Ingrese contraseña" name="password"  onChange={e => setDetails({...details, password: e.target.value})} />
                       </FloatingLabel>
                     </div>
                     <p className='p-0 m-0'>No tienes una cuenta?<span className='sp-link' onClick={userRegister}> crear cuenta</span> </p>
