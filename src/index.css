@@ -219,3 +219,9 @@ input {
 .items.nav a, p.p-style,span.username {
   color: #FFFFFF;
 }
+
+.swal-footer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
