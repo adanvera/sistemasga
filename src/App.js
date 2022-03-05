@@ -3,6 +3,7 @@ import React from 'react';
 import { Dashboard } from './componentes/Dashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterForm from './componentes/RegisterForm';
+import ResetPassword from './componentes/ResetPassword';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
             <Route  index path='/' element = {<LoginForm />}/>
             <Route   path='dashboard' element = {<Dashboard  className="m-0 p-0"/>}/>
             <Route   path='/registrar' element = {<RegisterForm />}/>
+            <Route   path='resetear-password' element = {<ResetPassword />}/>
         </Routes>
       </BrowserRouter>  
     </div>
