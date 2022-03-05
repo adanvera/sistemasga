@@ -3,14 +3,15 @@ import swal from 'sweetalert';
 import { FloatingLabel,Form } from 'react-bootstrap';
 import { useContext, useState } from 'react'
 import { DataContext } from '../context/DataContext';
-import {URL_AUTH_USUARIO}from '../helpers/endPoints.js'
+import { URL_AUTH_USUARIO }from '../helpers/endPoints.js'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
-  const {setAuthDashboard,setAuthRegisterForm} = useContext(DataContext)
   const {setUser} = useContext(DataContext)
   const [details, setDetails] = useState({ correo: "" , password: "" });
+  let navigate = useNavigate()
   
   const submittrigger = async (e) => {
         e.preventDefault();
@@ -29,17 +30,16 @@ const Login = () => {
               icon: "error",
               text:(json.msg),
             });
-          }
+          }      
           setUser(json)
-          setAuthDashboard(true)//mostramos el dashboard
-          
+          navigate('dashboard',{replace:true})
         } catch (error) {
           return 'Ocurrio un error '+error
         }          
     }
   
   const userRegister= ()=>{
-    setAuthRegisterForm(true)//mostramos el form del registrar
+   navigate('registrar',{replace:true})
   }
   
   return (

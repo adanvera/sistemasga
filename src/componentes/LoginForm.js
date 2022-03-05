@@ -1,21 +1,12 @@
-
-import React, {  useContext, useState } from 'react'
-import RegisterForm from './RegisterForm';
+import React from 'react'
 import Login from './Login'
-import { DataContext } from '../context/DataContext';
 
 function LoginForm() {
-  const {authRegisterForm} = useContext(DataContext)
-  return (
-    <>
-      {authRegisterForm?(
-        <RegisterForm/>
-      ):(<Login/>
-      )}
-    </>
-  )
+	return (
+		<>
+			<Login />
+		</>
+	)
 }
 
 export default LoginForm
-
-

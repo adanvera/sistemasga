@@ -1,14 +1,32 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Navbar,Nav,NavItem,NavDropdown,MenuItem,Container,} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
 import myphoto from '../images/perfil.png'
 
 export const Dashboard = () => {
 	const {user} = useContext(DataContext)
-	const {nombre} = user.usuarioEncontrado;
+	const [nombre,setNombre] = useState('')	
+	const navigate = useNavigate()
+
+
+	//consultamos el localStorage
+	useEffect(()=>{
+		const data = localStorage.getItem('auth')
+		if(!data ){
+			console.log(user.usuarioEncontrado);
+			setNombre(user.usuarioEncontrado.nombre)
+			localStorage.setItem('auth',JSON.stringify(user))
+			return
+		}
+		const usuario = JSON.parse(data);
+		setNombre(usuario.usuarioEncontrado.nombre);
+	},)
+
   const logout = ()=>{
-    window.location.reload()
+		localStorage.clear()
+    navigate('/',{replace:true})
   }
 	return (
 		<>
