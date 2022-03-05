@@ -225,3 +225,25 @@ input {
   align-items: center;
   text-align: center;
 }
+
+/*reset form*/
+.reset-bg{
+  background-image: url("../src/images/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-box{
+  width : auto !important;
+  height: auto;
+  background: #FFFFFF;
+  border-radius: 20px;
+  align-items: center;
+  padding: 2rem;
+  
+}
