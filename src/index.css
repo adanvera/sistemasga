@@ -194,6 +194,21 @@ input {
   align-items: center;
 }
 
+.btn-cls{
+  bottom: 265px;
+  background: #F6F8F9;
+  color: rgba(73, 80, 87, 0.5);
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 270px;
+  border: 1px solid;
+}
+
+.col-md-6.bt-centrar button.btn-cls:hover{
+  color: #00BF9C;
+}
+
 .btn-crear{
   bottom: 265px;
   background: #00BF9C;
@@ -203,6 +218,11 @@ input {
   height: 48px;
   width: 270px;
   color: #FFFFFF;
+}
+
+.col-md-6.bt-centrar button.btn-crear:hover{
+  color: rgba(73, 80, 87, 1);
+  border: 1px solid ;
 }
 
 .row.justify-content-center h1{
@@ -346,4 +366,9 @@ div#cia-user {
 
 a.nav-link{
   color :#495057;
+}
+
+.container.reset-box {
+  padding-left: 50px;
+  padding-right: 50px;
 }

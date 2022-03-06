@@ -71,7 +71,7 @@ const Login = () => {
                       </FloatingLabel>
                     </div>
                     <p className='p-0 m-0'>No tienes una cuenta?<span className='sp-link' onClick={userRegister}> crear cuenta</span> </p>
-                    <p  className='p-0 m-0'>Olvidaste tu contraseña?, <span className='sp-link'onClick={resetearPassword} >resetear contraseña</span> </p>
+                    <p  className='p-0 m-0'>Olvidaste tu contraseña? <span className='sp-link'onClick={resetearPassword} >cambiar contraseña</span> </p>
                     <button className='mt-3 btn-log mb-5' type="submit" name="loginbtn">Iniciar sesión</button>
                   </div>
                 </div>
