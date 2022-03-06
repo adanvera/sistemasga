@@ -42,24 +42,28 @@ export const Dashboard = () => {
 				<div class="sidebar border-end bg-white" id="sidebar-wrapper">
 					<div class=" sidebar-heading border-bottom pb-2"><img src={myLogo} alt="" /></div>
 					<div class="list-group list-group-flush mb-auto">
-						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="grid-outline" ></ion-icon> <span className="p-2"> Proyecto</span> </a>
-						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="git-compare-outline"></ion-icon> <span className="p-2">Desarrollo</span> </a>
-						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="finger-print-outline"></ion-icon> <span className="p-2">Seguridad</span> </a>
+						<ul class="list-unstyled">
+							<li>
+								<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="grid-outline" ></ion-icon> <span className="p-2"> Proyecto</span> </a>
+							</li>
+							<li>
+								<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="git-compare-outline"></ion-icon> <span className="p-2">Desarrollo</span> </a>
+							</li>
+							<li>
+								<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="finger-print-outline"></ion-icon> <span className="p-2">Seguridad</span> </a>
+							</li>
+						</ul>
 					</div>
-					<div>	
-						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
+					<div class="bottom-side-menu">
+						<ul class="list-unstyled">
+							<li class="nav-item">
+								<a href="" class="nav-link">
+									<span className="bt-cerrar" onClick={logout}> <ion-icon name="power" className="pt-1"></ion-icon> Cerrar sesion </span>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
-				{/* <div className="sidebar p-1 pl-5 d-flex flex-column" >
-					<div className='mb-auto'>
-						<Navbar.Brand href="#home">
-							<img src={myLogo} alt="" />
-						</Navbar.Brand>
-					</div>
-					<div>	
-						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
-					</div>
-				</div> */}
 				<Container  fluid={true} id="dash">
 					<div className="navbar justify-content-between w-100 p-0" variant="dark">
 						<Nav className="items">
@@ -157,17 +161,6 @@ export const Dashboard = () => {
 									
 								</div>
 							</div>
-							<div className='col-md-3'> 
-								<div className='box-dashboard'>
-									
-								</div>
-							</div>
-							<div className='col-md-3'> 
-								<div className='box-dashboard'>
-									
-								</div>
-							</div>
-							
 						</div>
 					</Container>
 				</Container>
