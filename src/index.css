@@ -7,6 +7,7 @@
 
 body{
   font-family: 'Nunito', sans-serif;
+  font-size: 14px;
   background-color: rgba(246, 248, 249, 1) !important;
 ;
 }
@@ -290,4 +291,47 @@ div#headdash {
   margin-left: 20px;
   margin: auto;
   margin-top: 20px;
+}
+
+.pl-20{
+  padding-right: 20px;
+}
+
+div#sidebar-wrapper ion-icon {
+  color: #00BF9C;
+}
+
+.col.filters.d-flex {
+  padding-left: 100px;
+}
+
+#cia-user{
+  -moz-border-radius:50px;
+  -webkit-border-radius:50px;
+  border-radius:50px;
+  height: 28px;
+  width:  28px;
+  border: 1px solid rgba(32, 170, 234, 1);
+  color: rgba(32, 170, 234, 1);
+  text-align: center;
+}
+
+div#cia-user span {
+  font-size: 14px;
+  text-align: center;
+}
+
+.user{
+  height: 34px;
+  width: 34px;
+}
+
+select.form-select {
+  border: none;
+  background-color: transparent;
+}
+
+div#cia-user {
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
 }

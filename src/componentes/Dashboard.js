@@ -40,11 +40,11 @@ export const Dashboard = () => {
 		<>
 			<Container fluid={true} className="d-flex p-0 m-0">
 				<div class="sidebar border-end bg-white" id="sidebar-wrapper">
-					<div class=" sidebar-heading border-bottom"><img src={myLogo} alt="" /></div>
+					<div class=" sidebar-heading border-bottom pb-2"><img src={myLogo} alt="" /></div>
 					<div class="list-group list-group-flush mb-auto">
-						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Proyecto</a>
-						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Desarrollo</a>
-						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Seguridad</a>
+						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="grid-outline" ></ion-icon> <span className="p-2"> Proyecto</span> </a>
+						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="git-compare-outline"></ion-icon> <span className="p-2">Desarrollo</span> </a>
+						<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="finger-print-outline"></ion-icon> <span className="p-2">Seguridad</span> </a>
 					</div>
 					<div>	
 						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
@@ -99,25 +99,29 @@ export const Dashboard = () => {
 								<div className='user'>
 									<img src={user_four} alt="" />
 								</div>
-							</div>
-							<div className='col filters d-flex'>
-								<div className='col-md-4 pr-1'>
-									<Form.Select aria-label="Filtrar por">
-										<option>Selccionar filtro</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</Form.Select>
+								<div id="cia-user">
+									<span>+8</span>
 								</div>
-								<div className='col-md-4'>
-									<Form.Select aria-label="Tipo">
-										<option>Selccionar filtro</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</Form.Select>
+								<div className='col filters d-flex'>
+									<div className='col-md-4 pr-1'>
+										<Form.Select aria-label="Filtrar por">
+											<option>Selccionar filtro</option>
+											<option value="1">One</option>
+											<option value="2">Two</option>
+											<option value="3">Three</option>
+										</Form.Select>
+									</div>
+									<div className='col-md-4'>
+										<Form.Select aria-label="Tipo">
+											<option>Selccionar filtro</option>
+											<option value="1">One</option>
+											<option value="2">Two</option>
+											<option value="3">Three</option>
+										</Form.Select>
+									</div>
 								</div>
 							</div>
+							
 							<div className='col form-search'>
 								<Form className="d-flex">
 									<FormControl
