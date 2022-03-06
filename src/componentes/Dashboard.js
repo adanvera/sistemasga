@@ -39,7 +39,18 @@ export const Dashboard = () => {
 	return (
 		<>
 			<Container fluid={true} className="d-flex p-0 m-0">
-				<div className="sidebar p-1 pl-5 d-flex flex-column" >
+				<div class="sidebar border-end bg-white" id="sidebar-wrapper">
+					<div class=" sidebar-heading border-bottom"><img src={myLogo} alt="" /></div>
+					<div class="list-group list-group-flush mb-auto">
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Proyecto</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Desarrollo</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Seguridad</a>
+					</div>
+					<div>	
+						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
+					</div>
+				</div>
+				{/* <div className="sidebar p-1 pl-5 d-flex flex-column" >
 					<div className='mb-auto'>
 						<Navbar.Brand href="#home">
 							<img src={myLogo} alt="" />
@@ -48,7 +59,7 @@ export const Dashboard = () => {
 					<div>	
 						<span className="bt-cerrar" onClick={logout}>Cerrar sesion <ion-icon name="power" className="pt-1"></ion-icon></span>
 					</div>
-				</div>
+				</div> */}
 				<Container  fluid={true} id="dash">
 					<div className="navbar justify-content-between w-100 p-0" variant="dark">
 						<Nav className="items">
