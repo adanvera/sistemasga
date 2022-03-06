@@ -131,8 +131,29 @@ export const Dashboard = () => {
 							</div>
 						</div>
 					</Container>
-					<Container fluid={true}>
+					<Container fluid={true} className="mt-5" >
+						<div className='row  justify-content-center'> 
+							<div className='col-md-3'> 
+								<div className='box-dashboard'> 
 
+								</div>
+							</div>
+							<div className='col-md-3'> 
+								<div className='box-dashboard'> 
+									
+								</div>
+							</div>
+							<div className='col-md-3'> 
+								<div className='box-dashboard'> 
+									
+								</div>
+							</div>
+							<div className='col-md-3'> 
+								<div className='box-dashboard'> 
+									
+								</div>
+							</div>
+						</div>
 					</Container>
 				</Container>
 			</Container>

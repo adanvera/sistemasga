@@ -281,3 +281,9 @@ div#headdash {
 .sidebar-heading.border-bottom {
   text-align: center;
 }
+
+.box-dashboard{
+  Width :237px;
+  Height :404px;
+  background-color: #FFFFFF;
+}
