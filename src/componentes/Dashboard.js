@@ -13,6 +13,8 @@ import user_two from '../images/users/user_two.png'
 import user_three from '../images/users/user_three.png'
 import user_four from '../images/users/user_four.png'
 
+import user_s from '../images/project/user_one.png'
+
 export const Dashboard = () => {
 	const {user} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
@@ -143,7 +145,102 @@ export const Dashboard = () => {
 						<div className='row justify-content-between'> 
 							<div className='col-md-3'> 
 								<div className='box-dashboard'>
-									
+									<div className='title-section'>
+										<span>POR HACER</span>
+									</div>
+									<div className='box-status-content'>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='user-pic'>
+													<img src={user_one} alt=""/>
+												</div>
+											</div>
+											<div className='col ord'>
+												<div className='priority'>
+													<span>ALTA</span>
+												</div>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='text-description'>
+												<span>Desarrollo Front- End de Login, basado en diseño de prototipo hecho</span>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='foot-box-task'>
+													<span className="number-task">PR-345 [Banca web]</span>
+												</div>
+											</div>
+											<div className='col commet-icon'>
+												<div>
+													<ion-icon name="chatbox-outline"></ion-icon>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className='box-status-content'>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='user-pic'>
+													<img src={user_one} alt=""/>
+												</div>
+											</div>
+											<div className='col ord'>
+												<div className='priority'>
+													<span>ALTA</span>
+												</div>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='text-description'>
+												<span>Desarrollo Front- End de Login, basado en diseño de prototipo hecho</span>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='foot-box-task'>
+													<span className="number-task">PR-345 [Banca web]</span>
+												</div>
+											</div>
+											<div className='col commet-icon'>
+												<div>
+													<ion-icon name="chatbox-outline"></ion-icon>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div className='box-status-content'>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='user-pic'>
+													<img src={user_one} alt=""/>
+												</div>
+											</div>
+											<div className='col ord'>
+												<div className='priority'>
+													<span>ALTA</span>
+												</div>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='text-description'>
+												<span>Desarrollo Front- End de Login, basado en diseño de prototipo hecho</span>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='foot-box-task'>
+													<span className="number-task">PR-345 [Banca web]</span>
+												</div>
+											</div>
+											<div className='col commet-icon'>
+												<div>
+													<ion-icon name="chatbox-outline"></ion-icon>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div className='col-md-3'> 
