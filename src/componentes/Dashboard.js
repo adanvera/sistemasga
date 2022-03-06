@@ -67,12 +67,13 @@ export const Dashboard = () => {
 					</div>
 				</div>
 				<Container  fluid={true} id="dash">
-					<div className="navbar justify-content-between w-100 p-0" variant="dark">
+					<div className="navbar justify-content-between w-100 " variant="dark">
 						<Nav className="items">
 							<ion-icon name="reorder-three-outline"></ion-icon>
 							<Nav.Link href="#home">Inicio</Nav.Link>
-							<Nav.Link href="#features">Proyectos</Nav.Link>
-							<Nav.Link href="#pricing">Item 3</Nav.Link>
+							<Nav.Link href="#proyectos">Proyectos</Nav.Link>
+							<Nav.Link href="#item3">Item 3</Nav.Link>
+							<Nav.Link href="#newproject" className='createnewproject mt-1'>crear</Nav.Link>
 						</Nav>
 						<Nav className="">
 							<Nav.Link href="#pricing" className="d-flex">
