@@ -245,17 +245,47 @@ export const Dashboard = () => {
 							</div>
 							<div className='col-md-3'> 
 								<div className='box-dashboard'>
-									
+									<div className='title-section revision'>
+										<span>EN REVISION</span>
+									</div>
+									<div className='data'>
+										<div>
+											<ion-icon name="alert-circle-outline"></ion-icon>
+										</div>
+										<span>
+											sin registros
+										</span>
+									</div>
 								</div>
 							</div>
 							<div className='col-md-3'> 
 								<div className='box-dashboard'>
-									
+									<div className='title-section en-curso'>
+										<span>EN CURSO</span>
+									</div>
+									<div className='data'>
+										<div>
+											<ion-icon name="alert-circle-outline"></ion-icon>
+										</div>
+										<span>
+											sin registros
+										</span>
+									</div>
 								</div>
 							</div>
 							<div className='col-md-3'> 
 								<div className='box-dashboard'>
-									
+									<div className='title-section finalizado'>
+										<span>FINALIZADO</span>
+									</div>
+									<div className='data'>
+										<div>
+											<ion-icon name="alert-circle-outline"></ion-icon>
+										</div>
+										<span>
+											sin registros
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
