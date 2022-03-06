@@ -90,7 +90,7 @@ export const Dashboard = () => {
 							<h1>Nombre del proyecto</h1>
 						</div>
 						<div className='row box-dashboard-head p5co'>
-							<div className='col box-users d-flex'>
+							<div className='col-md-8 box-users d-flex'>
 								<div className='user'>
 									<img src={user_one} alt="" />
 								</div>
@@ -107,7 +107,7 @@ export const Dashboard = () => {
 									<span>+8</span>
 								</div>
 								<div className='col filters d-flex'>
-									<div className='col-md-4 pr-1'>
+									<div className='col-md-3 pr-1'>
 										<Form.Select aria-label="Filtrar por">
 											<option>Selccionar filtro</option>
 											<option value="1">One</option>
@@ -115,7 +115,7 @@ export const Dashboard = () => {
 											<option value="3">Three</option>
 										</Form.Select>
 									</div>
-									<div className='col-md-4'>
+									<div className='col-md-3'>
 										<Form.Select aria-label="Tipo">
 											<option>Selccionar filtro</option>
 											<option value="1">One</option>
@@ -126,7 +126,7 @@ export const Dashboard = () => {
 								</div>
 							</div>
 							
-							<div className='col form-search'>
+							<div className='col-md-4 form-search'>
 								<Form className="d-flex">
 									<FormControl
 										type="search"
