@@ -368,7 +368,9 @@ div#cia-user span {
 
 select.form-select {
   border: none;
+  font-size: 12px;
   background-color: transparent;
+  padding-top: 10px;
 }
 
 div#cia-user {
