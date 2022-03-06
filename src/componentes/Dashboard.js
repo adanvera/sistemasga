@@ -72,7 +72,6 @@ export const Dashboard = () => {
 							<ion-icon name="reorder-three-outline"></ion-icon>
 							<Nav.Link href="#home">Inicio</Nav.Link>
 							<Nav.Link href="#proyectos">Proyectos</Nav.Link>
-							<Nav.Link href="#item3">Item 3</Nav.Link>
 							<Nav.Link href="#newproject" className='createnewproject mt-1'>crear</Nav.Link>
 						</Nav>
 						<Nav className="">
