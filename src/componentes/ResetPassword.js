@@ -19,7 +19,7 @@ const ResetPassword = ()=>{
             </div>
             <div className='row col mt-5 justify-content-center'>
               <div className='col-md-6 bt-centrar'>
-                <button type="submit" className='btn-cls'>Cancelar</button> 
+                <a href=""><button type="submit" className='btn-cls'>Cancelar</button> </a>
               </div>
               <div className='col-md-6 bt-centrar'>
                 <button type="submit" className='btn-crear'>Enviar</button> 

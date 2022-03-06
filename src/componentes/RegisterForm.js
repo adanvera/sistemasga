@@ -5,6 +5,10 @@ import { Button } from 'bootstrap';
 
 
 function RegisterForm() {
+
+    
+
+
     return (
         <Container fluid={true}  className='register-bg w-100 '>
             <Container className='register-box'>
