@@ -38,6 +38,11 @@ body{
   border-radius: 0px;
 }
 
+select.form-select {
+  font-size: 12px;
+  padding-top: 10px;
+}
+
 #login-text{
   font-size: 35px;
   font-style: normal;
