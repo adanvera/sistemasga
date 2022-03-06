@@ -7,6 +7,8 @@
 
 body{
   font-family: 'Nunito', sans-serif;
+  background-color: rgba(246, 248, 249, 1) !important;
+;
 }
 
 #background-login{
@@ -245,5 +247,33 @@ input {
   border-radius: 20px;
   align-items: center;
   padding: 2rem;
-  
+}
+
+/*dashboard*/
+
+div#dash {
+  padding: 0;
+}
+
+.o-t{
+  text-align: end;
+}
+
+.box-dashboard-head{
+  height: 51px;
+  background: #FFFFFF;
+  border-radius: 8px;
+}
+
+div#headdash {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.user{
+  padding-right: 5px;
+}
+
+.p5co{
+  padding: 0.5rem;
 }
