@@ -132,19 +132,38 @@ export const Dashboard = () => {
 						</div>
 					</Container>
 					<Container fluid={true} className="mt-5" >
-						<div className='row col justify-content-between'> 
-							<div className='col-md-3 box-dashboard'> 
-						
+						<div className='row justify-content-between'> 
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
 							</div>
-							<div className='col-md-3 box-dashboard'> 
-						
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
 							</div>
-							<div className='col-md-3 box-dashboard'> 
-						
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
 							</div>
-							<div className='col-md-3 box-dashboard'> 
-						
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
 							</div>
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
+							</div>
+							<div className='col-md-3'> 
+								<div className='box-dashboard'>
+									
+								</div>
+							</div>
+							
 						</div>
 					</Container>
 				</Container>
