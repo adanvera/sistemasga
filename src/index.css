@@ -458,3 +458,16 @@ a.nav-link{
 .data ion-icon{
   font-size: 30px;
 }
+
+a.list-group-item.list-group-item-action.p-3 {
+  border: none;
+}
+
+.list-group-item.active{
+  background: rgba(0, 191, 156, 1) !important;
+  color: #FFFFFF;
+}
+
+a.list-group-item.list-group-item-action.p-3.active ion-icon.md.hydrated {
+  color: #FFFFFF !important;
+}

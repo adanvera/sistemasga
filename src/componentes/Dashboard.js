@@ -43,10 +43,10 @@ export const Dashboard = () => {
 			<Container fluid={true} className="d-flex p-0 m-0">
 				<div class="sidebar border-end bg-white" id="sidebar-wrapper">
 					<div class=" sidebar-heading border-bottom pb-2"><img src={myLogo} alt="" /></div>
-					<div class="list-group list-group-flush mb-auto">
+					<div class="list-group list-group-flush">
 						<ul class="list-unstyled">
 							<li>
-								<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="grid-outline" ></ion-icon> <span className="p-2"> Proyecto</span> </a>
+								<a class="list-group-item list-group-item-action p-3 active" href="#!"> <ion-icon name="grid-outline" ></ion-icon> <span className="p-2"> Proyecto</span> </a>
 							</li>
 							<li>
 								<a class="list-group-item list-group-item-action p-3" href="#!"> <ion-icon name="git-compare-outline"></ion-icon> <span className="p-2">Desarrollo</span> </a>
