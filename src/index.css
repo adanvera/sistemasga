@@ -471,3 +471,7 @@ a.list-group-item.list-group-item-action.p-3 {
 a.list-group-item.list-group-item-action.p-3.active ion-icon.md.hydrated {
   color: #FFFFFF !important;
 }
+
+.nav-link:focus, .nav-link:hover{
+  color: rgba(0, 191, 156, 1) !important;
+}
