@@ -7,7 +7,7 @@ const ResetPassword = ()=>{
     <>
       <Container  fluid={true} className='reset-bg w-100 '>
         <Container className="reset-box"> 
-            <div className='row'><span><ion-icon name="arrow-back-outline"></ion-icon>Volver</span></div>
+            <div className='row pl-5'><span><ion-icon name="arrow-back-outline"></ion-icon>Volver</span></div>
             <div className="row justify-content-center"> 
               <div className="col-md-12 mb-5">
                 <h1> Formulario de cambio contraseña</h1>
