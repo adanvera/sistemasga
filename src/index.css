@@ -283,7 +283,9 @@ div#headdash {
 }
 
 .box-dashboard{
-  Width :237px;
-  Height :404px;
+  Width :237px !important;
+  Height :404px !important;
   background-color: #FFFFFF;
+  margin-right: 20px;
+  margin-left: 20px;
 }
