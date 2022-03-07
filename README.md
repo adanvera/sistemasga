@@ -1,8 +1,8 @@
 # clonar el proyecto
 
-# instalar las dependencias
+# instalar las dependencias,  en \sistemasga> npm i
 
-# acceder a cd src/backend y ejecutar node index.js para levantar el servidor y la base de datos
+# acceder a ..    cd src/backend y ejecutar node index.js para levantar el servidor y la base de datos
 
 # ejecutar en \sistemasga> npm start
 
