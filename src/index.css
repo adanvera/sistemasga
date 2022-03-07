@@ -1,13 +1,507 @@
-body {
+
+*{
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Nunito', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  background-color: rgba(246, 248, 249, 1) !important;
+;
 }
+
+#background-login{
+  background-image: url("../src/images/background.png") ;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 17px solid rgba(0, 191, 156, 1);
+  justify-content: center;
+  align-items: center;
+}
+
+#login-box{
+  background: #F6F8F9;
+  border-top: 17px solid rgba(255, 82, 99, 1);
+  border-bottom: 17px solid rgba(0, 191, 156, 1);
+  justify-content: center;
+  align-items: center;
+}
+
+#logo-login{
+  background-image: url("../src/images/logo.png");
+  height: 208px;
+  width: 341px;
+  border-radius: 0px;
+}
+
+#login-text{
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 49px;
+  letter-spacing: 0em;
+  color: rgba(255, 192, 0, 1);
+}
+
+.box-input{
+  display: inline-grid;
+}
+
+.input-ct{
+  width: 548px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 0.3px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+input {
+  padding-left: 10px;
+}
+
+.btn-log{
+  height: 48px;
+  width: 184px;
+  color: #FFFFFF;
+  background: #00BF9C;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: none;
+}
+
+.sp-link{
+  color: rgba(0, 191, 156, 1);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hunolog{
+  font-weight: 700;
+  font-size: 24px;
+}
+
+@media(max-width:900px){
+  #background-login{
+    -webkit-filter: blur(68px);
+    -moz-filter: blur(68px);
+    -o-filter: blur(68px);
+    -ms-filter: blur(68px);
+    filter: blur(68px);
+  }
+  #login-box {
+    background-position: center center;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100vh;
+    z-index: 1;
+  }
+  #content-form{
+    z-index: 100;
+  }
+  #content-form{
+    padding: 0;
+  }
+}
+
+/*barra de navegacion*/
+.navbar{
+  background-color: #00BF9C;
+  color: white;
+  height: 56px;
+}
+
+.p-style{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: white !important;
+}
+
+.fw-100{
+  font-weight: 100;
+}
+
+.t-a{
+  text-align: end;
+}
+
+.pl{
+  padding-left: 15px;
+}
+
+a.nav-link:hover{
+  color:  rgba(0, 0, 0, 0.2) !important;
+}
+
+.createnewproject{
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  padding-top: 0;
+  height: 30px;
+}
+
+a.createnewproject.nav-link {
+  padding-top: 0;
+}
+
+a.createnewproject.mt-1.nav-link:hover{
+  color:  rgba(0, 0, 0, 0.2) !important;
+}
+
+/*sidebar*/
+.sidebar{
+  width: 276px !important;
+  border-radius: 0px;
+  background-color: #FFFFFF;
+  height: 100vh;
+  box-shadow: 2px 0px 1px 6px rgb(0 0 0 / 2%);
+  border-right: 1px solid rgba(0, 0, 0, 00.3px);
+}
+
+.bt-cerrar{
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  padding-left: 3px;
+  cursor: pointer;
+}
+
+.bt-cerrar.ion-icon{
+  padding-top: 5px;
+}
+
+.items ion-icon{
+  margin: auto;
+  padding-left: 10px;
+  font-size: 25px;
+}
+
+/*register form*/
+.register-bg{
+  background-image: url("../src/images/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.register-box{
+  width: 861px;
+  height: 624px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  
+}
+
+
+.register-bg.w-100.container-fluid{
+  display: flex;
+  align-items: center;
+}
+
+.btn-cls{
+  bottom: 265px;
+  background: #F6F8F9;
+  color: rgba(73, 80, 87, 0.5);
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 270px;
+  border: 1px solid;
+}
+
+.col-md-6.bt-centrar button.btn-cls:hover{
+  color: #00BF9C;
+}
+
+.btn-crear{
+  bottom: 265px;
+  background: #00BF9C;
+  border: 1px solid #00BF9C;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 270px;
+  color: #FFFFFF;
+}
+
+.col-md-6.bt-centrar button.btn-crear:hover{
+  color: rgba(73, 80, 87, 1);
+  border: 1px solid ;
+}
+
+.row.justify-content-center h1{
+  text-align: center;
+}
+
+.title-reg h6{
+  padding-left: 60px;
+}
+
+.bt-centrar{
+  text-align: center;
+}
+
+.items.nav a, p.p-style,span.username {
+  color: #FFFFFF;
+}
+
+.swal-footer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*reset form*/
+.reset-bg{
+  background-image: url("../src/images/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.reset-box{
+  width : auto !important;
+  height: auto;
+  background: #FFFFFF;
+  border-radius: 20px;
+  align-items: center;
+  padding: 2rem;
+}
+
+/*dashboard*/
+
+div#dash {
+  padding: 0;
+}
+
+.o-t{
+  text-align: end;
+}
+
+.box-dashboard-head{
+  height: 51px;
+  background: #FFFFFF;
+  border-radius: 8px;
+}
+
+div#headdash {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.user{
+  padding-right: 5px;
+}
+
+.p5co{
+  padding: 0.5rem;
+}
+
+.sidebar-heading.border-bottom {
+  text-align: center;
+}
+
+.box-dashboard{
+  Width :300px !important;
+  Height :auto;
+  min-height: 100px;
+  background-color: #FFFFFF;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  padding-bottom: 20px;
+}
+
+.pl-20{
+  padding-right: 20px;
+}
+
+div#sidebar-wrapper ion-icon {
+  color: #00BF9C;
+}
+
+.col.filters.d-flex {
+  padding-left: 100px;
+}
+
+#cia-user{
+  -moz-border-radius:50px;
+  -webkit-border-radius:50px;
+  border-radius:50px;
+  height: 28px;
+  width:  28px;
+  border: 1px solid rgba(32, 170, 234, 1);
+  color: rgba(32, 170, 234, 1);
+  text-align: center;
+}
+
+div#cia-user span {
+  font-size: 14px;
+  text-align: center;
+}
+
+.user{
+  height: 34px;
+  width: 34px;
+}
+
+select.form-select {
+  border: none;
+  font-size: 12px;
+  background-color: transparent;
+  padding-top: 10px;
+}
+
+div#cia-user {
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
+}
+
+.bottom-side-menu {
+  position: absolute;
+  bottom: 0;
+}
+
+.nav-link{
+  color: #495057;
+}
+
+a.nav-link{
+  color :#495057;
+}
+
+.container.reset-box {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*box-status*/
+.title-section{
+  height: 27px;
+  width: auto;
+  background: #20AAEA;
+  border-radius: 8px 8px 0px 0px;
+  padding-left: 10px;
+  padding-top: 0.1rem;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+.box-status-content{
+  height: auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.user-pic{
+  width: 80% !important;
+}
+
+.priority{
+  background: #FF5263;
+  border-radius: 8px;
+  width: auto !important;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.text-description{
+  font-size: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.number-task{
+  color: #00BF9C;
+  font-size: 10px;
+}
+
+.ord{
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.paddd{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.col.commet-icon {
+  text-align: end;
+}
+
+.revision{
+  background: #FFC000;
+}
+
+.en-curso{
+  background: #857CFE;
+}
+
+.finalizado{
+  background: #A4CF30;
+}
+
+.data{
+  text-align: center;
+  padding-top: 20px;
+  color:  rgba(0, 0, 0, 0.2);
+  ;
+}
+
+.data ion-icon{
+  font-size: 30px;
+}
+
+a.list-group-item.list-group-item-action.p-3 {
+  border: none;
+}
+
+.list-group-item.active{
+  background: rgba(0, 191, 156, 1) !important;
+  color: #FFFFFF;
+}
+
+a.list-group-item.list-group-item-action.p-3.active ion-icon.md.hydrated {
+  color: #FFFFFF !important;
+}
+
+div#sidebar-wrapper .nav-link:focus, .nav-link:hover{
+  color: rgba(0, 191, 156, 1) !important;
+}
+
+.navbar{
+  padding-bottom: 20px !important;
+  padding-top: 20px !important;
+  flex-wrap: inherit !important;
+}
+
