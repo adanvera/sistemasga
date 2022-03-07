@@ -13,7 +13,6 @@ import user_two from '../images/users/user_two.png'
 import user_three from '../images/users/user_three.png'
 import user_four from '../images/users/user_four.png'
 
-import user_s from '../images/project/user_one.png'
 
 export const Dashboard = () => {
 	const {user} = useContext(DataContext)

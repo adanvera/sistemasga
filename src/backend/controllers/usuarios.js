@@ -9,10 +9,16 @@ const usuarioPost = async (req,res)=>{
       user
     })
   } catch (error) {
-    console.log(error);
+    if(error.code === 11000){
+      return res.status(400).json({
+      msg:'Correo ya registrado'
+    })}
+
     return res.status(400).json({
-      msg:'Ocurrio un error al intentar registrar el usuario'
+      msg:'Ocurrio un error inesperado'
     })
+    
+  
   }
   
   
