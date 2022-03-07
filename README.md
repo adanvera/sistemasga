@@ -8,3 +8,8 @@
 
 # na vez levantado el sistema registrarse y acceder con las credenciales registradas
 
+# Datos para ingresar al sistema SGA
+
+- correo   : admin@sga.com
+- password : admin123
+
