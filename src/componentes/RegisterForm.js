@@ -69,10 +69,7 @@ function RegisterForm() {
 
 
 
-        return swal({
-            icon: "success",
-            text:'Usuario Registrado',
-          });
+
     }
 
     

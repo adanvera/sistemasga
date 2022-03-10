@@ -24,7 +24,6 @@ export const Dashboard = () => {
 	useEffect(()=>{
 		const data = localStorage.getItem('auth')
 		if(!data ){
-			console.log(user.usuarioEncontrado);
 			setNombre(user.usuarioEncontrado.nombre)
 			localStorage.setItem('auth',JSON.stringify(user))
 			return
@@ -35,7 +34,7 @@ export const Dashboard = () => {
 
   const logout = ()=>{
 		localStorage.clear()
-    navigate('/',{replace:true})
+    navigate('/')
   }
 	return (
 		<>
@@ -204,7 +203,7 @@ export const Dashboard = () => {
 											</div>
 											<div className='col commet-icon'>
 												<div>
-													<ion-icon name="chatbox-outline"></ion-icon>
+													<ion-icon className="chatbox-outline"></ion-icon>
 												</div>
 											</div>
 										</div>

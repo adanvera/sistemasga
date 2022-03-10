@@ -15,6 +15,12 @@ const Login = () => {
   
   const submittrigger = async (e) => {
         e.preventDefault();
+        if(details.correo === '' || details.password === '' ){
+          return swal({
+            icon: "error",
+            text:'Todos los campos son obligatorios',
+          });
+        }
         let option = { 
                   method: 'POST',
                   headers:{
