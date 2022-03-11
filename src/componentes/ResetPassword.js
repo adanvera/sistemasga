@@ -1,5 +1,6 @@
 import { Container, Form } from "react-bootstrap"
 import { FloatingLabel } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 
 const ResetPassword = ()=>{
@@ -18,8 +19,8 @@ const ResetPassword = ()=>{
               </div>
             </div>
             <div className='row col mt-5 justify-content-center'>
-              <div className='col-md-6 bt-centrar'>
-                <a href=""><button type="submit" className='btn-cls'>Cancelar</button> </a>
+              <div className='col-md-6 bt-centrar mb-3'>
+                <Link to='/'><button type="submit" className='btn-cls'>Cancelar</button> </Link>
               </div>
               <div className='col-md-6 bt-centrar'>
                 <button type="submit" className='btn-crear'>Enviar</button> 

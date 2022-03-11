@@ -587,10 +587,33 @@ div#tablero {
   }
   .bottom-side-menu {
     padding-left: 8px;
-}
+  }
+  .btn-cls{
+    width: 100%;
+  }
+  .btn-crear{
+    width: 100%;
+  }
 }
 
 
 a { 
   text-decoration: none !important;
+}
+
+#regbox{
+  padding-left: 42px;
+  padding-right: 42px;
+}
+
+section.container-fluid.register-content h1 {
+  font-weight: 700;
+}
+
+.btn-volver{
+  padding-left: 42px !important;
+}
+
+.row.btn-volver a {
+  color:  rgba(0, 191, 156, 1);
 }

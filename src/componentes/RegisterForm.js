@@ -66,31 +66,27 @@ function RegisterForm() {
                     text:"Ocurrio un error",
                   });
         }
-
-
-
-
     }
-
-    
-
 
     return (
         <Container fluid={true}  className='register-bg w-100 '>
             <Container className='register-box'>
                 <section className='container-fluid register-content'>
-                <div className='row'><Link to='/'><ion-icon name="arrow-back-outline"></ion-icon>Volver</Link></div>
+                <div className='row'>
+                        <div className='row btn-volver'>
+                            <Link to='/'><ion-icon name="arrow-back-outline"></ion-icon> <span>Volver</span> </Link></div>
+                        </div>
                         <div className='row justify-content-center pb-5'><h1>REGISTRAR CUENTA</h1></div>
-                        <div>
+                        <div id='regbox'>
                             <div className='row justify-content-center'>
-                                <div className='col-md-5'>
+                                <div className='col-md-6'>
                                     <>
                                         <FloatingLabel controlId="floatingInputName" label="Nombre" className="mb-3">
                                             <Form.Control type="text" placeholder="Ingrese nombre" onChange={ e => setNombre(e.target.value)} />
                                         </FloatingLabel>
                                     </>
                                 </div>
-                                <div className='col-md-5'>
+                                <div className='col-md-6'>
                                     <>
                                         <FloatingLabel controlId="floatingInputLastName" label="Apellido" className="mb-3">
                                             <Form.Control type="text" placeholder="Ingrese apellido" onChange={e => setApellido(e.target.value)} />
@@ -99,7 +95,7 @@ function RegisterForm() {
                                 </div>
                             </div>
                             <div className='row justify-content-center'>
-                                <div className='col-md-10'>
+                                <div className='col-md-12'>
                                     <>
                                         <FloatingLabel controlId="floatingInputMail" label="Correo electrónico" className="mb-3">
                                             <Form.Control type="mail" placeholder="Ingrese correo electrónico" onChange={e => setCorreo(e.target.value)} />
@@ -108,12 +104,12 @@ function RegisterForm() {
                                 </div>
                             </div>
                             <div className='row justify-content-center'>
-                                <div className='col-md-5'>
+                                <div className='col-md-6'>
                                     <FloatingLabel controlId="floatingPassword" label="Contraseña">
                                         <Form.Control type="password" placeholder="Ingrese contraseña" onChange={e => setPassword(e.target.value)}  />
                                     </FloatingLabel>
                                 </div>
-                                <div className='col-md-5'>
+                                <div className='col-md-6'>
                                     <FloatingLabel controlId="floatingConfirmPassword" label="Confirmar contraseña">
                                         <Form.Control type="password" placeholder="Imgrese contraseña" onChange={e => setRepetirPassword(e.target.value)} />
                                     </FloatingLabel>
