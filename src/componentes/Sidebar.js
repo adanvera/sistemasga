@@ -21,7 +21,7 @@ function Sidebar() {
 					<ul className="list-unstyled">
 						<li>
 							<button
-								className="list-group-item list-group-item-action p-3 active"
+								className="list-group-item list-group-item-action p-3"
 								onClick={(e) =>
 									setCurrentScreen({ ...currentScreen, proyectos: true,seguridad:false,desarrollo:false })
 								}
