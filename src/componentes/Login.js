@@ -38,7 +38,7 @@ const Login = () => {
             });
           }      
           setUser(json)
-          navigate('dashboard',{replace:true})
+          navigate('dashboard')
         } catch (error) {
           return 'Ocurrio un error '+error
         }          

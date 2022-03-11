@@ -21,8 +21,8 @@ function App() {
 						<Route path="resetear-password" element={<ResetPassword />} />
 					</Route>
 					<Route path="/dashboard" element={<AdminRoute />}>
-						<Route index element={<Dashboard />} />
-						<Route path="proyectos" element={<Proyects />} />
+						<Route  index element={<Dashboard />} />
+						
 						<Route path="seguridad" element={<Seguridad />} />
 						<Route path="desarrollo" element={<Desarrollo />} />
 					</Route>

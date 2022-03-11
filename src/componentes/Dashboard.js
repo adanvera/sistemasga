@@ -7,11 +7,14 @@ import { DataContext } from '../context/DataContext'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import DetailsProject from './DetailsProject'
+import Proyects from './Proyects'
+import Seguridad from './Seguridad'
+import Desarrollo from './Desarrollo'
 
 
 
 export const Dashboard = () => {
-	const {user} = useContext(DataContext)
+	const {user,currentScreen} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
 	const navigate = useNavigate()
 
@@ -38,7 +41,9 @@ export const Dashboard = () => {
 				<Sidebar/>
 				<Container  fluid={true} id="dash">
 					<Navbar/>
-					<DetailsProject/>
+				{	currentScreen.proyectos && <Proyects/>}
+				{	currentScreen.desarrollo && <Desarrollo/>}
+				{	currentScreen.seguridad&& <Seguridad/>}
 				</Container>
 			</Container>
 		</>
