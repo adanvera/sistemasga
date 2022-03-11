@@ -161,7 +161,7 @@ a.createnewproject.mt-1.nav-link:hover{
 
 /*sidebar*/
 .sidebar{
-  width: 276px !important;
+  width: 276px;
   border-radius: 0px;
   background-color: #FFFFFF;
   height: 100vh;
@@ -337,8 +337,12 @@ div#headdash {
   padding-right: 20px;
 }
 
-div#sidebar-wrapper ion-icon {
+button.list-group-item.list-group-item-action.p-3{
   color: #00BF9C;
+}
+
+button.list-group-item.list-group-item-action.p-3.active {
+  color: #FFFFFF;
 }
 
 .col.filters.d-flex {
@@ -566,4 +570,27 @@ div#tablero {
   .col.filters.d-flex{
     padding-left: 20px;
   }
+  .sidebar {
+    width: 80px;
+  }
+  div#sidebar-wrapper .list-group.list-group-flush ul.list-unstyled li span.p-2 {
+    display: none;
+  }
+  button.list-group-item.list-group-item-action.p-3.active ion-icon {
+    padding-left: 8px;
+  }
+  button.list-group-item.list-group-item-action.p-3 ion-icon {
+    padding-left: 8px;
+  }
+  div#sidebar-wrapper .bottom-side-menu span {
+    display: none;
+  }
+  .bottom-side-menu {
+    padding-left: 8px;
+}
+}
+
+
+a { 
+  text-decoration: none !important;
 }

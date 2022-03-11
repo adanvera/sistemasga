@@ -1,10 +1,22 @@
 import React from 'react';
 import { Container, Form, FormControl, Button, Table} from 'react-bootstrap';
 import ProjectList from './ProjectList';
+import swal from 'sweetalert';
 
 
 
 function Proyects() {
+
+  const showalert=()=>{
+    swal({
+      title: "Epaa, esa función está en desarrollo",
+      text: "En la proxima ya estará funcionando crack ;) !",
+      icon: "warning",
+      button: "ok",
+    });
+  }
+  
+
   return (
     <Container fluid={true} className="mt-5" id='proyects'>
       <div className='row'>
@@ -12,7 +24,7 @@ function Proyects() {
           <h4>PROYECTOS</h4>
         </div>
         <div className='col a-end'>
-          <button className='btn btn-cr-pro' type="">crear proyecto</button>
+          <button className='btn btn-cr-pro' type="" onClick={()=>showalert()}>crear proyecto</button>
         </div>
       </div>
       <div className='row'>
