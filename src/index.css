@@ -184,6 +184,7 @@ a.createnewproject.mt-1.nav-link:hover{
 .items ion-icon{
   margin: auto;
   padding-left: 10px;
+  padding-right: 30px;
   font-size: 25px;
 }
 
@@ -478,6 +479,16 @@ a.nav-link{
   ;
 }
 
+a:hover{
+  color: #000000;
+}
+
+nav.items a {
+  color: #ffff;
+  text-decoration: none;
+  padding-right: 30px;
+}
+
 .data ion-icon{
   font-size: 30px;
 }
@@ -489,6 +500,7 @@ a.list-group-item.list-group-item-action.p-3 {
 .list-group-item.active{
   background: rgba(0, 191, 156, 1) !important;
   color: #FFFFFF;
+  border: none;
 }
 
 a.list-group-item.list-group-item-action.p-3.active ion-icon.md.hydrated {
@@ -505,3 +517,34 @@ div#sidebar-wrapper .nav-link:focus, .nav-link:hover{
   flex-wrap: inherit !important;
 }
 
+.a-end{
+  text-align: end;
+}
+
+#proyects{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+/*project list*/
+.icon-profile-project{
+  height: 41px;
+  width: 41px;
+  border-radius: 50px;
+}
+
+.sp-name{
+  margin: auto;
+  margin-left: 10px;
+}
+
+.btn-cr-pro{
+  height: auto;
+  border-radius: 8px;
+  background: rgba(0, 191, 156, 1) !important;
+  color: #FFFFFF !important; 
+}
+
+.btn-cr-pro:hover{
+  border: 1px solid;
+}
