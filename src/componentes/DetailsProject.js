@@ -66,19 +66,42 @@ function DetailsProject() {
 						</div>
 					</Container>
 					<Container fluid={true} className="mt-5" >
-						<div className='row justify-content-between'> 
+						<div className='row justify-content-between' id='tablero'> 
 							<div className='col-md-3'> 
 								<div className='box-dashboard'>
 									<div className='title-section'>
 										<span>POR HACER</span>
 									</div>
-                                    <div className='data'>
-										<div>
-											<ion-icon name="alert-circle-outline"></ion-icon>
+                                    <div className='box-status-content'>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='user-pic'>
+													<img src={user_one} alt=""/>
+												</div>
+											</div>
+											<div className='col ord'>
+												<div className='priority'>
+													<span>ALTA</span>
+												</div>
+											</div>
 										</div>
-										<span>
-											sin registros
-										</span>
+										<div className='row paddd'>
+											<div className='text-description'>
+												<span>Desarrollo Front- End de Login, basado en diseño de prototipo hecho</span>
+											</div>
+										</div>
+										<div className='row paddd'>
+											<div className='col'>
+												<div className='foot-box-task'>
+													<span className="number-task">PR-345 [Banca web]</span>
+												</div>
+											</div>
+											<div className='col commet-icon'>
+												<div>
+													<ion-icon name="chatbox-outline"></ion-icon>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

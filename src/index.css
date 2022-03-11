@@ -301,7 +301,6 @@ div#dash {
 }
 
 .box-dashboard-head{
-  height: 51px;
   background: #FFFFFF;
   border-radius: 8px;
 }
@@ -324,7 +323,7 @@ div#headdash {
 }
 
 .box-dashboard{
-  Width :300px !important;
+  /* Width :300px !important; */
   Height :auto;
   min-height: 100px;
   background-color: #FFFFFF;
@@ -547,4 +546,24 @@ div#sidebar-wrapper .nav-link:focus, .nav-link:hover{
 
 .btn-cr-pro:hover{
   border: 1px solid;
+}
+
+td a {
+  color: #000000;
+  text-decoration: none;
+}
+
+div#tablero {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+
+@media(max-width:900px){
+  .col-md-4.form-search {
+    padding-top: 15px;
+  }
+  .col.filters.d-flex{
+    padding-left: 20px;
+  }
 }

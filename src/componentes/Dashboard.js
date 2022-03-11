@@ -41,9 +41,9 @@ export const Dashboard = () => {
 				<Sidebar/>
 				<Container  fluid={true} id="dash">
 					<Navbar/>
-				{	currentScreen.proyectos && <Proyects/>}
-				{	currentScreen.desarrollo && <Desarrollo/>}
-				{	currentScreen.seguridad&& <Seguridad/>}
+					{	currentScreen.proyectos && <Proyects/>}
+					{	currentScreen.desarrollo && <Desarrollo/>}
+					{	currentScreen.seguridad&& <Seguridad/>}
 				</Container>
 			</Container>
 		</>
