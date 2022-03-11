@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Form, FormControl, Button, Table} from 'react-bootstrap';
+import ProjectList from './ProjectList';
 
-import myphoto from '../images/perfil.png'
+
 
 function Proyects() {
   return (
@@ -22,47 +23,10 @@ function Proyects() {
 					</Form>
 			  </div>
       </div>
-      <div className='row pt-5'>
-        <div className='col-md-12'>
-          <Table responsive="md">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>nombre</th>
-                <th>clave</th>
-                <th>tipo</th>
-                <th>responsable</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>REGISTRO SISTEMA</td>
-                <td>RS</td>
-                <td>GESTION DE USUARIOS</td>
-                <td className='d-flex'>
-                  <div className='icon-profile-project'>
-                    <img src={myphoto} alt="" />
-                  </div>
-                  <span className='sp-name'>Fulano</span>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>REGISTRO SISTEMA</td>
-                <td>RS</td>
-                <td>GESTION DE USUARIOS</td>
-                <td className='d-flex'>
-                  <div className='icon-profile-project'>
-                    <img src={myphoto} alt="" />
-                  </div>
-                  <span className='sp-name'>Fulano</span>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-      </div>
+
+      <ProjectList/>
+
+
     </Container>
   );
 }
