@@ -622,3 +622,7 @@ button.list-group-item.list-group-item-action.p-3:focus{
   background-color: rgba(0, 191, 156, 1);
   color: #ffff;
 }
+button.list-group-item.list-group-item-action.p-3:active{
+  background-color: rgba(0, 191, 156, 1);
+  color: #ffff;
+}
