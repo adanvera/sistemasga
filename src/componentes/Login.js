@@ -44,13 +44,7 @@ const Login = () => {
         }          
   }
 
-  const resetearPassword = ()=>{
-    navigate('resetear-password',{replace:true})
-  }
-  
-  const userRegister= ()=>{
-   navigate('registrar',{replace:true})
-  }
+
   
   return (
 
@@ -76,8 +70,6 @@ const Login = () => {
                         <Form.Control  type="password" placeholder="Ingrese contraseña" name="password"  onChange={e => setDetails({...details, password: e.target.value})} />
                       </FloatingLabel>
                     </div>
-                    <p className='p-0 m-0'>¿No tienes una cuenta?<span className='sp-link' onClick={userRegister}> crear cuenta</span> </p>
-                    <p  className='p-0 m-0'>¿Olvidaste tu contraseña? <span className='sp-link'onClick={resetearPassword} >cambiar contraseña</span> </p>
                     <button className='mt-3 btn-log mb-5' type="submit" name="loginbtn">Iniciar sesión</button>
                   </div>
                 </div>
