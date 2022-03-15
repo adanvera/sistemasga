@@ -5,15 +5,6 @@ import RegisterUser from '../modals/RegisterUser';
 
 
 function Seguridad() {
-  // const showalert=()=>{
-  //   swal({
-  //     title: "Epaa, esa función está en desarrollo",
-  //     text: "En la proxima ya estará funcionando crack ;) !",
-  //     icon: "warning",
-  //     button: "ok",
-  //   });
-  // }
-
   function ModalRegister() {
     const [show, setShow] = useState(false);
   

@@ -11,6 +11,7 @@ function RegisterUser() {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
+  const [rol, setRolUser] = useState("USER_ROLE");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +39,7 @@ function RegisterUser() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombre, apellido, correo, password }),
+      body: JSON.stringify({ nombre, apellido, correo, password, rol}),
     };
     try {
       const res = await fetch(URL_CREAR_USUARIO, option),
@@ -66,7 +67,7 @@ function RegisterUser() {
 
   return (
     <>
-      <Container className="register-box">
+        <Container className="register-box">
           <section className="container-fluid register-content">
             <div id="">
               <div className="row justify-content-center">
