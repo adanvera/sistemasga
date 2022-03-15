@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Button, Modal} from 'react-bootstrap';
 import { useState } from 'react';
 import RegisterUser from '../modals/RegisterUser';
+import UsersLists from './UsersLists';
+const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 function Seguridad() {
@@ -27,6 +29,23 @@ function Seguridad() {
     );
   }
   
+  const [usuario, setUsurio] = useState([])
+
+  useEffect(() => {
+    const getUser = async() =>{
+      try {
+        const res = await fetch(urlUsers),
+        data = await res.json()
+        
+        setUsurio(data.usuarios)
+
+        console.log(data.usuarios)
+      } catch (error) {
+        console.log(error.response)
+      }
+    }
+    getUser()
+  }, [])
   
   
   return (
@@ -40,6 +59,11 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div>
         </div>
+
+        {usuario.map(us=>(
+          <UsersLists nombre={us.nombre} apellido={us.apellido} rol={us.rol}/>
+        ))}
+
       </Container> 
     </>
   );
