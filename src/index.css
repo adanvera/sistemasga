@@ -529,6 +529,11 @@ div#sidebar-wrapper .nav-link:focus, .nav-link:hover{
   padding-right: 35px;
 }
 
+#seguridad{
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
 /*project list*/
 .icon-profile-project{
   height: 41px;
@@ -599,11 +604,6 @@ div#tablero {
 
 a { 
   text-decoration: none !important;
-}
-
-#regbox{
-  padding-left: 42px;
-  padding-right: 42px;
 }
 
 section.container-fluid.register-content h1 {
