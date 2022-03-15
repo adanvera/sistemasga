@@ -147,13 +147,7 @@ function RegisterUser() {
               </div>
               <div className="row mt-5 justify-content-center">
                 <div className="col-md-12 bt-centrar">
-                  <button
-                    type="submit"
-                    className="btn-crear"
-                    onClick={handleSubmit}
-                  >
-                    Crear Cuenta
-                  </button>
+                  <button type="submit" className="btn-crear" onClick={handleSubmit}>crear cuenta</button>
                 </div>
               </div>
             </div>

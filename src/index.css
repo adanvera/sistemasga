@@ -201,12 +201,14 @@ a.createnewproject.mt-1.nav-link:hover{
 }
 
 .register-box{
-  width: 861px;
-  height: 624px;
+  /* width: 861px;
+  height: 624px; */
   background: #FFFFFF;
   border-radius: 20px;
   display: flex;
   align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   
 }
 
@@ -625,4 +627,43 @@ button.list-group-item.list-group-item-action.p-3:focus{
 button.list-group-item.list-group-item-action.p-3:active{
   background-color: rgba(0, 191, 156, 1);
   color: #ffff;
+}
+
+.padright{
+  padding-right: 10px;
+}
+
+.padright ion-icon {
+  font-size: 25px;
+}
+
+.padright.deleteuser span{
+  color: #FF5263 !important;
+  cursor: pointer;
+}
+
+.padright.edituser span{
+  color: #A4CF30;
+  cursor: pointer;
+}
+
+.padright.edituser span:hover{
+  color: #273404;
+  background: rgba(164, 207, 48, 0.1);
+}
+
+.padright.deleteuser span:hover{
+  color: #FF5263;
+  background: rgba(255, 82, 99, 0.1);
+}
+
+#tableprojectlist{
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
+.pten{
+  padding: 10px;
 }

@@ -17,7 +17,7 @@ function Seguridad() {
       <>
         <Button variant="btn btn-cr-pro" onClick={handleShow}>crear usuario</Button>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} >
           <Modal.Header closeButton>
             <Modal.Title>Registrar usuario</Modal.Title>
           </Modal.Header>
@@ -39,9 +39,8 @@ function Seguridad() {
         
         setUsurio(data.usuarios)
 
-        console.log(data.usuarios)
       } catch (error) {
-        console.log(error.response)
+        
       }
     }
     getUser()
@@ -61,7 +60,7 @@ function Seguridad() {
         </div>
 
         {usuario.map(us=>(
-          <UsersLists nombre={us.nombre} apellido={us.apellido} rol={us.rol}/>
+          <UsersLists nombre={us.nombre} apellido={us.apellido} correo={us.correo} rol={us.rol}/>
         ))}
 
       </Container> 
