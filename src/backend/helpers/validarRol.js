@@ -10,8 +10,10 @@ const esRolValido = async ( rol = '' ) =>{
          }
         return {
           error:false,
-          msg:'Rol valido'
+          msg:'Rol alido',
+          existeRol
         }
 
 }
+
 module.exports = esRolValido

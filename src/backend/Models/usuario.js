@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const {Schema ,model}= require('mongoose')
 
 const UsuarioSchema = Schema({
@@ -19,9 +20,8 @@ const UsuarioSchema = Schema({
         required: [true, 'La constraseña es obligatorio']
     },
     rol:{
-        type: String,
-        required: true,
-        emun:['ADMIN_ROLE','USER_ROLE'],
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Role'
         
     },
     estado:{
