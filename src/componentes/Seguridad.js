@@ -83,9 +83,9 @@ console.log(currentScreen);
       <div className="navbar justify-content-between w-100 " variant="dark">
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>
-            <button type="submit" className="btn-crear" onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
-            <button type="submit" className="btn-crear" >permisos</button>
-            <button type="submit" className="btn-crear" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
+            <button type="submit" className='nav-sg' onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
+            <button type="submit" className='nav-sg'>permisos</button>
+            <button type="submit" className='nav-sg' onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">

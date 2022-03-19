@@ -706,3 +706,10 @@ td.e-size {
 .pll{
   margin-right: 50px;
 }
+
+button.nav-sg {
+  background: transparent;
+  border: none;
+  color: white;
+  padding-right: 20px;
+}
