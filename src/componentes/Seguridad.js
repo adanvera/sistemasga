@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Container, Button, Modal} from 'react-bootstrap';
 import { useState } from 'react';
 import RegisterUser from '../modals/RegisterUser';
-import UsersLists from './UsersLists';
-import { Form } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
+
+import { Usuarios } from './partials/Usuarios';
+import Roles from './partials/Roles';
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
@@ -33,8 +33,9 @@ function Seguridad() {
     );
   }
   
-   const [usuario, setUsurio] = useState([])
-
+  const [usuario, setUsurio] = useState([])
+  const [currentScreen,setCurrentScreen] = useState({us:true,rol:false,per:false})
+  
   useEffect(() => {
     const getUser = async() =>{
       try {
@@ -49,7 +50,7 @@ function Seguridad() {
     }
     getUser()
   }, [])
-
+console.log(currentScreen);
   return (
     <>
       <Container fluid={true} className="mt-5" id='seguridad'>
@@ -62,19 +63,14 @@ function Seguridad() {
           </div>
         </div>
         <div className='row mb-5'>
-          <div className='col-md-2' ><button type="submit" className="btn-crear" >usuarios</button></div>
+          <div className='col-md-2' ><button type="submit" className="btn-crear" onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button></div>
           <div className='col-md-2'><button type="submit" className="btn-crear" >permisos</button></div>
-          <div className='col-md-2'><button type="submit" className="btn-crear" >roles</button></div>
+          <div className='col-md-2'><button type="submit" className="btn-crear" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button></div>
         </div>
-        <div className='row'>
-          <div className='col-md-4 form-search'>
-            <Form className="d-flex">
-              <FormControl type="search" placeholder="Buscar usuario" className="me-2" aria-label="Search"/>
-              <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
-            </Form>
-          </div>
-        </div>
-        {usuario.length>0 && <UsersLists usuario={usuario}/>}
+
+        {currentScreen.us && <Usuarios usuario={usuario}/> }
+        { currentScreen.rol && <Roles/>  }
+        
         
 
       </Container> 

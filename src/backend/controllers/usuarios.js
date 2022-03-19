@@ -53,8 +53,13 @@ const usuarioMostrar = async (req,res)=>{
   }
 
 }
+
+const usuarioEliminar = (req,res)=>{
+  
+}
 module.exports = {
   usuarioPost,
   usuarioMostrar,
-  usuarioModificar
+  usuarioModificar,
+  usuarioEliminar
 }
