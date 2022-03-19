@@ -40,7 +40,7 @@ export const Dashboard = () => {
 			<Container fluid={true} className="d-flex p-0 m-0">
 				<Sidebar/>
 				<Container  fluid={true} id="dash">
-					<Navbar/>
+					{/* <Navbar/> */}
 					{	currentScreen.proyectos && <Proyects/>}
 					{	currentScreen.desarrollo && <Desarrollo/>}
 					{	currentScreen.seguridad&& <Seguridad/>}

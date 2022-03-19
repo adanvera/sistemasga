@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import { Container, Button, Modal} from 'react-bootstrap';
 import { useState } from 'react';
 import RegisterUser from '../modals/RegisterUser';
+import { Link } from 'react-router-dom';
+import myphoto from '../images/perfil.png'
 
 import { Usuarios } from './partials/Usuarios';
+import { useContext } from 'react';
 import Roles from './partials/Roles';
+import { DataContext } from '../context/DataContext'
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
@@ -51,8 +55,51 @@ function Seguridad() {
     getUser()
   }, [])
 console.log(currentScreen);
+
+  const {user} = useContext(DataContext)
+	const [nombre,setNombre] = useState('')	
+  const [apellido, setApellido] = useState('')
+	
+
+
+	//consultamos el localStorage
+	useEffect(()=>{
+		const data = localStorage.getItem('auth')
+		if(!data ){
+			setNombre(user.usuarioEncontrado.nombre)
+			localStorage.setItem('auth',JSON.stringify(user));
+            setApellido(user.usuarioEncontrado.apellido)
+            localStorage.setItem('auth',JSON.stringify(user))
+			return
+		}
+		const usuario = JSON.parse(data);
+		setNombre(usuario.usuarioEncontrado.nombre);
+        setApellido(usuario.usuarioEncontrado.apellido);
+	},)
   return (
     <>
+      {/* <Navbar/> */}
+
+      <div className="navbar justify-content-between w-100 " variant="dark">
+        <nav className="items">
+            <ion-icon name="reorder-three-outline"></ion-icon>
+            <button type="submit" className="btn-crear" onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
+            <button type="submit" className="btn-crear" >permisos</button>
+            <button type="submit" className="btn-crear" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
+        </nav>
+        <nav className="">
+            <Link to="#pricing" className="d-flex">
+                <div className="t-a">
+                    <p className="p-style fw-100">Bienvenido</p>
+                    <span className="username">{nombre} {apellido}</span>
+                </div>
+                <div className="pl">
+                    <img src={myphoto} alt="" />
+                </div>
+            </Link>
+        </nav>
+      </div>
+
       <Container fluid={true} className="mt-5" id='seguridad'>
         <div className='row'>
           <div className='col pb-2'>
@@ -62,11 +109,7 @@ console.log(currentScreen);
             <div><ModalRegister /></div>
           </div>
         </div>
-        <div className='row mb-5'>
-          <div className='col-md-2' ><button type="submit" className="btn-crear" onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button></div>
-          <div className='col-md-2'><button type="submit" className="btn-crear" >permisos</button></div>
-          <div className='col-md-2'><button type="submit" className="btn-crear" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button></div>
-        </div>
+        
 
         {currentScreen.us && <Usuarios usuario={usuario}/> }
         { currentScreen.rol && <Roles/>  }
