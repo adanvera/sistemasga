@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { Tbody } from "./Tbody.js";
 
-<<<<<<< HEAD
 
 function UsersLists({usuario}) {
-=======
-function UsersLists({nombre, apellido, correo ,rol, index}) {
->>>>>>> 73213ee691872d937371e5e175167bb5e3e8bb70
 
   const deleteUser=()=>{
     swal({

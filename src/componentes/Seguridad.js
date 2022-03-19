@@ -7,11 +7,8 @@ import { Form } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 const urlUsers = "http://localhost:4000/api/usuario/"
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 73213ee691872d937371e5e175167bb5e3e8bb70
 function Seguridad() {
 
   function ModalRegister() {
