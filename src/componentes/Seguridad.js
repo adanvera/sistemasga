@@ -3,8 +3,9 @@ import { Container, Button, Modal} from 'react-bootstrap';
 import { useState } from 'react';
 import RegisterUser from '../modals/RegisterUser';
 import UsersLists from './UsersLists';
+import { Form } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 const urlUsers = "http://localhost:4000/api/usuario/"
-
 
 function Seguridad() {
   function ModalRegister() {
@@ -58,9 +59,16 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div>
         </div>
-
-        {usuario.map(us=>(
-          <UsersLists nombre={us.nombre} apellido={us.apellido} correo={us.correo} rol={us.rol}/>
+        <div className='row'>
+        <div className='col-md-4 form-search'>
+					<Form className="d-flex">
+						<FormControl type="search" placeholder="Buscar usuario" className="me-2" aria-label="Search"/>
+						<Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
+					</Form>
+          </div>
+        </div>
+        {usuario.map((us,index)=>(
+          <UsersLists nombre={us.nombre} apellido={us.apellido} correo={us.correo} rol={us.rol} index={index+1}/>
         ))}
 
       </Container> 

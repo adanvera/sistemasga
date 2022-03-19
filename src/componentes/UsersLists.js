@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
-function UsersLists({nombre, apellido, correo ,rol}) {
+function UsersLists({nombre, apellido, correo ,rol, index}) {
 
   const deleteUser=()=>{
     swal({
@@ -30,7 +30,7 @@ function UsersLists({nombre, apellido, correo ,rol}) {
             </thead>
             <tbody>
               <tr>
-                <td>#</td>
+                <td>{index}</td>
                 <td><span className="sp-name">{nombre} {apellido}</span></td>
                 <td>{correo}</td>
                 <td>{rol}</td>
