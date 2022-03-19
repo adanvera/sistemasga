@@ -712,6 +712,11 @@ button.nav-sg {
   border: none;
   color: white;
   padding-right: 20px;
+  padding-left: 20px;
+}
+
+button.nav-sg:first-child{
+  padding-left: 0px;
 }
 
 .nav-active{

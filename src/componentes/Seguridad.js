@@ -42,7 +42,8 @@ function Seguridad() {
 	
 
 
-	//consultamos el localStorage
+	//consultamos el localStorage 
+  //se obitne el nombre y apillod del usuario logeado
 	useEffect(()=>{
 		const data = localStorage.getItem('auth')
 		if(!data ){
@@ -56,12 +57,13 @@ function Seguridad() {
 		setNombre(usuario.usuarioEncontrado.nombre);
         setApellido(usuario.usuarioEncontrado.apellido);
 	},)
+
   return (
     <>
       <div className="navbar justify-content-between w-100 " variant="dark">
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>
-            <button type="submit" className='nav-sg nav-active' onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
+            <button type="submit" className='nav-sg' onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
             <button type="submit" className='nav-sg'>permisos</button>
             <button type="submit" className='nav-sg' onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
         </nav>
@@ -87,8 +89,7 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div> */}
         </div>
-        
-
+        {/* se agrega condicional para renderizar la ventana respectiva */}
         {currentScreen.us && <Usuarios usuario={usuario}/> }
         { currentScreen.rol && <Roles/>  }
         
