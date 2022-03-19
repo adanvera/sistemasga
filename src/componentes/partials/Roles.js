@@ -3,11 +3,12 @@ import { Modal, Button } from "react-bootstrap";
 import RegisterRole from "../../modals/RegisterRole";
 import { FormControl, Form } from "react-bootstrap";
 import RoleList from '../RoleList';
+const urlRoles = "http://localhost:4000/api/role/"
 
 
 
-function Roles() {
-  function ModalRegisterRole() {
+export const Roles = () => {
+  	function ModalRegisterRole() {
 		const [show, setShow] = useState(false);
 		
 		const handleClose = () => setShow(false);
@@ -29,7 +30,28 @@ function Roles() {
 		);
 	}
 
-  return (
+	const [role, setRole] = useState([])
+	useEffect(() => {
+		const getRole = async() =>{
+		  try {
+			const res = await fetch(urlRoles),
+			data = await res.json()
+	
+			console.log("holaaaaaaaa")
+			console.log(data)
+	
+			setRole(data.roles)
+			
+		  } catch (error) {
+			console.log(error);
+		  }
+		}
+		getRole()
+	
+	  }, [])
+	
+
+  	return (
     <>
       	<div className="row">
 			<div className="col-md-12 form-search d-flex">
@@ -51,8 +73,7 @@ function Roles() {
 				</div>
 			</div>
 		</div>
-		 <RoleList />
-	
+		{<RoleList roles={role} />}
     </>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table } from "react-bootstrap";
+import { Tbodyrol } from './Tbodyrol';
 
-
-function RoleList() {
+function RoleList({rol}) {
     
   return (
     <div className="row pt-5">
@@ -17,23 +17,9 @@ function RoleList() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>admin</td>
-                <td>desarrollo</td>
-                <td className="d-flex justify-content-center">
-                  <div className="padright deleteuser">
-                    <span className="pten">
-                      <ion-icon name="trash-bin-outline" ></ion-icon>
-                    </span>
-                  </div>
-                  <div className="padright edituser">
-                    <span className="pten" >
-                      <ion-icon name="create-outline"></ion-icon>
-                    </span>
-                  </div>
-                </td>
-              </tr>
+                { rol.map((rl,index) => {
+                  return <Tbodyrol index={index+1} role={rl} />
+                })}
             </tbody>
           </Table>
         </div>
