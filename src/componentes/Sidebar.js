@@ -55,7 +55,7 @@ function Sidebar() {
 				<div className="bottom-side-menu">
 					<ul className="list-unstyled">
 						<li className="nav-item">
-							<a href="" className="nav-link" onClick={logout}>
+							<a href="" className="nav-link crr" onClick={logout}>
                                 <ion-icon name="power" className="pt-1"></ion-icon> 
 								<span className="bt-cerrar" >{' '}Cerrar sesion{' '}</span>
 							</a>

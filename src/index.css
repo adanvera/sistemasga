@@ -175,10 +175,20 @@ a.createnewproject.mt-1.nav-link:hover{
   padding: 0.5rem;
   padding-left: 3px;
   cursor: pointer;
+  color: red;
+}
+
+a.nav-link.crr {
+  color: red;
+}
+
+.crr{
+  color: red;
 }
 
 .bt-cerrar.ion-icon{
   padding-top: 5px;
+  color: red;
 }
 
 .items ion-icon{
