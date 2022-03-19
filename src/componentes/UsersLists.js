@@ -25,16 +25,16 @@ function UsersLists({nombre, apellido, correo ,rol, index}) {
                 <th>nombre y apellido</th>
                 <th>correo electrónico</th>
                 <th>rol</th>
-                <th>acciones</th>
+                <th className="a-texttt">acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>{index}</td>
-                <td><span className="sp-name">{nombre} {apellido}</span></td>
-                <td>{correo}</td>
-                <td>{rol}</td>
-                <td className="d-flex">
+                <td className="n-size"><span className="sp-name">{nombre} {apellido}</span></td>
+                <td className="e-size">{correo}</td>
+                <td className="r-size">{rol}</td>
+                <td className="d-flex a-texttt dd-jsu">
                     <div className="padright deleteuser">
                       <span className="pten" onClick={()=>deleteUser()}><ion-icon name="trash-bin-outline"></ion-icon></span>
                     </div>
