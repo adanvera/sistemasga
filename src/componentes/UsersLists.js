@@ -32,7 +32,7 @@ function UsersLists({usuario}) {
             </thead>
             <tbody>
                 { usuario.map((us,index) => {
-                  return <Tbody key={index} usuario={us} />
+                  return <Tbody index={index+1} usuario={us} />
                 })}
 
             </tbody>

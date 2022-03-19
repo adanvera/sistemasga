@@ -61,6 +61,14 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div>
         </div>
+        <div className='row'>
+        <div className='col-md-4 form-search'>
+					<Form className="d-flex">
+						<FormControl type="search" placeholder="Buscar proyecto" className="me-2" aria-label="Search"/>
+						<Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
+					</Form>
+			  </div>
+        </div>
         {usuario.length>0 && <UsersLists usuario={usuario}/>}
         
 
