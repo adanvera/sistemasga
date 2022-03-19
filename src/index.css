@@ -667,7 +667,7 @@ button.list-group-item.list-group-item-action.p-3:active{
   background: rgba(255, 82, 99, 0.1);
 }
 
-#tableprojectlist{
+#tablelist{
   background-color: #FFFFFF;
   border-radius: 18px;
   padding-top: 1.2rem;
@@ -712,4 +712,21 @@ button.nav-sg {
   border: none;
   color: white;
   padding-right: 20px;
+}
+
+.nav-active{
+  background: white;
+  color: #20c997;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-right: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pl-dos{
+  padding-left: 20px;
 }

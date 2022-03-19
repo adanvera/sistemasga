@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { Tbody } from "./Tbody.js";
 
 
@@ -11,7 +10,7 @@ function UsersLists({usuario}) {
     <>
       <div className="row pt-5">
         <div className="col-md-12">
-          <Table responsive="md">
+          <Table responsive="md"  id="tablelist">
             <thead>
               <tr>
                 <th>#</th>

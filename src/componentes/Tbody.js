@@ -22,7 +22,7 @@ export const Tbody = ({usuario,index}) => {
 	return (
     <>
 	<tr>
-			<td>{index}</td>
+			<td className="pl-dos">{index}</td>
 			<td>
 				<span className="sp-name">
 					{usuario.nombre} {usuario.apellido}

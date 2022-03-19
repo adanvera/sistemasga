@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function ProjectList() {
     return (
     <div className='row pt-5'>
-        <div className='col-md-12' id='tableprojectlist'>
+        <div className='col-md-12' id='tablelist'>
           <Table responsive="md">
             <thead>
               <tr>
