@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import RegisterRole from "../../modals/RegisterRole";
 import { FormControl, Form } from "react-bootstrap";
+import RoleList from '../RoleList';
 
 
 
@@ -50,6 +51,7 @@ function Roles() {
 				</div>
 			</div>
 		</div>
+		 <RoleList />
 	
     </>
   );

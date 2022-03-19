@@ -21,7 +21,7 @@ function RoleList() {
                 <td>1</td>
                 <td>admin</td>
                 <td>desarrollo</td>
-                <td className="d-flex">
+                <td className="d-flex justify-content-center">
                   <div className="padright deleteuser">
                     <span className="pten">
                       <ion-icon name="trash-bin-outline" ></ion-icon>
