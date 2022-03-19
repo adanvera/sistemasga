@@ -744,3 +744,7 @@ button.nav-sg:first-child{
   background-color: #00BF9C !important;
   border-color: #00BF9C !important;
 }
+
+.swal-text{
+  text-align: center !important;
+}
