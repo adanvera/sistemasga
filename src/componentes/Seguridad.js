@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Button, Modal} from 'react-bootstrap';
+import { Container} from 'react-bootstrap';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import myphoto from '../images/perfil.png'
@@ -34,7 +34,7 @@ function Seguridad() {
     }
     getUser()
   }, [])
-console.log(currentScreen);
+  console.log(currentScreen);
 
   const {user} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
@@ -58,8 +58,6 @@ console.log(currentScreen);
 	},)
   return (
     <>
-      {/* <Navbar/> */}
-
       <div className="navbar justify-content-between w-100 " variant="dark">
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>

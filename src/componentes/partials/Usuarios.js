@@ -16,7 +16,7 @@ export const Usuarios = ({ usuario }) => {
 	  
 		return (
 		  <>
-			<Button variant="btn btn-cr-pro" onClick={handleShow}>crear usuario</Button>
+			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear usuario</Button>
 	  
 			<Modal show={show} onHide={handleClose} >
 			  <Modal.Header closeButton>
@@ -28,7 +28,7 @@ export const Usuarios = ({ usuario }) => {
 			</Modal>
 		  </>
 		);
-	  }
+	}
 	return (
 		<>
 			<div className="row">

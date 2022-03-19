@@ -730,3 +730,12 @@ button.nav-sg {
 .pl-dos{
   padding-left: 20px;
 }
+
+.ml-dos{
+  margin-left: 20px;
+}
+
+.form-check-input:checked {
+  background-color: #00BF9C !important;
+  border-color: #00BF9C !important;
+}

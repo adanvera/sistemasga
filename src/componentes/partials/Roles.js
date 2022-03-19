@@ -1,31 +1,56 @@
 import React, { useState, useEffect } from "react";
+import { Modal, Button } from "react-bootstrap";
+import RegisterRole from "../../modals/RegisterRole";
+import { FormControl, Form } from "react-bootstrap";
+
+
 
 function Roles() {
+  function ModalRegisterRole() {
+		const [show, setShow] = useState(false);
+		
+		const handleClose = () => setShow(false);
+		const handleShow = () => setShow(true);
+	  
+		return (
+		  <>
+			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear rol</Button>
+	  
+			<Modal show={show} onHide={handleClose} >
+			  <Modal.Header closeButton>
+				<Modal.Title>Registrar rol</Modal.Title>
+			  </Modal.Header>
+			  <Modal.Body>
+				<RegisterRole/>
+			  </Modal.Body>
+			</Modal>
+		  </>
+		);
+	}
 
   return (
     <>
-      <h2>HOLA ROLE</h2>
-      {/* <div className="row pt-5">
-        <div className="col-md-12">
-          <Table responsive="md">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>nombre y apellido</th>
-                <th>correo electrónico</th>
-                <th>rol</th>
-                <th className="a-texttt">acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-                { usuario.map((us,index) => {
-                  return <Tbody index={index+1} usuario={us} />
-                })}
-
-            </tbody>
-          </Table>
-        </div>
-      </div> */}
+      <div className="row">
+				<div className="col-md-12 form-search d-flex">
+					<div className='col-md-6'>
+						<Form className="d-flex">
+							<FormControl
+								type="search"
+								placeholder="Buscar rol"
+								className="me-2"
+								aria-label="Search"
+							/>
+							<Button variant="outline-success">
+								<ion-icon name="search-outline"></ion-icon>
+							</Button>
+						</Form>
+					</div>
+					<div className='col-md-6 t-a'>
+						<ModalRegisterRole />
+					</div>
+				</div>
+			</div>
+			{/* {usuario.length > 0 && <UsersLists usuario={usuario} />} */}
     </>
   );
 }
