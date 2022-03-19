@@ -682,3 +682,23 @@ button.list-group-item.list-group-item-action.p-3:active{
   border: 1px solid #ced4da;
   padding: 1rem 0.75rem;
 }
+
+td.e-size {
+  width: 300px;
+}
+
+.n-size{
+  width: 300px;
+}
+
+.r-size{
+  width: 100px;
+}
+
+.a-texttt{
+  text-align: center;
+}
+
+.dd-jsu{
+  justify-content: center;
+}
