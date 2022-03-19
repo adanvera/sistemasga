@@ -55,6 +55,7 @@ const usuarioMostrar = async (req,res)=>{
 }
 
 const usuarioEliminar = (req,res)=>{
+    
   
 }
 module.exports = {
