@@ -7,7 +7,10 @@ const usuarioPost = async (req,res)=>{
       msg:rolValido.msg
     })
   }
+  const {existeRol}= rolValido
+  req.body.rol = existeRol._id 
   const user = new Usuario(req.body)
+  
 
   try {
     await user.save()
@@ -20,10 +23,10 @@ const usuarioPost = async (req,res)=>{
       return res.status(400).json({
       msg:'Correo ya registrado'
     })}
-
+    console.log(error);
     return res.status(400).json({
       msg:'Ocurrio un error inesperado',
-      error:error.response
+      error
     })
     
   
@@ -31,7 +34,11 @@ const usuarioPost = async (req,res)=>{
   
   
 }
-
+const usuarioModificar = async (req,res)=>{
+  res.json({
+    msg:'mensaje'
+  })
+}
 const usuarioMostrar = async (req,res)=>{
   try {
     const usuarios = await Usuario.find({estado:true})
@@ -48,5 +55,6 @@ const usuarioMostrar = async (req,res)=>{
 }
 module.exports = {
   usuarioPost,
-  usuarioMostrar
+  usuarioMostrar,
+  usuarioModificar
 }

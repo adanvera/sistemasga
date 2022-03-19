@@ -667,3 +667,8 @@ button.list-group-item.list-group-item-action.p-3:active{
 .pten{
   padding: 10px;
 }
+
+.register-box.container select.form-select {
+  border: 1px solid #ced4da;
+  padding: 1rem 0.75rem;
+}
