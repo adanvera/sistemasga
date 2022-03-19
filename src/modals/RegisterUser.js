@@ -147,9 +147,8 @@ function RegisterUser() {
                 <div className='col-md-12 mt-3'>
 										<Form.Select aria-label="Tipo">
 											<option>Selccionar rol</option>
-											<option value="1">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
+											<option value="ADMIN_ROLE">ADMINISTRADOR</option>
+											<option value="USER_ROLE">USUARIO NORMAL</option>
 										</Form.Select>
 									</div>
               </div>
