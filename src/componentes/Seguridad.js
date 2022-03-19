@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Container, Button, Modal} from 'react-bootstrap';
 import { useState } from 'react';
-import RegisterUser from '../modals/RegisterUser';
 import { Link } from 'react-router-dom';
 import myphoto from '../images/perfil.png'
+
 
 import { Usuarios } from './partials/Usuarios';
 import { useContext } from 'react';
@@ -15,27 +15,7 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 function Seguridad() {
 
-  function ModalRegister() {
-    const [show, setShow] = useState(false);
-    
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
   
-    return (
-      <>
-        <Button variant="btn btn-cr-pro" onClick={handleShow}>crear usuario</Button>
-  
-        <Modal show={show} onHide={handleClose} >
-          <Modal.Header closeButton>
-            <Modal.Title>Registrar usuario</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <RegisterUser/>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
-  }
   
   const [usuario, setUsurio] = useState([])
   const [currentScreen,setCurrentScreen] = useState({us:true,rol:false,per:false})
@@ -105,9 +85,9 @@ console.log(currentScreen);
           <div className='col pb-2'>
             <h4>SEGURIDAD</h4>
           </div>
-          <div className='col a-end'>
+          {/* <div className='col a-end'>
             <div><ModalRegister /></div>
-          </div>
+          </div> */}
         </div>
         
 
