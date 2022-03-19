@@ -85,16 +85,10 @@ function Seguridad() {
           <div className='col pb-2'>
             <h4>SEGURIDAD - NAME </h4>
           </div>
-          {/* <div className='col a-end'>
-            <div><ModalRegister /></div>
-          </div> */}
         </div>
         {/* se agrega condicional para renderizar la ventana respectiva */}
         {currentScreen.us && <Usuarios usuario={usuario}/> }
         { currentScreen.rol && <Roles/>  }
-        
-        
-
       </Container> 
     </>
   );

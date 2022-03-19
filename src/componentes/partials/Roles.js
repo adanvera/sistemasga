@@ -30,27 +30,27 @@ function Roles() {
 
   return (
     <>
-      <div className="row">
-				<div className="col-md-12 form-search d-flex">
-					<div className='col-md-6'>
-						<Form className="d-flex">
-							<FormControl
-								type="search"
-								placeholder="Buscar rol"
-								className="me-2"
-								aria-label="Search"
-							/>
-							<Button variant="outline-success">
-								<ion-icon name="search-outline"></ion-icon>
-							</Button>
-						</Form>
+      	<div className="row">
+			<div className="col-md-12 form-search d-flex">
+				<div className='col-md-6'>
+					<Form className="d-flex">
+						<FormControl
+							type="search"
+							placeholder="Buscar rol"
+							className="me-2"
+							aria-label="Search"
+						/>
+						<Button variant="outline-success">
+							<ion-icon name="search-outline"></ion-icon>
+						</Button>
+					</Form>
 					</div>
-					<div className='col-md-6 t-a'>
+				<div className='col-md-6 t-a'>
 						<ModalRegisterRole />
-					</div>
 				</div>
 			</div>
-			{/* {usuario.length > 0 && <UsersLists usuario={usuario} />} */}
+		</div>
+	
     </>
   );
 }

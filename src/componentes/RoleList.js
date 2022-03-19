@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table } from "react-bootstrap";
-import swal from 'sweetalert';
+
 
 function RoleList() {
     
@@ -11,12 +11,30 @@ function RoleList() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>ROL</th>
-                <th>correo electrónico</th>
                 <th>rol</th>
+                <th>con acceso a</th>
                 <th className="a-texttt">acciones</th>
               </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>admin</td>
+                <td>desarrollo</td>
+                <td className="d-flex">
+                  <div className="padright deleteuser">
+                    <span className="pten">
+                      <ion-icon name="trash-bin-outline" ></ion-icon>
+                    </span>
+                  </div>
+                  <div className="padright edituser">
+                    <span className="pten" >
+                      <ion-icon name="create-outline"></ion-icon>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
           </Table>
         </div>
       </div>

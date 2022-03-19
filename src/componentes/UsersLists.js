@@ -24,7 +24,6 @@ function UsersLists({usuario}) {
                 { usuario.map((us,index) => {
                   return <Tbody index={index+1} usuario={us} />
                 })}
-
             </tbody>
           </Table>
         </div>
