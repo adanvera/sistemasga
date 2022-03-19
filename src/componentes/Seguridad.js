@@ -6,10 +6,12 @@ import UsersLists from './UsersLists';
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
+
 function Seguridad() {
+
   function ModalRegister() {
     const [show, setShow] = useState(false);
-  
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
@@ -29,7 +31,7 @@ function Seguridad() {
     );
   }
   
-  const [usuario, setUsurio] = useState([])
+   const [usuario, setUsurio] = useState([])
 
   useEffect(() => {
     const getUser = async() =>{
@@ -40,13 +42,12 @@ function Seguridad() {
         setUsurio(data.usuarios)
 
       } catch (error) {
-        
+        console.log(error);
       }
     }
     getUser()
   }, [])
-  
-  
+
   return (
     <>
       <Container fluid={true} className="mt-5" id='seguridad'>
@@ -58,10 +59,8 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div>
         </div>
-
-        {usuario.map(us=>(
-          <UsersLists nombre={us.nombre} apellido={us.apellido} correo={us.correo} rol={us.rol}/>
-        ))}
+        {usuario.length>0 && <UsersLists usuario={usuario}/>}
+        
 
       </Container> 
     </>

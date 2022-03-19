@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import { Tbody } from "./Tbody.js";
 
-function UsersLists({nombre, apellido, correo ,rol}) {
+
+function UsersLists({usuario}) {
 
   const deleteUser=()=>{
     swal({
@@ -29,20 +31,10 @@ function UsersLists({nombre, apellido, correo ,rol}) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>#</td>
-                <td><span className="sp-name">{nombre} {apellido}</span></td>
-                <td>{correo}</td>
-                <td>{rol}</td>
-                <td className="d-flex">
-                    <div className="padright deleteuser">
-                      <span className="pten" onClick={()=>deleteUser()}><ion-icon name="trash-bin-outline"></ion-icon></span>
-                    </div>
-                    <div className="padright edituser">
-                      <span className="pten" onClick={()=>deleteUser()}><ion-icon name="create-outline"></ion-icon></span>
-                    </div>
-                </td>
-              </tr>
+                { usuario.map((us,index) => {
+                  return <Tbody key={index} usuario={us} />
+                })}
+
             </tbody>
           </Table>
         </div>
