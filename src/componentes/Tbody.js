@@ -6,10 +6,10 @@ import swal from "sweetalert";
 export const Tbody = ({usuario,index}) => {
 	const deleteUser= async()=>{
     const isDelete = await swal({
-      title: "Epaa, esa función está en desarrollo",
-      text: "En la proxima ya estará funcionando crack ;) !",
+      title: "Eliminar usuario",
+      text: "¿Estas seguro de eliminar este usuario?, esta acción es irrevesible.",
       icon: "warning",
-      button: "ok",
+      button: "eliminar",
 			value:true
     });
 		if(isDelete){
