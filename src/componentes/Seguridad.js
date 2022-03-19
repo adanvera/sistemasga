@@ -61,13 +61,18 @@ function Seguridad() {
             <div><ModalRegister /></div>
           </div>
         </div>
+        <div className='row mb-5'>
+          <div className='col-md-2' ><button type="submit" className="btn-crear" >usuarios</button></div>
+          <div className='col-md-2'><button type="submit" className="btn-crear" >permisos</button></div>
+          <div className='col-md-2'><button type="submit" className="btn-crear" >roles</button></div>
+        </div>
         <div className='row'>
-        <div className='col-md-4 form-search'>
-					<Form className="d-flex">
-						<FormControl type="search" placeholder="Buscar proyecto" className="me-2" aria-label="Search"/>
-						<Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
-					</Form>
-			  </div>
+          <div className='col-md-4 form-search'>
+            <Form className="d-flex">
+              <FormControl type="search" placeholder="Buscar usuario" className="me-2" aria-label="Search"/>
+              <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
+            </Form>
+          </div>
         </div>
         {usuario.length>0 && <UsersLists usuario={usuario}/>}
         
