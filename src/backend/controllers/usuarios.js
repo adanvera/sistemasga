@@ -1,14 +1,8 @@
 const  esRolValido  = require('../helpers/validarRol')
 const Usuario = require('../Models/usuario')
 const usuarioPost = async (req,res)=>{
-  const rolValido= await esRolValido(req.body.rol)
-  if(rolValido.error){
-    return res.status(400).json({
-      msg:rolValido.msg
-    })
-  }
-  const {existeRol}= rolValido
-  req.body.rol = existeRol._id 
+ 
+  
   const user = new Usuario(req.body)
   
 
