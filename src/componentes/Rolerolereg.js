@@ -1,10 +1,12 @@
 import React from 'react'
  
 
-export const Rolerolereg = ({ role: rl }) => {
+export const Rolerolereg = ({ role:rl }) => {
+  
     return(
         <>
-            <option value={rl.rol}>{rl.rol}</option>
+          
+            { <option value={rl.rol}>{rl.rol}</option> }
         </>
     )
 }
