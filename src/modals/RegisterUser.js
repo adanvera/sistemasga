@@ -173,7 +173,10 @@ function RegisterUser() {
                 <div className='col-md-12 mt-3'>
 										<Form.Select aria-label="Tipo">
 											<option >SELECCIONAR ROL</option>
-                      <Rolelistreg roles={role}/>
+                      { role.map((rl) => {
+                          return <Rolelistreg roles={role}/>
+                      })}
+                
 										</Form.Select>
 									</div>
               </div>

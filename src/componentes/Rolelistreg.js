@@ -5,7 +5,7 @@ function Rolelistreg({roles}) {
   return (
     <>
         <option>
-                { roles.map((rl,index) => {
+                { roles.map((rl) => {
                   return <Rolerolereg key={rl._id} role={rl} />
                 })}
         </option>
