@@ -41,8 +41,7 @@ const usuarioModificar = async (req,res)=>{
 }
 const usuarioMostrar = async (req,res)=>{
   try {
-    const usuarios = await Usuario.find()
-    console.log(usuarios);
+    const usuarios = await Usuario.find({estado:true})
     res.status(200).json({
       usuarios
     })
@@ -55,8 +54,29 @@ const usuarioMostrar = async (req,res)=>{
 
 }
 
-const usuarioEliminar = (req,res)=>{
-    
+const usuarioEliminar = async (req,res)=>{
+  console.log(req);
+  const {id} = req.params;
+  console.log(id);
+
+  const usuario  = await Usuario.findByIdAndUpdate(id,{estado: false});
+  //const usuarioAutenticado = req.usuario;
+
+  
+try {
+  res.json({
+    msg:'Usuario eliminado correctamente',
+      usuario
+  });
+  
+} catch (error) {
+  return res.status(400).json({
+    msg:'Ocurrio un error inesperado',
+    error
+  })
+  
+}
+  
   
 }
 module.exports = {
