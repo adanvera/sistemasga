@@ -6,10 +6,18 @@ import { URL_CREAR_ROL } from "../helpers/endPoints";
 
 function RegisterRole() {
   const [rolename, setRoleName] = useState("")
-  const [accesos, setAccesos] = useState("")
+
+
+  const options = [
+    { value: 'Proyecto', label: 'Proyecto' },
+    { value: 'Desarollo', label: 'Desarrollo' },
+    { value: 'Seguridad', label: 'Seguridad' },
+  ];
+
+
   const handleSubmitRole= async (e)=>{
       e.preventDefault();
-      if([rolename,accesos].includes("")){
+      if([rolename].includes("")){
         return swal({
           icon: "error",
           text: "Todos los campos son obligatorios",
@@ -21,7 +29,7 @@ function RegisterRole() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({rolename,accesos}),
+        body: JSON.stringify({rolename}),
       };
       try {
         const res = await fetch(URL_CREAR_ROL, option), 
@@ -48,7 +56,7 @@ function RegisterRole() {
   }
 
     
-  const [selectedOption, setSelectedOption] = useState(accesos[0].value);
+
 
   return (
 
@@ -71,10 +79,10 @@ function RegisterRole() {
         </div>
         <div className="col-md-12">
           <label>Con acceso a modulo de: </label>
-          <Form className="ml-dos" onChange={(e) => setAccesos(e.target.value)}  >
+          <Form className="ml-dos" >
             <Form.Check type="switch" id="modulo-proyecto" label="Poryecto" />
             <Form.Check type="switch" id="modulo-seguridad" label="Seguridad" />
-            <Form.Checkn type="switch" id="modulo-desarrollo" label="Desarrollo"/>
+            <Form.Check type="switch" id="modulo-desarrollo" label="Desarrollo"/>
           </Form>
         </div>
         <div className="row mt-5 justify-content-center">
