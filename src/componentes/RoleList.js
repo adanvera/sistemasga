@@ -3,8 +3,6 @@ import { Table } from "react-bootstrap";
 import { Tbodyrol } from './Tbodyrol';
 
 function RoleList({roles}) {
-  console.log(roles);
-    
   return (
     <div className="row pt-5">
         <div className="col-md-12">

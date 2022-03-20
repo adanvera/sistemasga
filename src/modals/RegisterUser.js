@@ -1,9 +1,15 @@
 import React from "react";
+
+import { useEffect } from "react";
+
+import Rolelistreg from "../componentes/Rolelistreg";
+
 import { useState } from "react";
 import { Container, FloatingLabel, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { URL_CREAR_USUARIO } from "../helpers/endPoints";
+const urlRoles = "http://localhost:4000/api/role/"
+
 
 function RegisterUser() {
   const [nombre, setNombre] = useState("");
@@ -11,7 +17,7 @@ function RegisterUser() {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
-  const [rol, setRolUser] = useState("USER_ROLE");
+  const [rol, setRolUser] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +70,26 @@ function RegisterUser() {
       });
     }
   };
+
+
+
+
+  const [role, setRole] = useState([])
+	useEffect(() => {
+		const getRole = async() =>{
+		  try {
+        const res = await fetch(urlRoles),
+        data = await res.json()
+        setRole(data.roles)
+		  } catch (error) {
+			  console.log(error);
+		  }
+		}
+		getRole()
+	
+	  }, [])
+	
+
 
   return (
     <>
@@ -146,9 +172,8 @@ function RegisterUser() {
                 </div>
                 <div className='col-md-12 mt-3'>
 										<Form.Select aria-label="Tipo">
-											<option>SELECCIONAR ROL</option>
-											<option value="ADMIN_ROLE">ADMINISTRADOR</option>
-											<option value="USER_ROLE">USUARIO NORMAL</option>
+											<option >SELECCIONAR ROL</option>
+                      <Rolelistreg roles={role}/>
 										</Form.Select>
 									</div>
               </div>
