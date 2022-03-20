@@ -5,18 +5,23 @@ import swal from "sweetalert";
 
 export const Tbody = ({usuario,index}) => {
 	const deleteUser= async()=>{
-    const isDelete = await swal({
-      title: "Eliminar usuario",
-      text: "¿Estas seguro de eliminar este usuario?, esta acción es irrevesible.",
-      icon: "warning",
-      button: "eliminar",
-			value:true
-    });
-		if(isDelete){
-			console.log(usuario);
-			//llamar api y borrar el usuario
+    swal({
+		title: "¿Estas seguro?",
+		text: "Una vez eliminado el usuario no se puede revertir",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	  })
+	  .then((willDelete) => {
+		if (willDelete) {
+		  swal("Usuario eliminado exitosamente", {
+			icon: "success",
+		  });
+		} else {
+		  swal("Eliminación cancelada");
 		}
-  }
+	  });
+  	}
 
 
 	return (
