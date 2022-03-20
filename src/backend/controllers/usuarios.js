@@ -24,11 +24,24 @@ const usuarioPost = async (req, res) => {
 		})
 	}
 }
-const usuarioModificar = async (req, res) => {
-	res.json({
-		msg: 'mensaje',
-	})
+const usuariosPut = async (req, res = response) => {
+
+  const { id } = req.params;
+  const {_id,password,...resto} = req.body
+
+  
+
+      const usuario = await Usuario.findByIdAndUpdate(id, resto);
+
+
+
+  res.json({
+      msg: 'put API - usuariosPut',
+      usuario
+  });
 }
+
+
 const usuarioMostrar = async (req, res) => {
 	try {
 		const usuarios = await Usuario.find({ estado: true })
@@ -46,7 +59,6 @@ const usuarioMostrar = async (req, res) => {
 }
 
 const usuarioEliminar = async (req, res) => {
-	console.log(req)
 	const { id } = req.params
 	console.log(id)
 
@@ -68,6 +80,6 @@ const usuarioEliminar = async (req, res) => {
 module.exports = {
 	usuarioPost,
 	usuarioMostrar,
-	usuarioModificar,
+	usuariosPut,
 	usuarioEliminar,
 }
