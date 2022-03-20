@@ -20,8 +20,8 @@ export const Tbody = ({usuario,index}) => {
 				await fetch('http://localhost:4000/api/usuario/'+usuario.uui, {method: 'DELETE',})
 			} else {
 		  		swal("Eliminación cancelada");
-		}
-	  });
+			}
+	  	});
   	}
 
 
