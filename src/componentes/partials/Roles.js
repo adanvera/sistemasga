@@ -37,7 +37,6 @@ export const Roles = () => {
 			const res = await fetch(urlRoles),
 			data = await res.json()
 
-			console.log(data.roles)
 	
 			setRole(data.roles)
 			
@@ -49,7 +48,6 @@ export const Roles = () => {
 	
 	  }, [])
 	
-		console.log(role);
 
   	return (
     <>

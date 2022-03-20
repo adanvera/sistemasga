@@ -29,7 +29,6 @@ const agregarRoles = async (req,res)=>{
       return res.status(400).json({
       msg:'Correo ya registrado'
     })}
-    console.log(error);
     return res.status(400).json({
       msg:'Ocurrio un error inesperado',
       error

@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { Tbodyrol } from './Tbodyrol';
 
 function RoleList({roles}) {
+  console.log(roles);
     
   return (
     <div className="row pt-5">
@@ -18,7 +19,7 @@ function RoleList({roles}) {
             </thead>
             <tbody>
                 { roles.map((rl,index) => {
-                  return <Tbodyrol index={index+1} role={rl} />
+                  return <Tbodyrol key={rl._id} index={index+1} role={rl} />
                 })}
             </tbody>
           </Table>
