@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-export const Tbodyrol = ({rl, index})=>{
+export const Tbodyrol = ({role:rl, index})=>{
     return(
         <>
             <td className="pl-dos">{index}</td>

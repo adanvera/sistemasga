@@ -36,9 +36,8 @@ export const Roles = () => {
 		  try {
 			const res = await fetch(urlRoles),
 			data = await res.json()
-	
-			console.log("holaaaaaaaa")
-			console.log(data)
+
+			console.log(data.roles)
 	
 			setRole(data.roles)
 			
@@ -50,10 +49,11 @@ export const Roles = () => {
 	
 	  }, [])
 	
+		console.log(role);
 
   	return (
     <>
-      	<div className="row">
+      <div className="row">
 			<div className="col-md-12 form-search d-flex">
 				<div className='col-md-6'>
 					<Form className="d-flex">
@@ -73,7 +73,7 @@ export const Roles = () => {
 				</div>
 			</div>
 		</div>
-		{<RoleList roles={role} />}
+		{<RoleList roles={role} />} 
     </>
   );
 }

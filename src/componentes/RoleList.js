@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from "react-bootstrap";
 import { Tbodyrol } from './Tbodyrol';
 
-function RoleList({rol}) {
+function RoleList({roles}) {
     
   return (
     <div className="row pt-5">
@@ -17,7 +17,7 @@ function RoleList({rol}) {
               </tr>
             </thead>
             <tbody>
-                { rol.map((rl,index) => {
+                { roles.map((rl,index) => {
                   return <Tbodyrol index={index+1} role={rl} />
                 })}
             </tbody>
