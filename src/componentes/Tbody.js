@@ -17,7 +17,8 @@ export const Tbody = ({usuario,index}) => {
 				swal("Usuario eliminado exitosamente", {
 					icon: "success",
 				});
-				await fetch('http://localhost:4000/api/usuario/'+usuario.uui, {method: 'DELETE',})
+				await fetch('http://localhost:4000/api/usuario/'+usuario.uui, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
+				console.log('http://localhost:4000/api/usuario/'+usuario.uui)
 			} else {
 		  		swal("Eliminación cancelada");
 			}
