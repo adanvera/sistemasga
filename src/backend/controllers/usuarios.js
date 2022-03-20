@@ -41,7 +41,8 @@ const usuarioModificar = async (req,res)=>{
 }
 const usuarioMostrar = async (req,res)=>{
   try {
-    const usuarios = await Usuario.find({estado:true})
+    const usuarios = await Usuario.find()
+    console.log(usuarios);
     res.status(200).json({
       usuarios
     })
