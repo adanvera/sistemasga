@@ -20,8 +20,8 @@ const UsuarioSchema = Schema({
         required: [true, 'La constraseña es obligatorio']
     },
     rol:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Role'
+        type:String,
+        required: [true, 'El rol es obligatorio']
         
     },
     estado:{
