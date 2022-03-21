@@ -84,7 +84,7 @@ function Seguridad() {
       <Container fluid={true} className="mt-5" id='seguridad'>
         <div className='row'>
           <div className='col pb-2'>
-            <h4>SEGURIDAD - NAME </h4>
+            <h4>SEGURIDAD - {(currentScreen.us && 'USUARIO')||(currentScreen.rol && 'ROLES')}</h4> 
           </div>
         </div>
         {/* se agrega condicional para renderizar la ventana respectiva */}

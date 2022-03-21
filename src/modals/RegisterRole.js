@@ -5,8 +5,10 @@ import swal from "sweetalert";
 import { URL_CREAR_ROL } from "../helpers/endPoints";
 
 function RegisterRole() {
-  const [rolename, setRoleName] = useState("")
-
+  const [rol, setRoleName] = useState("")
+  const [optProyecto,setOptProyecto] = useState("")
+  const [optSeguridad,setOptSeguridad] = useState("")
+  const [optDesarrollo,setOptDesarrollo] = useState("")
 
   const options = [
     { value: 'Proyecto', label: 'Proyecto' },
@@ -17,20 +19,22 @@ function RegisterRole() {
 
   const handleSubmitRole= async (e)=>{
       e.preventDefault();
-      if([rolename].includes("")){
+      if([rol].includes("")){
         return swal({
           icon: "error",
           text: "Todos los campos son obligatorios",
         });
       }
-
+      
+      const acceso = [optDesarrollo,optProyecto,optSeguridad]
       let option ={
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({rolename}),
+        body: JSON.stringify({rol,acceso}),
       };
+      console.log(option.body);
       try {
         const res = await fetch(URL_CREAR_ROL, option), 
         json = await res.json();
@@ -55,7 +59,9 @@ function RegisterRole() {
       }
   }
 
-    
+ console.log(optProyecto);
+ console.log(optSeguridad)
+ console.log(optDesarrollo);
 
 
   return (
@@ -80,9 +86,9 @@ function RegisterRole() {
         <div className="col-md-12">
           <label>Con acceso a modulo de: </label>
           <Form className="ml-dos" >
-            <Form.Check type="switch" id="modulo-proyecto" label="Poryecto" />
-            <Form.Check type="switch" id="modulo-seguridad" label="Seguridad" />
-            <Form.Check type="switch" id="modulo-desarrollo" label="Desarrollo"/>
+            <Form.Check type="switch" id="modulo-proyecto" value="proyecto" label="Poryecto" onChange={(e)=>setOptProyecto(e.target.value)} />
+            <Form.Check type="switch" id="modulo-seguridad" value="seguridad"label="Seguridad"  onChange={(e)=>setOptSeguridad(e.target.value)}/>
+            <Form.Check type="switch" id="modulo-desarrollo" value="desarrollo" label="Desarrollo" onChange={(e)=>setOptDesarrollo(e.target.value)}/>
           </Form>
         </div>
         <div className="row mt-5 justify-content-center">
