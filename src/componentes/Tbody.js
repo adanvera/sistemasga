@@ -1,6 +1,10 @@
 import React from "react";
 import swal from "sweetalert";
+import { useState } from "react";
+import { Button, Modal } from "bootstrap";
+import { EditUser } from "./EditUser";
 const urlUsers = "http://localhost:4000/api/usuario/"
+
 
 
 
@@ -25,6 +29,28 @@ export const Tbody = ({usuario,index}) => {
 	  	});
   	}
 
+	function UserEdit({usuario}) {
+		const [show, setShow] = useState(false);
+		
+		const handleClose = () => setShow(false);
+		const handleShow = () => setShow(true);
+	  
+		return (
+		  <>
+			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon><ion-icon name="create-outline"></ion-icon></Button>
+	  
+			<Modal show={show} onHide={handleClose} >
+			  <Modal.Header closeButton>
+			  	<Modal.Title>Editar usuario</Modal.Title>
+			  </Modal.Header>
+			  <Modal.Body>
+			  	<EditUser usuario={usuario} />
+			  </Modal.Body>
+			</Modal>
+		  </>
+		);
+	}
+
 
 	return (
     <>
@@ -43,9 +69,9 @@ export const Tbody = ({usuario,index}) => {
 						<ion-icon name="trash-bin-outline" ></ion-icon>
 					</span>
 				</div>
-				<div className="padright edituser">
+				<div className="padright edituser" >
 					<span className="pten" >
-						<ion-icon name="create-outline"></ion-icon>
+						{/* <UserEdit usuario={usuario}/> */}
 					</span>
 				</div>
 			</td>

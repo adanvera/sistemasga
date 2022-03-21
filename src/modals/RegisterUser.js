@@ -175,7 +175,7 @@ function RegisterUser() {
 											<option disabled selected>SELECCIONAR ROL</option>
                       <Rolelistreg roles={role}/>
 										</Form.Select>
-									</div>
+								</div>
               </div>
               <div className="row mt-5 justify-content-center">
                 <div className="col-md-12 bt-centrar">
