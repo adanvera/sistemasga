@@ -1,5 +1,6 @@
 import React from "react";
 import swal from "sweetalert";
+const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 
@@ -17,7 +18,7 @@ export const Tbody = ({usuario,index}) => {
 				swal("Usuario eliminado exitosamente", {
 					icon: "success",
 				});
-				await fetch('http://localhost:4000/api/usuario/'+usuario.uui, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
+				await fetch(urlUsers+usuario.uui, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
 			} else {
 		  		swal("Eliminación cancelada");
 			}
@@ -36,7 +37,7 @@ export const Tbody = ({usuario,index}) => {
 			</td>
 			<td>{usuario.correo}</td>
 			<td>{usuario.rol}</td>
-			<td className="d-flex">
+			<td className="d-flex justify-content-center">
 				<div className="padright deleteuser">
 					<span className="pten"  onClick = {deleteUser}>
 						<ion-icon name="trash-bin-outline" ></ion-icon>

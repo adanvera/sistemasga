@@ -26,7 +26,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 			<tr>
 			<td className="pl-dos">{index}</td>
 			<td>{rl.rol}</td>
-			<td>{rl.acceso}</td>
+			<td>{rl.acceso }</td>
 			<td className="d-flex">
 				<div className="padright deleteuser">
 					<span className="pten" onClick={deleteRol}>
