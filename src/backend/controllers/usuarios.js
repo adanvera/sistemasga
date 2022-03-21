@@ -1,4 +1,3 @@
-const { obtenerNombreRole } = require('../helpers/helperNombreRol.js')
 const esRolValido = require('../helpers/validarRol')
 const Usuario = require('../Models/usuario')
 const usuarioPost = async (req, res) => {
