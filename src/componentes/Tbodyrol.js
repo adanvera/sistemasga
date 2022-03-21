@@ -15,7 +15,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 		  })
 		  .then( async (willDelete) => {
 			if (willDelete) {
-				await fetch(URL_CREAR_ROL+rol.uui, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
+				await fetch(URL_CREAR_ROL, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
 			  	swal("Rol eliminado exitosamente", {
 				icon: "success",
 			  });
