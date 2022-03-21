@@ -172,7 +172,7 @@ function RegisterUser() {
                 </div>
                 <div className='col-md-12 mt-3'>
 										<Form.Select aria-label="Tipo" onChange={(e) => setRolUser(e.target.value)} >
-											<option disabled>SELECCIONAR ROL</option>
+											<option disabled selected>SELECCIONAR ROL</option>
                       <Rolelistreg roles={role}/>
 										</Form.Select>
 									</div>
