@@ -9,6 +9,10 @@ const RoleSchema = Schema({
         type:Array,
         required: true,
         default:[]
+    },
+    estado:{
+        type:Boolean,
+        default:true
     }
 });
 
