@@ -10,9 +10,7 @@ function Sidebar({rol}) {
 		localStorage.clear()
 		navigate('/')
 	}
-
-	console.log(rol);
-
+	
 	return (
 		<>
 			<div className="sidebar border-end bg-white" id="sidebar-wrapper">
