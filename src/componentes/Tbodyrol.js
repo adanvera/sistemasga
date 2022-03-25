@@ -1,11 +1,6 @@
 import React from "react"
 import swal from "sweetalert"
-<<<<<<< HEAD
-import { URL_DEL_ROL } from "../helpers/endPoints"
-
-=======
 import { URL_ELIMINAR_ROL } from "../helpers/endPoints"
->>>>>>> 58add261743a6d1a08c14b6f5c3a9064c6a861c8
 
 
 export const Tbodyrol = ({ role: rl, index }) => {
