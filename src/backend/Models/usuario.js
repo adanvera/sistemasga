@@ -1,9 +1,14 @@
+const { default: mongoose } = require('mongoose');
 const {Schema ,model}= require('mongoose')
 
 const UsuarioSchema = Schema({
     nombre:{
         type: String,
         required: [true, 'El nombre es obligatorio']
+    },
+    apellido:{
+        type: String,
+        required: [true, 'El apellido es obligatorio']
     },
     correo:{
         type: String,
@@ -15,9 +20,9 @@ const UsuarioSchema = Schema({
         required: [true, 'La constraseña es obligatorio']
     },
     rol:{
-        type: String,
-        required: true,
-        emun:['ADMIN_ROLE','USER_ROLE']
+        type:String,
+        required: [true, 'El rol es obligatorio']
+        
     },
     estado:{
         type: Boolean,
