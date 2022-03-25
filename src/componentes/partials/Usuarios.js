@@ -29,8 +29,6 @@ export const Usuarios = ({ usuario,rol }) => {
 		  </>
 		);
 	}
-
-	console.log('este es mi rol:', rol);
 	return (
 		<>
 			<div className="row">
