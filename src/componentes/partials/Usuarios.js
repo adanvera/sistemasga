@@ -16,7 +16,7 @@ export const Usuarios = ({ usuario,rol }) => {
 	  
 		return (
 		  <>
-			<Button className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'} onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear</Button>
+			<Button className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'} onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear usuario</Button>
 	  
 			<Modal show={show} onHide={handleClose} >
 			  <Modal.Header closeButton>

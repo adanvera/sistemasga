@@ -7,7 +7,8 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 
 
-export const Roles = (rol) => {
+export const Roles = ({rol}) => {
+	console.log(rol);
   	function ModalRegisterRole() {
 		const [show, setShow] = useState(false);
 		
@@ -16,7 +17,7 @@ export const Roles = (rol) => {
 	  
 		return (
 		  <>
-			<Button variant="btn btn-cr-pro" onClick={handleShow}
+			<Button onClick={handleShow}
 				className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'}
 				> <ion-icon name="add-circle-outline"></ion-icon> 
 			crear rol</Button>

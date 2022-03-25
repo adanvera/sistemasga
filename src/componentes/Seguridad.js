@@ -88,7 +88,7 @@ function Seguridad({rol}) {
         </div>
         {/* se agrega condicional para renderizar la ventana respectiva */}
         {currentScreen.us && <Usuarios usuario={usuario} rol={rol} /> }
-        { currentScreen.rol && <Roles/>  }
+        { currentScreen.rol && <Roles rol={rol}/>  }
       </Container> 
     </>
   );
