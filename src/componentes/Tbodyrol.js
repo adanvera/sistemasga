@@ -1,12 +1,18 @@
 import React from "react"
 import swal from "sweetalert"
+<<<<<<< HEAD
 import { URL_DEL_ROL } from "../helpers/endPoints"
 
+=======
+import { URL_ELIMINAR_ROL } from "../helpers/endPoints"
+>>>>>>> 58add261743a6d1a08c14b6f5c3a9064c6a861c8
 
 
 export const Tbodyrol = ({ role: rl, index }) => {
 
 	const deleteRol= async()=>{
+		const {_id} = rl
+		console.log(_id);
 		swal({
 			title: "¿Estas seguro?",
 			text: "Una vez elimnado este rol no se puede revertir",
@@ -16,12 +22,11 @@ export const Tbodyrol = ({ role: rl, index }) => {
 		  })
 		  .then( async (willDelete) => {
 			if (willDelete) {
-				swal("Rol eliminado exitosamente", {
-					icon: "success",
-				});
-				console.log(rl)
-				await fetch(URL_DEL_ROL+rl._id, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
-			} else{
+				await fetch(URL_ELIMINAR_ROL+_id, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
+			  	swal("Rol eliminado exitosamente", {
+				icon: "success",
+			  });
+			} else {
 			  swal("Eliminacion cancelada");
 			}
 		  });

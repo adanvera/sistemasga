@@ -59,10 +59,6 @@ function RegisterRole() {
       }
   }
 
- console.log(optProyecto);
- console.log(optSeguridad)
- console.log(optDesarrollo);
-
 
   return (
 
