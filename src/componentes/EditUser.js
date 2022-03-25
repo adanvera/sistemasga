@@ -85,7 +85,7 @@ export const EditUser = ({ usuario }) => {
                                 <Form.Control
                                     type="text"
                                     placeholder="Ingrese nombre"
-                                    onChange={(e) => setNombre(e.target.value)}
+                                    onChange={(e) => setNombre(usuario.nombre.value)}
                                 />
                             </FloatingLabel>
                         </>

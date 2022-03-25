@@ -1,22 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {Container, Form,FormControl, Button} from 'react-bootstrap'
+import {Container} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
-
-
-import Navbar from './Navbar'
 import Sidebar from './Sidebar'
-import DetailsProject from './DetailsProject'
 import Proyects from './Proyects'
 import Seguridad from './Seguridad'
 import Desarrollo from './Desarrollo'
+const urlRoles = "http://localhost:4000/api/role/"
 
 
 
 export const Dashboard = () => {
 	const {user,currentScreen} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
+	const [role, setRole] = useState([])
 	const navigate = useNavigate()
+	const [authuser, setAuth] = useState('')
 
 
 	//consultamos el localStorage
@@ -25,25 +24,29 @@ export const Dashboard = () => {
 		if(!data ){
 			setNombre(user.usuarioEncontrado.nombre)
 			localStorage.setItem('auth',JSON.stringify(user))
+			setRole(user.usuarioEncontrado.role)
 			return
 		}
 		const usuario = JSON.parse(data);
 		setNombre(usuario.usuarioEncontrado.nombre);
+		setRole(usuario.usuarioEncontrado.rol)		
 	},)
 
-  const logout = ()=>{
+	console.log(role);
+
+  	const logout = ()=>{
 		localStorage.clear()
     navigate('/')
   }
 	return (
 		<>
 			<Container fluid={true} className="d-flex p-0 m-0">
-				<Sidebar/>
-				<Container  fluid={true} id="dash">
+				<Sidebar rol={role}/>
+				<Container  fluid={true} id="dash" rol={role}>
 					{/* <Navbar/> */}
-					{	currentScreen.proyectos && <Proyects/>}
-					{	currentScreen.desarrollo && <Desarrollo/>}
-					{	currentScreen.seguridad&& <Seguridad/>}
+					{	currentScreen.proyectos && <Proyects rol={role}/>}
+					{	currentScreen.desarrollo && <Desarrollo rol={role}/>}
+					{	currentScreen.seguridad&& <Seguridad rol={role}/>}
 				</Container>
 			</Container>
 		</>

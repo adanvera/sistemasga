@@ -15,9 +15,6 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 function Seguridad() {
-
-  
-  
   const [usuario, setUsurio] = useState([])
   const [currentScreen,setCurrentScreen] = useState({us:true,rol:false,per:false})
   
@@ -26,9 +23,7 @@ function Seguridad() {
       try {
         const res = await fetch(urlUsers),
         data = await res.json()
-        
         setUsurio(data.usuarios)
-
       } catch (error) {
         console.log(error);
       }

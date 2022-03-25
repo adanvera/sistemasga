@@ -37,7 +37,7 @@ export const Roles = () => {
 			const res = await fetch(urlRoles),
 			data = await res.json()
 
-	
+			console.log(data);
 			setRole(data.roles)
 			
 		  } catch (error) {

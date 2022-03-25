@@ -1,6 +1,7 @@
 import React from "react"
 import swal from "sweetalert"
-import { URL_CREAR_ROL } from "../helpers/endPoints"
+import { URL_DEL_ROL } from "../helpers/endPoints"
+
 
 
 export const Tbodyrol = ({ role: rl, index }) => {
@@ -15,11 +16,12 @@ export const Tbodyrol = ({ role: rl, index }) => {
 		  })
 		  .then( async (willDelete) => {
 			if (willDelete) {
-				await fetch(URL_CREAR_ROL, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
-			  	swal("Rol eliminado exitosamente", {
-				icon: "success",
-			  });
-			} else {
+				swal("Rol eliminado exitosamente", {
+					icon: "success",
+				});
+				console.log(rl)
+				await fetch(URL_DEL_ROL+rl._id, {method: 'DELETE', headers: {"Content-Type":"application/json"}} )
+			} else{
 			  swal("Eliminacion cancelada");
 			}
 		  });

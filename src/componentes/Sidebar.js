@@ -1,15 +1,17 @@
 import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
 
-function Sidebar() {
+function Sidebar({rol}) {
 	const navigate = useNavigate()
 	const { currentScreen, setCurrentScreen } = useContext(DataContext)
 	const logout = () => {
 		localStorage.clear()
 		navigate('/')
 	}
+
+	console.log(rol);
 
 	return (
 		<>
@@ -21,7 +23,7 @@ function Sidebar() {
 					<ul className="list-unstyled">
 						<li>
 							<button
-								className="list-group-item list-group-item-action p-3"
+								className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
 								onClick={(e) =>
 									setCurrentScreen({ ...currentScreen, proyectos: true,seguridad:false,desarrollo:false })
 								}
@@ -31,7 +33,7 @@ function Sidebar() {
 							</button>
 						</li>
 						<li>
-							<button className="list-group-item list-group-item-action p-3"
+							<button className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
 								onClick={(e) =>
 									setCurrentScreen({ ...currentScreen, desarrollo: true,proyectos:false,seguridad:false })
 								}
@@ -42,7 +44,7 @@ function Sidebar() {
 							</button>
 						</li>
 						<li>
-							<button className="list-group-item list-group-item-action p-3"
+							<button className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
 							onClick={(e) =>
 								setCurrentScreen({ ...currentScreen, seguridad: true,proyectos:false,desarrollo:false })
 							}>

@@ -29,30 +29,7 @@ export const Tbody = ({usuario,index}) => {
 	  	});
   	}
 
-	function UserEdit({usuario}) {
-		const [show, setShow] = useState(false);
-		
-		const handleClose = () => setShow(false);
-		const handleShow = () => setShow(true);
-	  
-		return (
-		  <>
-			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon><ion-icon name="create-outline"></ion-icon></Button>
-	  
-			<Modal show={show} onHide={handleClose} >
-			  <Modal.Header closeButton>
-			  	<Modal.Title>Editar usuario</Modal.Title>
-			  </Modal.Header>
-			  <Modal.Body>
-			  	<EditUser usuario={usuario} />
-			  </Modal.Body>
-			</Modal>
-		  </>
-		);
-	}
-
-
-	return (
+	return(
     <>
 	<tr>
 			<td className="pl-dos">{index}</td>
@@ -71,7 +48,7 @@ export const Tbody = ({usuario,index}) => {
 				</div>
 				<div className="padright edituser" >
 					<span className="pten" >
-						{/* <UserEdit usuario={usuario}/> */}
+						
 					</span>
 				</div>
 			</td>

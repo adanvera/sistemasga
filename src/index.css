@@ -748,3 +748,8 @@ button.nav-sg:first-child{
 .swal-text{
   text-align: center !important;
 }
+
+
+.list-group-item.list-group-item-action.p-3.disabled{
+  opacity: 0.3;
+}
