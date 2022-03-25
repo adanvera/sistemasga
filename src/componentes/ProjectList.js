@@ -4,11 +4,11 @@ import myphoto from '../images/perfil.png'
 import { Link } from 'react-router-dom';
 
 
-function ProjectList() {
+function ProjectList({rol}) {
     return (
     <div className='row pt-5'>
         <div className='col-md-12' id='tablelist'>
-          <Table responsive="md">
+          <Table responsive="md" className={rol === 'ADMIN' ? '' : ''}>
             <thead>
               <tr>
                 <th>#</th>

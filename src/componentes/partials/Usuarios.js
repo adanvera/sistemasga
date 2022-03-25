@@ -7,7 +7,7 @@ import { useState } from 'react'
 import RegisterUser from '../../modals/RegisterUser';
 
 
-export const Usuarios = ({ usuario }) => {
+export const Usuarios = ({ usuario,rol }) => {
 	function ModalRegister() {
 		const [show, setShow] = useState(false);
 		
@@ -16,7 +16,7 @@ export const Usuarios = ({ usuario }) => {
 	  
 		return (
 		  <>
-			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear usuario</Button>
+			<Button className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'} onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear</Button>
 	  
 			<Modal show={show} onHide={handleClose} >
 			  <Modal.Header closeButton>
@@ -29,6 +29,8 @@ export const Usuarios = ({ usuario }) => {
 		  </>
 		);
 	}
+
+	console.log('este es mi rol:', rol);
 	return (
 		<>
 			<div className="row">

@@ -14,7 +14,7 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 
-function Seguridad() {
+function Seguridad({rol}) {
   const [usuario, setUsurio] = useState([])
   const [currentScreen,setCurrentScreen] = useState({us:true,rol:false,per:false})
   
@@ -59,9 +59,13 @@ function Seguridad() {
       <div className="navbar justify-content-between w-100 " variant="dark">
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>
-            <button type="submit" className='nav-sg' onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios</button>
-            <button type="submit" className='nav-sg'>permisos</button>
-            <button type="submit" className='nav-sg' onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
+            <button type="submit"
+              className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}
+              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios
+            
+            </button>
+            <button type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}>permisos</button>
+            <button rol={rol} type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'} onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">
@@ -83,7 +87,7 @@ function Seguridad() {
           </div>
         </div>
         {/* se agrega condicional para renderizar la ventana respectiva */}
-        {currentScreen.us && <Usuarios usuario={usuario}/> }
+        {currentScreen.us && <Usuarios usuario={usuario} rol={rol} /> }
         { currentScreen.rol && <Roles/>  }
       </Container> 
     </>

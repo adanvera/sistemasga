@@ -14,7 +14,7 @@ import { DataContext } from '../context/DataContext'
 
 
 
-function Proyects() {
+function Proyects({rol}) {
 
   const [currentScreen,setCurrentScreen] = useState({us:true,rol:false,per:false})
 
@@ -48,16 +48,22 @@ function Proyects() {
 		setNombre(usuario.usuarioEncontrado.nombre);
         setApellido(usuario.usuarioEncontrado.apellido);
 	},)
-  
 
   return (
     <>
       <div className="navbar justify-content-between w-100 " variant="dark">
-        <nav className="items">
+        <nav  className='items'>
             <ion-icon name="reorder-three-outline"></ion-icon>
-            <button type="submit" className='nav-sg nav-active' onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >Proyectos</button>
-            <button type="submit" className='nav-sg'>item 2</button>
-            <button type="submit" className='nav-sg' onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >item 3</button>
+            <button type="submit" 
+              className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'} 
+            
+              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >Proyectos
+            </button>
+            <button 
+              type="submit" 
+              className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}>item 2
+            </button>
+            <button type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'} onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >item 3</button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">
@@ -77,7 +83,7 @@ function Proyects() {
             <h4>PROYECTOS</h4>
           </div>
           <div className='col a-end'>
-            <button className='btn btn-cr-pro' type="" onClick={()=>showalert()}>crear proyecto</button>
+            <button  className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'}  type="" onClick={()=>showalert()}>crear proyecto</button>
           </div>
         </div>
         <div className='row'>
@@ -89,7 +95,7 @@ function Proyects() {
           </div>
         </div>
 
-        <ProjectList/>
+        <ProjectList rol={rol}/>
 
 
       </Container>

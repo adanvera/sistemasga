@@ -32,8 +32,6 @@ export const Dashboard = () => {
 		setRole(usuario.usuarioEncontrado.rol)		
 	},)
 
-	console.log(role);
-
   	const logout = ()=>{
 		localStorage.clear()
     navigate('/')
@@ -46,7 +44,7 @@ export const Dashboard = () => {
 					{/* <Navbar/> */}
 					{	currentScreen.proyectos && <Proyects rol={role}/>}
 					{	currentScreen.desarrollo && <Desarrollo rol={role}/>}
-					{	currentScreen.seguridad&& <Seguridad rol={role}/>}
+					{	currentScreen.seguridad&& <Seguridad rol={role} />}
 				</Container>
 			</Container>
 		</>

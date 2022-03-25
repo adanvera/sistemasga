@@ -753,3 +753,16 @@ button.nav-sg:first-child{
 .list-group-item.list-group-item-action.p-3.disabled{
   opacity: 0.3;
 }
+
+.nav-sg.disabled{
+  opacity: 0.3;
+}
+
+.disabled{
+  pointer-events: none;
+}
+
+.btn.btn-cr-pro.disabled{
+  opacity: 0.3;
+  cursor:no-drop;
+}

@@ -7,7 +7,7 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 
 
-export const Roles = () => {
+export const Roles = (rol) => {
   	function ModalRegisterRole() {
 		const [show, setShow] = useState(false);
 		
@@ -16,7 +16,10 @@ export const Roles = () => {
 	  
 		return (
 		  <>
-			<Button variant="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear rol</Button>
+			<Button variant="btn btn-cr-pro" onClick={handleShow}
+				className={rol === 'ADMIN' ? 'btn btn-cr-pro' : 'btn btn-cr-pro disabled'}
+				> <ion-icon name="add-circle-outline"></ion-icon> 
+			crear rol</Button>
 	  
 			<Modal show={show} onHide={handleClose} >
 			  <Modal.Header closeButton>

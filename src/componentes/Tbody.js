@@ -2,7 +2,7 @@ import React from "react";
 import swal from "sweetalert";
 import { useState } from "react";
 import { Button, Modal } from "bootstrap";
-import { EditUser } from "./EditUser";
+import EditUser from "../modals/EditUser";
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
@@ -29,6 +29,10 @@ export const Tbody = ({usuario,index}) => {
 	  	});
   	}
 
+	const editUserModal= async()=> {	  
+		
+	}
+
 	return(
     <>
 	<tr>
@@ -46,9 +50,9 @@ export const Tbody = ({usuario,index}) => {
 						<ion-icon name="trash-bin-outline" ></ion-icon>
 					</span>
 				</div>
-				<div className="padright edituser" >
+				<div className="padright edituser"  onClick = {editUserModal}>
 					<span className="pten" >
-						
+						<ion-icon name="options-outline"></ion-icon>
 					</span>
 				</div>
 			</td>
