@@ -30,8 +30,7 @@ function Seguridad({rol}) {
     }
     getUser()
   }, [])
-  console.log(currentScreen);
-
+  
   const {user} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
   const [apellido, setApellido] = useState('')
