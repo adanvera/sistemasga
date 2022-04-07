@@ -21,8 +21,6 @@ export const Tbodyrol = ({ role: rl, index }) => {
 			  	swal("Rol eliminado exitosamente", {
 				icon: "success",
 			  });
-			} else {
-			  swal("Eliminacion cancelada");
 			}
 		  });
 	}

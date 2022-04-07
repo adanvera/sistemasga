@@ -21,7 +21,7 @@ function Sidebar({rol}) {
 					<ul className="list-unstyled">
 						<li>
 							<button
-								className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
+								className="list-group-item list-group-item-action p-3"
 								onClick={(e) =>
 									setCurrentScreen({ ...currentScreen, proyectos: true,seguridad:false,desarrollo:false })
 								}
@@ -31,7 +31,7 @@ function Sidebar({rol}) {
 							</button>
 						</li>
 						<li>
-							<button className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
+							<button className="list-group-item list-group-item-action p-3"
 								onClick={(e) =>
 									setCurrentScreen({ ...currentScreen, desarrollo: true,proyectos:false,seguridad:false })
 								}
@@ -42,7 +42,7 @@ function Sidebar({rol}) {
 							</button>
 						</li>
 						<li>
-							<button className={rol === 'ADMIN' ? 'list-group-item list-group-item-action p-3' :  'list-group-item list-group-item-action p-3 disabled'}
+							<button className="list-group-item list-group-item-action p-3"
 							onClick={(e) =>
 								setCurrentScreen({ ...currentScreen, seguridad: true,proyectos:false,desarrollo:false })
 							}>

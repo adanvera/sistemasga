@@ -40,12 +40,11 @@ function Desarrollo({rol}) {
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>
             <button type="submit"
-              className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}
+              className="nav-sg"
               onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >Desarrollo
-            
             </button>
-            <button type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}>Item 1</button>
-            <button type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'} onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >Item 2</button>
+            <button type="submit" className="nav-sg">Item 1</button>
+            <button type="submit" className="nav-sg" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >Item 2</button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">

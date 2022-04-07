@@ -59,12 +59,10 @@ function Seguridad({rol}) {
         <nav className="items">
             <ion-icon name="reorder-three-outline"></ion-icon>
             <button type="submit"
-              className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}
-              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >usuarios
-            
+              className="nav-sg"
+              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >Usuarios
             </button>
-            <button type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'}>permisos</button>
-            <button rol={rol} type="submit" className={rol === "ADMIN" ? 'nav-sg': 'nav-sg disabled'} onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >roles</button>
+            <button rol={rol} type="submit" className="nav-sg" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >Roles y permisos</button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">
