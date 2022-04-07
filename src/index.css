@@ -259,6 +259,15 @@ a.nav-link.crr {
   color: #FFFFFF;
 }
 
+.btn-update{
+  bottom: 265px;
+  background: #00BF9C !important;
+  border: 1px solid #00BF9C !important;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #FFFFFF;
+}
+
 .col-md-6.bt-centrar button.btn-crear:hover{
   color: rgba(73, 80, 87, 1);
   border: 1px solid ;
@@ -681,6 +690,7 @@ button.list-group-item.list-group-item-action.p-3:active{
 
 .pten{
   padding: 10px;
+  color: rgba(0, 191, 156, 1) !important;
 }
 
 .register-box.container select.form-select {
@@ -801,4 +811,9 @@ button.nav-sg:first-child{
 
 .display-none {
   display: none;
+}
+
+button.btn.btn-primary.pten {
+  background: none;
+  border: none;
 }
