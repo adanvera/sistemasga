@@ -1,7 +1,6 @@
 import {CButton,CModal,CModalBody,CModalFooter,CModalHeader,CModalTitle} from "@coreui/react";
 import React, { useState } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
-import { log } from "react-modal/lib/helpers/ariaAppHider";
 import swal from "sweetalert";
 
 const urlUsers = "http://localhost:4000/api/usuario/";
@@ -24,6 +23,7 @@ export const Tbody = ({ usuario, index }) => {
 		repetirPassword: usuario.repetirPassword,
 		rol: usuario.role
 	}
+
 	const deleteUser = async () => {
 		swal({
 			title: "¿Estas seguro?",
@@ -50,12 +50,13 @@ export const Tbody = ({ usuario, index }) => {
 		e.preventDefault();
 
 		swal({
-			title:"hola",
-			icon:"success"
+			title: "Editar usuario",
+			text: "¿Estas seguro de modicar los datos?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
 		})
 	}
-
-
 
 	return (
 		<>
