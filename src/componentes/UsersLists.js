@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Tbody } from "./Tbody.js";
 
 
-function UsersLists({usuario}) {
+function UsersLists({usuario}, {role}) {
 
  
   return (
@@ -22,7 +22,7 @@ function UsersLists({usuario}) {
             </thead>
             <tbody>
                 { usuario.map((us,index) => {
-                  return <Tbody index={index+1} usuario={us} />
+                  return <Tbody index={index+1} usuario={us} role={role} />
                 })}
             </tbody>
           </Table>

@@ -676,11 +676,6 @@ button.list-group-item.list-group-item-action.p-3:active{
   background: rgba(164, 207, 48, 0.1);
 }
 
-.padright.deleteuser span:hover{
-  color: #FF5263;
-  background: rgba(255, 82, 99, 0.1);
-}
-
 #tablelist{
   background-color: #FFFFFF;
   border-radius: 18px;
@@ -816,4 +811,8 @@ button.nav-sg:first-child{
 button.btn.btn-primary.pten {
   background: none;
   border: none;
+}
+
+span.pten ion-icon {
+  padding-top: 8px;
 }

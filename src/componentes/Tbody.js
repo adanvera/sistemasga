@@ -1,8 +1,8 @@
 import {CButton,CModal,CModalBody,CModalFooter,CModalHeader,CModalTitle} from "@coreui/react";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
-import { log } from "react-modal/lib/helpers/ariaAppHider";
 import swal from "sweetalert";
+import { DataContext } from "../context/DataContext";
 
 const urlUsers = "http://localhost:4000/api/usuario/";
 
@@ -16,6 +16,22 @@ export const Tbody = ({ usuario, index }) => {
 	const [rol, setRolUser] = useState("");
 
 
+	const [roleAuth, setRoleAuth] = useState([])
+	const {user,currentScreen} = useContext(DataContext)
+
+	//consultamos el localStorage y guardamos valor de rol 
+	//para poder filtrar funciones mediante la misma
+	useEffect(()=>{
+		const data = localStorage.getItem('auth')
+		if(!data ){
+			localStorage.setItem('auth',JSON.stringify(user))
+			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			return
+		}
+		const usuarioAuth = JSON.parse(data);
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)		
+	},)
+
 	const initialState = {
 		nombre: usuario.nombre,
 		apellido: usuario.apellido,
@@ -24,24 +40,33 @@ export const Tbody = ({ usuario, index }) => {
 		repetirPassword: usuario.repetirPassword,
 		rol: usuario.role
 	}
+
 	const deleteUser = async () => {
-		swal({
-			title: "¿Estas seguro?",
-			text: "Una vez eliminado el usuario no se puede revertir",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-		}).then(async (willDelete) => {
-			if (willDelete) {
-				swal("Usuario eliminado exitosamente", {
-					icon: "success",
-				});
-				await fetch(urlUsers + usuario.uui, {
-					method: "DELETE",
-					headers: { "Content-Type": "application/json" },
-				});
-			}
-		});
+		if(roleAuth==='ADMIN'){
+			swal({
+				title: "¿Estas seguro?",
+				text: "Una vez eliminado el usuario no se puede revertir",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			}).then(async (willDelete) => {
+				if (willDelete) {
+					swal("Usuario eliminado exitosamente", {
+						icon: "success",
+					});
+					await fetch(urlUsers + usuario.uui, {
+						method: "DELETE",
+						headers: { "Content-Type": "application/json" },
+					});
+				}
+			});
+		}else{
+			swal({
+				title: "ADVERTENCIA",
+				text: "Su rol no posee permisos para eliminar usuarios",
+				icon: "warning",
+      			button: "ok",
+		})}
 	};
 
 	const [visible, setVisible] = useState(false);
@@ -50,12 +75,22 @@ export const Tbody = ({ usuario, index }) => {
 		e.preventDefault();
 
 		swal({
-			title:"hola",
-			icon:"success"
+			title: "Editar usuario",
+			text: "¿Estas seguro de modicar los datos?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
 		})
 	}
 
-
+	const functionRole = (data) =>{
+		if(data==='ADMIN'){
+			return 'ADMINISTRADOR'
+		}
+		if(data==='user_role'){
+			return 'OPERADOR'
+		}
+	}
 
 	return (
 		<>
@@ -67,7 +102,10 @@ export const Tbody = ({ usuario, index }) => {
 					</span>
 				</td>
 				<td>{usuario.correo}</td>
-				<td>{usuario.rol}</td>
+				<td>
+					{functionRole(usuario.rol)}
+					{/* {usuario.rol}	 */}
+				</td>
 				<td className="d-flex justify-content-center">
 					<div className="padright deleteuser">
 						<span className="pten" onClick={deleteUser}>
