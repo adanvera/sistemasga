@@ -86,8 +86,7 @@ function RegisterUser() {
 		  }
 		}
 		getRole()
-	
-	  }, [])
+	}, [])
 	
 
 

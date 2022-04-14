@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
 import swal from "sweetalert";
 import { DataContext } from "../context/DataContext";
+import { URL_EDITAR_USER } from "../helpers/endPoints";
+import EditDataUser from "./partials/EditDataUser";
 
 const urlUsers = "http://localhost:4000/api/usuario/";
 
@@ -29,7 +31,7 @@ export const Tbody = ({ usuario, index }) => {
 			return
 		}
 		const usuarioAuth = JSON.parse(data);
-		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)		
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
 	},)
 
 	const initialState = {
@@ -66,7 +68,8 @@ export const Tbody = ({ usuario, index }) => {
 				text: "Su rol no posee permisos para eliminar usuarios",
 				icon: "warning",
       			button: "ok",
-		})}
+			})
+		}
 	};
 
 	const [visible, setVisible] = useState(false);
@@ -92,6 +95,20 @@ export const Tbody = ({ usuario, index }) => {
 		}
 	}
 
+	const editUser = async () => {
+		if(roleAuth==='ADMIN'){
+			setVisible(!visible)
+		}else{
+			swal({
+		 		title: "ADVERTENCIA",
+		 		text: "Su rol no posee permisos para eliminar usuarios",
+		 		icon: "warning",
+      	 		button: "ok",
+		 	})
+		}
+		
+	}
+
 	return (
 		<>
 			<tr>
@@ -113,7 +130,8 @@ export const Tbody = ({ usuario, index }) => {
 						</span>
 					</div>
 					<div className="padright edituser">
-						<CButton className="pten" onClick={() => setVisible(!visible)}>
+						<CButton className="pten" onClick={editUser} >
+							{/* onClick={() => setVisible(!visible)} */}
 							<ion-icon name="options-outline"></ion-icon>
 						</CButton>
 					</div>
@@ -125,94 +143,8 @@ export const Tbody = ({ usuario, index }) => {
 					<CModalTitle>Editar usuario</CModalTitle>
 				</CModalHeader>
 				<CModalBody>
-					<section className="container-fluid register-content">
-						<div id="">
-							<div className="row justify-content-center">
-								<div className="col-md-6">
-									<>
-										<FloatingLabel
-											controlId="floatingInputName"
-											label={usuario.nombre}
-											className="mb-3"
-										>
-											<Form.Control
-												type="text"
-												placeholder={usuario.nombre}
-												onChange={(e) => setNombre(e.target.value)}
-											/>
-										</FloatingLabel>
-									</>
-								</div>
-								<div className="col-md-6">
-									<>
-										<FloatingLabel
-											controlId="floatingInputLastName"
-											label="Apellido"
-											className="mb-3"
-										>
-											<Form.Control
-												type="text"
-												placeholder="Ingrese apellido"
-											/>
-										</FloatingLabel>
-									</>
-								</div>
-							</div>
-							<div className="row justify-content-center">
-								<div className="col-md-12">
-									<>
-										<FloatingLabel
-											controlId="floatingInputMail"
-											label="Correo electrónico"
-											className="mb-3"
-										>
-											<Form.Control
-												type="mail"
-												placeholder="Ingrese correo electrónico"
-											/>
-										</FloatingLabel>
-									</>
-								</div>
-							</div>
-							<div className="row justify-content-center">
-								<div className="col-md-6">
-									<FloatingLabel
-										controlId="floatingPassword"
-										label="Contraseña"
-									>
-										<Form.Control
-											type="password"
-											placeholder="Ingrese contraseña"
-										/>
-									</FloatingLabel>
-								</div>
-								<div className="col-md-6">
-									<FloatingLabel
-										controlId="floatingConfirmPassword"
-										label="Confirmar contraseña"
-									>
-										<Form.Control
-											type="password"
-											placeholder="Imgrese contraseña"
-
-										/>
-									</FloatingLabel>
-								</div>
-								<div className="col-md-12 mt-3">
-									<Form.Select aria-label="Tipo">
-										<option disabled selected>
-											SELECCIONAR ROL
-										</option>
-									</Form.Select>
-								</div>
-							</div>
-						</div>
-					</section>
+					 <EditDataUser usuario={usuario}/>
 				</CModalBody>
-				<CModalFooter>
-					<CButton color="secondary" onClick={() => setVisible(false)}>cancelar</CButton>
-					<CButton onClick={submitToggle} className="btn-update">actualizar usuario</CButton>
-				</CModalFooter>
 			</CModal>
 		</>
 	);

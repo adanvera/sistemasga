@@ -1,16 +1,18 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import UserTable from "./partials/UserTable.js";
 import { Tbody } from "./Tbody.js";
 
 
-function UsersLists({usuario}, {role}) {
 
- 
+
+function UsersLists({ usuario }, { role }) {
+
   return (
     <>
       <div className="row pt-5">
         <div className="col-md-12">
-          <Table responsive="md"  id="tablelist">
+          {/* <Table responsive="md" id="tablelist">
             <thead>
               <tr>
                 <th>#</th>
@@ -21,11 +23,13 @@ function UsersLists({usuario}, {role}) {
               </tr>
             </thead>
             <tbody>
-                { usuario.map((us,index) => {
-                  return <Tbody index={index+1} usuario={us} role={role} />
-                })}
+              {usuario.map((us, index) => {
+                return <Tbody index={index + 1} usuario={us} role={role} />
+              })}
             </tbody>
-          </Table>
+          </Table> */}
+          <UserTable/>
+
         </div>
       </div>
     </>

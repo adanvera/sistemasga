@@ -32,8 +32,8 @@ export const Usuarios = ({ usuario,rol }) => {
 		const {user,currentScreen} = useContext(DataContext)
 		const [nombre,setNombre] = useState('')	
 		const [role, setRole] = useState([])
-		const navigate = useNavigate()
 		const [authuser, setAuth] = useState('')
+
 
 		//consultamos el localStorage
 		useEffect(()=>{
@@ -77,18 +77,6 @@ export const Usuarios = ({ usuario,rol }) => {
 			<div className="row">
 				<div className="col-md-12 form-search d-flex">
 					<div className='col-md-6'>
-						<Form className="d-flex">
-							<FormControl
-								type="search"
-								placeholder="Buscar usuario"
-								className="me-2"
-								aria-label="Search"
-								onChange={handleSearch} 
-							/>
-							<Button variant="outline-success">
-								<ion-icon name="search-outline"></ion-icon>
-							</Button>
-						</Form>
 					</div>
 					<div className='col-md-6 t-a'>
 						<ModalRegister />
