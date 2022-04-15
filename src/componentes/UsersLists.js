@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import UserTable from "./partials/UserTable.js";
+
 import { Tbody } from "./Tbody.js";
 
 
@@ -29,7 +29,6 @@ function UsersLists({ usuario }, { role }) {
             </tbody>
           </Table> */}
           <UserTable/>
-
         </div>
       </div>
     </>
