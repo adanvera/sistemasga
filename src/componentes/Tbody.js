@@ -131,7 +131,6 @@ export const Tbody = ({ usuario, index }) => {
 					</div>
 					<div className="padright edituser">
 						<CButton className="pten" onClick={editUser} >
-							{/* onClick={() => setVisible(!visible)} */}
 							<ion-icon name="options-outline"></ion-icon>
 						</CButton>
 					</div>
@@ -143,7 +142,7 @@ export const Tbody = ({ usuario, index }) => {
 					<CModalTitle>Editar usuario</CModalTitle>
 				</CModalHeader>
 				<CModalBody>
-					 <EditDataUser usuario={usuario}/>
+					<EditDataUser usuario={usuario}/>
 				</CModalBody>
 			</CModal>
 		</>

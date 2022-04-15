@@ -3,7 +3,7 @@ const Usuario = require("../Models/usuario");
 
 const usuarioPost = async (req, res) => {
 	const user = new Usuario(req.body);
-
+	
 	try {
 		await user.save();
 		res.status(200).json({
