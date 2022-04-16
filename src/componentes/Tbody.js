@@ -10,14 +10,12 @@ const urlUsers = "http://localhost:4000/api/usuario/";
 
 export const Tbody = ({ usuario, index }) => {
 
-	const [nombre, setNombre] = useState("");
-	const [apellido, setApellido] = useState("");
-	const [correo, setCorreo] = useState("");
-	const [password, setPassword] = useState("");
-	const [repetirPassword, setRepetirPassword] = useState("");
-	const [rol, setRolUser] = useState("");
-
-
+	const [nombre, setNombre] = useState("")
+	const [apellido, setApellido] = useState("")
+	const [correo, setCorreo] = useState("")
+	const [password, setPassword] = useState("")
+	const [repetirPassword, setRepetirPassword] = useState("")
+	const [rol, setRolUser] = useState("")
 	const [roleAuth, setRoleAuth] = useState([])
 	const {user,currentScreen} = useContext(DataContext)
 

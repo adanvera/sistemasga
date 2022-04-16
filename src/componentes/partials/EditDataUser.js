@@ -17,8 +17,6 @@ export const EditDataUser = ({ usuario, index }) => {
     const [visible, setVisible] = useState(false);
     const [role, setRole] = useState([])
 
-
-
     useEffect(() => {
         const getRole = async () => {
             try {

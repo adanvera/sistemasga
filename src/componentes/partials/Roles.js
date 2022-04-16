@@ -73,8 +73,6 @@ export const Roles = ({ rol }) => {
 			try {
 				const res = await fetch(urlRoles),
 					data = await res.json()
-
-				console.log(data);
 				setRole(data.roles)
 
 			} catch (error) {
@@ -103,7 +101,7 @@ export const Roles = ({ rol }) => {
 								placeholder="Buscar rol"
 								className="me-2"
 								aria-label="Search"
-								onChange={handleSearch} 
+								onChange={handleSearch}
 							/>
 							<Button variant="outline-success">
 								<ion-icon name="search-outline"></ion-icon>
