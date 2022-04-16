@@ -259,6 +259,17 @@ a.nav-link.crr {
   color: #FFFFFF;
 }
 
+.btn-cancel{
+  bottom: 265px;
+  background: rgba(246, 248, 249, 1);
+  border: 1px solid rgba(225, 227, 230, 1);
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 270px;
+  color: black;
+}
+
 .btn-update{
   bottom: 265px;
   background: #00BF9C !important;
@@ -400,7 +411,9 @@ select.form-select {
   border: none;
   font-size: 12px;
   background-color: transparent;
+  border: 1px solid #ced4da;
   padding-top: 10px;
+  margin-bottom: 1rem;
 }
 
 div#cia-user {
@@ -669,9 +682,9 @@ button.list-group-item.list-group-item-action.p-3:active{
 .deleteuser:hover{
   background: rgba(254, 0, 0, 0.05);
   padding: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
   border-radius: 5px;
-  padding-top: 9px;
-  padding-bottom: 7px;
   cursor: pointer;
 }
 
@@ -825,38 +838,4 @@ button.btn.btn-primary.pten {
 
 span.pten ion-icon {
   padding-top: 8px;
-}
-
-.datatable-filter-demo .p-paginator .p-paginator-current {
-  margin-left: auto;
-}
-.datatable-filter-demo .p-progressbar {
-  height: 0.5rem;
-  background-color: #d8dadc;
-}
-.datatable-filter-demo .p-progressbar .p-progressbar-value {
-  background-color: #607d8b;
-}
-.datatable-filter-demo .p-datepicker {
-  min-width: 25rem;
-}
-.datatable-filter-demo .p-datepicker td {
-  font-weight: 400;
-}
-.datatable-filter-demo .p-datatable.p-datatable-customers .p-datatable-header {
-  padding: 1rem;
-  text-align: left;
-  font-size: 1.5rem;
-}
-.datatable-filter-demo .p-datatable.p-datatable-customers .p-paginator {
-  padding: 1rem;
-}
-.datatable-filter-demo .p-datatable.p-datatable-customers .p-datatable-thead > tr > th {
-  text-align: left;
-}
-.datatable-filter-demo .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td {
-  cursor: auto;
-}
-.datatable-filter-demo .p-datatable.p-datatable-customers .p-dropdown-label:not(.p-placeholder) {
-  text-transform: uppercase;
 }

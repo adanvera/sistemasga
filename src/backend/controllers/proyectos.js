@@ -1,45 +1,41 @@
 const Proyecto = require("../Models/Proyecto");
 const usuario = require("../Models/usuario");
 
-const agregarProyecto = async (req,res)=>{
+const agregarProyecto = async (req, res) => {
   const proyecto = new Proyecto(req.body)
   try {
     await proyecto.save()
     res.json({
       proyecto,
-      msg:'Proyecto creado exitosamente!!'
+      msg: 'Proyecto creado exitosamente!!'
     })
   } catch (error) {
     return res.json({
-      msg:'error al crear un nuevo proyecto'
+      msg: 'error al crear un nuevo proyecto'
     })
-  } 
-  
-  
-  
+  }
 }
 
-const obtenerProyectos = async(req,res)=>{
+const obtenerProyectos = async (Req, res) => {
   try {
-
-		const proyectos = await Proyecto.find();
+    const proyectos = await Proyecto.find();
     res.status(200).json({
       proyectos
     })
-	} catch (error) {
-		console.log(error);
-		return res.status(400).json({
-			msg: "Ocurrio un error",
-		});
-	}
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
 
 }
 
-const actualizarProyecto = ()=>{
+const actualizarProyecto = () => {
 
 }
 
-const eliminarProyecto = ()=>{
+const eliminarProyecto = () => {
 
 }
 

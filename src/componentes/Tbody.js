@@ -10,14 +10,12 @@ const urlUsers = "http://localhost:4000/api/usuario/";
 
 export const Tbody = ({ usuario, index }) => {
 
-	const [nombre, setNombre] = useState("");
-	const [apellido, setApellido] = useState("");
-	const [correo, setCorreo] = useState("");
-	const [password, setPassword] = useState("");
-	const [repetirPassword, setRepetirPassword] = useState("");
-	const [rol, setRolUser] = useState("");
-
-
+	const [nombre, setNombre] = useState("")
+	const [apellido, setApellido] = useState("")
+	const [correo, setCorreo] = useState("")
+	const [password, setPassword] = useState("")
+	const [repetirPassword, setRepetirPassword] = useState("")
+	const [rol, setRolUser] = useState("")
 	const [roleAuth, setRoleAuth] = useState([])
 	const {user,currentScreen} = useContext(DataContext)
 
@@ -131,7 +129,6 @@ export const Tbody = ({ usuario, index }) => {
 					</div>
 					<div className="padright edituser">
 						<CButton className="pten" onClick={editUser} >
-							{/* onClick={() => setVisible(!visible)} */}
 							<ion-icon name="options-outline"></ion-icon>
 						</CButton>
 					</div>
@@ -143,7 +140,7 @@ export const Tbody = ({ usuario, index }) => {
 					<CModalTitle>Editar usuario</CModalTitle>
 				</CModalHeader>
 				<CModalBody>
-					 <EditDataUser usuario={usuario}/>
+					<EditDataUser usuario={usuario}/>
 				</CModalBody>
 			</CModal>
 		</>

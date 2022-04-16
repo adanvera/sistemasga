@@ -12,9 +12,9 @@ import swal from 'sweetalert';
 
 
 export const Usuarios = ({ usuario,rol }) => {
+
 	function ModalRegister() {
 		const [show, setShow] = useState(false);
-		
 		const handleClose = () => setShow(false);
 		const handleShow = () =>{
 			if(role === 'ADMIN'){
@@ -52,7 +52,6 @@ export const Usuarios = ({ usuario,rol }) => {
 		return (
 		  <>
 			<Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear usuario</Button>
-	  
 			<Modal show={show} onHide={handleClose} >
 			  <Modal.Header closeButton>
 				<Modal.Title>Registrar usuario</Modal.Title>

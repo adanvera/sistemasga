@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import swal from "sweetalert"
 import { DataContext } from "../context/DataContext";
 import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from "@coreui/react";
-import { FloatingLabel, Form } from "react-bootstrap";
 import { URL_ELIMINAR_ROL } from "../helpers/endPoints"
+import { EditDataRole } from "./partials/EditDataRole";
+const urlRoles = "http://localhost:4000/api/role/"
 
 
 
@@ -15,12 +16,12 @@ export const Tbodyrol = ({ role: rl, index }) => {
 	const [optProyecto, setOptProyecto] = useState("")
 	const [optSeguridad, setOptSeguridad] = useState("")
 	const [optDesarrollo, setOptDesarrollo] = useState("")
-
-  const options = [
-    { value: 'Proyecto', label: 'Proyecto' },
-    { value: 'Desarollo', label: 'Desarrollo' },
-    { value: 'Seguridad', label: 'Seguridad' },
-  ];
+	const [role, setRole] = useState([])
+	const options = [
+		{ value: 'Proyecto', label: 'Proyecto' },
+		{ value: 'Desarollo', label: 'Desarrollo' },
+		{ value: 'Seguridad', label: 'Seguridad' },
+	];
 
 	//consultamos el localStorage y guardamos valor de rol 
 	//para poder filtrar funciones mediante la misma
@@ -33,7 +34,19 @@ export const Tbodyrol = ({ role: rl, index }) => {
 		}
 		const usuarioAuth = JSON.parse(data);
 		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
-	})
+
+		const getRole = async () => {
+			try {
+				const res = await fetch(urlRoles),
+					data = await res.json()
+				setRole(data.roles)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getRole()
+
+	}, [])
 
 	const deleteRol = async () => {
 		if (roleAuth === 'ADMIN') {
@@ -65,6 +78,19 @@ export const Tbodyrol = ({ role: rl, index }) => {
 
 	const [visible, setVisible] = useState(false)
 
+	const editRole = async () => {
+		if (roleAuth === 'ADMIN') {
+			setVisible(!visible)
+		} else {
+			swal({
+				title: "ADVERTENCIA",
+				text: "Su rol no posee permisos para eliminar usuarios",
+				icon: "warning",
+				button: "ok",
+			})
+		}
+	}
+
 	return (
 		<>
 			<tr>
@@ -78,7 +104,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 						</span>
 					</div>
 					<div className="padright edituser">
-						<CButton className="pten" onClick={() => setVisible(!visible)}>
+						<CButton className="pten" onClick={editRole}>
 							<ion-icon name="options-outline"></ion-icon>
 						</CButton>
 					</div>
@@ -90,33 +116,13 @@ export const Tbodyrol = ({ role: rl, index }) => {
 					<CModalTitle>Editar rol</CModalTitle>
 				</CModalHeader>
 				<CModalBody>
-					<div className="col-md-12">
-						<FloatingLabel
-							controlId="floatingInputName"
-							label="Nombre del rol"
-							className="mb-3"
-						>
-							<Form.Control
-								type="text"
-								placeholder="Ingrese nombre"
-								onChange={(e) => setRoleName(e.target.value)}
-							/>
-						</FloatingLabel>
-					</div>
-					<div className="col-md-12">
-						<label>Con acceso a modulo de: </label>
-						<Form className="ml-dos" >
-							<Form.Check type="switch" id="modulo-proyecto" value="proyecto" label="Poryecto" onChange={(e) => setOptProyecto(e.target.value)} />
-							<Form.Check type="switch" id="modulo-seguridad" value="seguridad" label="Seguridad" onChange={(e) => setOptSeguridad(e.target.value)} />
-							<Form.Check type="switch" id="modulo-desarrollo" value="desarrollo" label="Desarrollo" onChange={(e) => setOptDesarrollo(e.target.value)} />
-						</Form>
-					</div>
+					<EditDataRole rl={rl} />
 				</CModalBody>
-			<CModalFooter>
-				<CButton color="secondary" onClick={() => setVisible(false)}>cancelar</CButton>
-				<CButton  className="btn-update">actualizar rol</CButton>
-			</CModalFooter>
-		</CModal>
+				{/* <CModalFooter>
+					<CButton color="secondary" onClick={() => setVisible(false)}>cancelar</CButton>
+					<CButton className="btn-update">actualizar rol</CButton>
+				</CModalFooter> */}
+			</CModal>
 		</>
 	)
 }
