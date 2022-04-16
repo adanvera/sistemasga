@@ -4,7 +4,7 @@ const URL_EDITAR_USER ='http://localhost:4000/api/usuario/'
 
 const URL_CREAR_ROL = 'http://localhost:4000/api/role'
 const URL_ELIMINAR_ROL = 'http://localhost:4000/api/role/'
-const URL_EDITAR_ROL = ''
+const URL_EDITAR_ROL = 'http://localhost:4000/api/role/'
 
 const URL_CREAR_PROYECTO = 'http://localhost:4000/api/proyecto/nuevo-proyecto'
 const URL_PROYECTOS ='http://localhost:4000/api/proyecto/'

@@ -118,8 +118,8 @@ export const Tbody = ({ usuario, index }) => {
 				</td>
 				<td>{usuario.correo}</td>
 				<td>
-					{functionRole(usuario.rol)}
-					{/* {usuario.rol}	 */}
+					{/* {functionRole(usuario.rol)} */}
+					{usuario.rol}
 				</td>
 				<td className="d-flex justify-content-center">
 					<div className="padright deleteuser">
