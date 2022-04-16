@@ -27,11 +27,20 @@ const usuarioPost = async (req, res) => {
 const usuariosPut = async (req, res = response) => {
 	const { id } = req.params;
 	const { _id, password, ...resto } = req.body;
-	const usuario = await Usuario.findByIdAndUpdate(id, resto);
-	res.json({
-		msg: "put API - usuariosPut",
+	console.log(resto);
+	try {
+		const usuario = await Usuario.findByIdAndUpdate(id, resto);
+		res.status(200).json({
+		msg: "Usuario modificado exitosamente",
 		usuario,
 	});
+	} catch (error) {
+		console.log(error);
+		return res.status(400).json({
+			msg: "Ocurrio un error",
+		});
+	}
+	
 };
 
 const usuarioMostrar = async (req, res) => {

@@ -13,7 +13,7 @@ export const EditDataUser = ({ usuario, index }) => {
     const [nombre, setNombre] = useState(usuario.nombre)
     const [apellido, setApellido] = useState(usuario.apellido)
     const [correo, setCorreo] = useState(usuario.correo)
-    const [roleActual, setRoleActual] = useState(usuario.rol)
+    const [rol, setRoleActual] = useState(usuario.rol)
     const [visible, setVisible] = useState(false);
     const [role, setRole] = useState([])
 
@@ -31,19 +31,20 @@ export const EditDataUser = ({ usuario, index }) => {
     }, [])
 
     const handleSubmit = async (e) => {
+
         e.preventDefault()
         let option = {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ nombre, apellido, correo, roleActual }),
+            body: JSON.stringify({ nombre, apellido, correo, rol }),
         };
 
         try {
             const res = await fetch(URL_EDITAR_USER + idUser, option),
                 json = await res.json();
-
+ 
             if (!res.ok) {
                 console.log(json)
                 return swal({
