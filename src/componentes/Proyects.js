@@ -12,10 +12,12 @@ import myphoto from '../images/perfil.png'
 import { DataContext } from '../context/DataContext'
 import CreateProject from '../modals/CreateProject'
 import { URL_PROYECTOS } from '../helpers/endPoints';
+import Other from './Other';
+
 
 function Proyects({ rol }) {
 
-  const [currentScreen, setCurrentScreen] = useState({ us: true, rol: false, per: false })
+  const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false })
 
   function ModalCreateProject() {
 
@@ -114,9 +116,6 @@ function Proyects({ rol }) {
 
   }, [])
 
-  // console.log(proyecto);
-  // console.log(proyecto.length);
-
   return (
     <>
       <div className="navbar justify-content-between w-100 " variant="dark">
@@ -124,13 +123,9 @@ function Proyects({ rol }) {
           <ion-icon name="reorder-three-outline"></ion-icon>
           <button type="submit"
             className="nav-sg"
-            onClick={() => setCurrentScreen({ ...currentScreen, us: true, rol: false, per: false })} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
+            onClick={() => setCurrentScreen({ ...currentScreen, pr: true, other: false, })} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
           </button>
-          <button
-            type="submit"
-            className="nav-sg">item 2
-          </button>
-          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, rol: true, us: false, per: false })} >item 3</button>
+          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: true })} >Other</button>
         </nav>
         <nav className="">
           <Link to="#pricing" className="d-flex">
@@ -161,7 +156,9 @@ function Proyects({ rol }) {
             </Form>
           </div>
         </div>
-        {proyecto.length > 0 && <ProjectList  proyecto={proyecto} />}
+        {currentScreen.pr && <ProjectList proyecto={proyecto} />}
+        {/* {proyecto.length > 0 && <ProjectList proyecto={proyecto} />} */}
+        {currentScreen.other && <Other />}
       </Container>
     </>
   );

@@ -99,7 +99,7 @@ export const Tbody = ({ usuario, index }) => {
 		}else{
 			swal({
 		 		title: "ADVERTENCIA",
-		 		text: "Su rol no posee permisos para eliminar usuarios",
+		 		text: "Su rol no posee permisos para editar usuarios",
 		 		icon: "warning",
       	 		button: "ok",
 		 	})

@@ -842,11 +842,23 @@ span.pten ion-icon {
 
 td.d-flex {
   text-align: center;
-  justify-content: center;
 }
 
 p ion-icon.md.hydrated {
   font-size: 18px;
   padding-left: 0;
   padding-right: 2px;
+}
+
+.img-project img{
+  max-width:40px;
+  padding-right: 5px;
+}
+
+.profile img{
+  max-width:30px;
+}
+
+.pl-2{
+  padding-left:1rem;
 }
