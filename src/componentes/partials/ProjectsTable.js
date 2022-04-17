@@ -2,49 +2,37 @@ import React, { useContext, useEffect, useState } from "react";
 import { URL_PROYECTOS } from "../../helpers/endPoints";
 import { Link } from 'react-router-dom';
 import myphoto from '../../images/perfil.png'
+import { CButton } from "@coreui/react";
+import { log } from "react-modal/lib/helpers/ariaAppHider";
 
 
 
-export const ProjectsTable = ({ usuario, index }) => {
 
-    const [nombre,setNombre] = useState('')	
-    const [apellido, setApellido] = useState('')
-    const [isLoadingProjects, setIsLoadingProjects] = useState('')
-    const [project, setProject] = useState('')
+export const ProjectsTable = ({ proyecto, index }) => {
 
-    //consultamos el localStorage
-    useEffect(() => {
+    console.log(proyecto);
 
-        fetch(URL_PROYECTOS)
-            .then((response) => response.json)
-            .then((proyecto) => {
-                setProject(proyecto.descripcion)
-                setIsLoadingProjects(false)
-            })
-    }, []);
-
-    if (isLoadingProjects) {
-        return (
-            <div>
-                <h1>Cargando...</h1>
-            </div>
-        )
-    } else {
-        return (
+    return (
+        <>
             <tr>
-            <td>{index}</td>
-            <td><Link to="./DetailsProject">REGISTRO SISTEMA</Link></td>
-            <td>RS</td>
-            <td>GESTION DE USUARIOS</td>
-            <td className='d-flex'>
-                <div className='icon-profile-project'>
-                    <img src={myphoto} alt="" />
-                </div>
-                <span className='sp-name'></span>
-            </td>
-        </tr>
-        )
-    }
+                <td>{index}</td>
+                <td>{proyecto.nombre}</td>
+                <td>{proyecto.descripcion}</td>
+                <td className="d-flex justify-content-center">
+                    <div className="padright deleteuser">
+                        <span className="pten">
+                            <ion-icon name="trash-bin-outline"></ion-icon>
+                        </span>
+                    </div>
+                    <div className="padright edituser">
+                        <CButton className="pten">
+                            <ion-icon name="options-outline"></ion-icon>
+                        </CButton>
+                    </div>
+                </td>
+            </tr>
+        </>
+    )
 
 
 }

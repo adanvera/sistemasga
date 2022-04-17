@@ -839,3 +839,14 @@ button.btn.btn-primary.pten {
 span.pten ion-icon {
   padding-top: 8px;
 }
+
+td.d-flex {
+  text-align: center;
+  justify-content: center;
+}
+
+p ion-icon.md.hydrated {
+  font-size: 18px;
+  padding-left: 0;
+  padding-right: 2px;
+}

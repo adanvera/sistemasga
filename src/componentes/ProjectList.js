@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import myphoto from '../images/perfil.png'
 import { Link } from 'react-router-dom';
 import { ProjectsTable } from './partials/ProjectsTable';
+import { URL_PROYECTOS } from '../helpers/endPoints';
 
 
-function ProjectList({rol}) {
 
-    return (
+function ProjectList({ proyecto }) {
+  return (
     <div className='row pt-5'>
-        <div className='col-md-12' id='tablelist'>
-          <Table responsive="md" className={rol === 'ADMIN' ? '' : ''}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>nombre</th>
-                <th>clave</th>
-                <th>tipo</th>
-                <th>responsable</th>
+      <div className='col-md-12' id='tablelist'>
+        <Table responsive="md">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>nombre</th>
+              <th>descripcion</th>
+              <th className="a-texttt">acciones</th>
             </tr>
-            </thead>
-            <tbody>
-              <ProjectsTable/>
-            </tbody>
-          </Table>
-        </div>
+          </thead>
+          <tbody>
+            {proyecto.map((proyecto, index) => {
+              return <ProjectsTable index={index + 1} proyecto={proyecto} />
+            })}
+          </tbody>
+        </Table>
       </div>
+    </div>
   );
 }
 

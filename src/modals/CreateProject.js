@@ -11,24 +11,17 @@ import { URL_CREAR_PROYECTO } from "../helpers/endPoints";
 
 function CreateProject() {
 
-    const [projectName, setProjectName] = useState('')
-    const [projectUsers, setProjectUsers] = useState('')
-
-    const top100Films = [
-        { title: 'Marcelo Barrios', year: 1994 },
-        { title: 'Adán Vera', year: 1972 },
-        { title: 'Melinda Gimenez', year: 1974 },
-        { title: 'Guillermo Insfran', year: 2008 },
-    ];
-
+    const [nombre, setNombre] = useState('')
+    const [descripcion, setDescripcion] = useState('')
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        if ([projectName].includes("")) {
+        e.preventDefault()
+
+        if ([nombre, descripcion].includes("")) {
             return swal({
-                icon: "error",
-                text: "Todos los campos son obligatorios",
-            });
+                icon: "warning",
+                text: "Todos los campos son requeridos"
+            })
         }
 
         let option = {
@@ -36,25 +29,22 @@ function CreateProject() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ projectName }),
+            body: JSON.stringify({ nombre, descripcion }),
         }
-
-        console.log(option.body);
-
         try {
             const res = await fetch(URL_CREAR_PROYECTO, option),
-                json = await res.json();
+                json = await res.json()
             if (!res.ok) {
-                console.log(json)
+                console.log(json);
                 return swal({
                     icon: "error",
                     text: json.msg,
-                });
+                })
             }
             return swal({
                 icon: "success",
                 text: "Proyecto creado exitosamente"
-            });
+            })
         } catch (error) {
             console.log(error.response);
             return swal({
@@ -79,26 +69,24 @@ function CreateProject() {
                                     <Form.Control
                                         type="text"
                                         placeholder="Ingrese nombre del poyecto"
-                                        onChange={(e) => setProjectName(e.target.value)}
+                                        onChange={(e) => setNombre(e.target.value)}
                                     />
                                 </FloatingLabel>
                             </>
                         </div>
-                        {/* <div className="col-md-12">
-                            <>
-                                <Autocomplete
-                                    multiple
-                                    limitTags={2}
-                                    id="multiple-limit-tags"
-                                    options={top100Films}
-                                    getOptionLabel={(option) => option.title}
-                                    renderInput={(params) => (
-                                        <TextField {...params} label="Asignar usuarios al proyecto" placeholder="usuarios" />
-                                    )}
-                                    sx={{ width: '400px' }}
+                        <div className="col-md-12">
+                            <FloatingLabel
+                                controlId="FloatingProjectName"
+                                label="Descripción del proyecto"
+                                className="mb-3"
+                            >
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Ingrese descripción del poyecto"
+                                    onChange={(e) => setDescripcion(e.target.value)}
                                 />
-                            </>
-                        </div> */}
+                            </FloatingLabel>
+                        </div>
                         <div className="row mt-5 justify-content-center">
                             <div className="col-md-12 bt-centrar">
                                 <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>crear proyecto</button>

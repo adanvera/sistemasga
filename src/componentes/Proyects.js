@@ -11,6 +11,7 @@ import myphoto from '../images/perfil.png'
 
 import { DataContext } from '../context/DataContext'
 import CreateProject from '../modals/CreateProject'
+import { URL_PROYECTOS } from '../helpers/endPoints';
 
 function Proyects({ rol }) {
 
@@ -33,10 +34,13 @@ function Proyects({ rol }) {
     const [role, setRole] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+
+    //onclick para mostrar modal de creacion de un proyecto
     const handleShow = () => {
+      //filtramos si su rol es admin levanta el modal
       if (role === 'ADMIN') {
         setShow(true);
-      } else if (role !== 'ADMIN') {
+      } else if (role !== 'ADMIN') {//si el rol no es el permitido lanza advertencia
         swal({
           title: "ADVERTENCIA",
           text: "Su rol no tiene permisos para crear un proyecto",
@@ -45,8 +49,10 @@ function Proyects({ rol }) {
         });
       }
     }
-    return (
+
+    return (//modal de creacion de proyecto
       <>
+        {/* boton de creacion de proyecto que renderiza en la pantalla principal */}
         <Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto</Button>
         <Modal show={show} onHide={handleClose} >
           <Modal.Header closeButton>
@@ -74,6 +80,13 @@ function Proyects({ rol }) {
   const [apellido, setApellido] = useState('')
 
 
+  const [descripcion, setDescripcion] = useState('')
+  const [proyecto, setProyecto] = useState([])
+
+
+  console.log(proyecto);
+
+
   //consultamos el localStorage
   useEffect(() => {
     const data = localStorage.getItem('auth')
@@ -87,7 +100,22 @@ function Proyects({ rol }) {
     const usuario = JSON.parse(data);
     setNombre(usuario.usuarioEncontrado.nombre);
     setApellido(usuario.usuarioEncontrado.apellido);
-  })
+
+    const getProject = async () => {
+      try {
+        const res = await fetch(URL_PROYECTOS),
+          data = await res.json()
+        setProyecto(data.proyectos)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProject()
+
+  }, [])
+
+  // console.log(proyecto);
+  // console.log(proyecto.length);
 
   return (
     <>
@@ -96,7 +124,7 @@ function Proyects({ rol }) {
           <ion-icon name="reorder-three-outline"></ion-icon>
           <button type="submit"
             className="nav-sg"
-            onClick={() => setCurrentScreen({ ...currentScreen, us: true, rol: false, per: false })} >Proyectos
+            onClick={() => setCurrentScreen({ ...currentScreen, us: true, rol: false, per: false })} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
           </button>
           <button
             type="submit"
@@ -133,10 +161,7 @@ function Proyects({ rol }) {
             </Form>
           </div>
         </div>
-
-        <ProjectList rol={rol} />
-
-
+        {proyecto.length > 0 && <ProjectList  proyecto={proyecto} />}
       </Container>
     </>
   );

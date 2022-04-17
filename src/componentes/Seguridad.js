@@ -30,6 +30,8 @@ function Seguridad({rol}) {
     }
     getUser()
   }, [])
+
+  console.log(usuario);
   
   const {user} = useContext(DataContext)
 	const [nombre,setNombre] = useState('')	
@@ -60,9 +62,9 @@ function Seguridad({rol}) {
             <ion-icon name="reorder-three-outline"></ion-icon>
             <button type="submit"
               className="nav-sg"
-              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})} >Usuarios
+              onClick={ ()=>setCurrentScreen({...currentScreen,us:true,rol:false,per:false})}> <p><ion-icon name="people-outline"></ion-icon> Usuarios</p>
             </button>
-            <button rol={rol} type="submit" className="nav-sg" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})} >Roles y permisos</button>
+            <button rol={rol} type="submit" className="nav-sg" onClick={()=>setCurrentScreen({...currentScreen,rol:true,us:false,per:false})}><p><ion-icon name="shield-checkmark-outline"></ion-icon>Roles y permisos</p></button>
         </nav>
         <nav className="">
             <Link to="#pricing" className="d-flex">

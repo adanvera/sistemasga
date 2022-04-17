@@ -48,6 +48,8 @@ export const Tbodyrol = ({ role: rl, index }) => {
 
 	}, [])
 
+	console.log(role);
+
 	const deleteRol = async () => {
 		if (roleAuth === 'ADMIN') {
 			const { _id } = rl
