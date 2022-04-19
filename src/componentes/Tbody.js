@@ -32,9 +32,6 @@ export const Tbody = ({ usuario, index }) => {
 		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
 	},)
 
-	console.log('Usuario logueado',user.usuarioEncontrado.uui);
-	console.log('usuario seleccionado',usuario.uui)
-
 	const initialState = {
 		nombre: usuario.nombre,
 		apellido: usuario.apellido,
@@ -72,7 +69,7 @@ export const Tbody = ({ usuario, index }) => {
       			button: "ok",
 			})
 		}
-		if((usuario.uui) === userUi){
+		if(((usuario.uui) === userUi) && (roleAuth==='ADMIN')){
 			swal({
 				title: "ERROR",
 				text: "No puede eliminar su propio usuario",

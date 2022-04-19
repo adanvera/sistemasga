@@ -10,14 +10,14 @@ import { Link } from 'react-router-dom';
 import myphoto from '../images/perfil.png'
 
 import { DataContext } from '../context/DataContext'
-import CreateProject from '../modals/CreateProject'
 import { URL_PROYECTOS } from '../helpers/endPoints';
 import Other from './Other';
+import CreateProject from './partials/CreateProject';
 
 
 function Proyects({ rol }) {
 
-  const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false })
+  const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false, prCreate:false })
 
   function ModalCreateProject() {
 
@@ -55,7 +55,7 @@ function Proyects({ rol }) {
     return (//modal de creacion de proyecto
       <>
         {/* boton de creacion de proyecto que renderiza en la pantalla principal */}
-        <Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto</Button>
+        <Button className="btn btn-cr-pro" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate:true  })}> <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto</Button>
         <Modal show={show} onHide={handleClose} >
           <Modal.Header closeButton>
             <Modal.Title>Crear nuevo proyecto</Modal.Title>
@@ -157,6 +157,7 @@ function Proyects({ rol }) {
           </div>
         </div>
         {currentScreen.pr && <ProjectList proyecto={proyecto} />}
+        {currentScreen.prCreate && <CreateProject/>}
         {/* {proyecto.length > 0 && <ProjectList proyecto={proyecto} />} */}
         {currentScreen.other && <Other />}
       </Container>
