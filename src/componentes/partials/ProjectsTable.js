@@ -11,7 +11,7 @@ export const ProjectsTable = ({ proyecto, index }) => {
             <tr>
                 <td>{index}</td>
                 <td className="lg" >
-                    <Link to="./DetailsProject">
+                    <Link className="d-flex" to="./DetailsProject">
                         <div className="img-project">
                             <img src={projectLogo} alt="" />
                         </div>

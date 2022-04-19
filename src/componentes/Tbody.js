@@ -32,6 +32,9 @@ export const Tbody = ({ usuario, index }) => {
 		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
 	},)
 
+	console.log('Usuario logueado',user.usuarioEncontrado.uui);
+	console.log('usuario seleccionado',usuario.uui)
+
 	const initialState = {
 		nombre: usuario.nombre,
 		apellido: usuario.apellido,
@@ -42,7 +45,8 @@ export const Tbody = ({ usuario, index }) => {
 	}
 
 	const deleteUser = async () => {
-		if(roleAuth==='ADMIN'){
+		const userUi = user.usuarioEncontrado.uui
+		if((roleAuth==='ADMIN')  && usuario.uui !== userUi){
 			swal({
 				title: "¿Estas seguro?",
 				text: "Una vez eliminado el usuario no se puede revertir",
@@ -60,11 +64,19 @@ export const Tbody = ({ usuario, index }) => {
 					});
 				}
 			});
-		}else{
+		}else if (roleAuth!=='ADMIN'){
 			swal({
 				title: "ADVERTENCIA",
 				text: "Su rol no posee permisos para eliminar usuarios",
 				icon: "warning",
+      			button: "ok",
+			})
+		}
+		if((usuario.uui) === userUi){
+			swal({
+				title: "ERROR",
+				text: "No puede eliminar su propio usuario",
+				icon: "error",
       			button: "ok",
 			})
 		}
