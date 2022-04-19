@@ -17,7 +17,7 @@ import CreateProject from './partials/CreateProject';
 
 function Proyects({ rol }) {
 
-  const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false, prCreate:false })
+  const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false, prCreate: false })
 
   function ModalCreateProject() {
 
@@ -32,7 +32,6 @@ function Proyects({ rol }) {
       const usuario = JSON.parse(data);
       setRole(usuario.usuarioEncontrado.rol)
     })
-
     const [role, setRole] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -41,7 +40,7 @@ function Proyects({ rol }) {
     const handleShow = () => {
       //filtramos si su rol es admin levanta el modal
       if (role === 'ADMIN') {
-        setShow(true);
+        setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate: true })
       } else if (role !== 'ADMIN') {//si el rol no es el permitido lanza advertencia
         swal({
           title: "ADVERTENCIA",
@@ -51,43 +50,22 @@ function Proyects({ rol }) {
         });
       }
     }
-
     return (//modal de creacion de proyecto
       <>
         {/* boton de creacion de proyecto que renderiza en la pantalla principal */}
-        <Button className="btn btn-cr-pro" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate:true  })}> <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto</Button>
-        <Modal show={show} onHide={handleClose} >
-          <Modal.Header closeButton>
-            <Modal.Title>Crear nuevo proyecto</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <CreateProject />
-          </Modal.Body>
-        </Modal>
+        <Button className="btn btn-cr-pro"
+          onClick={handleShow} >
+          <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto
+        </Button>
       </>
     )
-  }
-
-  const showalert = () => {
-    swal({
-      title: "Epaa, esa función está en desarrollo",
-      text: "En la proxima ya estará funcionando crack ;) !",
-      icon: "warning",
-      button: "ok",
-    });
   }
 
   const { user } = useContext(DataContext)
   const [nombre, setNombre] = useState('')
   const [apellido, setApellido] = useState('')
-
-
   const [descripcion, setDescripcion] = useState('')
   const [proyecto, setProyecto] = useState([])
-
-
-  console.log(proyecto);
-
 
   //consultamos el localStorage
   useEffect(() => {
@@ -123,9 +101,9 @@ function Proyects({ rol }) {
           <ion-icon name="reorder-three-outline"></ion-icon>
           <button type="submit"
             className="nav-sg"
-            onClick={() => setCurrentScreen({ ...currentScreen, pr: true, other: false, })} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
+            onClick={() => setCurrentScreen({ ...currentScreen, pr: true, other: false, prCreate:false})} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
           </button>
-          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: true })} >Other</button>
+          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: true, prCreate:false })} >Other</button>
         </nav>
         <nav className="">
           <Link to="#pricing" className="d-flex">
@@ -141,23 +119,24 @@ function Proyects({ rol }) {
       </div>
       <Container fluid={true} className="mt-5" id='proyects'>
         <div className='row'>
-          <div className='col pb-2'>
-            <h4>PROYECTOS</h4>
-          </div>
-          <div className='col a-end'>
-            <ModalCreateProject />
-          </div>
+          {(currentScreen.pr &&
+            <div className='col a-end'>
+              <ModalCreateProject />
+            </div>)}
         </div>
-        <div className='row'>
+        <div className='row' >
           <div className='col-md-4 form-search'>
-            <Form className="d-flex">
-              <FormControl type="search" placeholder="Buscar proyecto" className="me-2" aria-label="Search" />
-              <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
-            </Form>
+            {(currentScreen.pr &&
+              <Form className="d-flex">
+                <FormControl type="search" placeholder="Buscar proyecto" className="me-2" aria-label="Search" />
+                <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
+              </Form>)}
           </div>
+
+
         </div>
         {currentScreen.pr && <ProjectList proyecto={proyecto} />}
-        {currentScreen.prCreate && <CreateProject/>}
+        {currentScreen.prCreate && <CreateProject />}
         {/* {proyecto.length > 0 && <ProjectList proyecto={proyecto} />} */}
         {currentScreen.other && <Other />}
       </Container>

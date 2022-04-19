@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import projectLogo from '../../images/logoproject.png'
 
 export const ProjectsTable = ({ proyecto, index }) => {
+    
 
     console.log(proyecto);
 

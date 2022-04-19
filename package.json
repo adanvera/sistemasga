@@ -24,6 +24,7 @@
     "mui-datatables": "^4.2.2",
     "primereact": "^8.0.0-rc.1",
     "rc-pagination": "^3.1.15",
+    "rc-steps": "^4.1.4",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-bulma-components": "^4.1.0",

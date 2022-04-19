@@ -227,6 +227,13 @@ a.nav-link.crr {
   
 }
 
+.register-box-head{
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
 
 .register-bg.w-100.container-fluid{
   display: flex;
@@ -861,4 +868,8 @@ p ion-icon.md.hydrated {
 
 .pl-2{
   padding-left:1rem;
+}
+
+.img-create img{
+  max-width:80px;
 }
