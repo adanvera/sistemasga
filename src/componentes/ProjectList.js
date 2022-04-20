@@ -11,7 +11,7 @@ function ProjectList({ proyecto }) {
     <>
       <div className='row pt-5'>
         <div className='col-md-12' id='tablelist'>
-          <Table responsive="md">
+          <Table responsive="md" striped bordered hover>
             <thead>
               <tr>
                 <th>#</th>

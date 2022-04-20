@@ -686,25 +686,25 @@ button.list-group-item.list-group-item-action.p-3:active{
   cursor: pointer;
 }
 
-.deleteuser:hover{
+/* .deleteuser:hover{
   background: rgba(254, 0, 0, 0.05);
   padding: 10px;
   padding-top: 0;
   padding-bottom: 0;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 button.btn.btn-primary.pten{
   color: #A4CF30;
   cursor: pointer;
 }
 
-button.btn.btn-primary.pten:hover{
+/* button.btn.btn-primary.pten:hover{
   background: rgba(164, 207, 48, 0.05);
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .padright.edituser span:hover{
   color: #273404;
@@ -872,4 +872,28 @@ p ion-icon.md.hydrated {
 
 .img-create img{
   max-width:80px;
+}
+
+.row.o-t ion-icon.md.hydrated{
+  /* color: red; */
+  font-size: 25px;
+  font-weight: 100;
+  /* padding-left: 15px; */
+  color: black;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.row.o-t ion-icon.md.hydrated:hover{
+  font-size: 25px;
+  background: #20AAEA;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+}
+  
+table {
+  --bs-table-striped-bg: rgba(0, 191, 156, 0.042) !important;
+  --bs-table-hover-bg: rgba(0, 191, 156, 0.4) !important;
+  border-color: transparent !important;
 }

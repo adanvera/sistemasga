@@ -9,7 +9,7 @@ function UsersLists({ usuario }, { role }) {
     <>
       <div className="row pt-5">
         <div className="col-md-12">
-          <Table responsive="md" id="tablelist">
+          <Table responsive="md" id="tablelist" striped bordered hover>
             <thead>
               <tr>
                 <th>#</th>
