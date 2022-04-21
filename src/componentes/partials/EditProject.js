@@ -32,23 +32,28 @@ function EditProject({proyecto}) {
 
     const deleteProject = async () => {
        //aca debe ir la logica de eliminacion
-       swal({
-           title: "¿Estas seguro?",
-           text: "Una vez eliminado el proyecto no se puede revertir",
+       if(roleAuth === "ADMIN"){
+            swal({
+                title: "¿Estas seguro?",
+                text: "Una vez eliminado el proyecto no se puede revertir",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then(async(willDelete)=>{
+                if(willDelete){
+                    swal("Proyecto eliminado exitosamente",{
+                        icon: "success",
+                    });
+                    await fetch(urlDelPr + idPr,{
+                        method: "DELETE",
+                        headers: {"Content-Type": "application/jason"}
+                    });
+                }
+            });
+       }else (swal({ 
+           text: "Su rol no posse permiso para eliminar un proyecto",
            icon: "warning",
-           buttons: true,
-           dangerMode: true,
-       }).then(async(willDelete)=>{
-           if(willDelete){
-                swal("Proyecto eliminado exitosamente",{
-                    icon: "success",
-                });
-                await fetch(urlDelPr + idPr,{
-                    method: "DELETE",
-                    headers: {"Content-Type": "application/jason"}
-                });
-           }
-       });
+       }))
     }
 
 
