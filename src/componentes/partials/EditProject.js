@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, FloatingLabel, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
-
+import { DataContext } from '../../context/DataContext'
 const urlDelPr = "http://localhost:4000/api/proyecto/"
+const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 function EditProject({proyecto}) {
 
+    const [roleAuth, setRoleAuth] = useState([])
+	const {user,currentScreen} = useContext(DataContext)
+    const [usuario, setUsurio] = useState([])
+    const [nombre , setNombre] = useState(proyecto.nombre)
+    const [descripcion, setDescripcion] = useState(proyecto.descripcion)
 
+    useEffect(()=>{
+		const data = localStorage.getItem('auth')
+		if(!data ){
+			localStorage.setItem('auth',JSON.stringify(user))
+			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			return
+		}
+		const usuarioAuth = JSON.parse(data);
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
+	},)
+
+    console.log(roleAuth);
     
     const idPr = proyecto._id
 
@@ -16,6 +34,10 @@ function EditProject({proyecto}) {
        //aca debe ir la logica de eliminacion
     }
 
+
+    const edtitProject = async () =>{
+        //logica de modificacion
+    }
 
     return (
         <>
