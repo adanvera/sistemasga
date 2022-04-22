@@ -3,7 +3,7 @@ import { Container, FloatingLabel, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
 import { DataContext } from '../../context/DataContext'
-const urlDelPr = "http://localhost:4000/api/proyecto/"
+import { URL_ELMINAR_PROJECT } from '../../helpers/endPoints'
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
@@ -25,10 +25,10 @@ function EditProject({proyecto}) {
 		const usuarioAuth = JSON.parse(data);
 		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
 	},)
-
-    console.log(roleAuth);
-    
     const idPr = proyecto._id
+    console.log(URL_ELMINAR_PROJECT+idPr);
+    
+   
 
     const deleteProject = async () => {
        //aca debe ir la logica de eliminacion
@@ -44,7 +44,7 @@ function EditProject({proyecto}) {
                     swal("Proyecto eliminado exitosamente",{
                         icon: "success",
                     });
-                    await fetch(urlDelPr + idPr,{
+                    await fetch(URL_ELMINAR_PROJECT+idPr,{
                         method: "DELETE",
                         headers: {"Content-Type": "application/jason"}
                     });

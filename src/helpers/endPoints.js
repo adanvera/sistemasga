@@ -8,6 +8,7 @@ const URL_EDITAR_ROL = 'http://localhost:4000/api/role/'
 
 const URL_CREAR_PROYECTO = 'http://localhost:4000/api/proyecto/nuevo-proyecto'
 const URL_PROYECTOS ='http://localhost:4000/api/proyecto/'
+const URL_ELMINAR_PROJECT = 'http://localhost:4000/api/proyecto/eliminar/'
 
 
 export {
@@ -19,4 +20,5 @@ export {
   URL_EDITAR_ROL,
   URL_PROYECTOS,
   URL_CREAR_PROYECTO,
+  URL_ELMINAR_PROJECT,
 }
