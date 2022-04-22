@@ -35,8 +35,24 @@ const actualizarProyecto = () => {
 
 }
 
-const eliminarProyecto = () => {
+const eliminarProyecto = async (req,res) => {
+  const { id } = req.params;
+	console.log(id);
 
+	const proyecto = await Proyecto.findByIdAndUpdate(id, { estado: false });
+
+	try {
+		res.json({
+			msg: "Proyecto eliminado correctamente!",
+			proyecto,
+		});
+	} catch (error) {
+    console.log(error);
+		return res.status(400).json({
+			msg: "Ocurrio un error inesperado",
+			error,
+		});
+	}
 }
 
 module.exports = {

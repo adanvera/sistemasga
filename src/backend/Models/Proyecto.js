@@ -15,6 +15,10 @@ const ProyectoSchema = Schema({
       type: Boolean,
       default:true
     },
+    responsable:{
+      type:String,
+      default:'Sin responsable'
+    },
     usuarios:{
       type:Array,
       default:[]
