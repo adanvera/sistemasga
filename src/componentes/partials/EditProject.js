@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
 import { DataContext } from '../../context/DataContext'
 import { URL_ELMINAR_PROJECT } from '../../helpers/endPoints'
+import EditDataProject from './EditDataProject'
 const urlUsers = "http://localhost:4000/api/usuario/"
+
 
 
 function EditProject({proyecto}) {
 
     const [roleAuth, setRoleAuth] = useState([])
-	const {user,currentScreen} = useContext(DataContext)
+	const {user,setUser} = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
-    const [nombre , setNombre] = useState(proyecto.nombre)
-    const [descripcion, setDescripcion] = useState(proyecto.descripcion)
+
+    const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
     useEffect(()=>{
 		const data = localStorage.getItem('auth')
@@ -78,14 +80,17 @@ function EditProject({proyecto}) {
                             </div>
                         </div>
                         <div className="col-md-12">
-                            <span><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
+                            <span onClick={() => setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })}><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
                         </div>
                         <div>
-                            <span onClick={deleteProject}><ion-icon name="trash-outline"></ion-icon> Eliminar proyecto</span>
+                            <span onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon> Eliminar proyecto</span>
                         </div>
                     </div>
                 </section>
             </Container>
+            {currentScreen.prEdit && <EditDataProject proyecto={proyecto}/>}
+            
+
         </>
     )
 }
