@@ -18,7 +18,7 @@ const agregarProyecto = async (req, res) => {
 
 const obtenerProyectos = async (Req, res) => {
   try {
-    const proyectos = await Proyecto.find();
+    const proyectos = await Proyecto.find({ estado: true });
     res.status(200).json({
       proyectos
     })
