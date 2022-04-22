@@ -64,6 +64,25 @@ const agregarUsuarioProyecto = async (req,res) => {
   }
 
 }
+const actualizarProyecto = async (req,res) => {
+  //id del proyecto
+  const { id } = req.params;
+
+  try {
+   
+    const proyectoActualizado = await Proyecto.findByIdAndUpdate(id,req.body)
+    res.status(200).json({
+      msg:'Proyecto actualizado exitosamente !!',
+    })
+
+  } catch (error) {
+		return res.status(400).json({
+			msg: "Ocurrio un error inesperado",
+			error,
+		});
+  }
+
+}
 
 const eliminarProyecto = async (req,res) => {
   const { id } = req.params;
@@ -89,5 +108,6 @@ module.exports = {
   agregarProyecto,
   obtenerProyectos,
   agregarUsuarioProyecto,
-  eliminarProyecto
+  eliminarProyecto,
+  actualizarProyecto
 }
