@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, FloatingLabel, Form } from 'react-bootstrap'
 import projectLogo from '../../images/logoproject.png'
 import Select from 'react-select'
 import UserList from '../UserList'
+import { Autocomplete, TextField } from '@mui/material'
+import { DataContext } from '../../context/DataContext'
+import swal from 'sweetalert'
 const urlUsers = "http://localhost:4000/api/usuario/"
+
+
 
 
 function EditDataProject({ proyecto }) {
 
     console.log(proyecto);
 
-    const [usuario, setUsurio] = useState([])
+    const [roleAuth, setRoleAuth] = useState([])
+	const {user,setUser} = useContext(DataContext)
+ 
 
+    const [usuario, setUsurio] = useState([])
     const [nombre, setNombre] = useState(proyecto.nombre)
     const [descripcion, setDescripcion] = useState(proyecto.descripcion)
     const [responsable, setResponsable] = useState(proyecto.responsable)
-
+    const [usuarios, setUsuarios] = useState('')
 
     useEffect(() => {
         const getUser = async () => {
@@ -28,26 +36,43 @@ function EditDataProject({ proyecto }) {
             }
         }
         getUser()
+
+        const data = localStorage.getItem('auth')
+        if(!data ){
+			localStorage.setItem('auth',JSON.stringify(user))
+			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			return
+		}
+		const usuarioAuth = JSON.parse(data);
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
     }, [])
 
+    const idPr = proyecto._id
 
-    const options = usuario.forEach(us => {
-
-        return {
-            value: us.nombre,
-            label: us.nombre,
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if(roleAuth==="ADMIN"){
+            swal({
+                title: "¿Estas seguro?",
+                text: "Una vez modificado el proyecto no se puede revertir",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then(async(willDelete)=>{
+                if(willDelete){
+                    swal("Proyecto eliminado exitosamente",{
+                        icon: "success",
+                    });
+                    await fetch(URL_ELMINAR_PROJECT+idPr,{
+                        method: "DELETE",
+                        headers: {"Content-Type": "application/jason"}
+                    });
+                }
+            });
         }
-    })
+    }
 
-    // const options = [
-    //     { value: 'chocolate', label: 'Chocolate' },
-    //     { value: 'strawberry', label: 'Strawberry' },
-    //     { value: 'vanilla', label: 'Vanilla' }
-    // ]
-
-    const handleSubmit = async (e) => { }
-
-    console.log(responsable);
+    console.log(roleAuth);
 
     return (
         <>
@@ -92,14 +117,30 @@ function EditDataProject({ proyecto }) {
                                 />
                             </FloatingLabel>
                         </div>
-                        <div className="col-md-12">
+                        <div className="col-md-12 pt-3">
                             <label>Asignar responsable del proyecto</label>
                             <Form.Select aria-label="Tipo" onChange={(e) => setResponsable(e.target.value)} >
-                                <option disabled selected>SELECCIONAR ROL</option>
+                                <option disabled selected>Seleccionar responsable del proyecto</option>
                                 <UserList usuario={usuario} />
                             </Form.Select>
                         </div>
-                        
+                        <div className="col-md-12 pt-3">
+                            <Autocomplete
+                                multiple
+                                onChange={(e) => setUsuarios(e.target.value)}
+                                id="tags-outlined"
+                                options={usuario}
+                                getOptionLabel={(usuario) => usuario.nombre}
+                                filterSelectedOptions
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        label="Asignar usuarios a proyecto"
+                                        placeholder="Usuarios"
+                                    />
+                                )}
+                            />
+                        </div>
                         <div className="row mt-5">
                             <div className="col-md-3 bt-centrar">
                                 <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>actualizar proyecto</button>

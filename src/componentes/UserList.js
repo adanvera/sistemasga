@@ -1,7 +1,6 @@
 import React from 'react'
 
 function UserList({ usuario }) {
-    console.log(usuario);
     return (
         <>
             {

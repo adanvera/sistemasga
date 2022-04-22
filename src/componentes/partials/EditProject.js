@@ -27,9 +27,9 @@ function EditProject({proyecto}) {
 		const usuarioAuth = JSON.parse(data);
 		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
 	},)
-    const idPr = proyecto._id
-    console.log(URL_ELMINAR_PROJECT+idPr);
     
+    const idPr = proyecto._id
+
    
 
     const deleteProject = async () => {
