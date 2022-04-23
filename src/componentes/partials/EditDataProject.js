@@ -6,7 +6,9 @@ import UserList from '../UserList'
 import { Autocomplete, TextField } from '@mui/material'
 import { DataContext } from '../../context/DataContext'
 import swal from 'sweetalert'
+import { URL_EDIT_PROJECT } from '../../helpers/endPoints'
 const urlUsers = "http://localhost:4000/api/usuario/"
+
 
 
 
@@ -16,14 +18,14 @@ function EditDataProject({ proyecto }) {
     console.log(proyecto);
 
     const [roleAuth, setRoleAuth] = useState([])
-	const {user,setUser} = useContext(DataContext)
- 
+    const { user, setUser } = useContext(DataContext)
+
 
     const [usuario, setUsurio] = useState([])
     const [nombre, setNombre] = useState(proyecto.nombre)
     const [descripcion, setDescripcion] = useState(proyecto.descripcion)
     const [responsable, setResponsable] = useState(proyecto.responsable)
-    const [usuarios, setUsuarios] = useState('')
+    // const [usuarios, setUsuarios] = useState('')
 
     useEffect(() => {
         const getUser = async () => {
@@ -38,36 +40,48 @@ function EditDataProject({ proyecto }) {
         getUser()
 
         const data = localStorage.getItem('auth')
-        if(!data ){
-			localStorage.setItem('auth',JSON.stringify(user))
-			setRoleAuth(user.usuarioEncontrado.roleAuth)
-			return
-		}
-		const usuarioAuth = JSON.parse(data);
-		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
+        if (!data) {
+            localStorage.setItem('auth', JSON.stringify(user))
+            setRoleAuth(user.usuarioEncontrado.roleAuth)
+            return
+        }
+        const usuarioAuth = JSON.parse(data);
+        setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     }, [])
 
     const idPr = proyecto._id
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        if(roleAuth==="ADMIN"){
-            swal({
-                title: "¿Estas seguro?",
-                text: "Una vez modificado el proyecto no se puede revertir",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then(async(willDelete)=>{
-                if(willDelete){
-                    swal("Proyecto eliminado exitosamente",{
-                        icon: "success",
-                    });
-                    await fetch(URL_ELMINAR_PROJECT+idPr,{
-                        method: "DELETE",
-                        headers: {"Content-Type": "application/jason"}
-                    });
-                }
+
+        e.preventDefault()
+        let option = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ nombre, descripcion, responsable }),
+        };
+
+        try {
+            const res = await fetch(URL_EDIT_PROJECT+idPr, option),
+                json = await res.json();
+
+            if (!res.ok) {
+                console.log(json)
+                return swal({
+                    icon: "error",
+                    text: json.msg,
+                });
+            }
+            return swal({
+                icon: "success",
+                text: "Proyecto modificado exitosamente"
+            });
+        } catch (error) {
+            console.log(error.response);
+            return swal({
+                icon: "error",
+                text: "Ocurrio un error al modificar el proyecto",
             });
         }
     }
@@ -124,7 +138,7 @@ function EditDataProject({ proyecto }) {
                                 <UserList usuario={usuario} />
                             </Form.Select>
                         </div>
-                        <div className="col-md-12 pt-3">
+                        {/* <div className="col-md-12 pt-3">
                             <Autocomplete
                                 multiple
                                 onChange={(e) => setUsuarios(e.target.value)}
@@ -140,7 +154,7 @@ function EditDataProject({ proyecto }) {
                                     />
                                 )}
                             />
-                        </div>
+                        </div> */}
                         <div className="row mt-5">
                             <div className="col-md-3 bt-centrar">
                                 <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>actualizar proyecto</button>
