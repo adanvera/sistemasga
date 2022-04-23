@@ -36,9 +36,9 @@ export const Roles = ({ rol }) => {
 
 		const handleClose = () => setShow(false);
 		const handleShow = () => {
-			if (role === 'ADMIN') {
+			if (role === 'ADMINISTRADOR') {
 				setShow(true);
-			} else if (role !== 'ADMIN') {
+			} else if (role !== 'ADMINISTRADOR') {
 				swal({
 					title: "ADVERTENCIA",
 					text: "Su rol no tiene permisos para crear un rol",

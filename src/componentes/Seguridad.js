@@ -15,9 +15,14 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 function Seguridad({ rol }) {
+  //declaracion de variables a ser utilizadas
   const [usuario, setUsurio] = useState([])
   const [currentScreen, setCurrentScreen] = useState({ us: true, rol: false, per: false })
+  const { user } = useContext(DataContext)
+  const [nombre, setNombre] = useState('')
+  const [apellido, setApellido] = useState('')
 
+  //obtenemos el listado de usuarios
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -30,14 +35,6 @@ function Seguridad({ rol }) {
     }
     getUser()
   }, [])
-
-  console.log(usuario);
-
-  const { user } = useContext(DataContext)
-  const [nombre, setNombre] = useState('')
-  const [apellido, setApellido] = useState('')
-
-
 
   //consultamos el localStorage 
   //se obitne el nombre y apillod del usuario logeado

@@ -2,30 +2,23 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Container, FloatingLabel, Form } from 'react-bootstrap'
 import projectLogo from '../../images/logoproject.png'
 import Select from 'react-select'
-import UserList from '../UserList'
+import UsListPr from '../UsListPr'
 import { Autocomplete, TextField } from '@mui/material'
 import { DataContext } from '../../context/DataContext'
 import swal from 'sweetalert'
 import { URL_EDIT_PROJECT } from '../../helpers/endPoints'
+import { Link } from 'react-router-dom'
 const urlUsers = "http://localhost:4000/api/usuario/"
-
-
-
-
 
 function EditDataProject({ proyecto }) {
 
-    console.log(proyecto);
-
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
-
-
     const [usuario, setUsurio] = useState([])
     const [nombre, setNombre] = useState(proyecto.nombre)
     const [descripcion, setDescripcion] = useState(proyecto.descripcion)
     const [responsable, setResponsable] = useState(proyecto.responsable)
-    // const [usuarios, setUsuarios] = useState('')
+    const [usuarios, setUsuarios] = useState(proyecto.usuarios)
 
     useEffect(() => {
         const getUser = async () => {
@@ -52,18 +45,16 @@ function EditDataProject({ proyecto }) {
     const idPr = proyecto._id
 
     const handleSubmit = async (e) => {
-
         e.preventDefault()
         let option = {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ nombre, descripcion, responsable }),
+            body: JSON.stringify({ nombre, descripcion, responsable, usuarios }),
         };
-
         try {
-            const res = await fetch(URL_EDIT_PROJECT+idPr, option),
+            const res = await fetch(URL_EDIT_PROJECT + idPr, option),
                 json = await res.json();
 
             if (!res.ok) {
@@ -86,10 +77,13 @@ function EditDataProject({ proyecto }) {
         }
     }
 
-    console.log(roleAuth);
-
     return (
         <>
+            <Container className="register-box-head">
+                <section className="">
+                    <Link to="#"><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
+                </section>
+            </Container>
             <Container>
                 <section className="container-fluid register-content">
                     <div id="">
@@ -133,15 +127,16 @@ function EditDataProject({ proyecto }) {
                         </div>
                         <div className="col-md-12 pt-3">
                             <label>Asignar responsable del proyecto</label>
-                            <Form.Select aria-label="Tipo" onChange={(e) => setResponsable(e.target.value)} >
-                                <option disabled selected>Seleccionar responsable del proyecto</option>
-                                <UserList usuario={usuario} />
+                            <Form.Select aria-label="Tipo" value={responsable} onChange={(e) => setResponsable(e.target.value)} >
+                                <option disabled >Seleccionar responsable del proyecto</option>
+                                <UsListPr usuario={usuario} />
                             </Form.Select>
                         </div>
-                        {/* <div className="col-md-12 pt-3">
+                        <div className="col-md-12 pt-3">
                             <Autocomplete
                                 multiple
-                                onChange={(e) => setUsuarios(e.target.value)}
+                                value={usuarios}
+                                onChange={(e, v) => setUsuarios(v)}
                                 id="tags-outlined"
                                 options={usuario}
                                 getOptionLabel={(usuario) => usuario.nombre}
@@ -151,10 +146,11 @@ function EditDataProject({ proyecto }) {
                                         {...params}
                                         label="Asignar usuarios a proyecto"
                                         placeholder="Usuarios"
+                                        onChange={({ target }) => setUsuarios(target.value)}
                                     />
                                 )}
                             />
-                        </div> */}
+                        </div>
                         <div className="row mt-5">
                             <div className="col-md-3 bt-centrar">
                                 <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>actualizar proyecto</button>

@@ -3,14 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
 
-function Sidebar({rol}) {
+function Sidebar({ rol }) {
 	const navigate = useNavigate()
 	const { currentScreen, setCurrentScreen } = useContext(DataContext)
+	//funcion para cerrar sesion
 	const logout = () => {
 		localStorage.clear()
 		navigate('/')
 	}
-	
+
 	return (
 		<>
 			<div className="sidebar border-end bg-white" id="sidebar-wrapper">
@@ -23,7 +24,7 @@ function Sidebar({rol}) {
 							<button
 								className="list-group-item list-group-item-action p-3"
 								onClick={(e) =>
-									setCurrentScreen({ ...currentScreen, proyectos: true,seguridad:false,desarrollo:false })
+									setCurrentScreen({ ...currentScreen, proyectos: true, seguridad: false, desarrollo: false })
 								}
 							>
 								<ion-icon name="grid-outline"></ion-icon>{' '}
@@ -33,7 +34,7 @@ function Sidebar({rol}) {
 						<li>
 							<button className="list-group-item list-group-item-action p-3"
 								onClick={(e) =>
-									setCurrentScreen({ ...currentScreen, desarrollo: true,proyectos:false,seguridad:false })
+									setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false })
 								}
 							>
 								{' '}
@@ -43,9 +44,9 @@ function Sidebar({rol}) {
 						</li>
 						<li>
 							<button className="list-group-item list-group-item-action p-3"
-							onClick={(e) =>
-								setCurrentScreen({ ...currentScreen, seguridad: true,proyectos:false,desarrollo:false })
-							}>
+								onClick={(e) =>
+									setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false })
+								}>
 								<ion-icon name="finger-print-outline"></ion-icon>{' '}
 								<span className="p-2">Seguridad</span>{' '}
 							</button>
@@ -56,7 +57,7 @@ function Sidebar({rol}) {
 					<ul className="list-unstyled">
 						<li className="nav-item">
 							<a href="" className="nav-link crr" onClick={logout}>
-                                <ion-icon name="power" className="pt-1"></ion-icon> 
+								<ion-icon name="power" className="pt-1"></ion-icon>
 								<span className="bt-cerrar" >{' '}Cerrar sesion{' '}</span>
 							</a>
 						</li>

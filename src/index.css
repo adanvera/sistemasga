@@ -683,8 +683,14 @@ button.list-group-item.list-group-item-action.p-3:active{
 
 .deleteuser{
   color: #FF5263 !important;
-  cursor: pointer;
+  cursor: pointer; 
 }
+
+button.btn.btn-primary.deleteuser {
+  background: none;
+  border: none;
+}
+
 
 /* .deleteuser:hover{
   background: rgba(254, 0, 0, 0.05);

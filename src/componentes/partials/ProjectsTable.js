@@ -1,17 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import projectLogo from '../../images/logoproject.png'
 import DetailsProject from "../DetailsProject";
-
+const urlUsers = "http://localhost:4000/api/usuario/"
 
 export const ProjectsTable = ({ proyecto, index }) => {
-    
 
-    const [currentScreen, setCurrentScreen] = useState({ pr: false, other: false, prCreate: false, prDetails:false })
+
+    const [currentScreen, setCurrentScreen] = useState({ pr: false, other: false, prCreate: false, prDetails: false })
+    const [usuario, setUsurio] = useState([])
+
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const res = await fetch(urlUsers),
+                    data = await res.json()
+                setUsurio(data.usuarios)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getUser()
+    }, [])
+
 
     return (
         <>
-            <tr className="projectselected" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate:false, prDetails:true})}>
+            <tr className="projectselected" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate: false, prDetails: true })}>
                 <td>{index}</td>
                 <td className="lg" >
                     <div className="d-flex" to="./DetailsProject">
@@ -24,9 +40,9 @@ export const ProjectsTable = ({ proyecto, index }) => {
                     </div>
                 </td>
                 <td>{proyecto.descripcion}</td>
-                <td>{proyecto.responsable}</td>
+                <td>{(proyecto.responsable)}</td>
             </tr>
-            {currentScreen.prDetails && <DetailsProject proyecto={proyecto}/>}
+            {currentScreen.prDetails && <DetailsProject proyecto={proyecto} />}
         </>
     )
 

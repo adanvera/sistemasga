@@ -3,10 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 function AdminRoute() {
   return (
-      
-      <Outlet/>
-    
-    
+    <Outlet/>
   )
 }
 

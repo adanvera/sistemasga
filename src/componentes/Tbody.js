@@ -1,4 +1,4 @@
-import {CButton,CModal,CModalBody,CModalFooter,CModalHeader,CModalTitle} from "@coreui/react";
+import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from "@coreui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { FloatingLabel, Form } from "react-bootstrap";
 import swal from "sweetalert";
@@ -17,20 +17,23 @@ export const Tbody = ({ usuario, index }) => {
 	const [repetirPassword, setRepetirPassword] = useState("")
 	const [rol, setRolUser] = useState("")
 	const [roleAuth, setRoleAuth] = useState([])
-	const {user,currentScreen} = useContext(DataContext)
+	const { user, currentScreen } = useContext(DataContext)
+	const [userAuthUui, setUserAuthUui] = useState([])
 
 	//consultamos el localStorage y guardamos valor de rol 
 	//para poder filtrar funciones mediante la misma
-	useEffect(()=>{
+	useEffect(() => {
 		const data = localStorage.getItem('auth')
-		if(!data ){
-			localStorage.setItem('auth',JSON.stringify(user))
+		if (!data) {
+			localStorage.setItem('auth', JSON.stringify(user))
 			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			setUserAuthUui(user.usuarioEncontrado.uui)
 			return
 		}
 		const usuarioAuth = JSON.parse(data);
-		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)	
-	},)
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
+		setUserAuthUui(usuarioAuth.usuarioEncontrado.uui)
+	})
 
 	const initialState = {
 		nombre: usuario.nombre,
@@ -42,8 +45,8 @@ export const Tbody = ({ usuario, index }) => {
 	}
 
 	const deleteUser = async () => {
-		const userUi = user.usuarioEncontrado.uui
-		if((roleAuth==='ADMIN')  && usuario.uui !== userUi){
+
+		if ((roleAuth === 'ADMINISTRADOR') && usuario.uui !== userAuthUui) {
 			swal({
 				title: "¿Estas seguro?",
 				text: "Una vez eliminado el usuario no se puede revertir",
@@ -61,20 +64,20 @@ export const Tbody = ({ usuario, index }) => {
 					});
 				}
 			});
-		}else if (roleAuth!=='ADMIN'){
+		} else if (roleAuth !== 'ADMINISTRADOR') {
 			swal({
 				title: "ADVERTENCIA",
 				text: "Su rol no posee permisos para eliminar usuarios",
 				icon: "warning",
-      			button: "ok",
+				button: "ok",
 			})
 		}
-		if(((usuario.uui) === userUi) && (roleAuth==='ADMIN')){
+		if (((usuario.uui) === userAuthUui) && (roleAuth === 'ADMINISTRADOR')) {
 			swal({
 				title: "ERROR",
 				text: "No puede eliminar su propio usuario",
 				icon: "error",
-      			button: "ok",
+				button: "ok",
 			})
 		}
 	};
@@ -93,27 +96,27 @@ export const Tbody = ({ usuario, index }) => {
 		})
 	}
 
-	const functionRole = (data) =>{
-		if(data==='ADMIN'){
+	const functionRole = (data) => {
+		if (data === 'ADMINISTRADOR') {
 			return 'ADMINISTRADOR'
 		}
-		if(data==='user_role'){
+		if (data === 'user_role') {
 			return 'OPERADOR'
 		}
 	}
 
 	const editUser = async () => {
-		if(roleAuth==='ADMIN'){
+		if (roleAuth === 'ADMINISTRADOR') {
 			setVisible(!visible)
-		}else{
+		} else {
 			swal({
-		 		title: "ADVERTENCIA",
-		 		text: "Su rol no posee permisos para editar usuarios",
-		 		icon: "warning",
-      	 		button: "ok",
-		 	})
+				title: "ADVERTENCIA",
+				text: "Su rol no posee permisos para editar usuarios",
+				icon: "warning",
+				button: "ok",
+			})
 		}
-		
+
 	}
 
 	return (
@@ -149,7 +152,7 @@ export const Tbody = ({ usuario, index }) => {
 					<CModalTitle>Editar usuario</CModalTitle>
 				</CModalHeader>
 				<CModalBody>
-					<EditDataUser usuario={usuario}/>
+					<EditDataUser usuario={usuario} />
 				</CModalBody>
 			</CModal>
 		</>

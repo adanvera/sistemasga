@@ -7,6 +7,8 @@ import { URL_PROYECTOS } from '../helpers/endPoints';
 
 
 function ProjectList({ proyecto }) {
+
+  //para obtener el listado correspondiente de proyectos
   return (
     <>
       <div className='row pt-5'>

@@ -4,7 +4,7 @@ import { Tbody } from "./Tbody.js";
 
 
 function UsersLists({ usuario }, { role }) {
-
+  //tabla correspondiente a listado de usuarios
   return (
     <>
       <div className="row pt-5">

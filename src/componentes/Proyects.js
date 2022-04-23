@@ -16,12 +16,12 @@ import CreateProject from './partials/CreateProject';
 
 
 function Proyects({ rol }) {
-
+  // variable para la navegacion entre ventanas mediante btotones a ser clikeadas
   const [currentScreen, setCurrentScreen] = useState({ pr: true, other: false, prCreate: false })
 
   function ModalCreateProject() {
-
     //consultamos el localStorage
+    //obtenemos  los datos del usuario logueado
     useEffect(() => {
       const data = localStorage.getItem('auth')
       if (!data) {
@@ -32,6 +32,7 @@ function Proyects({ rol }) {
       const usuario = JSON.parse(data);
       setRole(usuario.usuarioEncontrado.rol)
     })
+    //varibbles a ser utilizadas
     const [role, setRole] = useState([])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -39,9 +40,9 @@ function Proyects({ rol }) {
     //onclick para mostrar modal de creacion de un proyecto
     const handleShow = () => {
       //filtramos si su rol es admin levanta el modal
-      if (role === 'ADMIN') {
+      if (role === 'ADMINISTRADOR') {
         setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate: true })
-      } else if (role !== 'ADMIN') {//si el rol no es el permitido lanza advertencia
+      } else if (role !== 'ADMINISTRADOR') {//si el rol no es el permitido lanza advertencia
         swal({
           title: "ADVERTENCIA",
           text: "Su rol no tiene permisos para crear un proyecto",
@@ -101,9 +102,9 @@ function Proyects({ rol }) {
           <ion-icon name="reorder-three-outline"></ion-icon>
           <button type="submit"
             className="nav-sg"
-            onClick={() => setCurrentScreen({ ...currentScreen, pr: true, other: false, prCreate:false})} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
+            onClick={() => setCurrentScreen({ ...currentScreen, pr: true, other: false, prCreate: false })} > <p><ion-icon name="grid-outline"></ion-icon> Proyectos</p>
           </button>
-          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: true, prCreate:false })} >Other</button>
+          <button type="submit" className="nav-sg" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: true, prCreate: false })} >Other</button>
         </nav>
         <nav className="">
           <Link to="#pricing" className="d-flex">

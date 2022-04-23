@@ -9,18 +9,14 @@ import user_four from '../images/users/user_four.png'
 import EditProject from './partials/EditProject';
 
 function DetailsProject({ proyecto }) {
-
+	//variable declarada para saber cual es la ventana actual mediante botones
 	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true })
-
-
 
 	return (
 		<>
 			<Container fluid={true} id="headdash" className='mt-3'>
-
 			</Container>
 			{currentScreen.prDetails &&
-
 				<Container fluid={true} className="mt-5" >
 					<div className='row o-t d-flex'>
 						<div className=''><h1>{proyecto.nombre}</h1></div>
@@ -62,7 +58,6 @@ function DetailsProject({ proyecto }) {
 								</div>
 							</div>
 						</div>
-
 						<div className='col-md-4 form-search'>
 							<Form className="d-flex">
 								<FormControl

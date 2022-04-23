@@ -1,6 +1,7 @@
 import React from 'react'
 
 function UserList({ usuario }) {
+    //para obtener el listado de usuarios
     return (
         <>
             {

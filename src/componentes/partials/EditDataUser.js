@@ -9,6 +9,9 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 export const EditDataUser = ({ usuario, index }) => {
 
+    //declaracion de variables a ser utlizadas
+    //seteandolos con los valores correspondientes
+    //desde el backend para proceder a la modificacion de la misma
     const idUser = usuario.uui
     const [nombre, setNombre] = useState(usuario.nombre)
     const [apellido, setApellido] = useState(usuario.apellido)
@@ -17,6 +20,7 @@ export const EditDataUser = ({ usuario, index }) => {
     const [visible, setVisible] = useState(false);
     const [role, setRole] = useState([])
 
+    //para obtener los roles de la base de datos
     useEffect(() => {
         const getRole = async () => {
             try {
@@ -30,8 +34,10 @@ export const EditDataUser = ({ usuario, index }) => {
         getRole()
     }, [])
 
+    //funcion para enviar los nuevos valores del usuario
+    //para que puedan ser modificados, llamando al metodo correspondiente
+    //para ser editados
     const handleSubmit = async (e) => {
-
         e.preventDefault()
         let option = {
             method: "PUT",
@@ -40,11 +46,10 @@ export const EditDataUser = ({ usuario, index }) => {
             },
             body: JSON.stringify({ nombre, apellido, correo, rol }),
         };
-
         try {
             const res = await fetch(URL_EDITAR_USER + idUser, option),
                 json = await res.json();
- 
+
             if (!res.ok) {
                 console.log(json)
                 return swal({
@@ -119,7 +124,7 @@ export const EditDataUser = ({ usuario, index }) => {
             <div className="row justify-content-center">
                 <div className="col-md-12 mt-3">
                     <label>Rol actual:</label>
-                    <Form.Select aria-label="Tipo" onChange={(e) => setRoleActual(e.target.value)} >
+                    <Form.Select value={rol} aria-label="Tipo" onChange={(e) => setRoleActual(e.target.value)} >
                         <option disabled selected>SELECCIONAR ROL</option>
                         <Rolelistreg roles={role} />
                     </Form.Select>

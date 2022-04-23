@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {Container} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import Sidebar from './Sidebar'
@@ -11,40 +11,42 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 
 export const Dashboard = () => {
-	const {user,currentScreen} = useContext(DataContext)
-	const [nombre,setNombre] = useState('')	
+	//declaramos las variables a ser utilizadas
+	const { user, currentScreen } = useContext(DataContext)
+	const [nombre, setNombre] = useState('')
 	const [role, setRole] = useState([])
 	const navigate = useNavigate()
 	const [authuser, setAuth] = useState('')
 
-
 	//consultamos el localStorage
-	useEffect(()=>{
+	useEffect(() => {
 		const data = localStorage.getItem('auth')
-		if(!data ){
+		if (!data) {
 			setNombre(user.usuarioEncontrado.nombre)
-			localStorage.setItem('auth',JSON.stringify(user))
+			localStorage.setItem('auth', JSON.stringify(user))
 			setRole(user.usuarioEncontrado.role)
 			return
 		}
 		const usuario = JSON.parse(data);
 		setNombre(usuario.usuarioEncontrado.nombre);
-		setRole(usuario.usuarioEncontrado.rol)		
-	},)
+		setRole(usuario.usuarioEncontrado.rol)
+	})
 
-  	const logout = ()=>{
+	//funcion para cerrar sesion
+	const logout = () => {
 		localStorage.clear()
-    navigate('/')
-  }
+		navigate('/')
+	}
+
 	return (
 		<>
 			<Container fluid={true} className="d-flex p-0 m-0">
-				<Sidebar rol={role}/>
-				<Container  fluid={true} id="dash" rol={role}>
+				<Sidebar rol={role} />
+				<Container fluid={true} id="dash" rol={role}>
 					{/* <Navbar/> */}
-					{	currentScreen.proyectos && <Proyects rol={role}/>}
-					{	currentScreen.desarrollo && <Desarrollo rol={role}/>}
-					{	currentScreen.seguridad&& <Seguridad rol={role} />}
+					{currentScreen.proyectos && <Proyects rol={role} />}
+					{currentScreen.desarrollo && <Desarrollo rol={role} />}
+					{currentScreen.seguridad && <Seguridad rol={role} />}
 				</Container>
 			</Container>
 		</>
