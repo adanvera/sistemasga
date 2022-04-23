@@ -24,7 +24,7 @@ export const ProjectsTable = ({ proyecto, index }) => {
                     </div>
                 </td>
                 <td>{proyecto.descripcion}</td>
-                <td>Adán Vera</td>
+                <td>{proyecto.responsable}</td>
             </tr>
             {currentScreen.prDetails && <DetailsProject proyecto={proyecto}/>}
         </>

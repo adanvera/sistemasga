@@ -59,8 +59,9 @@ function EditProject({proyecto}) {
     }
 
 
-    const edtitProject = async () =>{
-        //logica de modificacion
+    const edtitProject = async (e) =>{
+        //logica de modificacion del proyecto
+        
     }
 
     return (
