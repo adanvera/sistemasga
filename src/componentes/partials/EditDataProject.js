@@ -129,7 +129,7 @@ function EditDataProject({ proyecto }) {
                             <label>Asignar responsable del proyecto</label>
                             <Form.Select aria-label="Tipo" value={responsable} onChange={(e) => setResponsable(e.target.value)} >
                                 <option disabled >{responsable}</option>
-                                <option value="sin responsable" >sin responsable</option>
+                                <option value="Sin responsable" >Sin responsable</option>
                                 <UsListPr usuario={usuario} />
                             </Form.Select>
                         </div>

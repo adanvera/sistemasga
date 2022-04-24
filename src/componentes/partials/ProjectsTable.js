@@ -28,7 +28,7 @@ export const ProjectsTable = ({ proyecto, index }) => {
     }, [])
 
     const verifyUser = (pro) => {
-        if (pro === "sin responsable") {
+        if (pro === "Sin responsable") {
             return (
                 <>
                     <div className="img-none"><img src={user_none} /><span>{pro}</span></div>
