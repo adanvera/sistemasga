@@ -128,7 +128,8 @@ function EditDataProject({ proyecto }) {
                         <div className="col-md-12 pt-3">
                             <label>Asignar responsable del proyecto</label>
                             <Form.Select aria-label="Tipo" value={responsable} onChange={(e) => setResponsable(e.target.value)} >
-                                <option disabled >Seleccionar responsable del proyecto</option>
+                                <option disabled >{responsable}</option>
+                                <option value="sin responsable" >sin responsable</option>
                                 <UsListPr usuario={usuario} />
                             </Form.Select>
                         </div>
@@ -139,12 +140,13 @@ function EditDataProject({ proyecto }) {
                                 onChange={(e, v) => setUsuarios(v)}
                                 id="tags-outlined"
                                 options={usuario}
-                                getOptionLabel={(usuario) => usuario.nombre}
+                                getOptionLabel={(usuario) => usuario.nombre + " " +usuario.apellido}
                                 filterSelectedOptions
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
-                                        label="Asignar usuarios a proyecto"
+                                        label= "Usuarios asignados"
+                                        value={usuarios}
                                         placeholder="Usuarios"
                                         onChange={({ target }) => setUsuarios(target.value)}
                                     />

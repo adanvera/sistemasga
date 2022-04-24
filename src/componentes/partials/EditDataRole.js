@@ -8,31 +8,38 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 export const EditDataRole = ({ rl }) => {
 
-    console.log(rl._id);
-
-    const IdRole= rl._id
-    console.log(IdRole)
-
+    const IdRole = rl._id
     const [rol, setRole] = useState(rl.rol)
 
+    const [optProyecto, setOptProyecto] = useState("")
+    const [optSeguridad, setOptSeguridad] = useState("")
+    const [optDesarrollo, setOptDesarrollo] = useState("")
+    
+    const [accesoActual, setAccesoActual] = useState(rl.acceso)
+
+    const acceso = [optDesarrollo, optProyecto, optSeguridad]
+
+    console.log(acceso);
+
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         let options = {
             method: 'PUT',
-            headers:{
+            headers: {
                 "Content-Type": "application/json",
-            }, 
-            body: JSON.stringify({rol})
+            },
+            body: JSON.stringify({ rol, acceso })
         };
 
         try {
-            const res = await fetch(URL_EDITAR_ROL+IdRole, options),
-            json = await res.json()
-            if(!res.ok){
+            const res = await fetch(URL_EDITAR_ROL + IdRole, options),
+                json = await res.json()
+            if (!res.ok) {
                 console.log(json)
-                return({
-                    icon:"error",
+                return ({
+                    icon: "error",
                     text: json.msg,
                 })
             }
@@ -43,8 +50,8 @@ export const EditDataRole = ({ rl }) => {
         } catch (error) {
             console.log(error.response);
             return swal({
-                icon:"error",
-                text:"Ocurrio un error al modifcar el rol"
+                icon: "error",
+                text: "Ocurrio un error al modifcar el rol"
             })
         }
     }
@@ -69,15 +76,21 @@ export const EditDataRole = ({ rl }) => {
                 </FloatingLabel>
             </div>
             <div className="col-md-12">
-                <label>Con acceso a modulo de: </label>
-                {/* <Form className="ml-dos" >
+                <div>
+                    <h6>ACCESO ACTUAL:</h6>
+                    <div className='acceso-actual'>
+                        {accesoActual}
+                    </div>
+                </div>
+                <label className='pt-3 pb-3'>Asignar nuevos accesos a rol</label>
+                <Form className="ml-dos">
                     <Form.Check type="switch" id="modulo-proyecto" value="proyecto" label="Poryecto" onChange={(e) => setOptProyecto(e.target.value)} />
                     <Form.Check type="switch" id="modulo-seguridad" value="seguridad" label="Seguridad" onChange={(e) => setOptSeguridad(e.target.value)} />
                     <Form.Check type="switch" id="modulo-desarrollo" value="desarrollo" label="Desarrollo" onChange={(e) => setOptDesarrollo(e.target.value)} />
-                </Form> */}
+                </Form>
             </div>
-            <div className="col-md-12 mt.3">
-                <button className="btn-cancel w-100" color="secondary">cancelar</button>
+            <div className="col-md-12 mt-3">
+                <button className="btn-cancel w-100 mt-1 mb-1" color="secondary">cancelar</button>
                 <button className="btn-crear w-100 mt-1" onClick={handleSubmit}>actualizar usuario</button>
             </div>
         </>

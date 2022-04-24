@@ -11,7 +11,8 @@ function ProjectList({ proyecto }) {
   //para obtener el listado correspondiente de proyectos
   return (
     <>
-      <div className='row pt-5'>
+      <div className='row pb-5'>
+        <h1 className='pt-5'>Proyectos</h1>
         <div className='col-md-12' id='tablelist'>
           <Table responsive="md" striped bordered hover>
             <thead>

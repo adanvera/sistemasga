@@ -4,15 +4,14 @@ import ProjectList from './ProjectList';
 import swal from 'sweetalert';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import myphoto from '../images/perfil.png'
-
 import { DataContext } from '../context/DataContext'
 import { URL_PROYECTOS } from '../helpers/endPoints';
 import Other from './Other';
 import CreateProject from './partials/CreateProject';
+import NoData from './NoData';
 
 
 function Proyects({ rol }) {
@@ -133,12 +132,14 @@ function Proyects({ rol }) {
                 <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
               </Form>)}
           </div>
-
-
         </div>
-        {currentScreen.pr && <ProjectList proyecto={proyecto} />}
+        {currentScreen.pr &&
+          <>
+            {proyecto.length === 0 && <NoData />}
+            {proyecto.length !== 0 && <ProjectList proyecto={proyecto} />}
+          </>
+        }
         {currentScreen.prCreate && <CreateProject />}
-        {/* {proyecto.length > 0 && <ProjectList proyecto={proyecto} />} */}
         {currentScreen.other && <Other />}
       </Container>
     </>

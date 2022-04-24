@@ -3,13 +3,13 @@ import { Container } from 'react-bootstrap';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import myphoto from '../images/perfil.png'
-
-
 import { Usuarios } from './partials/Usuarios';
 import { useContext } from 'react';
 import Roles from './partials/Roles';
 import { DataContext } from '../context/DataContext'
+import NoData from './NoData';
 const urlUsers = "http://localhost:4000/api/usuario/"
+const urlRoles = "http://localhost:4000/api/role/"
 
 
 
@@ -21,6 +21,8 @@ function Seguridad({ rol }) {
   const { user } = useContext(DataContext)
   const [nombre, setNombre] = useState('')
   const [apellido, setApellido] = useState('')
+
+  const [role, setRole] = useState([])
 
   //obtenemos el listado de usuarios
   useEffect(() => {
@@ -34,7 +36,20 @@ function Seguridad({ rol }) {
       }
     }
     getUser()
+
+    const getRole = async () => {
+      try {
+        const res = await fetch(urlRoles),
+          data = await res.json()
+        setRole(data.roles)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getRole()
   }, [])
+
+  console.log(role);
 
   //consultamos el localStorage 
   //se obitne el nombre y apillod del usuario logeado
@@ -83,8 +98,18 @@ function Seguridad({ rol }) {
           </div>
         </div>
         {/* se agrega condicional para renderizar la ventana respectiva */}
-        {currentScreen.us && <Usuarios usuario={usuario} rol={rol} />}
-        {currentScreen.rol && <Roles rol={rol} />}
+        {currentScreen.us &&
+          <>
+            {usuario.length === 0 && <NoData />}
+            {usuario.length !== 0 && <Usuarios usuario={usuario} rol={rol} />}
+          </>
+        }
+        {currentScreen.rol &&
+          <>
+            {role.length === 0 && <NoData />}
+            {role.length !== 0 && <Roles rol={rol} />}
+          </>
+        }
       </Container>
     </>
   );

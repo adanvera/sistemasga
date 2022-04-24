@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import projectLogo from '../../images/logoproject.png'
 import DetailsProject from "../DetailsProject";
+import user_one from '../../images/users/user_one.png'
+import user_none from '../../images/users/icon.jpg'
 const urlUsers = "http://localhost:4000/api/usuario/"
+
 
 export const ProjectsTable = ({ proyecto, index }) => {
 
@@ -24,6 +27,23 @@ export const ProjectsTable = ({ proyecto, index }) => {
         getUser()
     }, [])
 
+    const verifyUser = (pro) => {
+        if (pro === "sin responsable") {
+            return (
+                <>
+                    <div className="img-none"><img src={user_none} /><span>{pro}</span></div>
+
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <div className="img-none"><img src={user_one} /><span>{pro}</span></div>
+                </>
+            )
+        }
+
+    }
 
     return (
         <>
@@ -40,7 +60,9 @@ export const ProjectsTable = ({ proyecto, index }) => {
                     </div>
                 </td>
                 <td>{proyecto.descripcion}</td>
-                <td>{(proyecto.responsable)}</td>
+                <td>
+                    {verifyUser(proyecto.responsable)}
+                </td>
             </tr>
             {currentScreen.prDetails && <DetailsProject proyecto={proyecto} />}
         </>

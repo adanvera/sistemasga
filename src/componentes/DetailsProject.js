@@ -7,10 +7,23 @@ import user_two from '../images/users/user_two.png'
 import user_three from '../images/users/user_three.png'
 import user_four from '../images/users/user_four.png'
 import EditProject from './partials/EditProject';
+import DisplayUserPr from './DisplayUserPr';
+
+
 
 function DetailsProject({ proyecto }) {
 	//variable declarada para saber cual es la ventana actual mediante botones
 	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true })
+
+	const [userDisplayProject, setUserDisplay] = useState('')
+
+	const usersProject = useState(proyecto.usuarios)
+	const usersSelected = usersProject[0]
+
+	// usersSelected.forEach(object => {
+	// 	console.log(object.nombre + " " + object.apellido);
+	// });
+
 
 	return (
 		<>
@@ -24,39 +37,9 @@ function DetailsProject({ proyecto }) {
 					</div>
 					<div className='row box-dashboard-head p5co'>
 						<div className='col-md-8 box-users d-flex'>
-							<div className='user'>
-								<img src={user_one} alt="" />
-							</div>
-							<div className='user'>
-								<img src={user_two} alt="" />
-							</div>
-							<div className='user'>
-								<img src={user_three} alt="" />
-							</div>
-							<div className='user'>
-								<img src={user_four} alt="" />
-							</div>
-							<div id="cia-user">
-								<span>+8</span>
-							</div>
-							<div className='col filters d-flex'>
-								<div className='col-md-3 pr-1'>
-									<Form.Select aria-label="Filtrar por">
-										<option>Selccionar filtro</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</Form.Select>
-								</div>
-								<div className='col-md-3'>
-									<Form.Select aria-label="Tipo">
-										<option>Selccionar filtro</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</Form.Select>
-								</div>
-							</div>
+							{usersSelected.map((object) => {
+								return <DisplayUserPr object={object}/>
+							})}
 						</div>
 						<div className='col-md-4 form-search'>
 							<Form className="d-flex">

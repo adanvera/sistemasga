@@ -6,15 +6,10 @@ import { URL_CREAR_ROL } from "../helpers/endPoints";
 
 function RegisterRole() {
   const [rol, setRoleName] = useState("")
+
   const [optProyecto, setOptProyecto] = useState("")
   const [optSeguridad, setOptSeguridad] = useState("")
   const [optDesarrollo, setOptDesarrollo] = useState("")
-
-  const options = [
-    { value: 'Proyecto', label: 'Proyecto' },
-    { value: 'Desarollo', label: 'Desarrollo' },
-    { value: 'Seguridad', label: 'Seguridad' },
-  ];
 
   const handleSubmitRole = async (e) => {
     e.preventDefault();
@@ -25,7 +20,8 @@ function RegisterRole() {
       });
     }
 
-    const acceso = [optDesarrollo, optProyecto, optSeguridad]
+    const acceso = [optDesarrollo , optProyecto , optSeguridad]
+
     let option = {
       method: "POST",
       headers: {

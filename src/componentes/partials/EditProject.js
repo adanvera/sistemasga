@@ -14,7 +14,7 @@ function EditProject({ proyecto }) {
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
-
+    const idPr = proyecto._id
     const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
     useEffect(() => {
@@ -27,10 +27,6 @@ function EditProject({ proyecto }) {
         const usuarioAuth = JSON.parse(data);
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     })
-
-    const idPr = proyecto._id
-
-
 
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion

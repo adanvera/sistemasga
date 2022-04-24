@@ -48,8 +48,6 @@ export const Tbodyrol = ({ role: rl, index }) => {
 
 	}, [])
 
-	console.log(role);
-
 	const deleteRol = async () => {
 		if (roleAuth === 'ADMINISTRADOR') {
 			const { _id } = rl
@@ -99,11 +97,11 @@ export const Tbodyrol = ({ role: rl, index }) => {
 				<td className="pl-dos">{index}</td>
 				<td>{rl.rol}</td>
 				<td>{rl.acceso}</td>
-				<td className="d-flex">
+				<td className="d-flex justify-content-center">
 					<div className="padright deleteuser">
-						<span className="pten" onClick={deleteRol}>
+						<CButton className="deleteuser" onClick={deleteRol}>
 							<ion-icon name="trash-bin-outline"></ion-icon>
-						</span>
+						</CButton>
 					</div>
 					<div className="padright edituser">
 						<CButton className="pten" onClick={editRole}>

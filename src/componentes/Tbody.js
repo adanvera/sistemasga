@@ -135,9 +135,9 @@ export const Tbody = ({ usuario, index }) => {
 				</td>
 				<td className="d-flex justify-content-center">
 					<div className="padright deleteuser">
-						<span className="pten" onClick={deleteUser}>
+						<CButton className="deleteuser" onClick={deleteUser}>
 							<ion-icon name="trash-bin-outline"></ion-icon>
-						</span>
+						</CButton>
 					</div>
 					<div className="padright edituser">
 						<CButton className="pten" onClick={editUser} >
