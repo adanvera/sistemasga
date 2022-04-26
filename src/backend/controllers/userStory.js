@@ -17,12 +17,13 @@ const agregarUserStory = async (req, res) => {
   }
 }
 
-const obtenerUsByProjectID = async (Req, res) => {
-  
+const obtenerUsByBacklog = async (req, res) => {
+  const {id} = req.params
+
   try {
-    const proyectos = await Proyecto.find({ estado: true });
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"backlog"});
     res.status(200).json({
-      proyectos
+      us
     })
   } catch (error) {
     console.log(error);
@@ -108,7 +109,7 @@ const eliminarProyecto = async (req,res) => {
 
 module.exports = {
   agregarUserStory,
-  obtenerUsByProjectID,
+  obtenerUsByBacklog,
   agregarUsuarioProyecto,
   eliminarProyecto,
   actualizarProyecto
