@@ -3,7 +3,7 @@ const { agregarUserStory, obtenerUsByBacklog } = require('../controllers/userSto
 const router = express.Router()
 
 router.post('/crear-us',agregarUserStory)
-router.get('/obtener-us/:id',obtenerUsByBacklog)
+router.get('/obtener-us-backlog/:id',obtenerUsByBacklog)
 
 
 
