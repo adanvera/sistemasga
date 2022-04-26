@@ -3,7 +3,7 @@ const { agregarUserStory, obtenerUsByProjectID } = require('../controllers/userS
 const router = express.Router()
 
 router.post('/crear-us',agregarUserStory)
-/router.get('/obtener-us/:id',obtenerUsByProjectID)
+router.get('/obtener-us/:id',obtenerUsByProjectID)
 
 
 
