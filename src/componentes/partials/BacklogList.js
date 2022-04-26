@@ -1,16 +1,13 @@
 import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from '@coreui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import swal from 'sweetalert'
+
 import user_one from '../../images/users/user_one.png'
 
 
-function BacklogList() {
 
-
-
-    
-
-    const [data, loading, error] = useState()
+function BacklogList({proyecto}) {
+    const idPr = useState(proyecto._id)
 
     const [visible, setVisible] = useState(false)
 

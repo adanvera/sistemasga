@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Form, FormControl, Button, FloatingLabel } from 'react-bootstrap'
 import EditProject from './partials/EditProject';
 import DisplayUserPr from './DisplayUserPr';
 import { CButton } from '@coreui/react';
 import CreateUs from './partials/CreateUs';
+import { URL_BACKLOG } from '../helpers/endPoints';
 import BacklogList from './partials/BacklogList';
+
 
 function DetailsProject({ proyecto }) {
 
@@ -13,6 +15,28 @@ function DetailsProject({ proyecto }) {
 	const [userDisplayProject, setUserDisplay] = useState('')
 	const usersProject = useState(proyecto.usuarios)
 	const usersSelected = usersProject[0]
+	const [tasksBk, setTasksBk] = useState('')
+
+
+	const [UrlBkLog, setBkLog] = useState('http://localhost:4000/api/user-story/obtener-us-backlog/6264ad916213e9ec53037c55')
+
+
+	useEffect(() => {
+		const getUsBk = async() =>{
+		  try {
+        const res = await fetch(UrlBkLog),
+        data = await res.json()
+        setTasksBk(data.us)
+		  } catch (error) {
+			  console.log(error);
+		  }
+		}
+		getUsBk()
+	}, [])
+	
+
+	console.log(tasksBk);
+
 
 	return (
 		<>
@@ -52,7 +76,7 @@ function DetailsProject({ proyecto }) {
 
 								{currentScreen.usTask && <CreateUs proyecto={proyecto} />}
 
-								<BacklogList />
+								<BacklogList proyecto={proyecto} />
 
 							</div>
 						</div>

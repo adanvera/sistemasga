@@ -12,7 +12,7 @@ const URL_ELMINAR_PROJECT = 'http://localhost:4000/api/proyecto/eliminar/'
 const URL_EDIT_PROJECT = "http://localhost:4000/api/proyecto/actualizar-proyecto/"
 
 const URL_CREATE_US_STORY ="http://localhost:4000/api/user-story/crear-us"
-const URL_US_STORY_LIST = ""
+const URL_BACKLOG = "http://localhost:4000/api/user-story/obtener-us-backlog/"
 
 
 export {
@@ -27,5 +27,5 @@ export {
   URL_ELMINAR_PROJECT,
   URL_EDIT_PROJECT,
   URL_CREATE_US_STORY,
-  URL_US_STORY_LIST,
+  URL_BACKLOG,
 }

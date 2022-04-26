@@ -5,6 +5,7 @@ import swal from 'sweetalert'
 import { URL_CREATE_US_STORY } from '../../helpers/endPoints'
 
 
+
 function CreateUs({ proyecto }) {
 
     const [task, setTask] = useState('')
@@ -29,7 +30,7 @@ function CreateUs({ proyecto }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ task, us_state, us_priority, id_project, name_project }),
+            body: JSON.stringify({ task , us_state, us_priority, id_project, name_project }),
         };
         try {
             const res = await fetch(URL_CREATE_US_STORY, option),
@@ -53,6 +54,8 @@ function CreateUs({ proyecto }) {
             });
         }
     }
+
+   
 
     return (
         <div className='boxUs'>
