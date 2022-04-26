@@ -21,8 +21,8 @@ function DetailsProject({ proyecto }) {
 			{currentScreen.prDetails &&
 				<Container fluid={true} className="mt-5" >
 					<div className='row o-t d-flex'>
-						<div className=''><h1>{proyecto.nombre}</h1></div>
-						<div className='' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask:false})} ><ion-icon name="construct-outline"></ion-icon></div>
+						<div className=''><h4>{proyecto.nombre}</h4></div>
+						<div className='' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} ><ion-icon name="construct-outline"></ion-icon></div>
 					</div>
 					<div className='row box-dashboard-head p5co'>
 						<div className='col-md-8 box-users d-flex'>
@@ -48,12 +48,12 @@ function DetailsProject({ proyecto }) {
 								<div className='title-section'>
 									<span>BACKLOG 1</span>
 								</div>
-								<div className='row' id='createUS'> <CButton  onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask:true})} className='createUS'>Crear tarea</CButton> </div>
+								<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true })} className='createUS'>Crear tarea</CButton> </div>
 
-								{currentScreen.usTask && <CreateUs proyecto={proyecto}/>}
-								
-								<BacklogList/>
-								
+								{currentScreen.usTask && <CreateUs proyecto={proyecto} />}
+
+								<BacklogList />
+
 							</div>
 						</div>
 					</div>

@@ -10,16 +10,12 @@ export const EditDataRole = ({ rl }) => {
 
     const IdRole = rl._id
     const [rol, setRole] = useState(rl.rol)
-
     const [optProyecto, setOptProyecto] = useState("")
     const [optSeguridad, setOptSeguridad] = useState("")
     const [optDesarrollo, setOptDesarrollo] = useState("")
     
     const [accesoActual, setAccesoActual] = useState(rl.acceso)
-
     const acceso = [optDesarrollo, optProyecto, optSeguridad]
-
-    console.log(acceso);
 
     
     const handleSubmit = async (e) => {
