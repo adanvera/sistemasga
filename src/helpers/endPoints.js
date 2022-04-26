@@ -11,6 +11,8 @@ const URL_PROYECTOS ='http://localhost:4000/api/proyecto/'
 const URL_ELMINAR_PROJECT = 'http://localhost:4000/api/proyecto/eliminar/'
 const URL_EDIT_PROJECT = "http://localhost:4000/api/proyecto/actualizar-proyecto/"
 
+const URL_CREATE_US_STORY ="http://localhost:4000/api/user-story/crear-us"
+
 
 export {
   URL_AUTH_USUARIO,
@@ -23,4 +25,5 @@ export {
   URL_CREAR_PROYECTO,
   URL_ELMINAR_PROJECT,
   URL_EDIT_PROJECT,
+  URL_CREATE_US_STORY,
 }

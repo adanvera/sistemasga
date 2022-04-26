@@ -379,6 +379,7 @@ div#headdash {
   margin-top: 20px;
   border-radius: 8px;
   padding-bottom: 20px;
+  background: #F4F5F7;
 }
 
 .pl-20 {
@@ -465,7 +466,6 @@ a.nav-link {
 .box-status-content {
   height: auto;
   background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   margin-left: 20px;
   margin-right: 20px;
@@ -481,7 +481,6 @@ a.nav-link {
 .priority {
   background: #FF5263;
   border-radius: 8px;
-  width: auto !important;
   text-align: center;
   color: #FFFFFF;
   font-size: 12px;
@@ -907,6 +906,10 @@ p ion-icon.md.hydrated {
   padding-left: 1rem;
 }
 
+.pl-1 {
+  padding-left: 0.5rem;
+}
+
 .img-create img {
   max-width: 80px;
 }
@@ -981,4 +984,32 @@ button.btn.btn-primary.deleteuser:hover {
   max-width: 40px;
   padding-right: 5px;
   border-radius: 100%;
+}
+
+.priority {
+  width: 100px;
+}
+
+.createUS {
+  width: 120px !important;
+}
+
+#createUS {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding-bottom: 5px;
+}
+
+div#createUS button.btn.btn-primary.createUS {
+  background: #00BF9C;
+  border-radius: 8px;
+  border: none;
+  height: 35px;
+}
+
+.boxUs{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
