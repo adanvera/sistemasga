@@ -1,11 +1,26 @@
-import React from 'react'
+import { CButton, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle } from '@coreui/react'
+import React, { useState } from 'react'
+import swal from 'sweetalert'
 import user_one from '../../images/users/user_one.png'
+
 
 function BacklogList() {
 
+
+
+    
+
+    const [data, loading, error] = useState()
+
+    const [visible, setVisible] = useState(false)
+
+    const showUS = async () => {
+        setVisible(!visible)
+    }
+
     return (
         <>
-            <div className='box-status-content'>
+            <button className='box-status-content' onClick={showUS} >
                 <div className='row paddd'>
                     <div className='col'>
                         <div className='user-pic'>
@@ -32,7 +47,20 @@ function BacklogList() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </button>
+
+            <CModal visible={visible} onClose={() => setVisible(false)}>
+                <CModalHeader onClose={() => setVisible(false)}>
+                    <CModalTitle>User Story</CModalTitle>
+                </CModalHeader>
+                <CModalBody>
+                    <>Hola</>
+                </CModalBody>
+                <CModalFooter>
+                    <CButton color="secondary" onClick={() => setVisible(false)}>cancelar</CButton>
+                    <CButton className="btn-update">Aceptar</CButton>
+                </CModalFooter>
+            </CModal>
         </>
     )
 }
