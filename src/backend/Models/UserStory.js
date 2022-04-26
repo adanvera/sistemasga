@@ -27,12 +27,20 @@ const UserStorySchema = Schema({
     name_project:{
       type:String,
       required: [true, 'El nombre proyecto es obligatorio!!']
-    } 
-
+    }, 
+    assigned_user:{
+      type:String,
+      required: [true, 'El nombre del usuario es obligatorio!!']
+    }
 
 
 });
-
+UserStorySchema.methods.toJSON = function () {
+  /*Retorn a todo excecpto __v,password,_id*/
+  const { __v,_id,...userStory } =  this.toObject();
+  
+  return userStory;
+}
 
 
 module.exports = model('UserStory',UserStorySchema);
