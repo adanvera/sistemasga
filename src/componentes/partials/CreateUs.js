@@ -8,8 +8,8 @@ import { URL_CREATE_US_STORY } from '../../helpers/endPoints'
 function CreateUs({ proyecto }) {
 
     const [task, setTask] = useState('')
-    const [usState, setUsState] = useState('backlog')
-    const [usPriority, setUsPriority] = useState('low')
+    const [us_state, setUsState] = useState('backlog')
+    const [us_priority, setUsPriority] = useState('low')
     const [id_project, setIdProject] = useState(proyecto._id)
     const [name_project, setNameProject] = useState(proyecto.nombre)
 
@@ -22,31 +22,35 @@ function CreateUs({ proyecto }) {
                 icon: "error",
                 text: "Todos los campos son obligatorios",
             });
-
-            let option = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ task, usState, usPriority, id_project, name_project }),
-            };
-            try {
-                const res = await fetch(URL_CREATE_US_STORY, option),
-                    json = await res.json()
-                if (!res.ok) {
-                    console.log(json)
-                    return swal({
-                        icon: "error",
-                        text: json.msg,
-                    });
-                }
-            } catch (error) {
-                console.log(error.response);
+        }
+        
+        let option = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ task, us_state, us_priority, id_project, name_project }),
+        };
+        try {
+            const res = await fetch(URL_CREATE_US_STORY, option),
+                json = await res.json()
+            if (!res.ok) {
+                console.log(json)
                 return swal({
                     icon: "error",
-                    text: "Ocurrio un error",
+                    text: json.msg,
                 });
             }
+            return swal({
+                icon: "success",
+                text: "us creado exitosamente"
+            });
+        } catch (error) {
+            console.log(error.response);
+            return swal({
+                icon: "error",
+                text: "Ocurrio un error",
+            });
         }
     }
 
