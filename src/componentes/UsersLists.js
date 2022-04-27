@@ -13,10 +13,10 @@ function UsersLists({ usuario }, { role }) {
             <thead>
               <tr>
                 <th>#</th>
-                <th>nombre y apellido</th>
-                <th>correo electrónico</th>
-                <th>rol</th>
-                <th className="a-texttt">acciones</th>
+                <th>NOMBRE Y APELLIDO</th>
+                <th>CORREO ELECTRÓNICO</th>
+                <th>ROL</th>
+                <th className="a-texttt">ACCIONES</th>
               </tr>
             </thead>
             <tbody>

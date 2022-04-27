@@ -18,9 +18,9 @@ function ProjectList({ proyecto }) {
             <thead>
               <tr>
                 <th>#</th>
-                <th>nombre</th>
-                <th>descripcion</th>
-                <th>responsable</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCIÓN</th>
+                <th>RESPONSABLE</th>
               </tr>
             </thead>
             <tbody>
