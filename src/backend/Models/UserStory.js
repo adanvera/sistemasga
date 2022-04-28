@@ -1,9 +1,8 @@
 const { default: mongoose } = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const {Schema ,model}= require('mongoose')
-let counter = 1;
-let CountedId = {type: Number, default: () => counter++};
+
 const UserStorySchema = Schema({
-    us_id:CountedId,
     task:{
       type:String,
       required: [true, 'La tarea es obligatorio!!']
@@ -41,7 +40,7 @@ UserStorySchema.methods.toJSON = function () {
   
   return userStory;
 }
-
+UserStorySchema.plugin(AutoIncrement,{inc_field: 'us_id'})
 
 module.exports = model('UserStory',UserStorySchema);
 
