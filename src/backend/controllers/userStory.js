@@ -34,48 +34,17 @@ const obtenerUsByBacklog = async (req, res) => {
 
 }
 
-const agregarUsuarioProyecto = async (req,res) => {
-  //id del proyecto
-  const { id } = req.params;
 
-  try {
-    const proyectoEncontrado = await Proyecto.findById(id)
-    if(!proyectoEncontrado){
-      return res.status(404).json({
-        msg:'Proyecto no encontrado'
-      })
-    }
-    const {usuarios}= req.body
-
-    if(!usuarios || usuarios.length<= 0){
-      return res.status(404).json({
-        msg:'El usuario es obligatorio'
-      })
-    }
-    const nuevosUsuarios = [...proyectoEncontrado.usuarios,...usuarios]
-    console.log(nuevosUsuarios);
-    const proyectoActualizado = await Proyecto.findByIdAndUpdate(id,{usuarios:nuevosUsuarios})
-    res.status(200).json({
-      msg:'Usuarios agregado al proyecto exitosamente !!',
-    })
-
-  } catch (error) {
-		return res.status(400).json({
-			msg: "Ocurrio un error inesperado",
-			error,
-		});
-  }
-
-}
-const actualizarProyecto = async (req,res) => {
-  //id del proyecto
+const actualizarUS = async (req,res) => {
+  //_id del US
   const { id } = req.params;
 
   try {
    
-    const proyectoActualizado = await Proyecto.findByIdAndUpdate(id,req.body)
+    const usActualizado = await UserStory.findByIdAndUpdate(id,req.body)
     res.status(200).json({
-      msg:'Proyecto actualizado exitosamente !!',
+      msg:'Us actualizado exitosamente !!',
+      usActualizado
     })
 
   } catch (error) {
@@ -110,6 +79,6 @@ module.exports = {
   agregarUserStory,
   obtenerUsByBacklog,
   eliminarUS,
-  agregarUsuarioProyecto,
-  actualizarProyecto
+  actualizarUS,
+  
 }

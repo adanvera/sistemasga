@@ -35,9 +35,8 @@ const UserStorySchema = Schema({
 
 });
 UserStorySchema.methods.toJSON = function () {
-  /*Retorn a todo excecpto __v,password,_id*/
-  const { __v,_id,...userStory } =  this.toObject();
-  
+  /*Retorn a todo excecpto __v,password*/
+  const { __v,...userStory } =  this.toObject();
   return userStory;
 }
 UserStorySchema.plugin(AutoIncrement,{inc_field: 'us_id'})
