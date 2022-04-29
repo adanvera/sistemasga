@@ -1017,3 +1017,25 @@ div#createUS button.btn.btn-primary.createUS {
 button.box-status-content {
   border: none;
 }
+
+#boxus{
+  background-color: white;
+}
+
+
+.ddd  {
+  align-self: center;
+}
+
+.ddd ion-icon {
+  font-size: 15px;
+  color: red;
+}
+
+.shbtn{
+  display: block;
+}
+
+.nshbtn{
+  display: none;
+}

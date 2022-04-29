@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Container, Form, FormControl, Button, FloatingLabel } from 'react-bootstrap'
 import EditProject from './partials/EditProject';
 import DisplayUserPr from './DisplayUserPr';
 import { CButton } from '@coreui/react';
 import CreateUs from './partials/CreateUs';
-import { URL_BACKLOG } from '../helpers/endPoints';
 import BacklogList from './partials/BacklogList';
+import { DataContext } from '../context/DataContext';
+
 
 
 function DetailsProject({ proyecto }) {
@@ -16,26 +17,40 @@ function DetailsProject({ proyecto }) {
 	const usersProject = useState(proyecto.usuarios)
 	const usersSelected = usersProject[0]
 	const [tasksBk, setTasksBk] = useState('')
+	const idPr = proyecto._id
 
+	const [UrlBkLog, setBkLog] = useState('http://localhost:4000/api/user-story/obtener-us-backlog/' + idPr)
 
-	const [UrlBkLog, setBkLog] = useState('http://localhost:4000/api/user-story/obtener-us-backlog/6264ad916213e9ec53037c55')
-
+	const [usListBlg, setUsListBlgo] = useState("http://localhost:4000/api/user-story/obtener-us-backlog/" + idPr)
+	const [roleAuth, setRoleAuth] = useState([])
+	const { user, setUser } = useContext(DataContext)
 
 	useEffect(() => {
-		const getUsBk = async() =>{
-		  try {
-        const res = await fetch(UrlBkLog),
-        data = await res.json()
-        setTasksBk(data.us)
-		  } catch (error) {
-			  console.log(error);
-		  }
+
+		const data = localStorage.getItem('auth')
+		if (!data) {
+			localStorage.setItem('auth', JSON.stringify(user))
+			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			return
+		}
+		const usuarioAuth = JSON.parse(data);
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
+
+		const getUsBk = async () => {
+			try {
+				const res = await fetch(UrlBkLog),
+					data = await res.json()
+				setTasksBk(data.us)
+			} catch (error) {
+				console.log(error);
+			}
 		}
 		getUsBk()
 	}, [])
+
+	const sizeUS = tasksBk.length
 	
 
-	console.log(tasksBk);
 
 
 	return (
@@ -70,15 +85,21 @@ function DetailsProject({ proyecto }) {
 						<div className='col-md-12'>
 							<div className='box-dashboard'>
 								<div className='title-section'>
-									<span>BACKLOG 1</span>
+									<span>BACKLOG {sizeUS}</span>
 								</div>
 								<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true })} className='createUS'>Crear tarea</CButton> </div>
 
 								{currentScreen.usTask && <CreateUs proyecto={proyecto} />}
 
-								<BacklogList proyecto={proyecto} />
-
+								{tasksBk.length > 0 &&
+									<>
+										{tasksBk.map((us) => {
+											return <BacklogList tasksBk={us} proyecto={proyecto} />
+										})}
+									</>
+								}
 							</div>
+							
 						</div>
 					</div>
 				</Container>

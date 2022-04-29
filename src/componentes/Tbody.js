@@ -46,7 +46,7 @@ export const Tbody = ({ usuario, index }) => {
 
 	const deleteUser = async () => {
 
-		if ((roleAuth === 'ADMINISTRADOR') && usuario.uui !== userAuthUui) {
+		if ((roleAuth === 'ADMIN') && usuario.uui !== userAuthUui) {
 			swal({
 				title: "¿Estas seguro?",
 				text: "Una vez eliminado el usuario no se puede revertir",
@@ -64,7 +64,7 @@ export const Tbody = ({ usuario, index }) => {
 					});
 				}
 			});
-		} else if (roleAuth !== 'ADMINISTRADOR') {
+		} else if (roleAuth !== 'ADMIN') {
 			swal({
 				title: "ADVERTENCIA",
 				text: "Su rol no posee permisos para eliminar usuarios",
@@ -72,7 +72,7 @@ export const Tbody = ({ usuario, index }) => {
 				button: "ok",
 			})
 		}
-		if (((usuario.uui) === userAuthUui) && (roleAuth === 'ADMINISTRADOR')) {
+		if (((usuario.uui) === userAuthUui) && (roleAuth === 'ADMIN')) {
 			swal({
 				title: "ERROR",
 				text: "No puede eliminar su propio usuario",
@@ -97,8 +97,8 @@ export const Tbody = ({ usuario, index }) => {
 	}
 
 	const functionRole = (data) => {
-		if (data === 'ADMINISTRADOR') {
-			return 'ADMINISTRADOR'
+		if (data === 'ADMIN') {
+			return 'ADMIN'
 		}
 		if (data === 'user_role') {
 			return 'OPERADOR'
@@ -106,7 +106,7 @@ export const Tbody = ({ usuario, index }) => {
 	}
 
 	const editUser = async () => {
-		if (roleAuth === 'ADMINISTRADOR') {
+		if (roleAuth === 'ADMIN') {
 			setVisible(!visible)
 		} else {
 			swal({

@@ -30,7 +30,7 @@ function EditProject({ proyecto }) {
 
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion
-        if (roleAuth === "ADMINISTRADOR") {
+        if (roleAuth === "ADMIN") {
             swal({
                 title: "¿Estas seguro?",
                 text: "Una vez eliminado el proyecto no se puede revertir",
@@ -50,14 +50,17 @@ function EditProject({ proyecto }) {
             });
         } else (swal({
             text: "Su rol no posse permiso para eliminar un proyecto",
-            icon: "warning",
         }))
     }
 
-
-    const edtitProject = async (e) => {
-        //logica de modificacion del proyecto
-
+    const aver = async () =>{
+        if(roleAuth !== "ADMIN"){
+            swal({
+                text:"Su rol no posee permisos para modificar un proyecto"
+            })
+        }else if(roleAuth === "ADMIN"){
+            setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })
+        }
     }
 
     return (
@@ -79,7 +82,7 @@ function EditProject({ proyecto }) {
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <span onClick={() => setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })}><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
+                                    <span onClick={aver}><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
                                 </div>
                                 <div>
                                     <span onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon> Eliminar proyecto</span>
