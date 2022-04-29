@@ -87,16 +87,15 @@ const actualizarProyecto = async (req,res) => {
 
 }
 
-const eliminarProyecto = async (req,res) => {
+const eliminarUS = async (req,res) => {
   const { id } = req.params;
-	console.log(id);
 
-	const proyecto = await Proyecto.findByIdAndUpdate(id, { estado: false });
+	const us = await UserStory.findOneAndUpdate({us_id:id}, { us_active: false });
 
 	try {
 		res.json({
-			msg: "Proyecto eliminado correctamente!",
-			proyecto,
+			msg: "Us eliminado correctamente!",
+			us,
 		});
 	} catch (error) {
     console.log(error);
@@ -110,7 +109,7 @@ const eliminarProyecto = async (req,res) => {
 module.exports = {
   agregarUserStory,
   obtenerUsByBacklog,
+  eliminarUS,
   agregarUsuarioProyecto,
-  eliminarProyecto,
   actualizarProyecto
 }
