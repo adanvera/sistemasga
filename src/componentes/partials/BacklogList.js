@@ -8,20 +8,16 @@ import user_one from '../../images/users/user_one.png'
 
 
 
-function BacklogList({ tasksBk, proyecto }) {
+function BacklogList({ item, dataProject }) {
 
 
     const [visible, setVisible] = useState(false)
     const [roleAuth, setRoleAuth] = useState([])
     const { user, currentScreen } = useContext(DataContext)
     const [userAuthUui, setUserAuthUui] = useState([])
+    const [task, setTask] = useState(item.task)
+    const idUS = item.us_id
 
-    const [task, setTask] = useState(tasksBk.task)
-
-    const idUS = tasksBk.us_id
-
-
-    console.log(tasksBk);
 
 
     //consultamos el localStorage y guardamos valor de rol 
@@ -60,7 +56,7 @@ function BacklogList({ tasksBk, proyecto }) {
                     swal("Eliminado exitosamente", {
                         icon: "success",
                     });
-                    await fetch(URL_DELETE_US+tasksBk.us_id, {
+                    await fetch(URL_DELETE_US+item.us_id, {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json" },
                     });
@@ -80,7 +76,7 @@ function BacklogList({ tasksBk, proyecto }) {
         };
 
         try {
-            const res = await fetch(URL_UPDATE_US+tasksBk._id, option),
+            const res = await fetch(URL_UPDATE_US+item._id, option),
                 json = await res.json();
 
             if (!res.ok) {
@@ -117,13 +113,13 @@ function BacklogList({ tasksBk, proyecto }) {
                 </div>
                 <div className='row paddd'>
                     <div className='text-description' onClick={showUS}>
-                        <span>{tasksBk.task}</span>
+                        <span>{item.task}</span>
                     </div>
                 </div>
                 <div className='row paddd'>
                     <div className='col' >
                         <div className='foot-box-task'>
-                            <span className="number-task">US - {tasksBk.us_id} [{proyecto.nombre}]</span>
+                            <span className="number-task">US - {item.us_id} [{dataProject?.nombre ? dataProject?.nombre:''}]</span>
                         </div>
                     </div>
                     <div className='col commet-icon'>
@@ -136,7 +132,7 @@ function BacklogList({ tasksBk, proyecto }) {
 
             <CModal visible={visible} onClose={() => setVisible(false)}>
                 <CModalHeader onClose={() => setVisible(false)}>
-                    <CModalTitle>User Story - {tasksBk.task} </CModalTitle>
+                    <CModalTitle>User Story - {item.task} </CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <>

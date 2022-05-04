@@ -10,15 +10,15 @@ import { URL_EDIT_PROJECT } from '../../helpers/endPoints'
 import { Link } from 'react-router-dom'
 const urlUsers = "http://localhost:4000/api/usuario/"
 
-function EditDataProject({ proyecto }) {
+function EditDataProject({ dataProject }) {
 
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
-    const [nombre, setNombre] = useState(proyecto.nombre)
-    const [descripcion, setDescripcion] = useState(proyecto.descripcion)
-    const [responsable, setResponsable] = useState(proyecto.responsable)
-    const [usuarios, setUsuarios] = useState(proyecto.usuarios)
+    const [nombre, setNombre] = useState(dataProject.nombre)
+    const [descripcion, setDescripcion] = useState(dataProject.descripcion)
+    const [responsable, setResponsable] = useState(dataProject.responsable)
+    const [usuarios, setUsuarios] = useState(dataProject.usuarios)
 
     useEffect(() => {
         const getUser = async () => {
@@ -42,7 +42,7 @@ function EditDataProject({ proyecto }) {
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     }, [])
 
-    const idPr = proyecto._id
+    const idPr = dataProject._id
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -79,12 +79,12 @@ function EditDataProject({ proyecto }) {
 
     return (
         <>
-            <Container className="register-box-head">
+            <Container fluid={true} className="register-box-head">
                 <section className="">
                     <Link to="#"><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
                 </section>
             </Container>
-            <Container>
+            <Container fluid={true}>
                 <section className="container-fluid register-content">
                     <div id="">
                         <div className='img-create pb-5 d-flex'>
@@ -140,12 +140,12 @@ function EditDataProject({ proyecto }) {
                                 onChange={(e, v) => setUsuarios(v)}
                                 id="tags-outlined"
                                 options={usuario}
-                                getOptionLabel={(usuario) => usuario.nombre + " " +usuario.apellido}
+                                getOptionLabel={(usuario) => usuario.nombre + " " + usuario.apellido}
                                 filterSelectedOptions
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
-                                        label= "Usuarios asignados"
+                                        label="Usuarios asignados"
                                         value={usuarios}
                                         placeholder="Usuarios"
                                         onChange={({ target }) => setUsuarios(target.value)}

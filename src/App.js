@@ -7,6 +7,7 @@ import DetailsProject from './componentes/DetailsProject'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainRoute from './componentes/MainRoute'
 import Login from './componentes/Login'
+import Proyects from './componentes/Proyects'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 						<Route path="seguridad" element={<Seguridad />} />
 						<Route path="desarrollo" element={<Desarrollo />} /> 
 						<Route path="DetailsProject/:id" element={<DetailsProject/>}/>	
+						<Route path="Proyects" element={<Proyects/>}/>
 					</Route>
 				</Routes>
 			</BrowserRouter>

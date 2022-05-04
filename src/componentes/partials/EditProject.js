@@ -9,12 +9,12 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 
-function EditProject({ proyecto }) {
+function EditProject({ dataProject}) {
 
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
-    const idPr = proyecto._id
+    const idPr = dataProject._id
     const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
     useEffect(() => {
@@ -69,7 +69,7 @@ function EditProject({ proyecto }) {
         <>
             {currentScreen.prDetails &&
                 <>
-                    <Container className="register-box-head">
+                    <Container  className="register-box-head">
                         <section className="">
                             <Link to="#"><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
                         </section>
@@ -84,17 +84,18 @@ function EditProject({ proyecto }) {
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <span onClick={aver}><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
+                                    <span className='editpr d-flex' onClick={aver}><ion-icon name="options-outline"></ion-icon><p>Editar poryecto</p></span>
                                 </div>
                                 <div>
-                                    <span onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon> Eliminar proyecto</span>
+                                    <span  className='delpr d-flex'  onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon><p>Eliminar proyecto</p></span>
                                 </div>
                             </div>
                         </section>
                     </Container>
                 </>
             }
-            {currentScreen.prEdit && <EditDataProject proyecto={proyecto} />}
+
+            {currentScreen.prEdit && <EditDataProject dataProject={dataProject} />}
 
 
         </>

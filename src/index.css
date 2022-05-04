@@ -1039,3 +1039,35 @@ button.box-status-content {
 .nshbtn{
   display: none;
 }
+
+.ml-3{
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+}
+
+.mll{
+  margin-left : 1rem;
+}
+
+span.editpr :hover{
+  cursor: pointer;
+  color: rgba(164, 207, 48, 0.7);
+}
+
+span.editpr ion-icon.md.hydrated {
+  font-size: 25px;
+  padding-right: 10px;
+  color: rgba(164, 207, 48, 0.7);
+}
+
+span.delpr ion-icon.md.hydrated {
+  font-size: 25px;
+  padding-right: 10px;
+  color: red;
+}
+
+span.delpr :hover{
+  color:red;
+  cursor: pointer;
+}
+
