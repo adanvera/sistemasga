@@ -30,6 +30,22 @@ const obtenerProyectos = async (Req, res) => {
   }
 
 }
+const obtenerProyectosById = async (req, res) => {
+  //id del proyecto
+  const { id } = req.params;
+  try {
+    const proyecto = await Proyecto.findById(id);
+    res.status(200).json({
+      proyecto
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
+
+}
 
 const agregarUsuarioProyecto = async (req,res) => {
   //id del proyecto
@@ -109,5 +125,6 @@ module.exports = {
   obtenerProyectos,
   agregarUsuarioProyecto,
   eliminarProyecto,
-  actualizarProyecto
+  actualizarProyecto,
+  obtenerProyectosById
 }
