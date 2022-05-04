@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_PROJECT_BY_ID } from '../helpers/endPoints';
+import { URL_PROYECTOS } from '../helpers/endPoints';
 
 
-function DetailsProject(props) {
+function DetailsProject() {
 
 	//obtenemos el id del proyecto mediante la siguiente función
 	const { id } = useParams()
@@ -34,18 +34,17 @@ function DetailsProject(props) {
 
 		const getProject = async () => {
 			try {
-				const res = await fetch(URL_PROJECT_BY_ID + id),
+				const res = await fetch(URL_PROYECTOS+id),
 					data = await res.json()
 				setProyecto(data.proyectos)
 			} catch (error) {
 				console.log(error);
 			}
 		}
-
 	}, [])
 
+	console.log(proyecto);
 
-	console.log(URL_PROJECT_BY_ID+id);
 
 	return (
 		<>
