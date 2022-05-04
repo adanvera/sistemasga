@@ -1,73 +1,67 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Container, Form, FormControl, Button, FloatingLabel } from 'react-bootstrap'
-import EditProject from './partials/EditProject';
-import DisplayUserPr from './DisplayUserPr';
-import { CButton } from '@coreui/react';
-import CreateUs from './partials/CreateUs';
-import BacklogList from './partials/BacklogList';
+import React, { useContext, useEffect, useState } from 'react'
+import { Button, Container, Form, FormControl } from 'react-bootstrap'
+import { useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
+import { URL_PROJECT_BY_ID } from '../helpers/endPoints';
+
+
+function DetailsProject(props) {
+
+	//obtenemos el id del proyecto mediante la siguiente función
+	const { id } = useParams()
+
+	const { user } = useContext(DataContext)
+	const [nombre, setNombre] = useState('')
+	const [apellido, setApellido] = useState('')
+	const [descripcion, setDescripcion] = useState('')
+	const [proyecto, setProyecto] = useState([])
 
 
 
-function DetailsProject({ proyecto }) {
-
-	//variable declarada para saber cual es la ventana actual mediante botones
-	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false })
-	const [userDisplayProject, setUserDisplay] = useState('')
-	const usersProject = useState(proyecto.usuarios)
-	const usersSelected = usersProject[0]
-	const [tasksBk, setTasksBk] = useState('')
-	const idPr = proyecto._id
-
-	const [UrlBkLog, setBkLog] = useState('http://localhost:4000/api/user-story/obtener-us-backlog/' + idPr)
-
-	const [usListBlg, setUsListBlgo] = useState("http://localhost:4000/api/user-story/obtener-us-backlog/" + idPr)
-	const [roleAuth, setRoleAuth] = useState([])
-	const { user, setUser } = useContext(DataContext)
-
+	//consultamos el localStorage
 	useEffect(() => {
-
 		const data = localStorage.getItem('auth')
 		if (!data) {
+			setNombre(user.usuarioEncontrado.nombre)
+			localStorage.setItem('auth', JSON.stringify(user));
+			setApellido(user.usuarioEncontrado.apellido)
 			localStorage.setItem('auth', JSON.stringify(user))
-			setRoleAuth(user.usuarioEncontrado.roleAuth)
 			return
 		}
-		const usuarioAuth = JSON.parse(data);
-		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
+		const usuario = JSON.parse(data);
+		setNombre(usuario.usuarioEncontrado.nombre);
+		setApellido(usuario.usuarioEncontrado.apellido);
 
-		const getUsBk = async () => {
+		const getProject = async () => {
 			try {
-				const res = await fetch(UrlBkLog),
+				const res = await fetch(URL_PROJECT_BY_ID + id),
 					data = await res.json()
-				setTasksBk(data.us)
+				setProyecto(data.proyectos)
 			} catch (error) {
 				console.log(error);
 			}
 		}
-		getUsBk()
+
 	}, [])
 
-	const sizeUS = tasksBk.length
-	
 
-
+	console.log(URL_PROJECT_BY_ID+id);
 
 	return (
 		<>
-			<Container fluid={true} id="headdash" className='mt-3'>
-			</Container>
-			{currentScreen.prDetails &&
+			<Container fluid={true}>
+				<Container fluid={true} id="headdash" className='mt-3'>
+				</Container>
 				<Container fluid={true} className="mt-5" >
 					<div className='row o-t d-flex'>
-						<div className=''><h4>{proyecto.nombre}</h4></div>
-						<div className='' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} ><ion-icon name="construct-outline"></ion-icon></div>
+						{/* <div className=''><h4>{projectDetails?.nombre}</h4></div> */}
+						{/* <div className='' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} ><ion-icon name="construct-outline"></ion-icon></div> */}
 					</div>
 					<div className='row box-dashboard-head p5co'>
 						<div className='col-md-8 box-users d-flex'>
-							{usersSelected.map((object) => {
-								return <DisplayUserPr object={object} />
-							})}
+							{/* {usersSelected.map((object) => {
+							return <DisplayUserPr object={object} />
+						})} */}
 						</div>
 						<div className='col-md-4 form-search'>
 							<Form className="d-flex">
@@ -85,28 +79,21 @@ function DetailsProject({ proyecto }) {
 						<div className='col-md-12'>
 							<div className='box-dashboard'>
 								<div className='title-section'>
-									<span>BACKLOG {sizeUS}</span>
+									<span>BACKLOG 1</span>
 								</div>
-								<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true })} className='createUS'>Crear tarea</CButton> </div>
+								{/* <div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true })} className='createUS'>Crear tarea</CButton> </div> */}
+								{/* 
+							{currentScreen.usTask && <CreateUs proyecto={proyecto} />}
 
-								{currentScreen.usTask && <CreateUs proyecto={proyecto} />}
+							<BacklogList tasksBk={tasksBk} proyecto={proyecto} /> */}
 
-								{tasksBk.length > 0 &&
-									<>
-										{tasksBk.map((us) => {
-											return <BacklogList tasksBk={us} proyecto={proyecto} />
-										})}
-									</>
-								}
 							</div>
-							
 						</div>
 					</div>
 				</Container>
-			}
-			{currentScreen.prEdit && <EditProject proyecto={proyecto} />}
+			</Container>
 		</>
-	);
+	)
 }
 
-export default DetailsProject;
+export default DetailsProject

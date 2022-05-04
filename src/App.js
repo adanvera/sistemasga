@@ -21,7 +21,7 @@ function App() {
 						<Route  index element={<Dashboard />} />
 						<Route path="seguridad" element={<Seguridad />} />
 						<Route path="desarrollo" element={<Desarrollo />} /> 
-						<Route path="DetailsProject" element={<DetailsProject/>}/>	
+						<Route path="DetailsProject/:id" element={<DetailsProject/>}/>	
 					</Route>
 				</Routes>
 			</BrowserRouter>

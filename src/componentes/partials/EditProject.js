@@ -28,6 +28,8 @@ function EditProject({ proyecto }) {
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     })
 
+    console.log(roleAuth)
+
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion
         if (roleAuth === "ADMIN") {

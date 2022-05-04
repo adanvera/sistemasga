@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import projectLogo from '../../images/logoproject.png'
 import DetailsProject from "../DetailsProject";
 import user_one from '../../images/users/user_one.png'
@@ -7,12 +7,11 @@ import user_none from '../../images/users/icon.jpg'
 const urlUsers = "http://localhost:4000/api/usuario/"
 
 
-export const ProjectsTable = ({ proyecto, index }) => {
+export const ProjectsTable = ({ link, proyecto, index }) => {
 
 
     const [currentScreen, setCurrentScreen] = useState({ pr: false, other: false, prCreate: false, prDetails: false })
     const [usuario, setUsurio] = useState([])
-
 
     useEffect(() => {
         const getUser = async () => {
@@ -45,9 +44,18 @@ export const ProjectsTable = ({ proyecto, index }) => {
 
     }
 
+    const navigate = useNavigate();
+
     return (
         <>
-            <tr className="projectselected" onClick={() => setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate: false, prDetails: true })}>
+            <tr className="projectselected" 
+            onClick={e => {
+                e.preventDefault()
+                if (link) {
+                    navigate(`${link}${proyecto._id}`)
+                }
+
+            }} >
                 <td>{index}</td>
                 <td className="lg" >
                     <div className="d-flex" to="./DetailsProject">

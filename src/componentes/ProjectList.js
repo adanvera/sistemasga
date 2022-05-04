@@ -25,7 +25,7 @@ function ProjectList({ proyecto }) {
             </thead>
             <tbody>
               {proyecto.map((proyecto, index) => {
-                return <ProjectsTable index={index + 1} proyecto={proyecto} />
+                return <ProjectsTable link='DetailsProject/' index={index + 1} proyecto={proyecto} />
               })}
             </tbody>
           </Table>
