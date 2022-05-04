@@ -46,7 +46,7 @@ const usuariosPut = async (req, res = response) => {
 const usuarioMostrar = async (req, res) => {
 	try {
 		const usuarios = await Usuario.find({ estado: true });
-		usuarios.rol = res.status(200).json({
+		res.status(200).json({
 			usuarios,
 		});
 	} catch (error) {
