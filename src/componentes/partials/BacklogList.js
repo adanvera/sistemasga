@@ -18,6 +18,7 @@ function BacklogList({ item, dataProject }) {
     const [task, setTask] = useState(item.task)
     const idUS = item.us_id
 
+    console.log(item);
 
 
     //consultamos el localStorage y guardamos valor de rol 

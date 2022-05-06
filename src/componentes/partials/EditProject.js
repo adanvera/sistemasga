@@ -9,7 +9,7 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 
-function EditProject({ dataProject}) {
+function EditProject({ dataProject }) {
 
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
@@ -55,12 +55,12 @@ function EditProject({ dataProject}) {
         }))
     }
 
-    const aver = async () =>{
-        if(roleAuth !== "ADMIN"){
+    const aver = async () => {
+        if (roleAuth !== "ADMIN") {
             swal({
-                text:"Su rol no posee permisos para modificar un proyecto"
+                text: "Su rol no posee permisos para modificar un proyecto"
             })
-        }else if(roleAuth === "ADMIN"){
+        } else if (roleAuth === "ADMIN") {
             setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })
         }
     }
@@ -69,9 +69,9 @@ function EditProject({ dataProject}) {
         <>
             {currentScreen.prDetails &&
                 <>
-                    <Container  className="register-box-head">
+                    <Container className="register-box-head">
                         <section className="">
-                            <Link to="#"><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
+                            <Link to=""><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
                         </section>
                     </Container>
                     <Container className="register-box">
@@ -87,7 +87,7 @@ function EditProject({ dataProject}) {
                                     <span className='editpr d-flex' onClick={aver}><ion-icon name="options-outline"></ion-icon><p>Editar poryecto</p></span>
                                 </div>
                                 <div>
-                                    <span  className='delpr d-flex'  onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon><p>Eliminar proyecto</p></span>
+                                    <span className='delpr d-flex' onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon><p>Eliminar proyecto</p></span>
                                 </div>
                             </div>
                         </section>

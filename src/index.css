@@ -380,6 +380,7 @@ div#headdash {
   border-radius: 8px;
   padding-bottom: 20px;
   background: #F4F5F7;
+  margin-right: 20px;
 }
 
 .pl-20 {
@@ -1008,7 +1009,7 @@ div#createUS button.btn.btn-primary.createUS {
   height: 35px;
 }
 
-.boxUs{
+.boxUs {
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
@@ -1018,12 +1019,12 @@ button.box-status-content {
   border: none;
 }
 
-#boxus{
+#boxus {
   background-color: white;
 }
 
 
-.ddd  {
+.ddd {
   align-self: center;
 }
 
@@ -1032,24 +1033,24 @@ button.box-status-content {
   color: red;
 }
 
-.shbtn{
+.shbtn {
   display: block;
 }
 
-.nshbtn{
+.nshbtn {
   display: none;
 }
 
-.ml-3{
+.ml-3 {
   margin-left: 1rem !important;
   margin-right: 1rem !important;
 }
 
-.mll{
-  margin-left : 1rem;
+.mll {
+  margin-left: 1rem;
 }
 
-span.editpr :hover{
+span.editpr :hover {
   cursor: pointer;
   color: rgba(164, 207, 48, 0.7);
 }
@@ -1066,8 +1067,47 @@ span.delpr ion-icon.md.hydrated {
   color: red;
 }
 
-span.delpr :hover{
-  color:red;
+span.delpr :hover {
+  color: red;
   cursor: pointer;
 }
 
+div.aflex-details ion-icon.md.hydrated {
+  color: white !important;
+}
+
+div.aflex-details ion-icon.md.hydrated:hover {
+  background: none !important;
+}
+
+div.aflex-details {
+  cursor: pointer;
+  display: flex;
+  color: white;
+  align-self: center;
+  background: #00BF9C;
+  padding: 0.2rem;
+  padding-left: 10px;
+  border-radius: 4px;
+  padding-right: 10px;
+  margin-bottom: 3rem;
+}
+
+div.aflex-details p {
+  margin: 0;
+  padding-top: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+div.aflex-details p:hover {
+  color: white !important;
+}
+
+.d-flex.justify-content-between.mll {
+  width: 98%;
+}
+
+.data-name{
+  text-transform: uppercase;
+}

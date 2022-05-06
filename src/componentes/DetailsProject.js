@@ -8,8 +8,8 @@ import DisplayUserPr from './DisplayUserPr';
 import BacklogList from '../componentes/partials/BacklogList'
 import EditProject from '../componentes/partials/EditProject'
 import CreateUs from '../componentes/partials/CreateUs'
-
-
+import { useNavigate } from 'react-router-dom'
+import myLogo from '../images/iconwhite.png'
 
 function DetailsProject() {
 
@@ -23,6 +23,7 @@ function DetailsProject() {
 	const [descripcion, setDescripcion] = useState('')
 	const [proyecto, setProyecto] = useState([])
 	const [tasksBk, setTasksBk] = useState('')
+	const [role, setRole] = useState([])
 
 	//consultamos el localStorage
 	useEffect(() => {
@@ -31,12 +32,14 @@ function DetailsProject() {
 			setNombre(user.usuarioEncontrado.nombre)
 			localStorage.setItem('auth', JSON.stringify(user));
 			setApellido(user.usuarioEncontrado.apellido)
+			setRole(user.usuarioEncontrado.role)
 			localStorage.setItem('auth', JSON.stringify(user))
 			return
 		}
 		const usuario = JSON.parse(data);
 		setNombre(usuario.usuarioEncontrado.nombre);
 		setApellido(usuario.usuarioEncontrado.apellido);
+		setRole(usuario.usuarioEncontrado.rol)
 
 		const getProject = async () => {
 			try {
@@ -66,18 +69,67 @@ function DetailsProject() {
 	const dataProject = proyecto?.proyecto
 	const usuersProject = proyecto?.proyecto?.usuarios
 
+	const navigate = useNavigate()
+	//funcion para cerrar sesion
+	const logout = () => {
+		localStorage.clear()
+		navigate('/')
+	}
+
 	return (
 		<>
-			<Container fluid={true}>
-				<Container fluid={true} id="headdash" className='mt-3'>
-					
-				</Container>
-
-				<Container fluid={true} className="mt-5" >
+			<Container fluid={true} className="d-flex p-0 m-0">
+				<div className="sidebar border-end bg-white" id="sidebar-wrapper">
+					<div className=" sidebar-heading border-bottom pb-2">
+						<img src={myLogo} alt="" />
+					</div>
+					<div className="list-group list-group-flush">
+						<ul className="list-unstyled">
+							<li>
+								<Link to="../"
+									className="list-group-item list-group-item-action p-3"
+								>
+									<ion-icon name="grid-outline"></ion-icon>{' '}
+									<span className="p-2">Proyecto</span>{' '}
+								</Link>
+							</li>
+							<li>
+								<button className="list-group-item list-group-item-action p-3"
+									onClick={(e) =>
+										setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false })
+									}
+								>
+									{' '}
+									<ion-icon name="git-compare-outline"></ion-icon>{' '}
+									<span className="p-2">Desarrollo</span>{' '}
+								</button>
+							</li>
+							<li>
+								<button className="list-group-item list-group-item-action p-3"
+									onClick={(e) =>
+										setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false })
+									}>
+									<ion-icon name="finger-print-outline"></ion-icon>{' '}
+									<span className="p-2">Seguridad</span>{' '}
+								</button>
+							</li>
+						</ul>
+					</div>
+					<div className="bottom-side-menu">
+						<ul className="list-unstyled">
+							<li className="nav-item">
+								<a href="" className="nav-link crr" onClick={logout}>
+									<ion-icon name="power" className="pt-1"></ion-icon>
+									<span className="bt-cerrar" >{' '}Cerrar sesion{' '}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<Container fluid={true} id="dash" rol={role} className="mt-5" >
 					<div className='row o-t d-flex'>
 						<div></div>
-						<div className='d-flex justify-content-between mll'><Link to="../"><ion-icon className="" name="home-outline"></ion-icon></Link><h4>{dataProject?.nombre ? dataProject?.nombre : ''}</h4></div>
-						<div className='' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} ><ion-icon name="construct-outline"></ion-icon></div>
+						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
 					</div>
 					<div className='row box-dashboard-head p5co ml-3'>
 						<div className='col-md-8 box-users d-flex'>
@@ -100,8 +152,8 @@ function DetailsProject() {
 					<div className='row justify-content-between' id='tablero'>
 						{currentScreen.prDetails &&
 							<>
-								<div className='col-md-12'>
-									<div className='box-dashboard'>
+								<div className='col-md-12 d-flex'>
+									<div className=' col-md box-dashboard'>
 										<div className='title-section'>
 											<span>BACKLOG {tasksBk.length}</span>
 										</div>
@@ -114,6 +166,11 @@ function DetailsProject() {
 										}))
 										}
 
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='title-section'>
+											<span>EN CURSO *</span>
+										</div>
 									</div>
 								</div>
 							</>
