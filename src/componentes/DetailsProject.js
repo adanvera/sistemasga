@@ -3,22 +3,21 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_BACKLOG, URL_PROYECTOS, URL_US_EN_CURSO } from '../helpers/endPoints';
+import { URL_BACKLOG, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION } from '../helpers/endPoints';
 import DisplayUserPr from './DisplayUserPr';
-import BacklogList from '../componentes/partials/BacklogList'
 import EditProject from '../componentes/partials/EditProject'
 import CreateUs from '../componentes/partials/CreateUs'
 import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
-import EnCursoList from './partials/EnCursoList';
+import TableList from './partials/TableList';
+
 
 function DetailsProject() {
 
 	//obtenemos el id del proyecto mediante la siguiente función
 	const { id } = useParams()
-	console.log(id);
 	//variable declarada para saber cual es la ventana actual mediante botones
-	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false })
+	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false, usSprint :false })
 	const { user } = useContext(DataContext)
 	const [nombre, setNombre] = useState('')
 	const [apellido, setApellido] = useState('')
@@ -27,6 +26,9 @@ function DetailsProject() {
 	const [tasksBk, setTasksBk] = useState('')
 	const [taskEnCurso, setTaskEnCurso] = useState('')
 	const [role, setRole] = useState([])
+	const [taskDetenido, setTaskDetenido] = useState('')
+	const [taskVerificar, setTaskVerificar] = useState('')
+	const [taskEnVerificacion, setTaskEnVerificacion] = useState('')
 
 	//consultamos el localStorage
 	useEffect(() => {
@@ -67,17 +69,55 @@ function DetailsProject() {
 		}
 		getUsBk()
 
-		const getUsEnCurso = async ()=>{
+		const getUsEnCurso = async () => {
 			try {
-				const res = await fetch(URL_US_EN_CURSO+id),
-				data = await res.json()
+				const res = await fetch(URL_US_EN_CURSO + id),
+					data = await res.json()
 				setTaskEnCurso(data.us)
 			} catch (error) {
 				console.log(error);
 			}
 		}
 		getUsEnCurso()
+
+		const getUsDetenido = async () => {
+			try {
+				const res = await fetch(URL_US_DETENIDO + id),
+					data = await res.json()
+				setTaskDetenido(data.us)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		getUsDetenido()
+
+		const getUsVerificar = async () => {
+			try {
+				const res = await fetch(URL_US_A_VERIFICAR + id),
+					data = await res.json()
+				setTaskVerificar(data.us)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		getUsVerificar()
+
+		const getUsEnVerificacion = async () => {
+			try {
+				const res = await fetch(URL_US_EN_VERIFICACION+id),
+					data = await res.json()
+					setTaskEnVerificacion(data.us)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		getUsEnVerificacion()
+
 	}, [])
+
+	console.log(taskEnVerificacion);
+
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
 	const usuersProject = proyecto?.proyecto?.usuarios
@@ -88,8 +128,6 @@ function DetailsProject() {
 		localStorage.clear()
 		navigate('/')
 	}
-
-	console.log(taskEnCurso);
 
 	return (
 		<>
@@ -111,7 +149,7 @@ function DetailsProject() {
 							<li>
 								<button className="list-group-item list-group-item-action p-3"
 									onClick={(e) =>
-										setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false })
+										setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false, usSprint: false })
 									}
 								>
 									{' '}
@@ -122,7 +160,7 @@ function DetailsProject() {
 							<li>
 								<button className="list-group-item list-group-item-action p-3"
 									onClick={(e) =>
-										setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false })
+										setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false , usSprint: false })
 									}>
 									<ion-icon name="finger-print-outline"></ion-icon>{' '}
 									<span className="p-2">Seguridad</span>{' '}
@@ -144,8 +182,9 @@ function DetailsProject() {
 				<Container fluid={true} id="dash" rol={role} className="mt-5" >
 					<div className='row o-t d-flex'>
 						<div></div>
-						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
+						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false  })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
 					</div>
+					<div className='row mb-2' id='createUS'> <CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: true  })}  >Crear sprint</CButton> </div>
 					<div className='row box-dashboard-head p5co ml-3'>
 						<div className='col-md-8 box-users d-flex'>
 							{usuersProject?.map((object) => {
@@ -167,35 +206,106 @@ function DetailsProject() {
 					<div className='row justify-content-between' id='tablero'>
 						{currentScreen.prDetails &&
 							<>
-								<div className='col-md-12 d-flex'>
+								<div className='d-flex mt-3' id='tablelistUs'>
 									<div className=' col-md box-dashboard'>
-										<div className='title-section'>
-											<span>BACKLOG {tasksBk.length}</span>
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>BACKLOG {tasksBk.length}</span>
+											</div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false  })} className='createUS'>Crear tarea</CButton> </div>
+											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
+
+											{tasksBk.length > 0 && tasksBk.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
 										</div>
-										<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true })} className='createUS'>Crear tarea</CButton> </div>
-
-										{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
-
-										{tasksBk.length > 0 && tasksBk.map((item => {
-											return <BacklogList item={item} dataProject={dataProject} />
-										}))
-										}
-
 									</div>
 									<div className=" col-md box-dashboard">
-										<div className='title-section'>
-											<span>EN CURSO {tasksBk.length}</span>
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>EN CURSO {taskEnCurso.length}</span>
+											</div>
+											{taskEnCurso.length > 0 && taskEnCurso.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
 										</div>
-										{tasksBk.length > 0 && tasksBk.map((item => {
-											return <EnCursoList item={item} dataProject={dataProject} />
-										}))
-										}
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>DETENIDO {taskDetenido.length}</span>
+											</div>
+											{taskDetenido.length > 0 && taskDetenido.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
+										</div>
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>A VERIFICAR {taskVerificar.length}</span>
+											</div>
+											{taskVerificar.length > 0 && taskVerificar.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
+										</div>
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>EN VERIFICACIÓN {taskEnVerificacion.length}</span>
+											</div>
+											{taskEnVerificacion.length > 0 && taskEnVerificacion.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
+										</div>
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='tablelist'>
+											<div className='title-section'>
+												<span>FINALIZADA {taskEnVerificacion.length}</span>
+											</div>
+											{taskEnVerificacion.length > 0 && taskEnVerificacion.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
+										</div>
 									</div>
 								</div>
 							</>
 						}
 					</div>
+					<div className='row justify-content-between' id='tablero'>
+					{
+						currentScreen.usSprint &&
+							<div id='sprintContainer'>
+								<div className=' mt-3' id='tablelistUs'>
+									<div className=' col-md-12 box-dashboard'>
+										<div className='title-section'>
+											<span>SPRINT 1</span>
+										</div>
+									</div>
+									<div className=" col-md-12 box-dashboard">
+										<div className=''>
+											<div className='title-section'>
+												<span>FINALIZADA {tasksBk.length}</span>
+											</div>
+											{tasksBk.length > 0 && tasksBk.map((item => {
+												return <TableList item={item} dataProject={dataProject} />
+											}))
+											}
+										</div>
+									</div>
+								</div>
 
+							</div>
+					}
+					</div>
 					{currentScreen.prEdit && <EditProject dataProject={dataProject} />}
 
 

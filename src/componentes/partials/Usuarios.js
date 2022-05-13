@@ -51,7 +51,8 @@ export const Usuarios = ({ usuario, rol }) => {
 
 		return (
 			<>
-				<Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> crear usuario</Button>
+				<Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> 
+				<span className='pr-2'> CREAR USUARIO</span></Button>
 				<Modal show={show} onHide={handleClose} >
 					<Modal.Header closeButton>
 						<Modal.Title>Registrar usuario</Modal.Title>
