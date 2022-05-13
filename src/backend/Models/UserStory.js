@@ -7,6 +7,10 @@ const UserStorySchema = Schema({
       type:String,
       required: [true, 'La tarea es obligatorio!!']
     },
+    task_body:{
+      type:String,
+      default:"Sin descripcion "
+    },
     us_priority:{
       type: String,
       default: 'medium'
