@@ -18,14 +18,14 @@ function ProjectList({ proyecto }) {
             <thead>
               <tr>
                 <th>#</th>
-                <th>nombre</th>
-                <th>descripcion</th>
-                <th>responsable</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCIÓN</th>
+                <th>RESPONSABLE</th>
               </tr>
             </thead>
             <tbody>
               {proyecto.map((proyecto, index) => {
-                return <ProjectsTable index={index + 1} proyecto={proyecto} />
+                return <ProjectsTable link='DetailsProject/' index={index + 1} proyecto={proyecto} />
               })}
             </tbody>
           </Table>

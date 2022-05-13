@@ -49,7 +49,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 	}, [])
 
 	const deleteRol = async () => {
-		if (roleAuth === 'ADMINISTRADOR') {
+		if (roleAuth === 'ADMIN') {
 			const { _id } = rl
 			swal({
 				title: "¿Estas seguro?",
@@ -79,7 +79,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 	const [visible, setVisible] = useState(false)
 
 	const editRole = async () => {
-		if (roleAuth === 'ADMINISTRADOR') {
+		if (roleAuth === 'ADMIN') {
 			setVisible(!visible)
 		} else {
 			swal({

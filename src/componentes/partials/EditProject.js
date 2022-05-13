@@ -9,12 +9,12 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 
 
-function EditProject({ proyecto }) {
+function EditProject({ dataProject }) {
 
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
-    const idPr = proyecto._id
+    const idPr = dataProject._id
     const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
     useEffect(() => {
@@ -28,9 +28,11 @@ function EditProject({ proyecto }) {
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     })
 
+    console.log(roleAuth)
+
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion
-        if (roleAuth === "ADMINISTRADOR") {
+        if (roleAuth === "ADMIN") {
             swal({
                 title: "¿Estas seguro?",
                 text: "Una vez eliminado el proyecto no se puede revertir",
@@ -50,14 +52,17 @@ function EditProject({ proyecto }) {
             });
         } else (swal({
             text: "Su rol no posse permiso para eliminar un proyecto",
-            icon: "warning",
         }))
     }
 
-
-    const edtitProject = async (e) => {
-        //logica de modificacion del proyecto
-
+    const aver = async () => {
+        if (roleAuth !== "ADMIN") {
+            swal({
+                text: "Su rol no posee permisos para modificar un proyecto"
+            })
+        } else if (roleAuth === "ADMIN") {
+            setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })
+        }
     }
 
     return (
@@ -66,7 +71,7 @@ function EditProject({ proyecto }) {
                 <>
                     <Container className="register-box-head">
                         <section className="">
-                            <Link to="#"><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
+                            <Link to=""><ion-icon name="arrow-back-outline"></ion-icon> Volver atras</Link>
                         </section>
                     </Container>
                     <Container className="register-box">
@@ -79,17 +84,18 @@ function EditProject({ proyecto }) {
                                     </div>
                                 </div>
                                 <div className="col-md-12">
-                                    <span onClick={() => setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })}><ion-icon name="options-outline"></ion-icon>Editar poryecto</span>
+                                    <span className='editpr d-flex' onClick={aver}><ion-icon name="options-outline"></ion-icon><p>Editar poryecto</p></span>
                                 </div>
                                 <div>
-                                    <span onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon> Eliminar proyecto</span>
+                                    <span className='delpr d-flex' onClick={deleteProject} ><ion-icon name="trash-outline"></ion-icon><p>Eliminar proyecto</p></span>
                                 </div>
                             </div>
                         </section>
                     </Container>
                 </>
             }
-            {currentScreen.prEdit && <EditDataProject proyecto={proyecto} />}
+
+            {currentScreen.prEdit && <EditDataProject dataProject={dataProject} />}
 
 
         </>

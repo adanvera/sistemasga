@@ -29,7 +29,7 @@ const UserStorySchema = Schema({
     }, 
     assigned_user:{
       type:String,
-      required: [true, 'El nombre del usuario es obligatorio!!']
+      required: [false, 'El nombre del usuario es obligatorio!!']
     }
 
 

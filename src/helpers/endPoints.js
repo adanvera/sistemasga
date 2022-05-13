@@ -1,15 +1,20 @@
-const URL_AUTH_USUARIO = 'http://localhost:4000/api/auth' 
+const URL_AUTH_USUARIO = 'http://localhost:4000/api/auth'
 const URL_CREAR_USUARIO = 'http://localhost:4000/api/usuario'
-const URL_EDITAR_USER ='http://localhost:4000/api/usuario/'
+const URL_EDITAR_USER = 'http://localhost:4000/api/usuario/'
 
 const URL_CREAR_ROL = 'http://localhost:4000/api/role'
 const URL_ELIMINAR_ROL = 'http://localhost:4000/api/role/'
 const URL_EDITAR_ROL = 'http://localhost:4000/api/role/'
 
 const URL_CREAR_PROYECTO = 'http://localhost:4000/api/proyecto/nuevo-proyecto'
-const URL_PROYECTOS ='http://localhost:4000/api/proyecto/'
+const URL_PROYECTOS = 'http://localhost:4000/api/proyecto/'
 const URL_ELMINAR_PROJECT = 'http://localhost:4000/api/proyecto/eliminar/'
 const URL_EDIT_PROJECT = "http://localhost:4000/api/proyecto/actualizar-proyecto/"
+
+const URL_CREATE_US_STORY = "http://localhost:4000/api/user-story/crear-us"
+const URL_BACKLOG = "http://localhost:4000/api/user-story/obtener-us-backlog/"
+const URL_DELETE_US = "http://localhost:4000/api/user-story/eliminar-us/"
+const URL_UPDATE_US = "http://localhost:4000/api/user-story/actualizar-us/"
 
 
 export {
@@ -23,4 +28,8 @@ export {
   URL_CREAR_PROYECTO,
   URL_ELMINAR_PROJECT,
   URL_EDIT_PROJECT,
+  URL_CREATE_US_STORY,
+  URL_BACKLOG,
+  URL_DELETE_US,
+  URL_UPDATE_US,
 }
