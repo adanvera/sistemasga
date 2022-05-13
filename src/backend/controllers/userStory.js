@@ -33,6 +33,22 @@ const obtenerUsByBacklog = async (req, res) => {
   }
 
 }
+const obtenerUsByEnCurso = async (req, res) => {
+  const {id} = req.params
+
+  try {
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_curso"});
+    res.status(200).json({
+      us
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
+
+}
 
 
 const actualizarUS = async (req,res) => {
@@ -78,7 +94,9 @@ const eliminarUS = async (req,res) => {
 module.exports = {
   agregarUserStory,
   obtenerUsByBacklog,
+  obtenerUsByEnCurso,
   eliminarUS,
   actualizarUS,
+
   
 }

@@ -7,7 +7,6 @@ const SprintSchema = Schema({
     },
     fecha_inicio:{
       type:Date,
-      default: Date.now
     },
     fecha_fin:{
       type:Date
