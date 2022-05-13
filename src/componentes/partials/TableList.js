@@ -8,8 +8,7 @@ import user_one from '../../images/users/user_one.png'
 
 
 
-function BacklogList({ item, dataProject }) {
-
+function TableList({ item, dataProject }) {
 
     const [visible, setVisible] = useState(false)
     const [roleAuth, setRoleAuth] = useState([])
@@ -19,7 +18,7 @@ function BacklogList({ item, dataProject }) {
     const idUS = item.us_id
     const [us_state, setUsState] = useState(item.us_state)
     const [us_priority, setUsPriority] =  useState(item.us_priority)
-    console.log(us_priority)
+
     //consultamos el localStorage y guardamos valor de rol 
     //para poder filtrar funciones mediante la misma
     useEffect(() => {
@@ -151,7 +150,6 @@ function BacklogList({ item, dataProject }) {
                         <div>
                             <label>Estado</label>
                             <Form.Select aria-label="Tipo" value={us_state} onChange={(e) => setUsState(e.target.value)}  >
-                                <option disabled >{us_state}</option>
                                 <option value="backlog">BACKLOG</option>
                                 <option value="en_curso">EN CURSO</option>
                                 <option value="detenido">DETENIDO</option>
@@ -181,4 +179,4 @@ function BacklogList({ item, dataProject }) {
     )
 }
 
-export default BacklogList
+export default TableList

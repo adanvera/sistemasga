@@ -1111,6 +1111,29 @@ div.aflex-details p:hover {
 .data-name{
   text-transform: uppercase;
 }
+
 .span.pr-2 {
   padding-left: 4px;
+}
+
+.tablelist {
+  width: 500px;
+}
+
+div#dash {
+  width: calc(100% - 200px);
+}
+
+html.hydrated {
+  overflow: hidden;
+}
+
+div#tablelistUs {
+  overflow-y: auto;
+}
+
+div#tablelistUs {
+  overflow-y: auto;
+  min-height: 580px;
+  height: auto;
 }
