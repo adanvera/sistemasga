@@ -3,18 +3,20 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_BACKLOG, URL_PROYECTOS } from '../helpers/endPoints';
+import { URL_BACKLOG, URL_PROYECTOS, URL_US_EN_CURSO } from '../helpers/endPoints';
 import DisplayUserPr from './DisplayUserPr';
 import BacklogList from '../componentes/partials/BacklogList'
 import EditProject from '../componentes/partials/EditProject'
 import CreateUs from '../componentes/partials/CreateUs'
 import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
+import EnCursoList from './partials/EnCursoList';
 
 function DetailsProject() {
 
 	//obtenemos el id del proyecto mediante la siguiente función
 	const { id } = useParams()
+	console.log(id);
 	//variable declarada para saber cual es la ventana actual mediante botones
 	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false })
 	const { user } = useContext(DataContext)
@@ -23,6 +25,7 @@ function DetailsProject() {
 	const [descripcion, setDescripcion] = useState('')
 	const [proyecto, setProyecto] = useState([])
 	const [tasksBk, setTasksBk] = useState('')
+	const [taskEnCurso, setTaskEnCurso] = useState('')
 	const [role, setRole] = useState([])
 
 	//consultamos el localStorage
@@ -64,6 +67,16 @@ function DetailsProject() {
 		}
 		getUsBk()
 
+		const getUsEnCurso = async ()=>{
+			try {
+				const res = await fetch(URL_US_EN_CURSO+id),
+				data = await res.json()
+				setTaskEnCurso(data.us)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getUsEnCurso()
 	}, [])
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
@@ -75,6 +88,8 @@ function DetailsProject() {
 		localStorage.clear()
 		navigate('/')
 	}
+
+	console.log(taskEnCurso);
 
 	return (
 		<>
@@ -169,8 +184,12 @@ function DetailsProject() {
 									</div>
 									<div className=" col-md box-dashboard">
 										<div className='title-section'>
-											<span>EN CURSO *</span>
+											<span>EN CURSO {tasksBk.length}</span>
 										</div>
+										{tasksBk.length > 0 && tasksBk.map((item => {
+											return <EnCursoList item={item} dataProject={dataProject} />
+										}))
+										}
 									</div>
 								</div>
 							</>

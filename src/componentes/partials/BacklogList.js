@@ -17,9 +17,10 @@ function BacklogList({ item, dataProject }) {
     const [userAuthUui, setUserAuthUui] = useState([])
     const [task, setTask] = useState(item.task)
     const idUS = item.us_id
-    const [us_state, setUsState] = useState(item.us_state)
-    const [us_priority, setUsPriority] =  useState(item.us_priority)
-    console.log(us_priority)
+
+    console.log(item);
+
+
     //consultamos el localStorage y guardamos valor de rol 
     //para poder filtrar funciones mediante la misma
     useEffect(() => {
@@ -56,7 +57,7 @@ function BacklogList({ item, dataProject }) {
                     swal("Eliminado exitosamente", {
                         icon: "success",
                     });
-                    await fetch(URL_DELETE_US + item.us_id, {
+                    await fetch(URL_DELETE_US+item.us_id, {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json" },
                     });
@@ -72,11 +73,11 @@ function BacklogList({ item, dataProject }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ task, us_state , us_priority}),
+            body: JSON.stringify({ task }),
         };
 
         try {
-            const res = await fetch(URL_UPDATE_US + item._id, option),
+            const res = await fetch(URL_UPDATE_US+item._id, option),
                 json = await res.json();
 
             if (!res.ok) {
@@ -119,7 +120,7 @@ function BacklogList({ item, dataProject }) {
                 <div className='row paddd'>
                     <div className='col' >
                         <div className='foot-box-task'>
-                            <span className="number-task">US - {item.us_id} [{dataProject?.nombre ? dataProject?.nombre : ''}]</span>
+                            <span className="number-task">US - {item.us_id} [{dataProject?.nombre ? dataProject?.nombre:''}]</span>
                         </div>
                     </div>
                     <div className='col commet-icon'>
@@ -148,28 +149,6 @@ function BacklogList({ item, dataProject }) {
                                 onChange={(e) => setTask(e.target.value)}
                             />
                         </FloatingLabel>
-                        <div>
-                            <label>Estado</label>
-                            <Form.Select aria-label="Tipo" value={us_state} onChange={(e) => setUsState(e.target.value)}  >
-                                <option disabled >{us_state}</option>
-                                <option value="backlog">BACKLOG</option>
-                                <option value="en curso">EN CURSO</option>
-                                <option value="detenido">DETENIDO</option>
-                                <option value="a verificar">A VERIFICAR</option>
-                                <option value="en verficacion">EN VERIFICACION</option>
-                                <option value="finalizado">FINALIZADO</option>
-                            </Form.Select>
-                        </div>
-                        <div>
-                            <label>Prioridad</label>
-                            <Form.Select aria-label="Tipo" value={us_priority} onChange={(e) => setUsPriority(e.target.value)}  >
-                                <option disabled >{us_priority}</option>
-                                <option value="low">LOW</option>
-                                <option value="medium">MEDIUM</option>
-                                <option value="high">HIGH</option>
-                                <option value="urgent">URGENT</option>
-                            </Form.Select>
-                        </div>
                     </>
                 </CModalBody>
                 <CModalFooter>
