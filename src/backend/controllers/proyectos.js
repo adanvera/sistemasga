@@ -1,6 +1,12 @@
 const Proyecto = require("../Models/Proyecto");
 const usuario = require("../Models/usuario");
 
+/**
+ * It creates a new project and saves it to the database.
+ * @param req - request
+ * @param res - The response object.
+ * @returns a promise.
+ */
 const agregarProyecto = async (req, res) => {
   const proyecto = new Proyecto(req.body)
   try {

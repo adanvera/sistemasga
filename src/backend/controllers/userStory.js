@@ -17,6 +17,9 @@ const agregarUserStory = async (req, res) => {
   }
 }
 
+/*Metodo para obtener los distintos estados el User Story, se les pasa el id del proyecto  como parametro
+  ademas se filtra por us_active = true,
+*/
 const obtenerUsByBacklog = async (req, res) => {
   const {id} = req.params
 
@@ -48,6 +51,50 @@ const obtenerUsByEnCurso = async (req, res) => {
     });
   }
 
+}
+const obtenerUsByDetenido = async (req, res) => {
+  const {id} = req.params
+
+  try {
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"detenido"});
+    res.status(200).json({
+      us
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
+
+}
+const obtenerUsByVerificar = async (req, res) => {
+  const {id} = req.params
+  try {
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"a_verificar"});
+    res.status(200).json({
+      us
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
+}
+const obtenerUsByEnVerificacion = async (req, res) => {
+  const {id} = req.params
+  try {
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_verificacion"});
+    res.status(200).json({
+      us
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
 }
 
 
@@ -95,8 +142,9 @@ module.exports = {
   agregarUserStory,
   obtenerUsByBacklog,
   obtenerUsByEnCurso,
+  obtenerUsByDetenido,
+  obtenerUsByVerificar,
+  obtenerUsByEnVerificacion,
   eliminarUS,
   actualizarUS,
-
-  
 }
