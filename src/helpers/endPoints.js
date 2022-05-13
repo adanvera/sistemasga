@@ -14,6 +14,7 @@ const URL_EDIT_PROJECT = "http://localhost:4000/api/proyecto/actualizar-proyecto
 const URL_CREATE_US_STORY = "http://localhost:4000/api/user-story/crear-us"
 const URL_BACKLOG = "http://localhost:4000/api/user-story/obtener-us-backlog/"
 const URL_US_EN_CURSO = "http://localhost:4000/api/user-story/obtener-us-en-curso/"
+const URL_US_DETENIDO = "http://localhost:4000/api/user-story/obtener-us-detenido/"
 const URL_DELETE_US = "http://localhost:4000/api/user-story/eliminar-us/"
 const URL_UPDATE_US = "http://localhost:4000/api/user-story/actualizar-us/"
 
@@ -34,4 +35,5 @@ export {
   URL_DELETE_US,
   URL_UPDATE_US,
   URL_US_EN_CURSO,
+  URL_US_DETENIDO,
 }

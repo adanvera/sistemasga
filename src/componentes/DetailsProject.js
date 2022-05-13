@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_BACKLOG, URL_PROYECTOS, URL_US_EN_CURSO } from '../helpers/endPoints';
+import { URL_BACKLOG, URL_PROYECTOS, URL_US_DETENIDO, URL_US_EN_CURSO } from '../helpers/endPoints';
 import DisplayUserPr from './DisplayUserPr';
 import BacklogList from '../componentes/partials/BacklogList'
 import EditProject from '../componentes/partials/EditProject'
@@ -11,6 +11,7 @@ import CreateUs from '../componentes/partials/CreateUs'
 import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
 import EnCursoList from './partials/EnCursoList';
+import DetenidosList from './partials/DetenidosList';
 
 function DetailsProject() {
 
@@ -27,6 +28,7 @@ function DetailsProject() {
 	const [tasksBk, setTasksBk] = useState('')
 	const [taskEnCurso, setTaskEnCurso] = useState('')
 	const [role, setRole] = useState([])
+	const [taskDetenido, setTaskDetenido] = useState('')
 
 	//consultamos el localStorage
 	useEffect(() => {
@@ -77,7 +79,22 @@ function DetailsProject() {
 			}
 		}
 		getUsEnCurso()
+
+		const getUsDetenido = async ()=>{
+			try {
+				const res = await fetch(URL_US_DETENIDO+id),
+				data = await res.json()
+				setTaskDetenido(data.us)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+		getUsDetenido()
+
 	}, [])
+
+	console.log(taskDetenido);
+
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
 	const usuersProject = proyecto?.proyecto?.usuarios
@@ -88,8 +105,6 @@ function DetailsProject() {
 		localStorage.clear()
 		navigate('/')
 	}
-
-	console.log(taskEnCurso);
 
 	return (
 		<>
@@ -184,10 +199,19 @@ function DetailsProject() {
 									</div>
 									<div className=" col-md box-dashboard">
 										<div className='title-section'>
-											<span>EN CURSO {tasksBk.length}</span>
+											<span>EN CURSO {taskEnCurso.length}</span>
 										</div>
-										{tasksBk.length > 0 && tasksBk.map((item => {
+										{taskEnCurso.length > 0 && taskEnCurso.map((item => {
 											return <EnCursoList item={item} dataProject={dataProject} />
+										}))
+										}
+									</div>
+									<div className=" col-md box-dashboard">
+										<div className='title-section'>
+											<span>DETENIDO {taskDetenido.length}</span>
+										</div>
+										{taskDetenido.length > 0 && taskDetenido.map((item => {
+											return <DetenidosList item={item} dataProject={dataProject} />
 										}))
 										}
 									</div>

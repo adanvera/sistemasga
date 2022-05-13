@@ -1,11 +1,9 @@
 import React from 'react'
 import user_one from '../../images/users/user_one.png'
 
-function EnCursoList({item, dataProject }) {
-
-    const deleteUS = async () => {}
-    const showUS = async () => {}
-
+function DetenidosList({item, dataProject }) {
+    const deleteUS = async () => { }
+    const showUS = async () => { }
     return (
         <div className='box-status-content' id='boxus'  >
             <div className='row paddd'>
@@ -38,4 +36,4 @@ function EnCursoList({item, dataProject }) {
     )
 }
 
-export default EnCursoList
+export default DetenidosList
