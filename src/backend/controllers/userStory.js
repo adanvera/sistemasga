@@ -24,7 +24,11 @@ const obtenerUsByBacklog = async (req, res) => {
   const {id} = req.params
 
   try {
-    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"backlog"});
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"backlog"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });
     res.status(200).json({
       us
     })

@@ -32,8 +32,8 @@ const UserStorySchema = Schema({
       required: [true, 'El nombre proyecto es obligatorio!!']
     }, 
     assigned_user:{
-      type:String,
-      required: [false, 'El nombre del usuario es obligatorio!!']
+      type: Schema.Types.ObjectId,
+      ref:'Usuario'
     }
 
 
