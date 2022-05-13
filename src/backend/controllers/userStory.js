@@ -44,7 +44,11 @@ const obtenerUsByEnCurso = async (req, res) => {
   const {id} = req.params
 
   try {
-    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_curso"});
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_curso"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });;
     res.status(200).json({
       us
     })
@@ -60,7 +64,11 @@ const obtenerUsByDetenido = async (req, res) => {
   const {id} = req.params
 
   try {
-    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"detenido"});
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"detenido"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });;
     res.status(200).json({
       us
     })
@@ -75,7 +83,11 @@ const obtenerUsByDetenido = async (req, res) => {
 const obtenerUsByVerificar = async (req, res) => {
   const {id} = req.params
   try {
-    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"a_verificar"});
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"a_verificar"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });
     res.status(200).json({
       us
     })
@@ -89,7 +101,29 @@ const obtenerUsByVerificar = async (req, res) => {
 const obtenerUsByEnVerificacion = async (req, res) => {
   const {id} = req.params
   try {
-    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_verificacion"});
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"en_verificacion"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });
+    res.status(200).json({
+      us
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      msg: "Ocurrio un error",
+    });
+  }
+}
+const obtenerUsByFinalizado = async (req, res) => {
+  const {id} = req.params
+  try {
+    const us = await UserStory.find({ us_active: true, id_project:id ,us_state:"finalizado"}).populate('assigned_user',{
+      nombre:1,
+      correo:1,
+      _id:0
+      });
     res.status(200).json({
       us
     })
@@ -149,6 +183,7 @@ module.exports = {
   obtenerUsByDetenido,
   obtenerUsByVerificar,
   obtenerUsByEnVerificacion,
+  obtenerUsByFinalizado,
   eliminarUS,
   actualizarUS,
 }
