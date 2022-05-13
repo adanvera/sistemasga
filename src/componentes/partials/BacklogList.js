@@ -153,10 +153,10 @@ function BacklogList({ item, dataProject }) {
                             <Form.Select aria-label="Tipo" value={us_state} onChange={(e) => setUsState(e.target.value)}  >
                                 <option disabled >{us_state}</option>
                                 <option value="backlog">BACKLOG</option>
-                                <option value="en curso">EN CURSO</option>
+                                <option value="en_curso">EN CURSO</option>
                                 <option value="detenido">DETENIDO</option>
-                                <option value="a verificar">A VERIFICAR</option>
-                                <option value="en verficacion">EN VERIFICACION</option>
+                                <option value="a_verificar">A VERIFICAR</option>
+                                <option value="en_verficacion">EN VERIFICACION</option>
                                 <option value="finalizado">FINALIZADO</option>
                             </Form.Select>
                         </div>

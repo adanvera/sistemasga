@@ -11,9 +11,9 @@ function RoleList({ roles }) {
           <thead>
             <tr>
               <th>#</th>
-              <th>rol</th>
-              <th>con acceso a</th>
-              <th className="a-texttt">acciones</th>
+              <th>ROL</th>
+              <th>CON ACCESO A</th>
+              <th className="a-texttt">ACCIONES</th>
             </tr>
           </thead>
           <tbody>

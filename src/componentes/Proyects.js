@@ -55,7 +55,8 @@ function Proyects({ rol }) {
         {/* boton de creacion de proyecto que renderiza en la pantalla principal */}
         <Button className="btn btn-cr-pro"
           onClick={handleShow} >
-          <ion-icon name="add-circle-outline"></ion-icon> crear nuevo proyecto
+          <ion-icon name="add-circle-outline"></ion-icon> 
+          <span className='pr-2'> CREAR NUEVO PROYECTO </span>
         </Button>
       </>
     )
@@ -123,15 +124,6 @@ function Proyects({ rol }) {
             <div className='col a-end'>
               <ModalCreateProject />
             </div>)}
-        </div>
-        <div className='row' >
-          <div className='col-md-4 form-search'>
-            {(currentScreen.pr &&
-              <Form className="d-flex">
-                <FormControl type="search" placeholder="Buscar proyecto" className="me-2" aria-label="Search" />
-                <Button variant="outline-success"><ion-icon name="search-outline"></ion-icon></Button>
-              </Form>)}
-          </div>
         </div>
         {currentScreen.pr &&
           <>

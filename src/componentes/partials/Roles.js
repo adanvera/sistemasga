@@ -54,8 +54,8 @@ export const Roles = ({ rol }) => {
 			<>
 				<Button onClick={handleShow}
 					className="btn btn-cr-pro"
-				> <ion-icon name="add-circle-outline"></ion-icon>
-					crear rol</Button>
+				> <ion-icon name="add-circle-outline" ></ion-icon>
+					<span className='pr-2'>CREAR ROL</span></Button>
 
 				<Modal show={show} onHide={handleClose} >
 					<Modal.Header closeButton>

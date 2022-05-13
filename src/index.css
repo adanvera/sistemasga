@@ -1111,3 +1111,6 @@ div.aflex-details p:hover {
 .data-name{
   text-transform: uppercase;
 }
+.span.pr-2 {
+  padding-left: 4px;
+}
