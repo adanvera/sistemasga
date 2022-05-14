@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_BACKLOG, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION } from '../helpers/endPoints';
+import { URL_BACKLOG, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION, URL_US_FINALIZADO } from '../helpers/endPoints';
 import DisplayUserPr from './DisplayUserPr';
 import EditProject from '../componentes/partials/EditProject'
 import CreateUs from '../componentes/partials/CreateUs'
@@ -29,6 +29,7 @@ function DetailsProject() {
 	const [taskDetenido, setTaskDetenido] = useState('')
 	const [taskVerificar, setTaskVerificar] = useState('')
 	const [taskEnVerificacion, setTaskEnVerificacion] = useState('')
+	const [taskFinalizado, setTaskFinalizado] = useState('')
 
 	//consultamos el localStorage
 	useEffect(() => {
@@ -114,9 +115,19 @@ function DetailsProject() {
 
 		getUsEnVerificacion()
 
-	}, [])
+		const getUsFinalizado = async () => {
+			try {
+				const res = await fetch(URL_US_FINALIZADO+id),
+					data = await res.json()
+					setTaskFinalizado(data.us)
+			} catch (error) {
+				console.log(error)
+			}
+		}
 
-	console.log(taskEnVerificacion);
+		getUsFinalizado()
+
+	}, [])
 
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
@@ -212,7 +223,7 @@ function DetailsProject() {
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
 											</div>
-											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false  })} className='createUS'>Crear tarea</CButton> </div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false  })} className='createUS'>Crear incidencia</CButton> </div>
 											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
 
 											{tasksBk.length > 0 && tasksBk.map((item => {
@@ -268,9 +279,9 @@ function DetailsProject() {
 									<div className=" col-md box-dashboard">
 										<div className='tablelist'>
 											<div className='title-section'>
-												<span>FINALIZADA {taskEnVerificacion.length}</span>
+												<span>FINALIZADA {taskFinalizado.length}</span>
 											</div>
-											{taskEnVerificacion.length > 0 && taskEnVerificacion.map((item => {
+											{taskFinalizado.length > 0 && taskFinalizado.map((item => {
 												return <TableList item={item} dataProject={dataProject} />
 											}))
 											}
@@ -293,7 +304,7 @@ function DetailsProject() {
 									<div className=" col-md-12 box-dashboard">
 										<div className=''>
 											<div className='title-section'>
-												<span>FINALIZADA {tasksBk.length}</span>
+												<span>BACKLOG {tasksBk.length}</span>
 											</div>
 											{tasksBk.length > 0 && tasksBk.map((item => {
 												return <TableList item={item} dataProject={dataProject} />

@@ -5,6 +5,10 @@ import swal from 'sweetalert'
 import { DataContext } from '../../context/DataContext'
 import { URL_DELETE_US, URL_UPDATE_US } from '../../helpers/endPoints'
 import user_one from '../../images/users/user_one.png'
+import UserList from '../UserList'
+
+const urlUsers = "http://localhost:4000/api/usuario/"
+
 
 
 
@@ -17,7 +21,9 @@ function TableList({ item, dataProject }) {
     const [task, setTask] = useState(item.task)
     const idUS = item.us_id
     const [us_state, setUsState] = useState(item.us_state)
-    const [us_priority, setUsPriority] =  useState(item.us_priority)
+    const [us_priority, setUsPriority] = useState(item.us_priority)
+    const [assigned_user, setAssigned_User] = useState()
+    const [usuario, setUsurio] = useState([])
 
     //consultamos el localStorage y guardamos valor de rol 
     //para poder filtrar funciones mediante la misma
@@ -32,7 +38,19 @@ function TableList({ item, dataProject }) {
         const usuarioAuth = JSON.parse(data);
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
         setUserAuthUui(usuarioAuth.usuarioEncontrado.uui)
-    })
+
+        const getUser = async () => {
+            try {
+                const res = await fetch(urlUsers),
+                    data = await res.json()
+                setUsurio(data.usuarios)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getUser()
+
+    }, [])
 
     const showUS = async () => {
         setVisible(!visible)
@@ -71,7 +89,7 @@ function TableList({ item, dataProject }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ task, us_state , us_priority}),
+            body: JSON.stringify({ task, us_state, us_priority, assigned_user }),
         };
 
         try {
@@ -98,75 +116,77 @@ function TableList({ item, dataProject }) {
         }
     }
 
+    const showUser = (data)=>{
+        usuario.forEach(element => {
+            if(element.uui === data){
+                return (element.nombre)
+            }
+        });
+    }
+
+    console.log(item?.assigned_user?.nombre);
+
     return (
         <>
-            <div className='box-status-content' id='boxus'  >
+            <div className='box-status-content' id='boxus'>
                 <div className='row paddd'>
-                    <div className='col d-flex justify-content-between'>
-                        <div className=''>
+                    <div className='col d-flex' onClick={showUS} id="task-desc">
+                        <div className='foot-box-task d-flex'>
+                            <span className="number-task d-flex">US-{item.us_id}</span><p className='text-desc pl-2'>{item.task ? item.task : ''}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className='row paddd'>
+                    <div className='col d-flex' id='aveer'   >
+                        <div className='user-us'>
                             <img src={user_one} alt="" />
                             <span className='pl-1' >Adán Vera </span>
                         </div>
                         <div className='ddd'><ion-icon onClick={deleteUS} name="trash-outline"></ion-icon></div>
                     </div>
                 </div>
-                <div className='row paddd'>
-                    <div className='text-description' onClick={showUS}>
-                        <span>{item.task}</span>
-                    </div>
-                </div>
-                <div className='row paddd'>
-                    <div className='col' >
-                        <div className='foot-box-task'>
-                            <span className="number-task">US - {item.us_id} [{dataProject?.nombre ? dataProject?.nombre : ''}]</span>
-                        </div>
-                    </div>
-                    <div className='col commet-icon'>
-                        <div>
-                            <ion-icon name="chatbox-outline"></ion-icon>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <CModal visible={visible} onClose={() => setVisible(false)}>
+            <CModal visible={visible} onClose={() => setVisible(false)} >
                 <CModalHeader onClose={() => setVisible(false)}>
                     <CModalTitle>User Story - {item.task} </CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <>
-                        <FloatingLabel
-                            controlId="FloatingProjectName"
-                            label="Tarea a llevar a cabo"
-                            className="mb-3"
-                        >
-                            <Form.Control
-                                type="text"
-                                placeholder="Tarea a llevar a cabo"
-                                value={task}
-                                onChange={(e) => setTask(e.target.value)}
-                            />
-                        </FloatingLabel>
-                        <div>
-                            <label>Estado</label>
-                            <Form.Select aria-label="Tipo" value={us_state} onChange={(e) => setUsState(e.target.value)}  >
-                                <option value="backlog">BACKLOG</option>
-                                <option value="en_curso">EN CURSO</option>
-                                <option value="detenido">DETENIDO</option>
-                                <option value="a_verificar">A VERIFICAR</option>
-                                <option value="en_verficacion">EN VERIFICACION</option>
-                                <option value="finalizado">FINALIZADO</option>
-                            </Form.Select>
+                        <div className='textareaaaa'>
+                            <label>Nombre de tarea:</label>
+                            <textarea value={task} onChange={(e) => setTask(e.target.value)}></textarea>
                         </div>
-                        <div>
-                            <label>Prioridad</label>
-                            <Form.Select aria-label="Tipo" value={us_priority} onChange={(e) => setUsPriority(e.target.value)}  >
-                                <option disabled >{us_priority}</option>
-                                <option value="low">LOW</option>
-                                <option value="medium">MEDIUM</option>
-                                <option value="high">HIGH</option>
-                                <option value="urgent">URGENT</option>
-                            </Form.Select>
+                        <div className='col-md-12 d-flex justify-content-lg-between mt-3'>
+                            <div className='col-md-5'>
+                                <label>Estado</label>
+                                <Form.Select aria-label="Tipo" value={us_state} onChange={(e) => setUsState(e.target.value)}  >
+                                    <option value="backlog">BACKLOG</option>
+                                    <option value="en_curso">EN CURSO</option>
+                                    <option value="detenido">DETENIDO</option>
+                                    <option value="a_verificar">A VERIFICAR</option>
+                                    <option value="en_verificacion">EN VERIFICACION</option>
+                                    <option value="finalizado">FINALIZADO</option>
+                                </Form.Select>
+                            </div>
+                            <div className='col-md-5'>
+                                <label>Prioridad</label>
+                                <Form.Select aria-label="Tipo" value={us_priority} onChange={(e) => setUsPriority(e.target.value)}  >
+                                    <option value="low">LOW</option>
+                                    <option value="medium">MEDIUM</option>
+                                    <option value="high">HIGH</option>
+                                    <option value="urgent">URGENT</option>
+                                </Form.Select>
+                            </div>
+                        </div>
+                        <div className="col-md-12 pt-3">
+                            <div className='col-md-5'>
+                                <label>Asignar responsable del proyecto</label>
+                                <Form.Select aria-label="Tipo" value={(assigned_user)} onChange={(e) => setAssigned_User(e.target.value)} >
+                                    <option value="Sin responsable" >Sin responsable</option>
+                                    <UserList usuario={usuario} />
+                                </Form.Select>
+                            </div>
                         </div>
                     </>
                 </CModalBody>

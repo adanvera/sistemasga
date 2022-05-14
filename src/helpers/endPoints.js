@@ -19,6 +19,7 @@ const URL_US_A_VERIFICAR = "http://localhost:4000/api/user-story/obtener-us-veri
 const URL_US_EN_VERIFICACION = "http://localhost:4000/api/user-story/obtener-us-verificacion/"
 const URL_DELETE_US = "http://localhost:4000/api/user-story/eliminar-us/"
 const URL_UPDATE_US = "http://localhost:4000/api/user-story/actualizar-us/"
+const URL_US_FINALIZADO = "http://localhost:4000/api/user-story/obtener-us-finalizado/"
 
 
 export {
@@ -40,4 +41,5 @@ export {
   URL_US_DETENIDO,
   URL_US_A_VERIFICAR,
   URL_US_EN_VERIFICACION,
+  URL_US_FINALIZADO,
 }

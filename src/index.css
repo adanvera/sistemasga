@@ -473,6 +473,7 @@ a.nav-link {
   margin-top: 20px;
   padding-bottom: 20px;
   padding-top: 10px;
+  word-break: break-all;
 }
 
 .user-pic {
@@ -495,7 +496,7 @@ a.nav-link {
 
 .number-task {
   color: #00BF9C;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .ord {
@@ -1136,4 +1137,41 @@ div#tablelistUs {
   overflow-y: auto;
   min-height: 580px;
   height: auto;
+}
+
+div#createUS button.btn.btn-primary.createUS {
+  width: 206px !important;
+}
+
+div#boxus {
+  padding-top: 20px;
+}
+
+.user-us img {
+  width: 25px;
+}
+
+.text-desc{
+  color: #000000;
+}
+
+div#aveer {
+  margin: auto;
+}
+
+p.text-desc.pl-2 {
+  width: 230px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 900px !important;
+    margin: 1.75rem auto;
+}}
+
+textarea {
+  width: 100%;
 }
