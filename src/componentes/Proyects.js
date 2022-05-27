@@ -145,7 +145,7 @@ function Proyects({ rol }) {
               <span className="username">{nombre} {apellido}</span>
             </div>
             <div className="pl">
-              <img src={myphoto} alt="" />
+              <img src={myphoto}  alt=""  />
             </div>
           </Link>
         </nav>
