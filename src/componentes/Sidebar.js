@@ -1,16 +1,34 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
+const urlRoles = "http://localhost:4000/api/role/"
 
 function Sidebar({ rol }) {
+
 	const navigate = useNavigate()
 	const { currentScreen, setCurrentScreen } = useContext(DataContext)
+	const [role, setRole] = useState([])
+
 	//funcion para cerrar sesion
 	const logout = () => {
 		localStorage.clear()
 		navigate('/')
 	}
+
+	//obtenemos el listado de roles
+	useEffect(() => {
+		const getRole = async () => {
+			try {
+				const res = await fetch(urlRoles),
+					data = await res.json()
+				setRole(data.roles)
+			} catch (error) {
+				console.log(error);
+			}
+		}
+		getRole()
+	}, [])
 
 	return (
 		<>
