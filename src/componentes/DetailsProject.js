@@ -223,7 +223,7 @@ function DetailsProject() {
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
 											</div>
-											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false  })} className='createUS'>Crear incidencia</CButton> </div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false  })} className='createUS'>Crear tarea</CButton> </div>
 											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
 
 											{tasksBk.length > 0 && tasksBk.map((item => {

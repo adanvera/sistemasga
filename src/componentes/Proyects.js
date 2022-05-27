@@ -12,7 +12,7 @@ import { URL_PROYECTOS } from '../helpers/endPoints';
 import Other from './Other';
 import CreateProject from './partials/CreateProject';
 import NoData from './NoData';
-
+import MUIDataTable from "mui-datatables";
 
 function Proyects({ rol }) {
   // variable para la navegacion entre ventanas mediante btotones a ser clikeadas
@@ -55,7 +55,7 @@ function Proyects({ rol }) {
         {/* boton de creacion de proyecto que renderiza en la pantalla principal */}
         <Button className="btn btn-cr-pro"
           onClick={handleShow} >
-          <ion-icon name="add-circle-outline"></ion-icon> 
+          <ion-icon name="add-circle-outline"></ion-icon>
           <span className='pr-2'> CREAR NUEVO PROYECTO </span>
         </Button>
       </>
@@ -95,6 +95,38 @@ function Proyects({ rol }) {
 
   }, [])
 
+  console.log(proyecto);
+
+  const columns = ["nombre", "descripcion", "responsable",];
+
+  const options = {
+    filterType: 'checkbox',
+    download: true,
+    print: false,
+    selectableRows: false,
+
+    textLabels: {
+      body: {
+        noMatch: "Ups, no se encontro ningún registro",
+        toolTip: "Ordenar",
+        columnHeaderTooltip: column => `Ordenar por ${column.label}`
+      },
+      pagination: {
+        next: "Siguiente Pagina",
+        previous: "Anterior pagina",
+        rowsPerPage: "Filas por paginas:",
+        displayRows: "de",
+      },
+      toolbar: {
+        search: "Search",
+        downloadCsv: "Download CSV",
+        print: "Print",
+        viewColumns: "View Columns",
+        filterTable: "Filter Table",
+      },
+    }
+  };
+
   return (
     <>
       <div className="navbar justify-content-between w-100 " variant="dark">
@@ -128,7 +160,18 @@ function Proyects({ rol }) {
         {currentScreen.pr &&
           <>
             {proyecto.length === 0 && <NoData />}
-            {proyecto.length !== 0 && <ProjectList proyecto={proyecto} />}
+            {/* {proyecto.length !== 0 && <ProjectList proyecto={proyecto} />} */}
+            {
+              proyecto.length !== 0 &&
+              <div className='mt-5'>
+                <MUIDataTable
+                  title={"Lista de proyectos"}
+                  data={proyecto}
+                  columns={columns}
+                  options={options}
+                />
+              </div>
+            }
           </>
         }
         {currentScreen.prCreate && <CreateProject />}
