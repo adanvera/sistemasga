@@ -95,8 +95,6 @@ function Proyects({ rol }) {
 
   }, [])
 
-  console.log(proyecto);
-
   const columns = ["nombre", "descripcion", "responsable",];
 
   const options = {
@@ -104,7 +102,6 @@ function Proyects({ rol }) {
     download: true,
     print: false,
     selectableRows: false,
-
     textLabels: {
       body: {
         noMatch: "Ups, no se encontro ningún registro",
@@ -145,7 +142,7 @@ function Proyects({ rol }) {
               <span className="username">{nombre} {apellido}</span>
             </div>
             <div className="pl">
-              <img src={myphoto}  alt=""  />
+              <img src={myphoto} alt="" />
             </div>
           </Link>
         </nav>
@@ -160,7 +157,6 @@ function Proyects({ rol }) {
         {currentScreen.pr &&
           <>
             {proyecto.length === 0 && <NoData />}
-            {/* {proyecto.length !== 0 && <ProjectList proyecto={proyecto} />} */}
             {
               proyecto.length !== 0 &&
               <div className='mt-5'>
