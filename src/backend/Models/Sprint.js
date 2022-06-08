@@ -1,21 +1,22 @@
 const {Schema ,model}= require('mongoose')
 
 const SprintSchema = Schema({
-    nombre:{
+    name:{
       type:String,
       required: [true, 'El nombre del sprint es obligatorio']
     },
-    fecha_inicio:{
-      type:Date,
+    task:{
+      type:String,
+      required: [true, 'La tarea del sprint es obligatorio']
     },
-    fecha_fin:{
-      type:Date
+    duration:{
+      type:String
     },
-    proyecto:{
-      type: Schema.Types.ObjectId,
-      ref:'Proyecto'
+    user_story:{
+      type:Schema.Types.ObjectId,
+      ref:'UserStory'
     },
-    estado:{
+    state:{
       type:Boolean,
       default:true
     }
