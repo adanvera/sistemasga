@@ -9,10 +9,11 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 export const ProjectsTable = ({ link, proyecto, index }) => {
 
-
+    //declaramos e inicializamos las variables a ser utilzadas
     const [currentScreen, setCurrentScreen] = useState({ pr: false, other: false, prCreate: false, prDetails: false })
     const [usuario, setUsurio] = useState([])
 
+    //obtenemos los usuarios de la base de datos
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -26,6 +27,7 @@ export const ProjectsTable = ({ link, proyecto, index }) => {
         getUser()
     }, [])
 
+    //funcion para mostrar si el proyecto tiene un responsable o no
     const verifyUser = (pro) => {
         if (pro === "Sin responsable") {
             return (
@@ -48,14 +50,14 @@ export const ProjectsTable = ({ link, proyecto, index }) => {
 
     return (
         <>
-            <tr className="projectselected" 
-            onClick={e => {
-                e.preventDefault()
-                if (link) {
-                    navigate(`${link}${proyecto._id}`)
-                }
+            <tr className="projectselected"
+                onClick={e => {
+                    e.preventDefault()
+                    if (link) {
+                        navigate(`${link}${proyecto._id}`)
+                    }
 
-            }} >
+                }} >
                 <td>{index}</td>
                 <td className="lg" >
                     <div className="d-flex" to="./DetailsProject">

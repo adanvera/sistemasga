@@ -43,7 +43,6 @@ export const Dashboard = () => {
 			<Container fluid={true} className="d-flex p-0 m-0">
 				<Sidebar rol={role} />
 				<Container fluid={true} id="dash" rol={role}>
-					{/* <Navbar/> */}
 					{currentScreen.proyectos && <Proyects rol={role} />}
 					{currentScreen.desarrollo && <Desarrollo rol={role} />}
 					{currentScreen.seguridad && <Seguridad rol={role} />}

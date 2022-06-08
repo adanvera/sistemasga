@@ -14,6 +14,7 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 function TableList({ item, dataProject }) {
 
+    //declaramos e inicalizamos las variables a ser utilizadas
     const [visible, setVisible] = useState(false)
     const [roleAuth, setRoleAuth] = useState([])
     const { user, currentScreen } = useContext(DataContext)
@@ -56,6 +57,7 @@ function TableList({ item, dataProject }) {
         setVisible(!visible)
     }
 
+    //funcion para eliminar un user story
     const deleteUS = async () => {
         if (roleAuth !== "ADMIN") {
             swal({
@@ -82,6 +84,7 @@ function TableList({ item, dataProject }) {
         }
     }
 
+    //metodo para editar un user story
     const handleSubmit = async (e) => {
         e.preventDefault()
         let option = {
@@ -116,15 +119,13 @@ function TableList({ item, dataProject }) {
         }
     }
 
-    const showUser = (data)=>{
+    const showUser = (data) => {
         usuario.forEach(element => {
-            if(element.uui === data){
+            if (element.uui === data) {
                 return (element.nombre)
             }
         });
     }
-
-    console.log(item?.assigned_user?.nombre);
 
     return (
         <>

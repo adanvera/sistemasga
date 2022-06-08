@@ -49,7 +49,7 @@ function Sidebar({ rol }) {
 				</div>
 				<div className="list-group list-group-flush">
 					<ul className="list-unstyled">
-						<SidebarLi/>
+						<SidebarLi />
 					</ul>
 				</div>
 				<div className="bottom-side-menu">

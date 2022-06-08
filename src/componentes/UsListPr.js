@@ -5,7 +5,7 @@ function UsListPr({ usuario }) {
         <>
             {
                 usuario.map(usuario => {
-                    return (<option value={usuario.nombre+" "+usuario.apellido}>{usuario.nombre} {usuario.apellido}</option>)
+                    return (<option value={usuario.nombre + " " + usuario.apellido}>{usuario.nombre} {usuario.apellido}</option>)
                 })
             }
         </>

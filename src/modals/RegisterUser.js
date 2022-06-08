@@ -45,7 +45,7 @@ function RegisterUser() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombre, apellido, correo, password, rol}),
+      body: JSON.stringify({ nombre, apellido, correo, password, rol }),
     };
     try {
       const res = await fetch(URL_CREAR_USUARIO, option),
@@ -75,115 +75,115 @@ function RegisterUser() {
 
 
   const [role, setRole] = useState([])
-	useEffect(() => {
-		const getRole = async() =>{
-		  try {
+  useEffect(() => {
+    const getRole = async () => {
+      try {
         const res = await fetch(urlRoles),
-        data = await res.json()
+          data = await res.json()
         setRole(data.roles)
-		  } catch (error) {
-			  console.log(error);
-		  }
-		}
-		getRole()
-	}, [])
-	
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getRole()
+  }, [])
+
 
 
   return (
     <>
-        <Container className="register-box">
-          <section className="container-fluid register-content">
-            <div id="">
-              <div className="row justify-content-center">
-                <div className="col-md-6">
-                  <>
-                    <FloatingLabel
-                      controlId="floatingInputName"
-                      label="Nombre"
-                      className="mb-3"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="Ingrese nombre"
-                        onChange={(e) => setNombre(e.target.value)}
-                      />
-                    </FloatingLabel>
-                  </>
-                </div>
-                <div className="col-md-6">
-                  <>
-                    <FloatingLabel
-                      controlId="floatingInputLastName"
-                      label="Apellido"
-                      className="mb-3"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="Ingrese apellido"
-                        onChange={(e) => setApellido(e.target.value)}
-                      />
-                    </FloatingLabel>
-                  </>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className="col-md-12">
-                  <>
-                    <FloatingLabel
-                      controlId="floatingInputMail"
-                      label="Correo electrónico"
-                      className="mb-3"
-                    >
-                      <Form.Control
-                        type="mail"
-                        placeholder="Ingrese correo electrónico"
-                        onChange={(e) => setCorreo(e.target.value)}
-                      />
-                    </FloatingLabel>
-                  </>
-                </div>
-              </div>
-              <div className="row justify-content-center">
-                <div className="col-md-6">
+      <Container className="register-box">
+        <section className="container-fluid register-content">
+          <div id="">
+            <div className="row justify-content-center">
+              <div className="col-md-6">
+                <>
                   <FloatingLabel
-                    controlId="floatingPassword"
-                    label="Contraseña"
+                    controlId="floatingInputName"
+                    label="Nombre"
+                    className="mb-3"
                   >
                     <Form.Control
-                      type="password"
-                      placeholder="Ingrese contraseña"
-                      onChange={(e) => setPassword(e.target.value)}
+                      type="text"
+                      placeholder="Ingrese nombre"
+                      onChange={(e) => setNombre(e.target.value)}
                     />
                   </FloatingLabel>
-                </div>
-                <div className="col-md-6">
+                </>
+              </div>
+              <div className="col-md-6">
+                <>
                   <FloatingLabel
-                    controlId="floatingConfirmPassword"
-                    label="Confirmar contraseña"
+                    controlId="floatingInputLastName"
+                    label="Apellido"
+                    className="mb-3"
                   >
                     <Form.Control
-                      type="password"
-                      placeholder="Imgrese contraseña"
-                      onChange={(e) => setRepetirPassword(e.target.value)}
+                      type="text"
+                      placeholder="Ingrese apellido"
+                      onChange={(e) => setApellido(e.target.value)}
                     />
                   </FloatingLabel>
-                </div>
-                <div className='col-md-12 mt-3'>
-										<Form.Select aria-label="Tipo" onChange={(e) => setRolUser(e.target.value)} >
-											<option disabled selected>SELECCIONAR ROL</option>
-                      <Rolelistreg roles={role}/>
-										</Form.Select>
-								</div>
-              </div>
-              <div className="row mt-5 justify-content-center">
-                <div className="col-md-12 bt-centrar">
-                  <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>crear cuenta</button>
-                </div>
+                </>
               </div>
             </div>
-          </section>
-        </Container>
+            <div className="row justify-content-center">
+              <div className="col-md-12">
+                <>
+                  <FloatingLabel
+                    controlId="floatingInputMail"
+                    label="Correo electrónico"
+                    className="mb-3"
+                  >
+                    <Form.Control
+                      type="mail"
+                      placeholder="Ingrese correo electrónico"
+                      onChange={(e) => setCorreo(e.target.value)}
+                    />
+                  </FloatingLabel>
+                </>
+              </div>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-md-6">
+                <FloatingLabel
+                  controlId="floatingPassword"
+                  label="Contraseña"
+                >
+                  <Form.Control
+                    type="password"
+                    placeholder="Ingrese contraseña"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </FloatingLabel>
+              </div>
+              <div className="col-md-6">
+                <FloatingLabel
+                  controlId="floatingConfirmPassword"
+                  label="Confirmar contraseña"
+                >
+                  <Form.Control
+                    type="password"
+                    placeholder="Imgrese contraseña"
+                    onChange={(e) => setRepetirPassword(e.target.value)}
+                  />
+                </FloatingLabel>
+              </div>
+              <div className='col-md-12 mt-3'>
+                <Form.Select aria-label="Tipo" onChange={(e) => setRolUser(e.target.value)} >
+                  <option disabled selected>SELECCIONAR ROL</option>
+                  <Rolelistreg roles={role} />
+                </Form.Select>
+              </div>
+            </div>
+            <div className="row mt-5 justify-content-center">
+              <div className="col-md-12 bt-centrar">
+                <button type="submit" className="btn-crear w-100" onClick={handleSubmit}>crear cuenta</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </Container>
     </>
   );
 }

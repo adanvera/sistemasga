@@ -14,6 +14,7 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 export const Roles = ({ rol }) => {
 
+	//duncion para levandar modal de registro de rol
 	function ModalRegisterRole() {
 		const [show, setShow] = useState(false);
 		const { user } = useContext(DataContext)
@@ -48,8 +49,6 @@ export const Roles = ({ rol }) => {
 			}
 		}
 
-
-
 		return (
 			<>
 				<Button onClick={handleShow}
@@ -70,6 +69,8 @@ export const Roles = ({ rol }) => {
 	}
 
 	const [role, setRole] = useState([])
+
+	//obtenemos el listado de roles
 	useEffect(() => {
 		const getRole = async () => {
 			try {

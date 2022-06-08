@@ -20,7 +20,7 @@ function RegisterRole() {
       });
     }
 
-    const acceso = [optDesarrollo , optProyecto , optSeguridad]
+    const acceso = [optDesarrollo, optProyecto, optSeguridad]
 
     let option = {
       method: "POST",

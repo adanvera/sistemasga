@@ -48,7 +48,7 @@ function Seguridad({ rol }) {
     }
     getRole()
   }, [])
-  
+
   //consultamos el localStorage 
   //se obitne el nombre y apillod del usuario logeado
   useEffect(() => {

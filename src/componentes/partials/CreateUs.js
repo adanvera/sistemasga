@@ -8,16 +8,18 @@ import { URL_CREATE_US_STORY } from '../../helpers/endPoints'
 
 function CreateUs({ dataProject }) {
 
+    //creamos e inicializamos las variables a utilizar
     const [task, setTask] = useState('')
     const [us_state, setUsState] = useState('backlog')
     const [us_priority, setUsPriority] = useState('low')
     const [id_project, setIdProject] = useState(dataProject._id)
     const [name_project, setNameProject] = useState(dataProject.nombre)
 
-
+    //funcion para enviar las variables a la accion correspondiente
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        //nos aseguramos que los campos obligatorios se llenen
         if ([task].includes("")) {
             return swal({
                 icon: "error",
@@ -25,6 +27,7 @@ function CreateUs({ dataProject }) {
             });
         }
 
+        //lamada al metodo correspondiente y luego la accion
         let option = {
             method: "POST",
             headers: {
@@ -54,8 +57,6 @@ function CreateUs({ dataProject }) {
             });
         }
     }
-
-
 
     return (
         <div className='boxUs'>

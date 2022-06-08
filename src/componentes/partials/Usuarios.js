@@ -13,6 +13,7 @@ import swal from 'sweetalert';
 
 export const Usuarios = ({ usuario, rol }) => {
 
+	//modal para registrar un usuario
 	function ModalRegister() {
 		const [show, setShow] = useState(false);
 		const handleClose = () => setShow(false);
@@ -29,6 +30,7 @@ export const Usuarios = ({ usuario, rol }) => {
 			}
 		}
 
+		//se declara e inicializa las variables a ser utilizadas
 		const { user, currentScreen } = useContext(DataContext)
 		const [nombre, setNombre] = useState('')
 		const [role, setRole] = useState([])
@@ -51,8 +53,8 @@ export const Usuarios = ({ usuario, rol }) => {
 
 		return (
 			<>
-				<Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon> 
-				<span className='pr-2'> CREAR USUARIO</span></Button>
+				<Button className="btn btn-cr-pro" onClick={handleShow}> <ion-icon name="add-circle-outline"></ion-icon>
+					<span className='pr-2'> CREAR USUARIO</span></Button>
 				<Modal show={show} onHide={handleClose} >
 					<Modal.Header closeButton>
 						<Modal.Title>Registrar usuario</Modal.Title>

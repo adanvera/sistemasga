@@ -11,12 +11,14 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 function EditProject({ dataProject }) {
 
+    //declaramos e inicializamos las variables a ser utilizadas
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
     const idPr = dataProject._id
     const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
+    //obtenemos el usuario y el rol del usuario logueado
     useEffect(() => {
         const data = localStorage.getItem('auth')
         if (!data) {
@@ -28,8 +30,7 @@ function EditProject({ dataProject }) {
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     })
 
-    console.log(roleAuth)
-
+    //funcion para elimiar proyecto
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion
         if (roleAuth === "ADMIN") {
@@ -55,6 +56,7 @@ function EditProject({ dataProject }) {
         }))
     }
 
+    //funcion para validar el rol
     const aver = async () => {
         if (roleAuth !== "ADMIN") {
             swal({

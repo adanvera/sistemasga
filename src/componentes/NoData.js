@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 
 function NoData() {
+
+    //sirve para mostrar para una tabla sin registros
     return (
         <Fragment className="justify-content-center">
             <div className='data-table'>

@@ -9,12 +9,16 @@ import projectLogo from '../../images/logoproject.png'
 
 
 function CreateProject({ role }) {
+
+    //declaramos las variables a utilizar
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
 
+    //funcion para enviar los valores a ingreasr para crear el proyecto
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        //nos aseguramos de pasar todos los campos requeridos
         if ([nombre, descripcion].includes("")) {
             return swal({
                 icon: "warning",
@@ -22,6 +26,7 @@ function CreateProject({ role }) {
             })
         }
 
+        //llamamos al metodo correspondiente para realizar la accion
         let option = {
             method: "POST",
             headers: {

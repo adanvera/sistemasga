@@ -8,16 +8,16 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 export const EditDataRole = ({ rl }) => {
 
+    //declaramos e inicializamos las variables a ser utilizadas
     const IdRole = rl._id
     const [rol, setRole] = useState(rl.rol)
     const [optProyecto, setOptProyecto] = useState("")
     const [optSeguridad, setOptSeguridad] = useState("")
     const [optDesarrollo, setOptDesarrollo] = useState("")
-    
     const [accesoActual, setAccesoActual] = useState(rl.acceso)
     const acceso = [optDesarrollo, optProyecto, optSeguridad]
 
-    
+    //funcion para enviar los parametros devidos con el metodo correspondiente
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -51,9 +51,6 @@ export const EditDataRole = ({ rl }) => {
             })
         }
     }
-
-
-
 
     return (
         <>

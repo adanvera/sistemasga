@@ -12,6 +12,7 @@ const urlUsers = "http://localhost:4000/api/usuario/"
 
 function EditDataProject({ dataProject }) {
 
+    //declaramos e inicializamos las variables a ser utilizadas
     const [roleAuth, setRoleAuth] = useState([])
     const { user, setUser } = useContext(DataContext)
     const [usuario, setUsurio] = useState([])
@@ -20,6 +21,7 @@ function EditDataProject({ dataProject }) {
     const [responsable, setResponsable] = useState(dataProject.responsable)
     const [usuarios, setUsuarios] = useState(dataProject.usuarios)
 
+    //obtnenemos el usuario logueado y su rol correspondiente
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -42,8 +44,10 @@ function EditDataProject({ dataProject }) {
         setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
     }, [])
 
+    //guardamos el id del proyecto
     const idPr = dataProject._id
 
+    //funcion para modificar el proyecto, pasando los parametros devidos
     const handleSubmit = async (e) => {
         e.preventDefault()
         let option = {
