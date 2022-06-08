@@ -69,7 +69,6 @@ export const Usuarios = ({ usuario, rol }) => {
 
 	const handleSearch = (e) => {
 		setSearch(e.target.value)
-		console.log(search);
 	}
 
 	return (

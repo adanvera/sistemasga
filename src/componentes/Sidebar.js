@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DataContext } from '../context/DataContext'
 import myLogo from '../images/iconwhite.png'
+import SidebarLi from './SidebarLi'
 const urlRoles = "http://localhost:4000/api/role/"
 
 function Sidebar({ rol }) {
 
 	const navigate = useNavigate()
-	const { currentScreen, setCurrentScreen } = useContext(DataContext)
+	const { user, currentScreen, setCurrentScreen } = useContext(DataContext)
 	const [role, setRole] = useState([])
+	const [roleAuth, setRoleAuth] = useState([])
 
 	//funcion para cerrar sesion
 	const logout = () => {
@@ -28,6 +30,15 @@ function Sidebar({ rol }) {
 			}
 		}
 		getRole()
+
+		const data = localStorage.getItem('auth')
+		if (!data) {
+			localStorage.setItem('auth', JSON.stringify(user))
+			setRoleAuth(user.usuarioEncontrado.roleAuth)
+			return
+		}
+		const usuarioAuth = JSON.parse(data);
+		setRoleAuth(usuarioAuth.usuarioEncontrado.rol)
 	}, [])
 
 	return (
@@ -38,37 +49,7 @@ function Sidebar({ rol }) {
 				</div>
 				<div className="list-group list-group-flush">
 					<ul className="list-unstyled">
-						<li>
-							<button
-								className="list-group-item list-group-item-action p-3"
-								onClick={(e) =>
-									setCurrentScreen({ ...currentScreen, proyectos: true, seguridad: false, desarrollo: false })
-								}
-							>
-								<ion-icon name="grid-outline"></ion-icon>{' '}
-								<span className="p-2">Proyecto</span>{' '}
-							</button>
-						</li>
-						<li>
-							<button className="list-group-item list-group-item-action p-3"
-								onClick={(e) =>
-									setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false })
-								}
-							>
-								{' '}
-								<ion-icon name="git-compare-outline"></ion-icon>{' '}
-								<span className="p-2">Desarrollo</span>{' '}
-							</button>
-						</li>
-						<li>
-							<button className="list-group-item list-group-item-action p-3"
-								onClick={(e) =>
-									setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false })
-								}>
-								<ion-icon name="finger-print-outline"></ion-icon>{' '}
-								<span className="p-2">Seguridad</span>{' '}
-							</button>
-						</li>
+						<SidebarLi/>
 					</ul>
 				</div>
 				<div className="bottom-side-menu">
