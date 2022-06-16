@@ -12,10 +12,7 @@ const SprintSchema = Schema({
     duration:{
       type:String
     },
-    user_story:{
-      type:Array,
-      default:[]
-    },
+    user_story:[{ type :Schema.Types.ObjectId, ref: 'UserStory'}],
     project:{
       type:Schema.Types.ObjectId,
       ref:'Proyecto',
@@ -23,8 +20,9 @@ const SprintSchema = Schema({
       
     },
     state:{
-      type:Boolean,
-      default:true
+      type:String,
+      emun:['por hacer'],
+      default:'por hacer'
     }
     
 

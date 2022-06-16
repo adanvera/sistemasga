@@ -31,13 +31,15 @@ const crearSprint = async (req, res) => {
  * @param {*} res
  * @returns
  */
-const obtenerSprint = async (req, res) => {
-	const sprint = await Sprint.find().populate("user_story", {
-		_id: 1,
-		task: 1,
-		task_body: 1,
-	})
+const obtenerSprintByID = async (req, res) => {
+	const {id} = req.params
+	
+	
 	try {
+		const sprint = await Sprint.findById(id).populate("user_story", {task:1,
+			task_body:1,
+			us_priority:1
+		})
 		res.json({
 			sprint,
 		})
@@ -111,7 +113,7 @@ const agregarUs = async (req, res) => {
 
 module.exports = {
 	crearSprint,
-	obtenerSprint,
+	obtenerSprintByID,
 	modificarSprint,
 	agregarUs,
 }
