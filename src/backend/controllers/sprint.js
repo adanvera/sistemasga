@@ -1,4 +1,4 @@
-const Sprint = require('../Models/Sprint')
+const Sprint = require("../Models/Sprint")
 
 /**
  * It creates a new Sprint object from the request body, saves it to the database, and returns a
@@ -10,29 +10,33 @@ const Sprint = require('../Models/Sprint')
  */
 const crearSprint = async (req, res) => {
 	const sprint = new Sprint(req.body)
+
 	try {
 		await sprint.save()
 		res.json({
 			sprint,
-			msg: 'Sprint creado exitosamente!!',
+			msg: "Sprint creado exitosamente!!",
 		})
 	} catch (error) {
 		console.log(error)
 		return res.json({
-			msg: 'error al crear un sprint',
+			msg: "error al crear un sprint",
 		})
 	}
 }
 
-
 /**
  * Get all Sprint, this function was created to test the API
- * @param {*} req 
- * @param {*} res 
- * @returns 
+ * @param {*} req
+ * @param {*} res
+ * @returns
  */
 const obtenerSprint = async (req, res) => {
-	const sprint = await Sprint.find().populate('user_story', {'_id':1,'task':1,'task_body':1})
+	const sprint = await Sprint.find().populate("user_story", {
+		_id: 1,
+		task: 1,
+		task_body: 1,
+	})
 	try {
 		res.json({
 			sprint,
@@ -40,7 +44,7 @@ const obtenerSprint = async (req, res) => {
 	} catch (error) {
 		console.log(error)
 		return res.json({
-			msg: 'error al crear un sprint',
+			msg: "error al crear un sprint",
 		})
 	}
 }
@@ -53,30 +57,61 @@ const obtenerSprint = async (req, res) => {
  *   "modifiedSpring": null
  * }
  */
-const modificarSprint = async(req,res)=>{
-  
-  if(!req.params.id) return res.status(400).json({msg:'Se requiere un ID para realizar la busqueda'})
+const modificarSprint = async (req, res) => {
+	const sprint = await Sprint.findById(req.params.id)
+	if (!sprint) return res.status(204).json({ msg: "Sprint no encontrado" })
 
-  const sprint =  await Sprint.findById(req.params.id)
-  if(!sprint) return res.status(204).json({msg:'Sprint no encontrado'})
-  try {
-    const modifiedSpring = await Sprint.findByIdAndUpdate(req.params.id,req.body)
-    return res.status(200).json({
-      msg:'Sprint se ha modificado correctamente',
-      modifiedSpring
-
-    })
-  } catch (error) {
-    return res.status(500).json({msg:'Ocurrio un error inesperado'})
-  }
-
-
+	try {
+		const modifiedSpring = await Sprint.findByIdAndUpdate(
+			req.params.id,
+			req.body
+		)
+		return res.status(200).json({
+			msg: "Sprint se ha modificado correctamente",
+			modifiedSpring,
+		})
+	} catch (error) {
+		return res.status(500).json({ msg: "Ocurrio un error inesperado" })
+	}
 }
 
+//agrega la us al sprint
+const agregarUs = async (req, res) => {
+	const { id } = req.params
+	const sprintEncontrado = await Sprint.findById(id)
+	if (!sprintEncontrado) {
+		return res.status(402).json({ msg: "No se existe sprint con id: " + id })
+	}
 
+	const { user_stories } = req.body
+
+	//si el sp no tiene us, se agrega directametne
+	//    sino se concatena el arry
+	if (sprintEncontrado.user_story.length <= 0) {
+		sprintEncontrado.user_story = user_stories
+		const sprintActualizado = await Sprint.findByIdAndUpdate(
+			id,
+			sprintEncontrado
+		)
+		return res.json({
+			msg: "US agregado correctamente",
+		})
+	} else {
+		const updatedUS = sprintEncontrado.user_story.concat(user_stories)
+		sprintEncontrado.user_story = updatedUS
+		
+		const updatedSP = await Sprint.findByIdAndUpdate(id,sprintEncontrado)
+		return res.json({
+			msg:'US agregado correctamente '
+		})
+
+
+	}
+}
 
 module.exports = {
 	crearSprint,
 	obtenerSprint,
-  modificarSprint
+	modificarSprint,
+	agregarUs,
 }
