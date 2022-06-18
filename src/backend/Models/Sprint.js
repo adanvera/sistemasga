@@ -5,20 +5,24 @@ const SprintSchema = Schema({
       type:String,
       required: [true, 'El nombre del sprint es obligatorio']
     },
-    task:{
+    description:{
       type:String,
       required: [true, 'La tarea del sprint es obligatorio']
     },
     duration:{
       type:String
     },
-    user_story:{
+    user_story:[{ type :Schema.Types.ObjectId, ref: 'UserStory'}],
+    project:{
       type:Schema.Types.ObjectId,
-      ref:'UserStory'
+      ref:'Proyecto',
+      
+      
     },
     state:{
-      type:Boolean,
-      default:true
+      type:String,
+      emun:['por hacer'],
+      default:'por hacer'
     }
     
 
