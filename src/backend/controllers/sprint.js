@@ -108,10 +108,29 @@ const agregarUs = async (req, res) => {
 
 	}
 }
+const getAllSprint = async(req,res)=>{
+	try {
+		const sprints = await Sprint.find()
+		if(!sprints){
+			return res.json({
+				msg:'Aun no se ha creado ningun sprint'
+			})
+		}
+		res.status(200).json({
+		sprints
+		})
+	} catch (error) {
+		console.log(error);
+		return res.status(402).json({
+			msg:error.message
+		})
+	} 
+}
 
 module.exports = {
 	crearSprint,
 	obtenerSprintByID,
 	modificarSprint,
 	agregarUs,
+	getAllSprint
 }
