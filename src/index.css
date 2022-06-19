@@ -1109,7 +1109,7 @@ div.aflex-details p:hover {
   width: 98%;
 }
 
-.data-name{
+.data-name {
   text-transform: uppercase;
 }
 
@@ -1151,7 +1151,7 @@ div#boxus {
   width: 25px;
 }
 
-.text-desc{
+.text-desc {
   color: #000000;
 }
 
@@ -1166,12 +1166,17 @@ p.text-desc.pl-2 {
   overflow: hidden;
 }
 
-@media (min-width: 576px){
-.modal-dialog {
+@media (min-width: 576px) {
+  .modal-dialog {
     max-width: 900px !important;
     margin: 1.75rem auto;
-}}
+  }
+}
 
 textarea {
   width: 100%;
+}
+
+div#createUS {
+  justify-content: space-between;
 }
