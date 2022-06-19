@@ -10,7 +10,6 @@ import CreateUs from '../componentes/partials/CreateUs'
 import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
 import TableList from './partials/TableList';
-import BurnDownChart from './BurnDownChart';
 import CreateSprint from './CreateSprint';
 
 
@@ -20,7 +19,7 @@ function DetailsProject() {
 	//obtenemos el id del proyecto mediante la siguiente función
 	const { id } = useParams()
 	//variable declarada para saber cual es la ventana actual mediante botones
-	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false, usSprint: false, btnBurnDown: false })
+	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false, usSprint: false})
 	const { user } = useContext(DataContext)
 	const [nombre, setNombre] = useState('')
 	const [apellido, setApellido] = useState('')
@@ -206,11 +205,10 @@ function DetailsProject() {
 				<Container fluid={true} id="dash" rol={role} className="mt-5" >
 					<div className='row o-t d-flex'>
 						<div></div>
-						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false, btnBurnDown: false })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
+						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false})} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
 					</div>
 					<div className='row mb-2 d-flex' id='createUS'>
-						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: true, btnBurnDown: false })}  >Crear sprint</CButton>
-						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: false, btnBurnDown: true })}  >BurnDown chart <ion-icon name="bar-chart-outline"></ion-icon></CButton>
+						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: true, })}  >Crear sprint</CButton>
 					</div>
 					<div className='row box-dashboard-head p5co ml-3'>
 						<div className='col-md-8 box-users d-flex'>
@@ -239,7 +237,7 @@ function DetailsProject() {
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
 											</div>
-											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false, btnBurnDown: false })} className='createUS'>Crear tarea</CButton> </div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false,})} className='createUS'>Crear tarea</CButton> </div>
 											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
 
 											{tasksBk.length > 0 && tasksBk.map((item => {
@@ -330,9 +328,6 @@ function DetailsProject() {
 						}
 					</div>
 					{currentScreen.prEdit && <EditProject dataProject={dataProject} />}
-					{currentScreen.btnBurnDown && <BurnDownChart dataProject={dataProject} />}
-
-
 				</Container>
 
 			</Container>
