@@ -311,7 +311,7 @@ function DetailsProject() {
 							<div id='sprintContainer'>
 								<div className=' mt-3' id='tablelistUs'>
 									<CreateSprint id={id} />
-									<div className=" col-md-12 box-dashboard">
+									{/* <div className=" col-md-12 box-dashboard">
 										<div className=''>
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
@@ -321,7 +321,7 @@ function DetailsProject() {
 											}))
 											}
 										</div>
-									</div>
+									</div> */}
 								</div>
 
 							</div>

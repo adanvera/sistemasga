@@ -22,7 +22,7 @@ const URL_UPDATE_US = "http://localhost:4000/api/user-story/actualizar-us/"
 const URL_US_FINALIZADO = "http://localhost:4000/api/user-story/obtener-us-finalizado/"
 
 const URL_GET_SPRINTS = "http://localhost:4000/api/sprint/obtener-sprint/"
-const URL_CREATE_SPRINT =  "http://localhost:4000/api/sprint/crear-sprint/"
+const URL_CREATE_SPRINT =  "http://localhost:4000/api/sprint/crear-sprint"
 
 export {
   URL_AUTH_USUARIO,
