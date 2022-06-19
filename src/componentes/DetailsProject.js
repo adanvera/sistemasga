@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Button, Container, Form, FormControl } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom';
 import { DataContext } from '../context/DataContext';
-import { URL_BACKLOG, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION, URL_US_FINALIZADO } from '../helpers/endPoints';
+import { URL_BACKLOG, URL_GET_SPRINTS, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION, URL_US_FINALIZADO } from '../helpers/endPoints';
 import DisplayUserPr from './DisplayUserPr';
 import EditProject from '../componentes/partials/EditProject'
 import CreateUs from '../componentes/partials/CreateUs'
@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
 import TableList from './partials/TableList';
 import BurnDownChart from './BurnDownChart';
+import CreateSprint from './CreateSprint';
+
+
 
 function DetailsProject() {
 
@@ -30,6 +33,7 @@ function DetailsProject() {
 	const [taskVerificar, setTaskVerificar] = useState('')
 	const [taskEnVerificacion, setTaskEnVerificacion] = useState('')
 	const [taskFinalizado, setTaskFinalizado] = useState('')
+	const [sprintList, setSprintList] = useState('')
 
 	//consultamos el localStorage
 	useEffect(() => {
@@ -127,6 +131,19 @@ function DetailsProject() {
 
 		getUsFinalizado()
 
+		const getSprints = async () => {
+			try {
+				const res = await fetch(URL_GET_SPRINTS + id),
+					data = await res.json()
+				console.log(data);
+				setSprintList(data.sprint)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		getSprints()
+
 	}, [])
 
 	//capturamos los datos del proyecto en la siguiente variable
@@ -158,24 +175,20 @@ function DetailsProject() {
 								</Link>
 							</li>
 							<li>
-								<button className="list-group-item list-group-item-action p-3"
-									onClick={(e) =>
-										setCurrentScreen({ ...currentScreen, desarrollo: true, proyectos: false, seguridad: false, usSprint: false, btnBurnDown: false })
-									}
+								<Link to="../"
+									className="list-group-item list-group-item-action p-3"
 								>
-									{' '}
-									<ion-icon name="git-compare-outline"></ion-icon>{' '}
+									<ion-icon name="grid-outline"></ion-icon>{' '}
 									<span className="p-2">Desarrollo</span>{' '}
-								</button>
+								</Link>
 							</li>
 							<li>
-								<button className="list-group-item list-group-item-action p-3"
-									onClick={(e) =>
-										setCurrentScreen({ ...currentScreen, seguridad: true, proyectos: false, desarrollo: false, usSprint: false, btnBurnDown: false })
-									}>
-									<ion-icon name="finger-print-outline"></ion-icon>{' '}
+								<Link to="../"
+									className="list-group-item list-group-item-action p-3"
+								>
+									<ion-icon name="grid-outline"></ion-icon>{' '}
 									<span className="p-2">Seguridad</span>{' '}
-								</button>
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -195,9 +208,9 @@ function DetailsProject() {
 						<div></div>
 						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false, btnBurnDown: false })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
 					</div>
-					<div className='row mb-2 d-flex'  id='createUS'>
+					<div className='row mb-2 d-flex' id='createUS'>
 						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: true, btnBurnDown: false })}  >Crear sprint</CButton>
-						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: false, btnBurnDown: true })}  >BurnDown chart</CButton>
+						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: false, btnBurnDown: true })}  >BurnDown chart <ion-icon name="bar-chart-outline"></ion-icon></CButton>
 					</div>
 					<div className='row box-dashboard-head p5co ml-3'>
 						<div className='col-md-8 box-users d-flex'>
@@ -299,11 +312,7 @@ function DetailsProject() {
 							currentScreen.usSprint &&
 							<div id='sprintContainer'>
 								<div className=' mt-3' id='tablelistUs'>
-									<div className=' col-md-12 box-dashboard'>
-										<div className='title-section'>
-											<span>SPRINT 1</span>
-										</div>
-									</div>
+									<CreateSprint id={id} />
 									<div className=" col-md-12 box-dashboard">
 										<div className=''>
 											<div className='title-section'>
