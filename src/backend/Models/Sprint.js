@@ -16,14 +16,11 @@ const SprintSchema = Schema({
     project:{
       type:Schema.Types.ObjectId,
       ref:'Proyecto',
-      
-      
     },
     state:{
-      type:String,
-      emun:['por hacer'],
-      default:'por hacer'
+      type:Boolean,
     }
+
     
 
 });

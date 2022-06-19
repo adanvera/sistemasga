@@ -36,9 +36,7 @@ const obtenerSprintByID = async (req, res) => {
 	
 	
 	try {
-		const sprint = await Sprint.findById(id).populate("user_story", {task:1,
-			task_body:1,
-			us_priority:1
+		const sprint = await Sprint.findById(id).populate("user_story", {
 		})
 		res.json({
 			sprint,
