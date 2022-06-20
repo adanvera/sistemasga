@@ -1,3 +1,4 @@
+const Proyecto = require("../Models/Proyecto")
 const Sprint = require("../Models/Sprint")
 
 /**
@@ -126,11 +127,34 @@ const getAllSprint = async(req,res)=>{
 		})
 	} 
 }
+const sprintByProjectId = async (req,res)=>{
+	const {id} = req.params
+	try {
+		const isProject = await Proyecto.findById(id)
+		if(!isProject){
+			return res.status(402).json({
+				msg:'No existe el proyecto'
+			})
+		}
+		const sprints = await Sprint.find({'project':id})
+		res.status(200).json({
+			sprints
+		})
+	} catch (error) {
+		console.log(error);
+		return res.status(500).json({
+			msg:error.message
+		})
+	}
+
+
+}
 
 module.exports = {
 	crearSprint,
 	obtenerSprintByID,
 	modificarSprint,
 	agregarUs,
+	sprintByProjectId,
 	getAllSprint
 }
