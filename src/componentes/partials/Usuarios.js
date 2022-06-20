@@ -18,16 +18,17 @@ export const Usuarios = ({ usuario, rol }) => {
 		const [show, setShow] = useState(false);
 		const handleClose = () => setShow(false);
 		const handleShow = () => {
-			if (role === 'ADMIN') {
-				setShow(true);
-			} else if (role !== 'ADMIN') {
-				swal({
-					title: "ADVERTENCIA",
-					text: "Su rol no tiene permisos para crear un usuario",
-					icon: "warning",
-					button: "ok",
-				});
-			}
+			// if (role === 'ADMIN') {
+			// 	setShow(true);
+			// } else if (role !== 'ADMIN') {
+			// 	swal({
+			// 		title: "ADVERTENCIA",
+			// 		text: "Su rol no tiene permisos para crear un usuario",
+			// 		icon: "warning",
+			// 		button: "ok",
+			// 	});
+			// }
+			setShow(true);
 		}
 
 		//se declara e inicializa las variables a ser utilizadas

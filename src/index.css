@@ -1258,3 +1258,10 @@ div#stptptptp {
   height: auto;
   overflow-y: scroll;
 }
+
+div#stptptptp {
+  overflow: auto;
+  height: auto;
+  overflow-y: scroll;
+  min-height: 300px;
+}

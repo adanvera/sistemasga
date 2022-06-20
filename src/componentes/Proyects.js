@@ -39,9 +39,9 @@ function Proyects({ rol }) {
     //onclick para mostrar modal de creacion de un proyecto
     const handleShow = () => {
       //filtramos si su rol es admin levanta el modal
-      if (role === 'ADMIN') {
+      if (role !== 'SEGURIDAD') {
         setCurrentScreen({ ...currentScreen, pr: false, other: false, prCreate: true })
-      } else if (role !== 'ADMIN') {//si el rol no es el permitido lanza advertencia
+      } else if (role === 'SEGURIDAD') {//si el rol no es el permitido lanza advertencia
         swal({
           title: "ADVERTENCIA",
           text: "Su rol no tiene permisos para crear un proyecto",

@@ -21,6 +21,10 @@ function EditDataProject({ dataProject }) {
     const [responsable, setResponsable] = useState(dataProject.responsable)
     const [usuarios, setUsuarios] = useState(dataProject.usuarios)
 
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     //obtnenemos el usuario logueado y su rol correspondiente
     useEffect(() => {
         const getUser = async () => {
@@ -68,6 +72,7 @@ function EditDataProject({ dataProject }) {
                     text: json.msg,
                 });
             }
+            reload()
             return swal({
                 icon: "success",
                 text: "Proyecto modificado exitosamente"

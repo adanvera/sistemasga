@@ -18,6 +18,10 @@ function EditProject({ dataProject }) {
     const idPr = dataProject._id
     const [currentScreen, setCurrentScreen] = useState({ prDetails: true, prEdit: false })
 
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     //obtenemos el usuario y el rol del usuario logueado
     useEffect(() => {
         const data = localStorage.getItem('auth')
@@ -33,38 +37,29 @@ function EditProject({ dataProject }) {
     //funcion para elimiar proyecto
     const deleteProject = async () => {
         //aca debe ir la logica de eliminacion
-        if (roleAuth === "ADMIN") {
-            swal({
-                title: "¿Estas seguro?",
-                text: "Una vez eliminado el proyecto no se puede revertir",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then(async (willDelete) => {
-                if (willDelete) {
-                    swal("Proyecto eliminado exitosamente", {
-                        icon: "success",
-                    });
-                    await fetch(URL_ELMINAR_PROJECT + idPr, {
-                        method: "DELETE",
-                        headers: { "Content-Type": "application/jason" }
-                    });
-                }
-            });
-        } else (swal({
-            text: "Su rol no posse permiso para eliminar un proyecto",
-        }))
+        swal({
+            title: "¿Estas seguro?",
+            text: "Una vez eliminado el proyecto no se puede revertir",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(async (willDelete) => {
+            if (willDelete) {
+                reload()
+                swal("Proyecto eliminado exitosamente", {
+                    icon: "success",
+                });
+                await fetch(URL_ELMINAR_PROJECT + idPr, {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/jason" }
+                });
+            }
+        });
     }
 
     //funcion para validar el rol
     const aver = async () => {
-        if (roleAuth !== "ADMIN") {
-            swal({
-                text: "Su rol no posee permisos para modificar un proyecto"
-            })
-        } else if (roleAuth === "ADMIN") {
-            setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })
-        }
+        setCurrentScreen({ ...currentScreen, prDetails: false, prEdit: true })
     }
 
     return (

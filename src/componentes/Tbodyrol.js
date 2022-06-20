@@ -11,8 +11,8 @@ const urlRoles = "http://localhost:4000/api/role/"
 export const Tbodyrol = ({ role: rl, index }) => {
 
 	const reload = () => {
-        window.location.reload(true);
-    }
+		window.location.reload(true);
+	}
 
 	const [roleAuth, setRoleAuth] = useState([])
 	const { user, currentScreen } = useContext(DataContext)
@@ -53,47 +53,39 @@ export const Tbodyrol = ({ role: rl, index }) => {
 	}, [])
 
 	const deleteRol = async () => {
-		if (roleAuth === 'ADMIN') {
-			const { _id } = rl
-			swal({
-				title: "¿Estas seguro?",
-				text: "Una vez elimnado este rol no se puede revertir",
-				icon: "warning",
-				buttons: true,
-				dangerMode: true,
-			})
-				.then(async (willDelete) => {
-					if (willDelete) {
-						await fetch(URL_ELIMINAR_ROL + _id, { method: 'DELETE', headers: { "Content-Type": "application/json" } })
-						reload()
-						swal("Rol eliminado exitosamente", {
-							icon: "success",
-						});
-					}
-				});
-		} else {
-			swal({
-				title: "ADVERTENCIA",
-				text: "Su rol no posee permisos para eliminar roles",
-				icon: "warning",
-				button: "ok",
-			})
-		}
+		const { _id } = rl
+		swal({
+			title: "¿Estas seguro?",
+			text: "Una vez elimnado este rol no se puede revertir",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then(async (willDelete) => {
+				if (willDelete) {
+					await fetch(URL_ELIMINAR_ROL + _id, { method: 'DELETE', headers: { "Content-Type": "application/json" } })
+					reload()
+					swal("Rol eliminado exitosamente", {
+						icon: "success",
+					});
+				}
+			});
 	}
 
 	const [visible, setVisible] = useState(false)
 
 	const editRole = async () => {
-		if (roleAuth === 'ADMIN') {
-			setVisible(!visible)
-		} else {
-			swal({
-				title: "ADVERTENCIA",
-				text: "Su rol no posee permisos para editar roles",
-				icon: "warning",
-				button: "ok",
-			})
-		}
+		// if (roleAuth === 'ADMIN') {
+			
+		// } else {
+		// 	swal({
+		// 		title: "ADVERTENCIA",
+		// 		text: "Su rol no posee permisos para editar roles",
+		// 		icon: "warning",
+		// 		button: "ok",
+		// 	})
+		//}
+		setVisible(!visible)
 	}
 
 	return (

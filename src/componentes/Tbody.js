@@ -50,7 +50,41 @@ export const Tbody = ({ usuario, index }) => {
 
 	const deleteUser = async () => {
 
-		if ((roleAuth === 'ADMIN') && usuario.uui !== userAuthUui) {
+		// if ((roleAuth === 'ADMIN') && usuario.uui !== userAuthUui) {
+		// 	swal({
+		// 		title: "¿Estas seguro?",
+		// 		text: "Una vez eliminado el usuario no se puede revertir",
+		// 		icon: "warning",
+		// 		buttons: true,
+		// 		dangerMode: true,
+		// 	}).then(async (willDelete) => {
+		// 		if (willDelete) {
+		// 			reload()
+		// 			swal("Usuario eliminado exitosamente", {
+		// 				icon: "success",
+		// 			});
+		// 			await fetch(urlUsers + usuario.uui, {
+		// 				method: "DELETE",
+		// 				headers: { "Content-Type": "application/json" },
+		// 			});
+		// 		}
+		// 	});
+		// } else if (roleAuth !== 'ADMIN') {
+		// 	swal({
+		// 		title: "ADVERTENCIA",
+		// 		text: "Su rol no posee permisos para eliminar usuarios",
+		// 		icon: "warning",
+		// 		button: "ok",
+		// 	})
+		// }
+		if (((usuario.uui) === userAuthUui) && (roleAuth === 'ADMIN') || (roleAuth === 'SEGURIDAD') ) {
+			swal({
+				title: "ERROR",
+				text: "No puede eliminar su propio usuario",
+				icon: "error",
+				button: "ok",
+			})
+		}else{
 			swal({
 				title: "¿Estas seguro?",
 				text: "Una vez eliminado el usuario no se puede revertir",
@@ -69,22 +103,9 @@ export const Tbody = ({ usuario, index }) => {
 					});
 				}
 			});
-		} else if (roleAuth !== 'ADMIN') {
-			swal({
-				title: "ADVERTENCIA",
-				text: "Su rol no posee permisos para eliminar usuarios",
-				icon: "warning",
-				button: "ok",
-			})
 		}
-		if (((usuario.uui) === userAuthUui) && (roleAuth === 'ADMIN')) {
-			swal({
-				title: "ERROR",
-				text: "No puede eliminar su propio usuario",
-				icon: "error",
-				button: "ok",
-			})
-		}
+
+		
 	};
 
 	const [visible, setVisible] = useState(false);
@@ -111,17 +132,17 @@ export const Tbody = ({ usuario, index }) => {
 	}
 
 	const editUser = async () => {
-		if (roleAuth === 'ADMIN') {
-			setVisible(!visible)
-		} else {
-			swal({
-				title: "ADVERTENCIA",
-				text: "Su rol no posee permisos para editar usuarios",
-				icon: "warning",
-				button: "ok",
-			})
-		}
-
+		// if (roleAuth === 'ADMIN') {
+		// 	setVisible(!visible)
+		// } else {
+		// 	swal({
+		// 		title: "ADVERTENCIA",
+		// 		text: "Su rol no posee permisos para editar usuarios",
+		// 		icon: "warning",
+		// 		button: "ok",
+		// 	})
+		// }
+		setVisible(!visible)
 	}
 
 	return (

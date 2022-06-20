@@ -9,11 +9,15 @@ function AddTaskSprint({ iddd, tasksBk }) {
 
     const [optionees, setOptions] = useState("")
 
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     const handleSubmitRole = async (e) => {
         e.preventDefault();
         const user_stories = [optionees]
         let option = {
-            method: "PUT",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -33,15 +37,16 @@ function AddTaskSprint({ iddd, tasksBk }) {
                     text: json.msg,
                 });
             }
+            reload()
             return swal({
                 icon: "success",
-                text: "Proyecto modificado exitosamente"
+                text: "User story añadido correctamente"
             });
         } catch (error) {
             console.log(error.response);
             return swal({
                 icon: "error",
-                text: "Ocurrio un error al modificar el proyecto",
+                text: "Ocurrio un error al añadir el user story",
             });
         }
     }
