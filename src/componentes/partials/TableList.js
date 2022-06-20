@@ -57,6 +57,12 @@ function TableList({ item, dataProject }) {
         setVisible(!visible)
     }
 
+
+    
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     //funcion para eliminar un user story
     const deleteUS = async () => {
         if (roleAuth !== "ADMIN") {
@@ -72,6 +78,7 @@ function TableList({ item, dataProject }) {
                 dangerMode: true,
             }).then(async (willDelete) => {
                 if (willDelete) {
+                    reload()
                     swal("Eliminado exitosamente", {
                         icon: "success",
                     });
@@ -106,6 +113,7 @@ function TableList({ item, dataProject }) {
                     text: json.msg,
                 });
             }
+            reload()
             return swal({
                 icon: "success",
                 text: "Us modificado exitosamente"

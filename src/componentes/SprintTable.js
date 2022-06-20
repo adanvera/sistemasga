@@ -158,7 +158,7 @@ function SprintTable({ sprintList, id }) {
             <div className=" col-md box-dashboard">
                 <div className='tablelist'>
                     <div className='title-section'>
-                        <span>POR HACER</span>
+                        <span>Lista de tareas</span>
                     </div>
                     <CButton onClick={editSprint} className='createUS ddd'><ion-icon name="add-outline"></ion-icon> añadir tareas a sprint</CButton>
                 </div>

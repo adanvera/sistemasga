@@ -178,7 +178,7 @@ function DetailsProject() {
 								<Link to="../"
 									className="list-group-item list-group-item-action p-3"
 								>
-									<ion-icon name="grid-outline"></ion-icon>{' '}
+									 <ion-icon name="git-compare-outline"></ion-icon>{' '}
 									<span className="p-2">Desarrollo</span>{' '}
 								</Link>
 							</li>
@@ -186,7 +186,7 @@ function DetailsProject() {
 								<Link to="../"
 									className="list-group-item list-group-item-action p-3"
 								>
-									<ion-icon name="grid-outline"></ion-icon>{' '}
+									<ion-icon name="finger-print-outline"></ion-icon>{' '}
 									<span className="p-2">Seguridad</span>{' '}
 								</Link>
 							</li>

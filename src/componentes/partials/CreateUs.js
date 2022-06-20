@@ -50,6 +50,7 @@ function CreateUs({ dataProject }) {
                 });
             }
            
+        reload()
         } catch (error) {
             console.log(error.response);
             return swal({
@@ -57,8 +58,6 @@ function CreateUs({ dataProject }) {
                 text: "Ocurrio un error",
             });
         }
-
-        reload()
     }
 
     return (

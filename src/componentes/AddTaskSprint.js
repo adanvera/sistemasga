@@ -63,8 +63,7 @@ function AddTaskSprint({ iddd, tasksBk }) {
                 <div className="col-md-12 bt-centrar">
                     <button
                         type="submit"
-                        className="btn-crear w-100" onClick={handleSubmitRole}>
-                        crear rol
+                        className="btn-crear w-100" onClick={handleSubmitRole}>añadir
                     </button>
                 </div>
             </div>
