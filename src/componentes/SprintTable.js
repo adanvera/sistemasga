@@ -5,9 +5,11 @@ import swal from "sweetalert"
 import { DataContext } from "../context/DataContext"
 import { URL_ADD_US_SPRINT, URL_BACKLOG, URL_GET_SPRINTS, URL_PROYECTOS, URL_US_A_VERIFICAR, URL_US_DETENIDO, URL_US_EN_CURSO, URL_US_EN_VERIFICACION, URL_US_FINALIZADO } from "../helpers/endPoints"
 import AddTaskSprint from "./AddTaskSprint"
+import ListTaskSpt from "./ListTaskSpt"
 
 
 function SprintTable({ sprintList, id }) {
+
 
     const [proyecto, setProyecto] = useState([])
     const [tasksBk, setTasksBk] = useState('')
@@ -20,20 +22,18 @@ function SprintTable({ sprintList, id }) {
     const { user } = useContext(DataContext)
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
-
-
     const [userSsstories, setuserSsstories] = useState(sprintList[0].user_stories)
-
-
-
     const [currentScreen, setCurrentScreen] = useState({ us: true, dataa: true })
     const [visible, setVisible] = useState(false);
-
     const iddd = sprintList[0]._id
-
-
-
     const [user_stories, setUserStories] = useState('')
+
+
+    const listkkk = ()=>{
+        sprintList.forEach(item=>{
+            return (item)
+        })
+    }
 
     //consultamos el localStorage
     useEffect(() => {
@@ -139,7 +139,6 @@ function SprintTable({ sprintList, id }) {
 
     }
 
-    console.log(tasksBk);
 
     return (
         <>
@@ -160,9 +159,10 @@ function SprintTable({ sprintList, id }) {
                     <div className='title-section'>
                         <span>Lista de tareas</span>
                     </div>
-                    <CButton onClick={editSprint} className='createUS ddd'><ion-icon name="add-outline"></ion-icon> añadir tareas a sprint</CButton>
+                    <CButton onClick={editSprint} className='createUS ddddddd'><ion-icon name="add-outline"></ion-icon> añadir tareas a sprint</CButton>
                 </div>
             </div>
+            {/* <ListTaskSpt listkkk={listkkk} /> */}
             {
                 currentScreen.us &&
                 <CModal scrollable visible={visible} onClose={() => setVisible(false)}>

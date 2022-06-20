@@ -7,7 +7,7 @@ function DetailsTableeeee({ sprintList, dataProject, taskFinalizado, taskEnVerif
 
     return (
         <>
-            {/* <div className="d-flex" id="stptptptp">
+            <div className="d-flex" id="stptptptp">
                 <div className=" col-md box-dashboard">
                     <div className='tablelist'>
                         <div className='title-section'>
@@ -63,7 +63,7 @@ function DetailsTableeeee({ sprintList, dataProject, taskFinalizado, taskEnVerif
                         }
                     </div>
                 </div>
-            </div>  */}
+            </div>
         </>
 
     )

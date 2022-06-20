@@ -237,7 +237,7 @@ function DetailsProject() {
 										sprintList.length > 0 &&
 										<SprintTable sprintList={sprintList} id={id}/>
 									}
-									<div className=' col-md box-dashboard'>
+									 <div className=' col-md box-dashboard'>
 										<div className=''>
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
@@ -250,7 +250,7 @@ function DetailsProject() {
 											}))
 											}
 										</div>
-									</div>
+									</div> 
 									<DetailsTableeeee sprintList={sprintList} dataProject={dataProject} taskFinalizado={taskFinalizado}  taskEnVerificacion={taskEnVerificacion} taskVerificar={taskVerificar} taskDetenido={taskDetenido}  taskEnCurso={taskEnCurso} />
 								</div>
 							</>

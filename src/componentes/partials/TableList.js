@@ -135,6 +135,8 @@ function TableList({ item, dataProject }) {
         });
     }
 
+    console.log(item?.assigned_user?.nombre);
+
     return (
         <>
             <div className='box-status-content' id='boxus'>
@@ -149,7 +151,7 @@ function TableList({ item, dataProject }) {
                     <div className='col d-flex' id='aveer'   >
                         <div className='user-us'>
                             <img src={user_one} alt="" />
-                            <span className='pl-1' >Adán Vera </span>
+                            <span className='pl-1' >{item?.assigned_user?.nombre}</span>
                         </div>
                         <div className='ddd'><ion-icon onClick={deleteUS} name="trash-outline"></ion-icon></div>
                     </div>
