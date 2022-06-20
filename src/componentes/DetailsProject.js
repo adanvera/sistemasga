@@ -19,7 +19,7 @@ function DetailsProject() {
 	//obtenemos el id del proyecto mediante la siguiente función
 	const { id } = useParams()
 	//variable declarada para saber cual es la ventana actual mediante botones
-	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false, usSprint: false})
+	const [currentScreen, setCurrentScreen] = useState({ prEdit: false, prDetails: true, usTask: false, usSprint: false })
 	const { user } = useContext(DataContext)
 	const [nombre, setNombre] = useState('')
 	const [apellido, setApellido] = useState('')
@@ -132,10 +132,9 @@ function DetailsProject() {
 
 		const getSprints = async () => {
 			try {
-				const res = await fetch(URL_GET_SPRINTS + id),
+				const res = await fetch(URL_GET_SPRINTS+id),
 					data = await res.json()
-				console.log(data);
-				setSprintList(data.sprint)
+				setSprintList(data.sprints)
 			} catch (error) {
 				console.log(error)
 			}
@@ -144,6 +143,8 @@ function DetailsProject() {
 		getSprints()
 
 	}, [])
+
+	console.log(sprintList);
 
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
@@ -205,7 +206,7 @@ function DetailsProject() {
 				<Container fluid={true} id="dash" rol={role} className="mt-5" >
 					<div className='row o-t d-flex'>
 						<div></div>
-						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false})} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
+						<div className='d-flex justify-content-between mll'><h4 className='data-name'>{dataProject?.nombre ? dataProject?.nombre : ''}</h4><div onClick={() => setCurrentScreen({ ...currentScreen, prEdit: true, prDetails: false, usTask: false, usSprint: false })} className='aflex-details'><ion-icon name="construct-outline"></ion-icon><p>Ajustes</p></div></div>
 					</div>
 					<div className='row mb-2 d-flex' id='createUS'>
 						<CButton className='createUS' onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: false, usTask: true, usSprint: true, })}  >Crear sprint</CButton>
@@ -237,7 +238,7 @@ function DetailsProject() {
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
 											</div>
-											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false,})} className='createUS'>Crear tarea</CButton> </div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false, })} className='createUS'>Crear tarea</CButton> </div>
 											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
 
 											{tasksBk.length > 0 && tasksBk.map((item => {

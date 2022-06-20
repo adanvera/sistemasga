@@ -15,6 +15,10 @@ function CreateUs({ dataProject }) {
     const [id_project, setIdProject] = useState(dataProject._id)
     const [name_project, setNameProject] = useState(dataProject.nombre)
 
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     //funcion para enviar las variables a la accion correspondiente
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -45,10 +49,7 @@ function CreateUs({ dataProject }) {
                     text: json.msg,
                 });
             }
-            return swal({
-                icon: "success",
-                text: "us creado exitosamente"
-            });
+           
         } catch (error) {
             console.log(error.response);
             return swal({
@@ -56,6 +57,8 @@ function CreateUs({ dataProject }) {
                 text: "Ocurrio un error",
             });
         }
+
+        reload()
     }
 
     return (
