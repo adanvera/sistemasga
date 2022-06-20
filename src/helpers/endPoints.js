@@ -24,6 +24,7 @@ const URL_US_FINALIZADO = "http://localhost:4000/api/user-story/obtener-us-final
 const URL_GET_SPRINTS = "http://localhost:4000/api/sprint/sprint-by-project/"
 const URL_GET_SPRINT_DATA = "http://localhost:4000/api/sprint/obtener-sprint/"
 const URL_CREATE_SPRINT =  "http://localhost:4000/api/sprint/crear-sprint"
+const URL_ADD_US_SPRINT = "http://localhost:4000/api/sprint/add-us-sprint/"
 
 export {
   URL_AUTH_USUARIO,
@@ -47,4 +48,5 @@ export {
   URL_US_FINALIZADO,
   URL_GET_SPRINTS,
   URL_CREATE_SPRINT,
+  URL_ADD_US_SPRINT
 }

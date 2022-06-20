@@ -10,6 +10,10 @@ import projectLogo from '../../images/logoproject.png'
 
 function CreateProject({ role }) {
 
+    const reload = () => {
+        window.location.reload(true);
+    }
+
     //declaramos las variables a utilizar
     const [nombre, setNombre] = useState('')
     const [descripcion, setDescripcion] = useState('')
@@ -44,6 +48,7 @@ function CreateProject({ role }) {
                     text: json.msg,
                 })
             }
+            reload()
             return swal({
                 icon: "success",
                 text: "Proyecto creado exitosamente"

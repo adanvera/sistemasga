@@ -1173,9 +1173,9 @@ p.text-desc.pl-2 {
   }
 }
 
-textarea {
+/* textarea {
   width: 100%;
-}
+} */
 
 div#createUS {
   justify-content: space-between;
@@ -1204,4 +1204,31 @@ input#fname:focus-visible {
 
 input#fname {
   width: 100%;
+}
+
+.title-section {
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div#stptptptp {
+  overflow: auto;
+  height: auto;
+  min-height: 500px;
+  overflow-y: auto;
+}
+
+button.btn.btn-primary.createUS.ddd {
+  width: auto;
+  background: none !important;
+  color: black;
+}
+
+button.btn.btn-primary.createUS.ddd ion-icon {
+  color: black;
+}
+
+.d-flex.mb-5 {
+  justify-content: space-between;
 }

@@ -34,6 +34,10 @@ export const EditDataUser = ({ usuario, index }) => {
         getRole()
     }, [])
 
+    const reload = () => {
+		window.location.reload(true);
+	}
+
     //funcion para enviar los nuevos valores del usuario
     //para que puedan ser modificados, llamando al metodo correspondiente
     //para ser editados
@@ -57,6 +61,7 @@ export const EditDataUser = ({ usuario, index }) => {
                     text: json.msg,
                 });
             }
+            reload()
             return swal({
                 icon: "success",
                 text: "Usuario modificado exitosamente"

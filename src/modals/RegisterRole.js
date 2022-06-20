@@ -11,6 +11,11 @@ function RegisterRole() {
   const [optSeguridad, setOptSeguridad] = useState("")
   const [optDesarrollo, setOptDesarrollo] = useState("")
 
+  
+  const reload = () => {
+		window.location.reload(true);
+	}
+
   const handleSubmitRole = async (e) => {
     e.preventDefault();
     if ([rol].includes("")) {
@@ -41,6 +46,7 @@ function RegisterRole() {
           text: json.msg,
         });
       }
+      reload()
       return swal({
         icon: "success",
         text: "rol creado exitosamente"

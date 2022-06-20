@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom'
 import myLogo from '../images/iconwhite.png'
 import TableList from './partials/TableList';
 import CreateSprint from './CreateSprint';
+import DetailsTableeeee from './DetailsTableeeee';
+import SprintTable from './SprintTable';
 
 
 
@@ -132,9 +134,9 @@ function DetailsProject() {
 
 		const getSprints = async () => {
 			try {
-				const res = await fetch(URL_GET_SPRINTS+id),
+				const res = await fetch(URL_GET_SPRINTS + id),
 					data = await res.json()
-				setSprintList(data.sprints)
+				setSprintList(data?.sprints)
 			} catch (error) {
 				console.log(error)
 			}
@@ -143,8 +145,6 @@ function DetailsProject() {
 		getSprints()
 
 	}, [])
-
-	console.log(sprintList);
 
 	//capturamos los datos del proyecto en la siguiente variable
 	const dataProject = proyecto?.proyecto
@@ -232,13 +232,17 @@ function DetailsProject() {
 					<div className='row justify-content-between' id='tablero'>
 						{currentScreen.prDetails &&
 							<>
-								<div className='d-flex mt-3' id='tablelistUs'>
-									<div className=' col-md-12 box-dashboard'>
+								<div className=' mt-3' id='tablelistUs'>
+									{
+										sprintList.length > 0 &&
+										<SprintTable sprintList={sprintList} id={id}/>
+									}
+									<div className=' col-md box-dashboard'>
 										<div className=''>
 											<div className='title-section'>
 												<span>BACKLOG {tasksBk.length}</span>
 											</div>
-											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false, })} className='createUS'>Crear tarea</CButton> </div>
+											<div className='row' id='createUS'> <CButton onClick={() => setCurrentScreen({ ...currentScreen, prEdit: false, prDetails: true, usTask: true, usSprint: false, })} className='createUS ddd'><ion-icon name="add-outline"></ion-icon> crear tarea</CButton> </div>
 											{currentScreen?.usTask && <CreateUs dataProject={dataProject} />}
 
 											{tasksBk.length > 0 && tasksBk.map((item => {
@@ -247,61 +251,7 @@ function DetailsProject() {
 											}
 										</div>
 									</div>
-									{/* <div className=" col-md box-dashboard">
-										<div className='tablelist'>
-											<div className='title-section'>
-												<span>EN CURSO {taskEnCurso.length}</span>
-											</div>
-											{taskEnCurso.length > 0 && taskEnCurso.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div>
-									<div className=" col-md box-dashboard">
-										<div className='tablelist'>
-											<div className='title-section'>
-												<span>DETENIDO {taskDetenido.length}</span>
-											</div>
-											{taskDetenido.length > 0 && taskDetenido.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div>
-									<div className=" col-md box-dashboard">
-										<div className='tablelist'>
-											<div className='title-section'>
-												<span>A VERIFICAR {taskVerificar.length}</span>
-											</div>
-											{taskVerificar.length > 0 && taskVerificar.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div>
-									<div className=" col-md box-dashboard">
-										<div className='tablelist'>
-											<div className='title-section'>
-												<span>EN VERIFICACIÓN {taskEnVerificacion.length}</span>
-											</div>
-											{taskEnVerificacion.length > 0 && taskEnVerificacion.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div>
-									<div className=" col-md box-dashboard">
-										<div className='tablelist'>
-											<div className='title-section'>
-												<span>FINALIZADA {taskFinalizado.length}</span>
-											</div>
-											{taskFinalizado.length > 0 && taskFinalizado.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div> */}
+									<DetailsTableeeee sprintList={sprintList} dataProject={dataProject} taskFinalizado={taskFinalizado}  taskEnVerificacion={taskEnVerificacion} taskVerificar={taskVerificar} taskDetenido={taskDetenido}  taskEnCurso={taskEnCurso} />
 								</div>
 							</>
 						}
@@ -312,19 +262,7 @@ function DetailsProject() {
 							<div id='sprintContainer'>
 								<div className=' mt-3' id='tablelistUs'>
 									<CreateSprint id={id} />
-									{/* <div className=" col-md-12 box-dashboard">
-										<div className=''>
-											<div className='title-section'>
-												<span>BACKLOG {tasksBk.length}</span>
-											</div>
-											{tasksBk.length > 0 && tasksBk.map((item => {
-												return <TableList item={item} dataProject={dataProject} />
-											}))
-											}
-										</div>
-									</div> */}
 								</div>
-
 							</div>
 						}
 					</div>

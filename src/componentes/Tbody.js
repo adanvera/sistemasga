@@ -44,6 +44,10 @@ export const Tbody = ({ usuario, index }) => {
 		rol: usuario.role
 	}
 
+	const reload = () => {
+		window.location.reload(true);
+	}
+
 	const deleteUser = async () => {
 
 		if ((roleAuth === 'ADMIN') && usuario.uui !== userAuthUui) {
@@ -55,6 +59,7 @@ export const Tbody = ({ usuario, index }) => {
 				dangerMode: true,
 			}).then(async (willDelete) => {
 				if (willDelete) {
+					reload()
 					swal("Usuario eliminado exitosamente", {
 						icon: "success",
 					});

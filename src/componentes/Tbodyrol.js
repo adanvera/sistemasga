@@ -10,6 +10,10 @@ const urlRoles = "http://localhost:4000/api/role/"
 
 export const Tbodyrol = ({ role: rl, index }) => {
 
+	const reload = () => {
+        window.location.reload(true);
+    }
+
 	const [roleAuth, setRoleAuth] = useState([])
 	const { user, currentScreen } = useContext(DataContext)
 	const [rol, setRoleName] = useState("")
@@ -61,6 +65,7 @@ export const Tbodyrol = ({ role: rl, index }) => {
 				.then(async (willDelete) => {
 					if (willDelete) {
 						await fetch(URL_ELIMINAR_ROL + _id, { method: 'DELETE', headers: { "Content-Type": "application/json" } })
+						reload()
 						swal("Rol eliminado exitosamente", {
 							icon: "success",
 						});

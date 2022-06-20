@@ -19,6 +19,10 @@ function RegisterUser() {
   const [repetirPassword, setRepetirPassword] = useState("");
   const [rol, setRolUser] = useState("");
 
+  const reload = () => {
+    window.location.reload(true);
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if ([nombre, apellido, correo, password, repetirPassword].includes("")) {
@@ -58,6 +62,7 @@ function RegisterUser() {
           text: json.msg,
         });
       }
+      reload()
       return swal({
         icon: "success",
         text: "Usuario registrado correctamente !",
